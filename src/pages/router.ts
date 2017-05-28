@@ -1,7 +1,7 @@
 import { ItemDetailPage} from './item-detail/item-detail';
 import { ItemCreatePage} from './item-create/item-create';
 import { KeySearchPage } from './key-search/key-search';
-import { ListMasterPage } from './list-master/list-master';
+import { ListMasterPage } from './room-master/list-master';
 import { LoginPage } from './login/login';
 import { SearchPage } from './search/search';
 import { SettingsPage } from './settings/settings';

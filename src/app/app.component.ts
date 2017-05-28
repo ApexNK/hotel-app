@@ -5,12 +5,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 
-import { FirstRunPage } from '../pages/pages';
+import {TabsPage as FirstRunPage } from '../pages/tabs/tabs';
 
 
 import { Settings } from '../providers/providers';
 
-import { TranslateService } from '@ngx-translate/core'
+
 
 @Component({
   template: `<ion-nav #content [root]="rootPage"></ion-nav>`

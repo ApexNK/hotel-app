@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { KeySearchPage } from '../key-search/key-search';
-import { ListMasterPage } from '../list-master/list-master';
+import { ListMasterPage } from '../room-master/list-master';
 import { SearchPage } from '../search/search'
 import { SettingsPage } from '../settings/settings';
-import { Tab3Root } from '../pages';
+
 
 @Component({
   selector: 'page-tabs',

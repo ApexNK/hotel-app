@@ -25,11 +25,13 @@ $background-color:  #fff;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary:    #06b9e5,
+  // primary:    #488aff, // default
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  // dark:       #222  //default
+  dark:       #333333,
 );
 
 
