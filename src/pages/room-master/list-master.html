@@ -1,48 +1,162 @@
 <ion-header>
-  <ion-select [(ngModel)]="curAddress">
-    <ion-option value="nes">NES</ion-option>
-    <ion-option value="n64">Nintendo64</ion-option>
-    <ion-option value="ps">PlayStation</ion-option>
-    <ion-option value="genesis">Sega Genesis</ion-option>
-    <ion-option value="saturn">Sega Saturn</ion-option>
-    <ion-option value="snes">SNES</ion-option>
-  </ion-select>
+  <ion-grid no-padding>
+    <ion-row align-items-center  no-padding>
+      <ion-col col-auto>
+        <ion-select [(ngModel)]="curAddress" okText="确定" cancelText="取消">
+          <ion-option value="nes">北京</ion-option>
+          <ion-option value="n64">上海</ion-option>
+          <ion-option value="ps">PlayStation</ion-option>
+          <ion-option value="genesis">Sega Genesis</ion-option>
+          <ion-option value="saturn">Sega Saturn</ion-option>
+          <ion-option value="snes">SNES</ion-option>
+        </ion-select>
+      </ion-col>
+      <ion-col padding-left padding-right>
+        <form novalidate class="search-form">
+          <ion-icon name="search" margin-left class="search-icon"></ion-icon>
+          <input type="text" class="search-input" placeholder="输入房间,位置,价格">
+        </form>
+      </ion-col>
+      <ion-col col-auto>
+        <button ion-button clear>
+          <ion-icon name="map"></ion-icon>
+        </button>
+     </ion-col>
+    </ion-row>
+  </ion-grid>
+  
 </ion-header>
 
 <ion-content>
+  <ion-grid no-padding>
+    <ion-row class="data-picker-box">
+      <ion-col class="has-border-right">
+        <ion-list>
+          <ion-item>
+            <ion-label>入住</ion-label>
+            <ion-datetime
+                [cancelText]="'取消'" [doneText]="'确定'"
+                no-padding
+                displayFormat="YYYY-MM-DD"
+                pickerFormat="YYYY-MM-DD"
+                [(ngModel)]="startDate">
+                </ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label >离开</ion-label>
+            <ion-datetime
+                 [cancelText]="'取消'" [doneText]="'确定'"
+                no-padding
+                displayFormat="YYYY-MM-DD"
+                pickerFormat="YYYY-MM-DD"
+                [(ngModel)]="endDate">
+                </ion-datetime>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col>
+        <ion-row>
+          <ion-col text-center align-self-center>住一晚</ion-col>
+          <ion-col>
+            <button ion-button text-center>
+              <ion-icon name="search"></ion-icon>搜索
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="segment-bar">
+    <ion-row>
+      <ion-col  text-center align-self-center ion-button color="dark" clear>
+        全程&ensp;&ensp;<ion-icon name="arrow-dropdown"></ion-icon>
+      </ion-col>
+      <ion-col text-center align-self-center ion-button color="dark" clear>
+        距离&ensp;&ensp;<ion-icon name="arrow-dropdown"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <ion-list>
-    <ion-item-sliding *ngFor="let item of currentItems">
-      <button ion-item (click)="openItem(item)">
-        <ion-avatar item-start>
-          <img [src]="item.profilePic" />
-        </ion-avatar>
-        <h2>{{item.name}}</h2>
-        <p>{{item.about}}</p>
-        <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
-      </button>
-      <ion-item-options>
-        <button ion-button color="danger" (click)="deleteItem(item)">
-          删除
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
+    <ion-item >
+      <ion-thumbnail item-left>
+        <img [src]="currentItems[0].profilePic">
+      </ion-thumbnail>
+      <ion-grid>
+        <ion-row class="title">
+          <ion-col><h2  text-nowrap>北京华腾美居</h2></ion-col>
+          <ion-col col-auto text-right><span class="money">￥162</span>起</ion-col>
+        </ion-row>
+        <ion-row class="title">
+          <ion-col text-nowrap>金鱼胡同3号王府井</ion-col>
+          <ion-col col-auto text-right>剩余12</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            1.9km
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img [src]="currentItems[0].profilePic">
+      </ion-thumbnail>
+      <ion-grid>
+        <ion-row class="title">
+          <ion-col><h2  text-nowrap>北京华腾美居</h2></ion-col>
+          <ion-col col-auto text-right><span class="money">￥162</span>起</ion-col>
+        </ion-row>
+        <ion-row class="title">
+          <ion-col text-nowrap>金鱼胡同3号王府井</ion-col>
+          <ion-col col-auto text-right>剩余12</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            1.9km
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item >
+      <ion-thumbnail item-left>
+        <img [src]="currentItems[0].profilePic">
+      </ion-thumbnail>
+      <ion-grid>
+        <ion-row class="title">
+          <ion-col><h2  text-nowrap>北京华腾美居</h2></ion-col>
+          <ion-col col-auto text-right><span class="money">￥162</span>起</ion-col>
+        </ion-row>
+        <ion-row class="title">
+          <ion-col text-nowrap>金鱼胡同3号王府井</ion-col>
+          <ion-col col-auto text-right>剩余12</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            1.9km
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img [src]="currentItems[0].profilePic">
+      </ion-thumbnail>
+      <ion-grid>
+        <ion-row class="title">
+          <ion-col><h2  text-nowrap>北京华腾美居</h2></ion-col>
+          <ion-col col-auto text-right><span class="money">￥162</span>起</ion-col>
+        </ion-row>
+        <ion-row class="title">
+          <ion-col text-nowrap>金鱼胡同3号王府井</ion-col>
+          <ion-col col-auto text-right>剩余12</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            1.9km
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
   </ion-list>
-  <ion-list>
-    <ion-item-sliding *ngFor="let item of currentItems">
-      <button ion-item (click)="openItem(item)">
-        <ion-avatar item-start>
-          <img [src]="item.profilePic" />
-        </ion-avatar>
-        <h2>{{item.name}}</h2>
-        <p>{{item.about}}</p>
-        <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
-      </button>
-
-      <ion-item-options>
-        <button ion-button color="danger" (click)="deleteItem(item)">
-          删除
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+  
 </ion-content>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { TranslateService } from '@ngx-translate/core';
+
 import { KeySearchPage } from '../key-search/key-search';
 import { ListMasterPage } from '../room-master/list-master';
 import { SearchPage } from '../search/search'
