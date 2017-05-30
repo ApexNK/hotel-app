@@ -9,13 +9,13 @@ import { Items } from '../../providers/providers';
 
 
 @Component({
-  selector: 'page-search',
-  templateUrl: 'search.html'
+  selector: 'order-list',
+  templateUrl: 'order-list.html'
 })
-export class SearchPage {
-  
-  currentItems: any = [];
+export class OrderListPage {
 
+  currentItems: any = [];
+  curTab: string = "waitingForPay";
   constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items) { }
 
   /**

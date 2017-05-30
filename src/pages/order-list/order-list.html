@@ -1,0 +1,174 @@
+<ion-header>
+  <ion-navbar no-border-bottom no-lines>
+    <ion-title>
+      订单
+    </ion-title>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="curTab">
+    <ion-segment-button value="waitingForPay">
+      待支付
+    </ion-segment-button>
+    <ion-segment-button value="waitingForUse">
+      待使用
+    </ion-segment-button>
+    <ion-segment-button value="using">
+      使用中
+    </ion-segment-button>
+    <ion-segment-button value="completed">
+      已完成
+    </ion-segment-button>
+    <ion-segment-button value="revoked">
+      撤销订单
+    </ion-segment-button>
+  </ion-segment>
+  <!--<ion-toolbar no-border-top no-border-bottom>-->
+    <!---->
+  <!--</ion-toolbar>-->
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="curTab">
+    <ion-list *ngSwitchCase="'waitingForPay'">
+      <ion-item-group>
+        <ion-item-divider class="item-header" color="light">北京华腾美居 1楼103室</ion-item-divider>
+        <ion-item class="item-content">
+          <ion-thumbnail item-start>
+            <img src="assets/img/thumbnail-puppy-1.jpg">
+          </ion-thumbnail>
+          <div style="overflow:hidden;">
+            <span float-left>面积45m²&ensp;&ensp;床宽1.5m</span>
+            <h2 float-right class="money">￥172.00</h2>
+          </div>
+          <div>西大旺陆家16号</div>
+          <div>2017-05-30 12:00至2017-06-01 12:00</div>
+        </ion-item>
+        <ion-item class="item-footer">
+          <button padding-left  padding-right ion-button item-right round outline>支付</button>
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider class="item-header" color="light">北京华腾美居 1楼103室</ion-item-divider>
+        <ion-item class="item-content">
+          <ion-thumbnail item-start>
+            <img src="assets/img/thumbnail-puppy-1.jpg">
+          </ion-thumbnail>
+          <div style="overflow:hidden;">
+            <span float-left>面积45m²&ensp;&ensp;床宽1.5m</span>
+            <h2 float-right class="money">￥172.00</h2>
+          </div>
+          <div>西大旺陆家16号</div>
+          <div>2017-05-30 12:00至2017-06-01 12:00</div>
+        </ion-item>
+        <ion-item class="item-footer">
+          <button padding-left  padding-right ion-button item-right round outline>支付</button>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'waitingForUse'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-kitten-1.jpg">
+        </ion-thumbnail>
+        <h2>Luna</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-kitten-3.jpg">
+        </ion-thumbnail>
+        <h2>Milo</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-kitten-4.jpg">
+        </ion-thumbnail>
+        <h2>Bandit</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-kitten-2.jpg">
+        </ion-thumbnail>
+        <h2>Nala</h2>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'using'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-1.jpg">
+        </ion-thumbnail>
+        <h2>Daffy</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-2.jpg">
+        </ion-thumbnail>
+        <h2>Huey</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-3.jpg">
+        </ion-thumbnail>
+        <h2>Dewey</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-4.jpg">
+        </ion-thumbnail>
+        <h2>Louie</h2>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="'completed'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-1.jpg">
+        </ion-thumbnail>
+        <h2>Daffy</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-2.jpg">
+        </ion-thumbnail>
+        <h2>Huey</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-3.jpg">
+        </ion-thumbnail>
+        <h2>Dewey</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-4.jpg">
+        </ion-thumbnail>
+        <h2>Louie</h2>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="'revoked'">
+  <ion-item>
+    <ion-thumbnail item-start>
+      <img src="assets/img/thumbnail-duckling-1.jpg">
+    </ion-thumbnail>
+    <h2>Daffy</h2>
+  </ion-item>
+  <ion-item>
+    <ion-thumbnail item-start>
+      <img src="assets/img/thumbnail-duckling-2.jpg">
+    </ion-thumbnail>
+    <h2>Huey</h2>
+  </ion-item>
+  <ion-item>
+    <ion-thumbnail item-start>
+      <img src="assets/img/thumbnail-duckling-3.jpg">
+    </ion-thumbnail>
+    <h2>Dewey</h2>
+  </ion-item>
+  <ion-item>
+    <ion-thumbnail item-start>
+      <img src="assets/img/thumbnail-duckling-4.jpg">
+    </ion-thumbnail>
+    <h2>Louie</h2>
+  </ion-item>
+  </ion-list>
+  </div>
+</ion-content>

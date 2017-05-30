@@ -3,7 +3,7 @@ import { ItemCreatePage} from './item-create/item-create';
 import { KeySearchPage } from './key-search/key-search';
 import { ListMasterPage } from './room-master/list-master';
 import { LoginPage } from './login/login';
-import { SearchPage } from './search/search';
+import { OrderListPage } from './order-list/order-list';
 import { SettingsPage } from './settings/settings';
 import { SignupPage } from './signup/signup';
 import { TabsPage } from './tabs/tabs';
@@ -53,8 +53,8 @@ export function getRouter (): {links: IonicPageMetadata[]} {
                 segment: 'LoginPage'
             },
             {
-                component: SearchPage,
-                segment: 'SearchPage'
+                component: OrderListPage,
+                segment: 'OrderListPage'
             },
             {
                 component: SignupPage,
