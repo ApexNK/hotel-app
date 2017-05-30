@@ -2,6 +2,7 @@ import { ItemDetailPage} from './item-detail/item-detail';
 import { ItemCreatePage} from './item-create/item-create';
 import { KeySearchPage } from './key-search/key-search';
 import { ListMasterPage } from './room-master/list-master';
+import { RoomListPage } from './room-list/room-list';
 import { LoginPage } from './login/login';
 import { OrderListPage } from './order-list/order-list';
 import { SettingsPage } from './settings/settings';
@@ -27,6 +28,11 @@ export function getRouter (): {links: IonicPageMetadata[]} {
                 component: ListMasterPage,
                 segment: 'ListMasterPage',
                 name: 'TabsPage.ListMasterPage'
+            },
+            {
+              component: RoomListPage,
+              segment: 'RoomListPage',
+              name: 'TabsPage.RoomListPage'
             },
             {
                 component: ItemDetailPage,
