@@ -48,4 +48,11 @@ page-item-detail {
   .date-picker span {
     color: color($colors, primary);
   }
+
+  .img-list{
+    img{
+      width: 45vw;
+      height: 34.3vw;
+    }
+  }
 }

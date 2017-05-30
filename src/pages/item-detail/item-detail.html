@@ -52,7 +52,7 @@
     </ion-row>
   </ion-grid>
 
-  <ion-grid class="device-list" no-padding padding-left padding-right padding-bottom >
+  <ion-grid class="device-list" no-padding padding-left padding-right padding-bottom margin-bottom>
     <ion-row>
       <ion-col class="has-border-bottom">
         入住时间
@@ -81,6 +81,27 @@
 
       </ion-col>
 
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="device-list" no-padding padding-left padding-right padding-bottom margin-bottom>
+    <ion-row>
+      <ion-col class="has-border-bottom">
+        房间图片
+      </ion-col>
+    </ion-row>
+    <ion-row text-center padding-top class="img-list">
+      <ion-col col-6 >
+        <img [src]="item.profilePic" alt="">
+      </ion-col>
+      <ion-col col-6 >
+        <img [src]="item.profilePic" alt="">
+      </ion-col>
+      <ion-col col-6 >
+        <img [src]="item.profilePic" alt="">
+      </ion-col>
+      <ion-col col-6 >
+        <img [src]="item.profilePic" alt="">
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
