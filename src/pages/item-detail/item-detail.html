@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ item.name }}</ion-title>
+    <ion-title text-center>{{ item.name }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -12,7 +12,78 @@
   </div>
 
   <div class="item-detail" padding>
-    <h2>{{item.name}}</h2>
-    <p>{{item.about}}</p>
+    <h2>价格：￥80</h2>
+    <p >
+      <span float-left>面积：45m²</span>
+      <span float-right>窗户朝向：南北朝向</span>
+    </p>
+    <p  >
+      <span float-left>楼层：1楼</span>
+      <span float-right>床宽：1.8m</span>
+    </p>
+    <p >
+      <span float-left>地址：南方花园丰菜园</span>
+      <span float-right><ion-icon name="pin"></ion-icon> 1.4km</span>
+    </p>
   </div>
+  <div class="remark" padding-left padding-right>
+    备注信息：还没有备注信息呢？
+  </div>
+  <ion-grid class="device-list" no-padding padding-left padding-right padding-bottom margin-bottom>
+    <ion-row>
+      <ion-col class="has-border-bottom">
+        便利设施
+      </ion-col>
+    </ion-row>
+    <ion-row text-center padding-top>
+      <ion-col>
+        <ion-icon name="easel"></ion-icon><br/>
+        空调
+      </ion-col>
+      <ion-col>
+        <ion-icon name="water"></ion-icon><br/>
+        卫生间
+      </ion-col>
+      <ion-col>
+        <ion-icon name="wifi"></ion-icon><br/>
+        WIFI
+      </ion-col>
+      <ion-col><ion-icon name="key"></ion-icon><br/>门禁</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="device-list" no-padding padding-left padding-right padding-bottom >
+    <ion-row>
+      <ion-col class="has-border-bottom">
+        入住时间
+      </ion-col>
+    </ion-row>
+    <ion-row text-center padding-top>
+      <ion-col class="date-picker">
+        <ion-datetime
+          [cancelText]="'取消'" [doneText]="'确定'"
+          no-padding
+          displayFormat="YYYY-MM-DD"
+          pickerFormat="YYYY-MM-DD"
+          [(ngModel)]="startDate">
+        </ion-datetime>
+        <span>入住</span>
+      </ion-col>
+      <ion-col  class="date-picker">
+        <ion-datetime
+          [cancelText]="'取消'" [doneText]="'确定'"
+          no-padding
+          displayFormat="YYYY-MM-DD"
+          pickerFormat="YYYY-MM-DD"
+          [(ngModel)]="endDate">
+        </ion-datetime>
+        <span>离开</span>
+
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
 </ion-content>
+<ion-footer no-padding>
+  <button ion-button full no-padding no-margin>申请预定</button>
+</ion-footer>

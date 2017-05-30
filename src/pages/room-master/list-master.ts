@@ -16,7 +16,7 @@ export class ListMasterPage {
   currentItems: Item[];
   public curAddress = 'nes';
   public startDate = '2017-05-27';
-  public endDate = '2017-06-01'
+  public endDate = '2017-06-01';
   constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
     this.currentItems = this.items.query();
   }
