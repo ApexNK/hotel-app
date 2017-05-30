@@ -1,0 +1,21 @@
+order-list {
+  .item-block{
+    font-size: 13px;
+  }
+  ion-item-group {
+    margin-bottom: 10px;
+  }
+  ion-item-divider.item-header {
+    background: #fff !important;
+  }
+  .item-inner {
+    border: none !important;
+
+  }
+  ion-item.item-footer{
+    background: #fff !important;
+  }
+  .header-md::after {
+    background-image: none;
+  }
+}

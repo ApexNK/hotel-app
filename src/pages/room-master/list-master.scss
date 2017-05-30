@@ -1,5 +1,10 @@
 page-list-master {
-   
+    ion-grid{
+      background: #fff;
+    }
+    .item-block {
+      background: #fff;
+    }
     .search-form{
         background: color($colors, gray);
         // border-lefradius: 50%;
@@ -23,7 +28,7 @@ page-list-master {
         text-align: center;
         height: 100%;
         flex-direction: column;
-        
+
     }
     .has-border-right{
         border-right: 1px solid color($colors, gray);

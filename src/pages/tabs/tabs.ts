@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 
 import { KeySearchPage } from '../key-search/key-search';
 import { ListMasterPage } from '../room-master/list-master';
-import { SearchPage } from '../search/search'
+import { OrderListPage } from '../order-list/order-list'
 import { SettingsPage } from '../settings/settings';
 
 
@@ -13,7 +13,7 @@ import { SettingsPage } from '../settings/settings';
 })
 export class TabsPage {
   homeTab: any = ListMasterPage;
-  searchTab: any = SearchPage;
+  OrderListTab: any = OrderListPage;
   settingTab: any = SettingsPage;
   keySearchTab = KeySearchPage;
   homeTitle = "首页";

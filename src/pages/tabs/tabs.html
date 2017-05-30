@@ -1,6 +1,6 @@
 <ion-tabs>
-  <ion-tab [root]="homeTab" [tabTitle]="homeTitle" tabIcon="home"></ion-tab>
-  <ion-tab [root]="searchTab" [tabTitle]="orderTitle" tabIcon="search"></ion-tab>
-  <ion-tab [root]="keySearchTab" [tabTitle]="keySearchTitle" tabIcon="search"></ion-tab>
-  <ion-tab [root]="settingTab" [tabTitle]="mineTitle" tabIcon="md-person"></ion-tab>
+  <ion-tab [root]="homeTab" [tabTitle]="homeTitle" tabIcon="home" tabsHideOnSubPages></ion-tab>
+  <ion-tab [root]="OrderListTab" [tabTitle]="orderTitle" tabIcon="list-box" tabsHideOnSubPages></ion-tab>
+  <ion-tab [root]="keySearchTab" [tabTitle]="keySearchTitle" tabIcon="key" tabsHideOnSubPages></ion-tab>
+  <ion-tab [root]="settingTab" [tabTitle]="mineTitle" tabIcon="md-person" tabsHideOnSubPages></ion-tab>
 </ion-tabs>
