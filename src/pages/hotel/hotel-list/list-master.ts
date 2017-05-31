@@ -3,8 +3,10 @@ import { NavController, ModalController } from 'ionic-angular';
 
 import { RoomListPage } from '../room-list/room-list';
 import { Items } from '../../../providers/providers';
+import { MapPage } from '../map/map';
 
 import { Item } from '../../../models/item';
+
 
 @Component({
   selector: 'page-list-master',
@@ -41,5 +43,10 @@ export class ListMasterPage {
     this.navCtrl.push(RoomListPage, {
       item: item
     });
+  }
+
+  openMap() {
+    console.info("open map page");
+    this.navCtrl.push(MapPage);
   }
 }
