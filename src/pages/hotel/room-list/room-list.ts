@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { ItemDetailPage } from '../item-detail/item-detail';
-import { Items } from '../../providers/providers';
+import { ItemDetailPage } from '../hotel-detail/item-detail';
+import { Items } from '../../../providers/providers';
 
 @Component({
   selector: 'room-list',

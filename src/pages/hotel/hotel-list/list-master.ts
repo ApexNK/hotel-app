@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 
-import { ItemCreatePage } from '../item-create/item-create';
 import { RoomListPage } from '../room-list/room-list';
-import { Items } from '../../providers/providers';
+import { Items } from '../../../providers/providers';
 
-import { Item } from '../../models/item';
+import { Item } from '../../../models/item';
 
 @Component({
   selector: 'page-list-master',
@@ -26,19 +25,7 @@ export class ListMasterPage {
   ionViewDidLoad() {
   }
 
-  /**
-   * Prompt the user to add a new item. This shows our ItemCreatePage in a
-   * modal and then adds the new item to our data source if the user created one.
-   */
-  addItem() {
-    let addModal = this.modalCtrl.create(ItemCreatePage);
-    addModal.onDidDismiss(item => {
-      if (item) {
-        this.items.add(item);
-      }
-    })
-    addModal.present();
-  }
+
 
   /**
    * Delete an item from the list of items.
