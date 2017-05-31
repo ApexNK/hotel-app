@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { ItemDetailPage } from '../item-detail/item-detail';
-
-import { Item } from '../../models/item';
-
-import { Items } from '../../providers/providers';
+import { ItemDetailPage } from '../hotel/hotel-detail/item-detail';
 
 
 @Component({
@@ -16,7 +12,7 @@ export class OrderListPage {
 
   currentItems: any = [];
   curTab: string = "waitingForPay";
-  constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
 
 }

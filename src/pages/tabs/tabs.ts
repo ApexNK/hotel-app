@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { KeySearchPage } from '../key-search/key-search';
-import { ListMasterPage } from '../room-master/list-master';
-import { OrderListPage } from '../order-list/order-list'
-import { SettingsPage } from '../settings/settings';
+import { KeySearchPage } from '../key/key-search/key-search';
+import { ListMasterPage } from '../hotel/hotel-list/list-master';
+import { OrderListPage } from '../order/order-list/order-list'
+import { SettingsPage } from '../user/settings/settings';
 
 
 @Component({

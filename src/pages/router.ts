@@ -1,15 +1,15 @@
-import { ItemDetailPage} from './item-detail/item-detail';
-import { ItemCreatePage} from './item-create/item-create';
-import { KeySearchPage } from './key-search/key-search';
-import { ListMasterPage } from './room-master/list-master';
-import { RoomListPage } from './room-list/room-list';
-import { LoginPage } from './login/login';
-import { OrderListPage } from './order-list/order-list';
-import { SettingsPage } from './settings/settings';
-import { SignupPage } from './signup/signup';
+import { ItemDetailPage} from './hotel/hotel-detail/item-detail';
+
+import { KeySearchPage } from './key/key-search/key-search';
+import { ListMasterPage } from './hotel/hotel-list/list-master';
+import { RoomListPage } from './hotel/room-list/room-list';
+import { LoginPage } from './user/login/login';
+import { OrderListPage } from './order/order-list/order-list';
+import { SettingsPage } from './user/settings/settings';
+import { SignupPage } from './user/signup/signup';
 import { TabsPage } from './tabs/tabs';
-import { TutorialPage } from './tutorial/tutorial';
-import { WelcomePage } from './welcome/welcome';
+import { TutorialPage } from './user/tutorial/tutorial';
+import { WelcomePage } from './user/welcome/welcome';
 export interface IonicPageMetadata {
     component: any;
     name?: string;
@@ -38,11 +38,6 @@ export function getRouter (): {links: IonicPageMetadata[]} {
                 component: ItemDetailPage,
                 segment: 'ItemDetailPage',
                 name: 'TabsPage.ItemDetailPage'
-            },
-            {
-                component: ItemCreatePage,
-                segment: 'ItemCreatePage',
-                name: 'TabsPage.ItemCreatePage'
             },
             {
                 component: KeySearchPage,

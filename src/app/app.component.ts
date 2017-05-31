@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 import {TabsPage as FirstRunPage } from '../pages/tabs/tabs';
-
+// import { LoginPage as FirstRunPage } from '../pages/user/login/login';
 
 import { Settings } from '../providers/providers';
 
