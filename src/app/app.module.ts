@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, Http } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { Storage, IonicStorageModule } from '@ionic/storage';
+import { ComponentModule } from '../components/component.module';
 import { getRouter } from '../pages/router';
 import { MyApp } from './app.component';
 import { Api } from '../providers/api';
@@ -77,6 +78,7 @@ export function providers() {
   imports: [
     BrowserModule,
     HttpModule,
+    ComponentModule,
     IonicModule.forRoot(MyApp, APP_CONFIG, {
       links: routers.links
     }),

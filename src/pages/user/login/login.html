@@ -1,19 +1,19 @@
-<ion-header>
+<!--<ion-header>-->
 
-  <ion-navbar>
-    <ion-title>登录</ion-title>
-  </ion-navbar>
+  <!--<ion-navbar>-->
+    <!--<ion-title>登录</ion-title>-->
+  <!--</ion-navbar>-->
 
-</ion-header>
+<!--</ion-header>-->
 
 
-<ion-content>
+<ion-content padding>
   <form (submit)="doLogin()">
     <ion-list>
 
       <ion-item>
-        <ion-label fixed>邮箱</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+        <ion-label fixed><ion-icon name="person"></ion-icon> 用户名</ion-label>
+        <ion-input type="text" [(ngModel)]="account.email" name="username"></ion-input>
       </ion-item>
 
       <!--
@@ -26,13 +26,11 @@
       -->
 
       <ion-item>
-        <ion-label fixed>密码</ion-label>
+        <ion-label fixed><ion-icon name="key"></ion-icon> 密码</ion-label>
         <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
       </ion-item>
 
-      <div padding>
-        <button ion-button color="primary" block>登陆</button>
-      </div>
+      <button ion-button color="primary" block>登陆</button>
 
     </ion-list>
   </form>
