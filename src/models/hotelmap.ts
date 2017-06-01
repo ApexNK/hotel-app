@@ -13,7 +13,7 @@ export class HotelMap {
   }
 
   createMapInstance(): void {
-    this.map = this.map || new BMap.map(this.container, { enableMapClick: true });
+    this.map = this.map || new BMap.Map(this.container, { enableMapClick: true });
     this.map.enableScrollWheelZoom();//启动滚轮放大缩小，默认禁用
     this.map.enableContinuousZoom();//连续缩放效果，默认禁用
   }
@@ -50,7 +50,7 @@ export class HotelMap {
         fillColor: '#1794f6',
         fillOpacity: 0.8
       });
-      this.map = this.map || new BMap.map(this.container);
+      this.createMapInstance();
       let marker = new BMap.Marker(pPoint,{icon:icon});  // 创建标注
       this.map.addOverlay(marker);
 

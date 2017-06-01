@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {  NavController, NavParams } from 'ionic-angular';
 import { HotelMap } from "../../../models/hotelmap";
 
 /**
@@ -8,7 +8,6 @@ import { HotelMap } from "../../../models/hotelmap";
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
 @Component({
   selector: 'page-map',
   templateUrl: 'map.html',
@@ -24,7 +23,9 @@ export class MapPage {
   }
 
   ionViewWillEnter() {
+    console.info("***************");
     let map = new HotelMap(this.mapElement.nativeElement);
-    map.createMapByCity("北京");
+    //map.createMapByCity("北京");
+    map.markLocation();
   }
 }
