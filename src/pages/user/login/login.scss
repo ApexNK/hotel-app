@@ -1,2 +1,31 @@
 page-login {
+
+  ion-content.login-content{
+    background: #fff !important;
+    ion-item{
+      background: #fff;
+    }
+  }
+  form {
+    margin-top: 30px;
+  }
+  .banner{
+    position: relative;
+    width: 100vw;
+    height: 64vw;
+    background-size: cover;
+    background-position: center;
+    .wave {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: auto;
+    }
+  }
+  .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner,
+  .item-md.item-input.ng-valid.input-has-value .item-inner
+  {
+     box-shadow: none;
+   }
 }

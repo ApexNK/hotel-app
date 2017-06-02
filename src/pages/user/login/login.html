@@ -7,30 +7,23 @@
 <!--</ion-header>-->
 
 
-<ion-content padding>
-  <form (submit)="doLogin()">
-    <ion-list>
+<ion-content class="login-content">
+  <div class="banner" [style.background-image]="'url(./assets/img/timg.jpg)'">
+    <img src="./assets/img/wave.png" class="wave">
+  </div>
+  <form (submit)="doLogin()" padding>
+    <ion-list padding>
 
-      <ion-item>
-        <ion-label fixed><ion-icon name="person"></ion-icon> 用户名</ion-label>
-        <ion-input type="text" [(ngModel)]="account.email" name="username"></ion-input>
+      <ion-item no-padding margin-bottom>
+        <ion-label fixed><ion-icon name="person" color="primary"></ion-icon>&ensp;&ensp;用户名</ion-label>
+        <ion-input type="text" [(ngModel)]="account.user" name="username"></ion-input>
+      </ion-item>
+      <ion-item no-padding margin-bottom>
+        <ion-label fixed><ion-icon name="key" color="primary"></ion-icon>&ensp;&ensp;验证码</ion-label>
+        <ion-input type="number" [(ngModel)]="account.password" name="password"></ion-input>
       </ion-item>
 
-      <!--
-      Want to use a Username instead of an Email? Here you go:
-
-      <ion-item>
-        <ion-label floating>{{ 'USERNAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.username"></ion-input>
-      </ion-item>
-      -->
-
-      <ion-item>
-        <ion-label fixed><ion-icon name="key"></ion-icon> 密码</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
-      </ion-item>
-
-      <button ion-button color="primary" block>登陆</button>
+      <button ion-button color="primary" block style="margin-top: 40px; border-radius: 6px;">登陆</button>
 
     </ion-list>
   </form>
