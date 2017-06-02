@@ -13,7 +13,7 @@ export class LoginPage {
   // sure to add it to the type
   account: { user: string, password: string } = {
     user: '',
-    password: 'test'
+    password: ''
   };
 
   // Our translated text strings
