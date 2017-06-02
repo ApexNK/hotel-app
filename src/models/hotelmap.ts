@@ -1,6 +1,105 @@
 
 declare var BMap;
 declare var BMap_Symbol_SHAPE_FORWARD_CLOSED_ARROW;
+declare var BMAP_STATUS_SUCCESS;
+
+
+class CustomOverlay {
+  point: typeof BMap.Point;
+  content: string;
+  map: any;
+  div: any;
+  arrow: any;
+  __proto__: any;
+
+  constructor(point: typeof BMap.Point, content: string) {
+    //super(point,content);
+    this.point = point;
+    this.content = content;
+    this.__proto__ = new BMap.Overlay();
+    this.__proto__.initialize = (map) => {
+      debugger;
+      this.map = map;
+      let div = this.div = document.createElement("div");
+      div.style.position = "absolute";
+      div.style.zIndex = BMap.Overlay.getZIndex(this.point.lat);
+      div.style.backgroundColor = "#4dbada";
+      div.style.border = "1px solid #BC3B3A";
+      div.style.color = "white";
+      div.style.height = "18px";
+      div.style.padding = "2px";
+      div.style.lineHeight = "18px";
+      div.style.whiteSpace = "nowrap";
+      div.style.fontSize = "12px";
+      let span = document.createElement("span");
+      div.appendChild(span);
+      span.appendChild(document.createTextNode(this.content));
+
+      let arrow = this.arrow = document.createElement("div");
+      arrow.style.background = "url(http://map.baidu.com/fwmap/upload/r/map/fwmap/static/house/images/label.png) no-repeat";
+      arrow.style.position = "absolute";
+      arrow.style.width = "11px";
+      arrow.style.height = "10px";
+      arrow.style.top = "22px";
+      arrow.style.left = "10px";
+      arrow.style.overflow = "hidden";
+      arrow.style.backgroundPosition = "0px -20px";
+      div.appendChild(arrow);
+
+      // 将div添加到覆盖物容器中
+      map.getPanes().labelPane.appendChild(div);
+
+      return div;
+    };
+    this.__proto__.draw = () => {
+      let pixel = this.map.pointToOverlayPixel(this.point);
+      this.div.style.left = pixel.x - parseInt(this.arrow.style.left) + "px";
+      this.div.style.top  = pixel.y - 30 + "px";
+    };
+  }
+
+  initialize (map) {
+  // 保存map对象实例
+    this.map = map;
+    let div = this.div = document.createElement("div");
+    div.style.position = "absolute";
+    div.style.zIndex = BMap.Overlay.getZIndex(this.point.lat);
+    div.style.backgroundColor = "#4dbada";
+    div.style.border = "1px solid #BC3B3A";
+    div.style.color = "white";
+    div.style.height = "18px";
+    div.style.padding = "2px";
+    div.style.lineHeight = "18px";
+    div.style.whiteSpace = "nowrap";
+    div.style.fontSize = "12px";
+    let span = document.createElement("span");
+    div.appendChild(span);
+    span.appendChild(document.createTextNode(this.content));
+
+    let arrow = this.arrow = document.createElement("div");
+    arrow.style.background = "url(http://map.baidu.com/fwmap/upload/r/map/fwmap/static/house/images/label.png) no-repeat";
+    arrow.style.position = "absolute";
+    arrow.style.width = "11px";
+    arrow.style.height = "10px";
+    arrow.style.top = "22px";
+    arrow.style.left = "10px";
+    arrow.style.overflow = "hidden";
+    arrow.style.backgroundPosition = "0px -20px";
+    div.appendChild(arrow);
+
+    // 将div添加到覆盖物容器中
+    map.getPanes().labelPane.appendChild(div);
+
+    return div;
+  }
+
+  // 实现绘制方法
+  draw () {
+    let pixel = this.map.pointToOverlayPixel(this.point);
+    this.div.style.left = pixel.x - parseInt(this.arrow.style.left) + "px";
+    this.div.style.top  = pixel.y - 30 + "px";
+  }
+}
 
 export class HotelMap {
 
@@ -33,12 +132,7 @@ export class HotelMap {
     let geolocation = new BMap.Geolocation();
     geolocation.getCurrentPosition((position)=>{
       //0代表调用成功，具体状态可见百度地图api
-    if(geolocation.getStatus() == 0){
-      //经度
-      let longitude =position.longitude;
-      //纬度
-      let latitude = position.latitude;
-      let pPoint = new BMap.Point(longitude,latitude);
+    if(geolocation.getStatus() == BMAP_STATUS_SUCCESS){
       let heading = 0;
       if(position.heading !=null && position.heading != ''){
         heading = position.heading;
@@ -51,13 +145,19 @@ export class HotelMap {
         fillOpacity: 0.8
       });
       this.createMapInstance();
-      let marker = new BMap.Marker(pPoint,{icon:icon});  // 创建标注
+      let marker = new BMap.Marker(position.point,{icon:icon});  // 创建标注
       this.map.addOverlay(marker);
+      this.map.panTo(position.point);
 
     }else {
       console.log(position);
     }
-  });
+   });
+  }
+
+  customMark():void {
+    let myCompOverlay = new CustomOverlay(new BMap.Point(116.407845,39.914101), "银湖海岸城 | 32tao");
+    this.map.addOverlay(myCompOverlay);
   }
 }
 

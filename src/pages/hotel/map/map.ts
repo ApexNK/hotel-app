@@ -23,9 +23,9 @@ export class MapPage {
   }
 
   ionViewWillEnter() {
-    console.info("***************");
     let map = new HotelMap(this.mapElement.nativeElement);
-    //map.createMapByCity("北京");
-    map.markLocation();
+    map.createMapByCity("北京");
+    //map.markLocation();
+    map.customMark();
   }
 }
