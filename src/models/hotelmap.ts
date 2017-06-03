@@ -159,5 +159,7 @@ export class HotelMap {
     let myCompOverlay = new CustomOverlay(new BMap.Point(116.407845,39.914101), "银湖海岸城 | 32tao");
     this.map.addOverlay(myCompOverlay);
   }
+
+
 }
 
