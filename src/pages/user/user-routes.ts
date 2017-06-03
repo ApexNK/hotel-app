@@ -1,5 +1,5 @@
 import { LoginPage } from './login/login';
-import { SettingsPage } from './settings/settings';
+import { UserCenterPage } from './user-center/user-center';
 import { SignupPage } from  './signup/signup';
 import { TutorialPage } from './tutorial/tutorial';
 import { WelcomePage } from './welcome/welcome';
@@ -22,8 +22,8 @@ export const UserRoutes = [
     segment: 'WelcomePage'
   },
   {
-    component: SettingsPage,
-    segment: 'SettingsPage' ,
-    name: 'TabsPage.SettingsPage'
+    component: UserCenterPage,
+    segment: 'UserCenterPage' ,
+    name: 'TabsPage.UserCenterPage'
   }
 ];

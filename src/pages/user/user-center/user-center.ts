@@ -11,10 +11,10 @@ import { Settings } from '../../../providers/settings';
  *
  */
 @Component({
-  selector: 'page-settings',
-  templateUrl: 'settings.html'
+  selector: 'page-user-center',
+  templateUrl: 'user-center.html'
 })
-export class SettingsPage {
+export class UserCenterPage {
   // Our local settings object
   options: any;
 
@@ -31,7 +31,7 @@ export class SettingsPage {
   pageTitleKey: string = 'SETTINGS_TITLE';
   pageTitle: string;
 
-  subSettings: any = SettingsPage;
+  subSettings: any = UserCenterPage;
 
   constructor(public navCtrl: NavController,
     public settings: Settings,

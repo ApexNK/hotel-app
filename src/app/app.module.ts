@@ -18,9 +18,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 export function provideSettings(storage: Storage) {
   /**
-   * The Settings provider takes a set of default settings for your app.
+   * The Settings provider takes a set of default user-center for your app.
    *
-   * You can add new settings options at any time. Once the settings are saved,
+   * You can add new user-center options at any time. Once the user-center are saved,
    * these values will not overwrite the saved values (this can be done manually if desired).
    */
   return new Settings(storage, {
