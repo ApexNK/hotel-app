@@ -8,8 +8,26 @@
 
 
 <ion-content>
-  <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
-  </div>
+  <ion-slides pager class="item-profile">
+
+    <ion-slide style="background-color: green">
+      <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
+      </div>
+    </ion-slide>
+
+    <ion-slide style="background-color: blue">
+      <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
+      </div>
+    </ion-slide>
+
+    <ion-slide style="background-color: red">
+      <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+  <!--<div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">-->
+  <!--</div>-->
 
   <div class="item-detail" padding margin-bottom>
     <p>
@@ -66,21 +84,56 @@
     </ion-row>
   </ion-grid>
   <ion-list class="list-ios">
-    <ion-item detail-push class="item-ios" (click)="goRoomDetail()">
-      <h2>1楼 101室</h2>
-      <p>大床1.8m 4.5m²</p>
+    <ion-item no-padding detail-push class="item-ios" (click)="goRoomDetail()">
+      <h2 padding-left>1楼 101室</h2>
+      <p padding-left>大床1.8m 4.5m²</p>
     </ion-item>
-    <ion-item detail-push class="item-ios">
-      <h2>1楼 101室</h2>
-      <p>大床1.8m 4.5m²</p>
+    <ion-item no-padding detail-push class="item-ios" (click)="goRoomDetail()">
+      <h2 padding-left>1楼 101室</h2>
+      <p padding-left>大床1.8m 4.5m²</p>
     </ion-item>
-    <ion-item detail-push class="item-ios">
-      <h2>1楼 101室</h2>
-      <p>大床1.8m 4.5m²</p>
+    <ion-item no-padding detail-push class="item-ios" (click)="goRoomDetail()">
+      <h2 padding-left>1楼 101室</h2>
+      <p padding-left>大床1.8m 4.5m²</p>
     </ion-item>
-    <ion-item detail-push class="item-ios">
-      <h2>1楼 101室</h2>
-      <p>大床1.8m 4.5m²</p>
+    <ion-item no-padding detail-push class="item-ios" (click)="goRoomDetail()">
+      <h2 padding-left>1楼 101室</h2>
+      <p padding-left>大床1.8m 4.5m²</p>
+    </ion-item>
+    <ion-item no-padding detail-push class="item-ios" (click)="goRoomDetail()">
+      <h2 padding-left>1楼 101室</h2>
+      <p padding-left>大床1.8m 4.5m²</p>
+    </ion-item>
+    <ion-item no-padding detail-push class="item-ios" (click)="goRoomDetail()">
+      <h2 padding-left>1楼 101室</h2>
+      <p padding-left>大床1.8m 4.5m²</p>
+    </ion-item>
+    <ion-item no-padding detail-push class="item-ios" (click)="goRoomDetail()">
+      <h2 padding-left>1楼 101室</h2>
+      <p padding-left>大床1.8m 4.5m²</p>
+    </ion-item>
+    <ion-item no-padding detail-push class="item-ios" (click)="goRoomDetail()">
+      <h2 padding-left>1楼 101室</h2>
+      <p padding-left>大床1.8m 4.5m²</p>
+    </ion-item>
+    <ion-item no-padding detail-push class="item-ios" (click)="goRoomDetail()">
+      <h2 padding-left>1楼 101室</h2>
+      <p padding-left>大床1.8m 4.5m²</p>
+    </ion-item>
+    <ion-item no-padding detail-push class="item-ios" (click)="goRoomDetail()">
+      <h2 padding-left>1楼 101室</h2>
+      <p padding-left>大床1.8m 4.5m²</p>
+    </ion-item>
+    <ion-item no-padding detail-push class="item-ios" (click)="goRoomDetail()">
+      <h2 padding-left>1楼 101室</h2>
+      <p padding-left>大床1.8m 4.5m²</p>
+    </ion-item>
+    <ion-item no-padding detail-push class="item-ios" (click)="goRoomDetail()">
+      <h2 padding-left>1楼 101室</h2>
+      <p padding-left>大床1.8m 4.5m²</p>
+    </ion-item>
+    <ion-item text-center no-padding class="item-ios" >
+      查看全部
     </ion-item>
   </ion-list>
   <ion-grid class="device-list" no-padding padding-left padding-right padding-bottom margin-bottom>

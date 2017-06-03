@@ -2,6 +2,38 @@ page-list-master {
     ion-grid{
       background: #fff;
     }
+    .trapezoid{
+      border-bottom: 30px solid #fff;
+
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      width: 116px;
+
+      /* border-radius: 25px; */
+      position: absolute;
+      left: 50%;
+      margin-left: -58px;
+      bottom: 0;
+    }
+    .banner-text {
+      position: absolute;
+      width: 100%;
+      line-height: 30px;
+      text-align: center;
+      bottom: 0;
+      color: color($colors, primary);
+    }
+    .banner {
+      position: relative;
+      width: 100vw;
+      height: 38vw;
+      background-size: cover;
+      background-position: center;
+      transition: height 0.3s ease-in;
+    }
+    .banner.close {
+      height: 50px;
+    }
     .item-block {
       background: #fff;
     }

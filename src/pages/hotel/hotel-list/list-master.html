@@ -1,5 +1,6 @@
 <ion-header>
   <ion-grid no-padding>
+
     <ion-row align-items-center  no-padding>
       <ion-col col-auto>
         <ion-select [(ngModel)]="curAddress" okText="确定" cancelText="取消">
@@ -28,6 +29,14 @@
 </ion-header>
 
 <ion-content>
+  <div class="banner" [ngClass]="{'close': !isBannerOpening}" [style.background-image]="'url(./assets/img/banner2.png)'">
+    <div class="trapezoid"></div>
+    <div class="banner-text" (click)="toggleBanner()">
+      <ion-icon  [hidden]="isBannerOpening" ios="ios-arrow-down" md="md-arrow-down"></ion-icon>
+      <span [hidden]="!isBannerOpening">入住时间</span>
+
+    </div>
+  </div>
   <ion-grid no-padding>
     <ion-row class="data-picker-box">
       <ion-col class="has-border-right">

@@ -8,8 +8,24 @@
 
 
 <ion-content>
-  <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
-  </div>
+  <ion-slides pager class="item-profile">
+
+    <ion-slide style="background-color: green">
+      <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
+      </div>
+    </ion-slide>
+
+    <ion-slide style="background-color: blue">
+      <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
+      </div>
+    </ion-slide>
+
+    <ion-slide style="background-color: red">
+      <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
+      </div>
+    </ion-slide>
+
+  </ion-slides>
 
   <div class="item-detail" padding>
     <h2 class="money">价格：￥80</h2>

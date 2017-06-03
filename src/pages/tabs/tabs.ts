@@ -4,7 +4,7 @@ import { NavController } from 'ionic-angular';
 import { KeySearchPage } from '../key/key-search/key-search';
 import { ListMasterPage } from '../hotel/hotel-list/list-master';
 import { OrderListPage } from '../order/order-list/order-list'
-import { SettingsPage } from '../user/settings/settings';
+import { UserCenterPage } from '../user/user-center/user-center';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { SettingsPage } from '../user/settings/settings';
 export class TabsPage {
   homeTab: any = ListMasterPage;
   OrderListTab: any = OrderListPage;
-  settingTab: any = SettingsPage;
+  settingTab: any = UserCenterPage;
   keySearchTab = KeySearchPage;
   homeTitle = "首页";
   orderTitle = "订单";
