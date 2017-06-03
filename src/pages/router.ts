@@ -15,6 +15,10 @@ export function getRouter (): {links: IonicPageMetadata[]} {
     return {
         links: [
             {
+              component: TabsPage,
+              segment: '/'
+            },
+            {
                 component: TabsPage,
                 segment: 'TabsPage'
             },
