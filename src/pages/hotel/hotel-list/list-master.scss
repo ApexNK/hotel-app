@@ -29,6 +29,10 @@ page-list-master {
       height: 38vw;
       background-size: cover;
       background-position: center;
+      transition: height 0.3s ease-in;
+    }
+    .banner.close {
+      height: 50px;
     }
     .item-block {
       background: #fff;

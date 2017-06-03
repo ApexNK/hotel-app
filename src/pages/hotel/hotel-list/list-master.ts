@@ -17,6 +17,7 @@ export class ListMasterPage {
   public curAddress = 'nes';
   public startDate = '2017-05-27';
   public endDate = '2017-06-01';
+  public isBannerOpening = true;
   constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
     this.currentItems = this.items.query();
   }
@@ -27,7 +28,9 @@ export class ListMasterPage {
   ionViewDidLoad() {
   }
 
-
+  public toggleBanner () {
+    this.isBannerOpening = !this.isBannerOpening;
+  }
 
   /**
    * Delete an item from the list of items.
