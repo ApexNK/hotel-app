@@ -74,7 +74,8 @@ export function providers() {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     //inject the apiUrl const
     { provide: 'ApiURL', useValue: config.isDev ? config.devUrl : config.proUrl},
-    { provide: 'Api', useClass: Api},
+    Api
+    //{ provide: 'Api', useClass: Api},
   ];
 }
 
