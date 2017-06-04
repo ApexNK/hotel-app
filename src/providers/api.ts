@@ -11,7 +11,6 @@ export class Api {
 //= 'https://example.com/api/v1'
   constructor(public http: Http, @Inject('ApiURL') apiurl) {
     this.url = apiurl;
-    debugger;
   }
 
   get(endpoint: string, params?: any, options?: RequestOptions) {
