@@ -14,7 +14,9 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-.money {
+.money,
+.primary
+{
   color:  color($colors, primary);
 }
 .has-border-bottom {
@@ -30,5 +32,18 @@
     &:nth-last-of-type(1) {
       margin-bottom: 0;
     }
+  }
+
+}
+.date-picker-container {
+  ion-col:nth-of-type(1) {
+    border-right: 1px solid color($colors, borderColor);
+  }
+}
+.date-picker {
+
+  .primary {
+    display: inline-block;
+    margin-top: 10px;
   }
 }
