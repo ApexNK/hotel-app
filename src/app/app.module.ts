@@ -15,6 +15,9 @@ import { Camera } from '@ionic-native/camera';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Geolocation } from '@ionic-native/geolocation';
+
+import config from '../config/config';
 
 export function provideSettings(storage: Storage) {
   /**
@@ -66,10 +69,12 @@ export function providers() {
     GoogleMaps,
     SplashScreen,
     StatusBar,
-
+    Geolocation,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    //inject the apiUrl const
+    { provide: 'ApiURL', useValue: config.isDev ? config.devUrl : config.proUrl},
   ];
 }
 
