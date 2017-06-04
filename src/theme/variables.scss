@@ -32,7 +32,8 @@ $colors: (
   light:      #f4f4f4,
   // dark:       #222  //default
   dark:       #333333,
-  gray: #f0f0f4
+  gray: #f0f0f4,
+  borderColor: #dedede
 );
 
 
@@ -48,7 +49,9 @@ $item-ios-divider-background:#fff;
 // Material Design only Sass variables can go here
 //$item-md-divider-background:#fff;
 //$text-input-md-highlight-color-valid: #cccccc;
-
+$item-md-font-size: 1.3rem;
+$item-md-paragraph-text-color: #999;
+// $item-md-body-text-font-size: 1.6rem;
 
 // App Windows Variables
 // --------------------------------------------------
