@@ -39,26 +39,47 @@
         <ion-icon md="ios-card-outline" ios="ios-card-outline"></ion-icon> 我的钱包
       </ion-card-header>
       <ion-card-content>
-        <ion-grid>
-          <ion-row>
-            <ion-col text-center ion-button clear>
-              <ion-icon name="logo-yen"></ion-icon><br/><span class="col-name">待支付</span>
+        <ion-grid no-padding>
+          <ion-row class="msg-row">
+            <ion-col text-center>
+              <span>60.00</span><br/>我的余额
             </ion-col>
-            <ion-col text-center ion-button clear>
-              <ion-icon name="logo-yen"></ion-icon><br/><span class="col-name">未使用</span>
+            <ion-col text-center>
+              <span>2</span><br/>优惠券
             </ion-col>
-            <ion-col text-center ion-button clear>
-              <ion-icon name="logo-yen"></ion-icon><br/><span class="col-name">使用中</span>
-            </ion-col>
-            <ion-col text-center ion-button clear>
-              <ion-icon name="logo-yen"></ion-icon><br/><span class="col-name">已完成</span>
-            </ion-col>
-            <ion-col text-center ion-button clear>
-              <ion-icon name="logo-yen"></ion-icon><br/><span class="col-name">撤销订单</span>
+            <ion-col text-center>
+              <span>60.00</span><br/>押金
             </ion-col>
           </ion-row>
         </ion-grid>
       </ion-card-content>
     </ion-card>
+    <div padding>
+      <ion-list no-lines>
+        <button ion-item >
+          <ion-icon name="ios-paper-outline" item-left class="icon-left"></ion-icon>
+          个人信息
+          <ion-icon name="ios-arrow-forward-outline" item-right class="arrow-right"></ion-icon>
+        </button>
+        <button ion-item class="has-margin-bottom">
+          <ion-icon name="ios-person-outline" item-left class="icon-left"></ion-icon>
+          身份审核
+          <ion-icon name="ios-arrow-forward-outline" class="arrow-right" item-right></ion-icon>
+        </button>
+        <button ion-item >
+          <ion-icon name="ios-information-circle-outline" item-left class="icon-left"></ion-icon>
+          联系客服
+          <ion-icon name="ios-arrow-forward-outline" item-right class="arrow-right"></ion-icon>
+        </button>
+        <button ion-item class="has-margin-bottom">
+          <ion-icon name="ios-text-outline" item-left class="icon-left"></ion-icon>
+          系统消息
+          <ion-icon name="ios-arrow-forward-outline" class="arrow-right" item-right></ion-icon>
+        </button>
+        <button ion-item text-center class="log-out">
+          退出登陆
+        </button>
+      </ion-list>
+    </div>
   </div>
 </ion-content>

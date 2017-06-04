@@ -1,5 +1,28 @@
 page-user-center {
+  ion-content{
+    background: rgb(234,234,244);
+  }
+  .item-md,.item-ios{
+    &.has-margin-bottom {
+      margin-bottom: 10px;
+    }
+    background: #fff;
+    margin-bottom: 1px;
+    border-bottom: 1px solid #dedede !important;
+    border-radius: 14px;
+    .arrow-right {
+      transform: scale(0.6);
+    }
+    .icon-left {
+      transform: scale(0.8) translateY(3px);
+      color: color($colors, primary);
+    }
+  }
+  .item-md ion-icon[item-left] + .item-inner {
+    margin-left: 0;
+  }
   .head-container {
+
     position: relative;
     width: 100vw;
     height: 57vw;
@@ -62,5 +85,14 @@ page-user-center {
 
       }
     }
+  }
+
+  .msg-row ion-col{
+    line-height: 34px;
+    font-size:14px;
+  }
+  .log-out {
+    color: color($colors, primary);
+    border: none !important;
   }
 }
