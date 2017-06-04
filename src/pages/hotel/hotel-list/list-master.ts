@@ -7,7 +7,7 @@ import { MapPage } from '../map/map';
 
 import { Item } from '../../../models/item';
 
-
+import { Api } from '../../../providers/api';
 
 @Component({
   selector: 'page-list-master',
@@ -19,8 +19,8 @@ export class ListMasterPage {
   public startDate = '2017-05-27';
   public endDate = '2017-06-01';
   public isBannerOpening = true;
-  private api:any;
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, @Inject('Api') api) {
+  public api:any;
+  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, @Inject(Api) api) {
     this.currentItems = this.items.query();
     this.api = api;
   }
@@ -29,7 +29,7 @@ export class ListMasterPage {
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
-    //this.api.get("test");
+    this.api.get("test");
   }
 
   public toggleBanner () {
