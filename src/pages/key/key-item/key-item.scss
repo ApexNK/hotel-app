@@ -1,0 +1,69 @@
+key-item {
+
+}
+
+.main-content {
+  background-color: #ec9605;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.sub-content {
+  position: relative;
+  height: 100%;
+  border-color: orangered;
+  border-style: solid;
+  border-width: 50px 16px 16px 16px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 0px 32px;
+}
+
+.room-name {
+  width:100%;
+  position: absolute;
+  top:-35px;
+  color:#ffffff;
+}
+
+.room-name span {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  display: inline-block;
+}
+.main-content ion-thumbnail img {
+  width:80px;
+  height: 60px;
+}
+.main-content .item {
+  padding-left: 0px;
+  background-color: transparent;
+
+}
+
+.main-content .item-inner {
+  border-bottom-width: 0px !important;
+}
+
+.leave-time {
+  background-color: #fffd08;
+  color:#ec9605;
+  border-radius: 20px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 5px;
+}
+
+.leave-time .time {
+  color: #ff0000;
+  font-size: 16px;
+}
+
+.key-code {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  background-color: #2ec95c;
+}
