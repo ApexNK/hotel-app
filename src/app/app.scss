@@ -17,3 +17,18 @@
 .money {
   color:  color($colors, primary);
 }
+.has-border-bottom {
+  border-bottom: 1px solid color($colors, borderColor);;
+}
+
+.has-thumbnail {
+  .label-md {
+    // margin-top: 0;
+  }
+  ion-row {
+    margin-bottom: 10px;
+    &:nth-last-of-type(1) {
+      margin-bottom: 0;
+    }
+  }
+}
