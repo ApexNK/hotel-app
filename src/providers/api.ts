@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Inject } from '@angular/core';
 import { Http, RequestOptions, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -7,16 +7,18 @@ import 'rxjs/add/operator/map';
  */
 @Injectable()
 export class Api {
-  url: string = 'https://example.com/api/v1';
-
-  constructor(public http: Http) {
+  url: string ;
+//= 'https://example.com/api/v1'
+  constructor(public http: Http, @Inject('ApiURL') apiurl) {
+    this.url = apiurl;
+    debugger;
   }
 
   get(endpoint: string, params?: any, options?: RequestOptions) {
     if (!options) {
       options = new RequestOptions();
     }
-
+    debugger;
     // Support easy query params for GET requests
     if (params) {
       let p = new URLSearchParams();
