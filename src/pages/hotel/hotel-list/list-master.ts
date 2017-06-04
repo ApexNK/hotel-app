@@ -3,6 +3,7 @@ import { NavController, ModalController } from 'ionic-angular';
 
 import { RoomListPage } from '../room-list/room-list';
 import { Items } from '../../../providers/providers';
+import { Api } from '../../../providers/api';
 import { MapPage } from '../map/map';
 
 import { Item } from '../../../models/item';
@@ -18,7 +19,7 @@ export class ListMasterPage {
   public endDate = '2017-06-01';
   public isBannerOpening = true;
   public api:any;
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, @Inject('Api') api) {
+  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, @Inject(Api) api) {
     this.currentItems = this.items.query();
     this.api = api;
   }
