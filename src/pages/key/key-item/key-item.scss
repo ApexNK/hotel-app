@@ -66,4 +66,14 @@ key-item {
   height: 0;
   padding-bottom: 100%;
   background-color: #2ec95c;
+  position: relative;
+}
+.key-code>img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right:0;
+  bottom: 0;
+  height:100%;
 }
