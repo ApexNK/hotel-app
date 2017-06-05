@@ -50,13 +50,41 @@
         入住时间
       </ion-col>
     </ion-row>
-    <ion-row >
-      <ion-list>
-        <ion-item>
-          <span item-left>入住姓名</span>
-          <span item-right>李刚</span>
-        </ion-item>
-      </ion-list>
+    <ion-list>
+      <ion-item no-lines>
+        <span item-left>入住人姓名</span>
+        <span item-right>李刚</span>
+      </ion-item>
+      <ion-item no-lines>
+      <span item-left>入住人电话</span>
+      <span item-right>15950528787</span>
+    </ion-item>
+    <ion-item no-lines>
+      <span item-left>入住人数</span>
+      <span item-right>3</span>
+    </ion-item>
+    </ion-list>
+    <ion-row padding-top padding-bottom class="has-border-bottom title-row">
+      <ion-col  text-center>
+        价格
+      </ion-col>
     </ion-row>
+    <ion-list>
+      <ion-item no-lines>
+        <span item-left>总价</span>
+        <span item-right>￥80</span>
+      </ion-item>
+      <ion-item no-lines>
+        <span item-left>优惠券</span>
+        <span item-right>5张</span>
+      </ion-item>
+      <ion-item no-lines>
+        <span item-left>还需支付</span>
+        <span item-right><span class="money">￥80</span></span>
+      </ion-item>
+    </ion-list>
   </ion-grid>
 </ion-content>
+<ion-footer no-padding>
+  <button ion-button full no-padding no-margin>支付</button>
+</ion-footer>

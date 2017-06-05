@@ -5,4 +5,10 @@ page-order-pay {
   ion-row {
     background: #fff;
   }
+  .list-md {
+    margin-bottom: 0;
+    &>.item-md{
+      margin-bottom: 1px;
+    }
+  }
 }
