@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component , Input} from '@angular/core';
+import { KeyInfo } from './key-item-models';
 
 /**
  * Generated class for the KeyItemComponent component.
@@ -11,12 +12,10 @@ import { Component } from '@angular/core';
   templateUrl: './key-item.html'
 })
 export class KeyItemComponent {
+  @Input() keyInfo: KeyInfo;
 
-  text: string;
-  roomPic: string;
   constructor() {
-    this.text = '北京华腾美居 1楼103室';
-    this.roomPic = "./assets/img/timg.jpg";
+
   }
 
 }

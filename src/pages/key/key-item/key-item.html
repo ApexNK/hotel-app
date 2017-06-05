@@ -1,28 +1,28 @@
 <!-- Generated template for the KeyItemComponent component -->
 <div class="main-content" padding>
-  <div class="sub-content">
+  <div class="sub-content" padding-horizontal>
     <div style="width: 100%; position: relative; height: 100%">
       <div class="room-name" text-center text-nowrap>
-        <span>{{text}}</span>
+        <span>{{keyInfo.roomName}}</span>
       </div>
       <ion-item>
         <ion-thumbnail item-left>
-          <img [src]="roomPic">
+          <img [src]="keyInfo.roomPic">
         </ion-thumbnail>
         <ion-grid>
           <ion-row>
-            <ion-col><ion-icon name="pin"></ion-icon><span text-nowrap>西大望路甲16号</span></ion-col>
+            <ion-col><ion-icon name="pin"></ion-icon><span text-nowrap></span>{{keyInfo.address}}</ion-col>
           </ion-row>
           <ion-row >
-            <ion-col text-nowrap><ion-icon name="time"></ion-icon>2017-5-10-2017-5-11</ion-col>
+            <ion-col text-nowrap><ion-icon name="time"></ion-icon>{{keyInfo.checkInTime}}</ion-col>
           </ion-row>
         </ion-grid>
       </ion-item>
       <div class="leave-time" margin-vertical>
-        <span>退房时间：<span class="time">2017-05-11 12:00之前</span></span>
+        <span>退房时间：<span class="time">{{keyInfo.leaveTime}}</span></span>
       </div>
       <div class="key-code">
-          <img [src]="roomPic">
+          <img [src]="keyInfo.roomPic">
       </div>
     </div>
   </div>
