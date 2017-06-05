@@ -17,7 +17,6 @@ export class Api {
     if (!options) {
       options = new RequestOptions();
     }
-    debugger;
     // Support easy query params for GET requests
     if (params) {
       let p = new URLSearchParams();
