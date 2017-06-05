@@ -1,0 +1,16 @@
+page-balance {
+  .circle{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 16vw;
+    height: 16vw;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16vw;
+    border: 1px solid color($colors, borderColor);
+    &.active{
+      border-color: #ff5624;
+      color: #ff5624;
+    }
+  }
+}

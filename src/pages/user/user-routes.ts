@@ -3,6 +3,7 @@ import { UserCenterPage } from './user-center/user-center';
 import { SignupPage } from  './signup/signup';
 import { TutorialPage } from './tutorial/tutorial';
 import { WelcomePage } from './welcome/welcome';
+import { BalancePage } from './balance/balance';
 export const UserRoutes = [
   {
     component: LoginPage,
@@ -25,5 +26,10 @@ export const UserRoutes = [
     component: UserCenterPage,
     segment: 'UserCenterPage' ,
     name: 'TabsPage.UserCenterPage'
+  },
+  {
+    component: BalancePage,
+    segment: 'BalancePage',
+    name: 'BalancePage'
   }
 ];
