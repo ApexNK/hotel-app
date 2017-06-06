@@ -1,4 +1,10 @@
 page-balance {
+  .content-md{
+    background: #efeff4;
+  }
+  .gray-background {
+    background: #f8f9fa;
+  }
   .circle{
     display: inline-block;
     box-sizing: border-box;
@@ -12,5 +18,20 @@ page-balance {
       border-color: #ff5624;
       color: #ff5624;
     }
+
+  }
+  .round-input{
+    line-height: 42px;
+    text-align: center;
+    border: 1px solid color($colors, borderColor);
+    border-radius: 21px;
+  }
+  .radio-group-header {
+    border:none;
+    background: #f8f9fa;
+    line-height: 34px;
+  }
+  .list-md .item-block .item-inner{
+    border-bottom: 1px solid #dedede !important;
   }
 }

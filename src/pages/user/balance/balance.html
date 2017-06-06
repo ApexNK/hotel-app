@@ -14,7 +14,7 @@
 
 
 <ion-content>
-  <div padding>
+  <div padding class="gray-background">
     <div>充值金额</div>
     <ion-grid no-padding>
       <ion-row margin-top>
@@ -28,6 +28,34 @@
           <div class="circle">100元</div>
         </ion-col>
       </ion-row>
+      <ion-row margin-top>
+        <input margin-top type="text" ion-col class="round-input" placeholder="请输入其他金额">
+      </ion-row>
     </ion-grid>
+  </div>
+
+  <div margin-top style="background: #FFf; overflow: hidden;">
+    <ion-list radio-group [(ngModel)]="payWay">
+      <!--<ion-list-header class="radio-group-header" no-margin no-padding text-center >-->
+        <!--支付方式-->
+      <!--</ion-list-header>-->
+      <div class="radio-group-header" text-center>
+        支付方式
+      </div>
+      <ion-item>
+        <ion-label>支付宝</ion-label>
+        <ion-radio checked="true" value="aliPay"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>微信</ion-label>
+        <ion-radio value="wechat"></ion-radio>
+      </ion-item>
+
+
+    </ion-list>
+    <div padding>
+      <button ion-button full no-padding text-center round>充值</button>
+    </div>
   </div>
 </ion-content>
