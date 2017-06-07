@@ -5,7 +5,8 @@ import { RoomListPage } from '../room-list/room-list';
 import { Items } from '../../../providers/providers';
 //import { Api } from '../../../providers/api';
 import { MapPage } from '../map/map';
-
+import { ShowConfirmProvider} from '../../../providers/show-confirm/show-confirm';
+import { ShowLoadingProvider} from '../../../providers/show-loading/show-loading';
 import { Item } from '../../../models/item';
 
 @Component({
@@ -19,7 +20,12 @@ export class ListMasterPage {
   public endDate = '2017-06-01';
   public isBannerOpening = true;
   public api:any;
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, @Inject('ApiService') api) {
+  constructor(public navCtrl: NavController,
+              public items: Items,
+              public modalCtrl: ModalController,
+              public loading: ShowLoadingProvider,
+              public confirm: ShowConfirmProvider,
+              @Inject('ApiService') api) {
     this.currentItems = this.items.query();
     this.api = api;
   }
@@ -28,6 +34,9 @@ export class ListMasterPage {
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
+    this.loading.show();
+    // this.loading.show({delay: 100, duration: 100000});
+    // this.loading.hide(200);
     //this.api.get("test");
   }
 
@@ -52,7 +61,10 @@ export class ListMasterPage {
   }
 
   openMap() {
-    console.info("open map page");
-    this.navCtrl.push(MapPage);
+    this.confirm.showConfirm({message: '是否跳转到地图页面'}).subscribe(result => {
+      if (result === true) {
+        this.navCtrl.push(MapPage);
+      }
+    });
   }
 }

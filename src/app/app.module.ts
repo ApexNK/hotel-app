@@ -18,6 +18,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Geolocation } from '@ionic-native/geolocation';
 
+
+// provides
+import { ShowConfirmProvider } from '../providers/show-confirm/show-confirm';
+import { ShowLoadingProvider } from '../providers/show-loading/show-loading';
 import config from '../config/config';
 
 
@@ -78,6 +82,8 @@ export function providers() {
     { provide: 'ApiURL', useValue: config.isDev ? config.devUrl : config.proUrl},
     Api,
     { provide: 'ApiService', useClass: Api},
+    ShowConfirmProvider,
+    ShowLoadingProvider
   ];
 }
 
