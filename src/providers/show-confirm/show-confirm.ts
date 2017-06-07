@@ -14,7 +14,7 @@ export class ShowConfirmProvider {
   }
 
   public showConfirm (opt?: {title?: string, message?: string, okText?: string, cancelText?: string}) {
-    opt = Object.assign({title:'', message: '', okText: '取消', cancelText: '取消'}, (opt || {}));
+    opt = Object.assign({title:'', message: '', okText: '确定', cancelText: '取消'}, (opt || {}));
     this.confirm.create({
       title: opt.title ,
       message: opt.message ,
