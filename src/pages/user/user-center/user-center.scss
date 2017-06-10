@@ -3,6 +3,10 @@ page-user-center {
     background: rgb(234,234,244);
   }
   .item-md,.item-ios{
+    .iconfont {
+      font-size: 1.8em;
+      color: color($colors, primary);
+    }
     &.has-margin-bottom {
       margin-bottom: 10px;
     }
@@ -13,10 +17,7 @@ page-user-center {
     .arrow-right {
       transform: scale(0.6);
     }
-    .icon-left {
-      transform: scale(0.8) translateY(3px);
-      color: color($colors, primary);
-    }
+
   }
   .item-md ion-icon[item-left] + .item-inner {
     margin-left: 0;
@@ -26,7 +27,18 @@ page-user-center {
     position: relative;
     width: 100vw;
     height: 57vw;
-    background: color($colors, primary);
+    // background-color: color($colors, primary);
+    //background-image: url('assets/img/user_center_bg.png');
+    background-color: color($colors, primary);
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    .user_center_bg {
+      position: absolute;
+      width: 100vw;
+      height: 30vw;
+      bottom: 0;
+    }
     .head-pic-container{
       position: absolute;
       box-sizing: border-box;
@@ -78,7 +90,7 @@ page-user-center {
         }
       }
       ion-card-header {
-        ion-icon {
+        .iconfont {
           color : #ec9605;
           font-size: 2rem;
         }

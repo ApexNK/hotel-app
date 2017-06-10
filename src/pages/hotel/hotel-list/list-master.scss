@@ -2,6 +2,14 @@ page-list-master {
     ion-grid{
       background: #fff;
     }
+    .search-btn {
+      .button-inner {
+        display: inline;
+        //display: -ms-flexbox;
+        //display: flex;
+      }
+    }
+
     .trapezoid{
       border-bottom: 30px solid #fff;
 
