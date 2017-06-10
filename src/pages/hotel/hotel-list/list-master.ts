@@ -34,7 +34,7 @@ export class ListMasterPage {
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
-    this.loading.show();
+    // this.loading.show();
     // this.loading.show({delay: 100, duration: 100000});
     // this.loading.hide(200);
     //this.api.get("test");

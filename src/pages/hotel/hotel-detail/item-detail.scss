@@ -8,7 +8,12 @@ page-item-detail {
     background-size: 100% auto;
     height: 38vw;
   }
-
+  .icon-box{
+    color: #999;
+    .iconfont {
+      font-size: 2em;
+    }
+  }
   .item-detail {
     width: 100%;
     color: #999;
