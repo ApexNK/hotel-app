@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
 
 /**
  * Generated class for the RechargeComponent component.
@@ -13,8 +14,15 @@ import { Component } from '@angular/core';
 export class RechargePage {
 
   public activeNum = 0;
-  constructor() {
+  public payWay:string;
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     console.log('Hello RechargeComponent Component');
+
+    this.payWay = this.navParams.get("payWay");
+    console.info(this.payWay);
+  }
+  public recharge () {
+    //this.navCtrl.popToRoot();
   }
 
 }

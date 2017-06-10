@@ -28,8 +28,14 @@ page-balance {
   }
   .radio-group-header {
     border:none;
-    background: #f8f9fa;
-    line-height: 34px;
+    line-height: 10vh;
+    font-size: 28px;
+    color:#999999;
+  }
+  .radio-item {
+    height: 11vh;
+    line-height: 11vh;
+    font-size:30px;
   }
   .list-md .item-block .item-inner{
     border-bottom: 1px solid #dedede !important;
