@@ -20,7 +20,8 @@
       </ion-col>
       <ion-col col-auto>
         <button ion-button clear (click)="openMap()">
-          <ion-icon name="pin"></ion-icon>
+          <span class="iconfont icon-map" style="font-size: 24px;"></span>
+          <!--<ion-icon name="pin"></ion-icon>-->
         </button>
      </ion-col>
     </ion-row>
@@ -32,7 +33,7 @@
   <div class="banner" [ngClass]="{'close': !isBannerOpening}" [style.background-image]="'url(./assets/img/banner2.png)'">
     <div class="trapezoid"></div>
     <div class="banner-text" (click)="toggleBanner()">
-      <ion-icon  [hidden]="isBannerOpening" ios="ios-arrow-down" md="md-arrow-down"></ion-icon>
+      <i class="iconfont icon-slide-down" [hidden]="isBannerOpening"></i>
       <span [hidden]="!isBannerOpening">入住时间</span>
 
     </div>
@@ -80,8 +81,11 @@
       <ion-col  text-center align-self-center ion-button color="dark" clear>
         全程&ensp;&ensp;<ion-icon name="arrow-dropdown"></ion-icon>
       </ion-col>
-      <ion-col text-center align-self-center ion-button color="dark" clear>
+      <ion-col  text-center align-self-center ion-button color="dark" clear>
         距离&ensp;&ensp;<ion-icon name="arrow-dropdown"></ion-icon>
+      </ion-col>
+      <ion-col text-center align-self-center ion-button color="dark" clear>
+        全部&ensp;&ensp;<ion-icon name="arrow-dropdown"></ion-icon>
       </ion-col>
     </ion-row>
   </ion-grid>
