@@ -23,4 +23,8 @@ export class BalancePage {
   public goBalanceDetail () {
     this.navCtrl.push('BalanceDetailPage');
   }
+
+  public goToRecharge () {
+    this.navCtrl.push('RechargePage');
+  }
 }

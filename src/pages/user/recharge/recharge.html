@@ -1,17 +1,9 @@
-<!--
-  Generated template for the BalancePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
+<!-- Generated template for the RechargeComponent component -->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>我的余额</ion-title>
+    <ion-title>充值</ion-title>
     <ion-buttons end>
-      <button ion-button clear (tap)="goBalanceDetail()">
-        明细
-      </button>
     </ion-buttons>
   </ion-navbar>
 
@@ -42,7 +34,7 @@
   <div margin-top style="background: #FFf; overflow: hidden;">
     <ion-list radio-group [(ngModel)]="payWay">
       <!--<ion-list-header class="radio-group-header" no-margin no-padding text-center >-->
-        <!--支付方式-->
+      <!--支付方式-->
       <!--</ion-list-header>-->
       <div class="radio-group-header" text-center>
         支付方式
@@ -60,7 +52,7 @@
 
     </ion-list>
     <div padding>
-      <button ion-button full no-padding text-center round (click)="goToRecharge()">充值</button>
+      <button ion-button full no-padding text-center round>充值</button>
     </div>
   </div>
 </ion-content>

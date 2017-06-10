@@ -5,6 +5,8 @@ import { TutorialPage } from './tutorial/tutorial';
 import { WelcomePage } from './welcome/welcome';
 import { BalancePage } from './balance/balance';
 import { BalanceDetailPage } from './balance-detail/balance-detail';
+import { RechargePage } from  './recharge/recharge';
+
 export const UserRoutes = [
   {
     component: LoginPage,
@@ -38,5 +40,10 @@ export const UserRoutes = [
     component: BalanceDetailPage,
     segment: 'BalanceDetailPage',
     name: 'BalanceDetailPage'
+  },
+  {
+    component: RechargePage,
+    segment: 'RechargePage',
+    name: 'RechargePage'
   }
 ];
