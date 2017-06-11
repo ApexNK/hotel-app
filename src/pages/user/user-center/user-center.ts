@@ -27,4 +27,7 @@ export class UserCenterPage {
   public goBalancePage () {
     this.navCtrl.push('BalancePage');
   }
+  public goAudit () {
+    this.navCtrl.push('IdentityAuditPage');
+  }
 }

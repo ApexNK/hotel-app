@@ -1,3 +1,19 @@
 page-identity-audit {
+  .list-header{
+    line-height: 35px;
+    color: #999;
+  }
+  .list {
+    background: #fff;
+    ion-item {
+      color: #999 ;
+      .item-label {
+        color: #999;
+      }
+      .item-value {
+        color: #333 !important;
+      }
+    }
+  }
 
 }
