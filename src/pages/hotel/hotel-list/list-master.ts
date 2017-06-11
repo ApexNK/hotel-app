@@ -37,7 +37,9 @@ export class ListMasterPage {
     // this.loading.show();
     // this.loading.show({delay: 100, duration: 100000});
     // this.loading.hide(200);
-    //this.api.get("test");
+/*    this.api.get("queryGy/list").then( res => {
+      console.info(res);
+    });*/
   }
 
   public toggleBanner () {

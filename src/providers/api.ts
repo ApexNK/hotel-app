@@ -27,8 +27,8 @@ export class Api {
       // a order-list field set in options.
       options.search = !options.search && p || options.search;
     }
-
-    return this.http.get(this.url + '/' + endpoint, options);
+    let reqUrl = this.url + endpoint;
+    return this.http.get(reqUrl, options).map( res => res.json()).toPromise();
   }
 
   post(endpoint: string, body: any, options?: RequestOptions) {

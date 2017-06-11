@@ -3,7 +3,7 @@
  */
 
 const isDev: boolean = true;
-const devUrl: string = 'http://www.baidu.com';
+const devUrl: string = 'http://rapapi.org/mockjsdata/20537/';
 const proUrl: string = 'http://www.google.com';
 
 export default {
