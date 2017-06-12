@@ -12,19 +12,22 @@ key-item {
 .sub-content {
   position: relative;
   height: 100%;
-  border-color: orangered;
+  border-color: #f35f2e;
   border-style: solid;
-  border-width: 50px 16px 16px 16px;
+  border-width: 38px 16px 16px 16px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 0px 32px;
+  margin-bottom: 24px;
 }
 
 .room-name {
   width:100%;
   position: absolute;
-  top:-35px;
+  top:-38px;
   color:#ffffff;
+  line-height: 38px;
+  font-size: 15px;
 }
 
 .room-name span {

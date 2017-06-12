@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>我的余额</ion-title>
     <ion-buttons end>
-      <button ion-button clear (tap)="goBalanceDetail()" style="font-size: 28px;color:#333333">
+      <button ion-button clear (tap)="goBalanceDetail()" style="font-size: 14px;color:#333333">
         明细
       </button>
     </ion-buttons>
@@ -17,13 +17,12 @@
 
 </ion-header>
 
-
 <ion-content>
-  <div class="gray-background" text-center>
-    <div style="padding-top: 10vh; color:#999999; font-size:26px;">我的余额(元)</div>
-    <div style="padding-top: 5vh;padding-bottom: 12vh; color:#333333; font-size: 100px;">60</div>
+  <div class="gray-background" text-center style="height: 236px;">
+    <div style="padding-top: 61px; color:#999999; font-size:13px; line-height: 13px;">我的余额(元)</div>
+    <div style="padding-top: 34px;padding-bottom: 12vh; color:#333333; font-size: 50px;line-height：50px;">60</div>
   </div>
-  <div  style="height: 1vh;background-color: #efeff4"></div>
+  <div  style="height: 8px;background-color: #efeff4"></div>
   <div>
     <ion-list radio-group [(ngModel)]="payWay">
       <div class="radio-group-header" text-center style="background-color: #f0f3f5;">
@@ -38,9 +37,8 @@
         <ion-radio value="wechat"></ion-radio>
       </ion-item>
     </ion-list>
-    <div style="height: 20vh;" ></div>
-    <div padding-horizontal>
-      <button ion-button full no-padding text-center round (click)="goToRecharge()">充值</button>
+    <div padding-horizontal style="height: 78px;">
+      <button ion-button full no-padding text-center (click)="goToRecharge()" style="height: 49px; border-radius: 5px;">充值</button>
     </div>
   </div>
 </ion-content>
