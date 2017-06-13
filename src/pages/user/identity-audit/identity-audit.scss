@@ -15,7 +15,7 @@ page-identity-audit {
       &.explain {
         h2 {
           line-height: 30px;
-          
+
         }
         p {
           line-height: 22px;
@@ -83,6 +83,12 @@ page-identity-audit {
     }
     button {
       border-radius: 10px;
+      &.button-full.button-outline{
+        border-right-width: 1px;
+        border-left-width: 1px;
+        border-radius: 10px;
+      }
+
     }
   }
 }
