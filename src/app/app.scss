@@ -23,7 +23,7 @@
   color: color($colors, gray);
 }
 .has-border-bottom {
-  border-bottom: 1px solid color($colors, borderColor);;
+  border-bottom: 1px solid color($colors, borderColor) !important;
 }
 
 .has-thumbnail {
