@@ -31,12 +31,16 @@ export class MapPage {
 
   showMap () {
     let map = new HotelMap(this.mapElement.nativeElement);
-    this.getCurrentPosition().then( (location:any) => {
-      map.createMapByCoordinate(location.longitude,location.latitude);
-      map.customMark(location.longitude,location.latitude,"¥162起 | 32套");
-
+    this.geolocation.getCurrentPosition().then( (location:any) => {
+      let long = location.coords.longitude;
+      let lati = location.coords.latitude;
+      console.info('long:' + long);
+      map.createMapByCoordinate(long,lati);
+      map.customMark(long,lati,"¥162起 | 32套");
+    }).catch((error) => {
+      console.info('error:'+ error.toString());
     });
-    //map.createMapByCity("北京");
+   // map.createMapByCity("北京");
     //map.markLocation();
 
   }
