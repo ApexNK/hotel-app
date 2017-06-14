@@ -2,25 +2,23 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the IdentityAuditPage page.
+ * Generated class for the AuditStatePage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-// @IonicPage()
+//@IonicPage()
 @Component({
-  selector: 'page-identity-audit',
-  templateUrl: 'identity-audit.html',
+  selector: 'page-audit-state',
+  templateUrl: 'audit-state.html',
 })
-export class IdentityAuditPage {
+export class AuditStatePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad IdentityAuditPage');
+    console.log('ionViewDidLoad AuditStatePage');
   }
-  public submit () {
-    this.navCtrl.push('AuditStatePage');
-  }
+
 }

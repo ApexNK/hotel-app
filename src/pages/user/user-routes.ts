@@ -7,6 +7,7 @@ import { BalancePage } from './balance/balance';
 import { BalanceDetailPage } from './balance-detail/balance-detail';
 import { RechargePage } from  './recharge/recharge';
 import { IdentityAuditPage } from './identity-audit/identity-audit';
+import { AuditStatePage } from './audit-state/audit-state';
 export const UserRoutes = [
   {
     component: LoginPage,
@@ -50,5 +51,10 @@ export const UserRoutes = [
     component: IdentityAuditPage,
     segement: 'IdentityAuditPage',
     name: 'IdentityAuditPage'
+  },
+  {
+    component: AuditStatePage,
+    segement: 'AuditStatePage',
+    name: 'AuditStatePage'
   }
 ];
