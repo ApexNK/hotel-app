@@ -18,4 +18,11 @@ order-list {
   .header-md::after {
     background-image: none;
   }
+  .no-data {
+    img {
+      margin-top: 80px;
+      width: 31vw;
+      height: 30vw;
+    }
+  }
 }
