@@ -54,3 +54,14 @@
 .item-md{
   background: #fff;
 }
+
+.toolbar-background-md {
+  background: #fff;
+}
+
+.segment-md .segment-button{
+  color: #666;
+}
+.segment-md .segment-button.activated, .segment-md .segment-button.segment-activated{
+  color: color($colors, primary);
+}
