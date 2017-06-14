@@ -30,4 +30,7 @@ export class UserCenterPage {
   public goAudit () {
     this.navCtrl.push('IdentityAuditPage');
   }
+  public goUserDetail () {
+    this.navCtrl.push('UserDetailPage');
+  }
 }
