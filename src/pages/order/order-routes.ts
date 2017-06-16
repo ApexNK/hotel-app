@@ -7,6 +7,7 @@ export const OrderRoutes = [
   },
   {
     component: OrderPayPage,
-    segment: 'OrderPayPage'
+    segment: 'OrderPayPage',
+    name: 'OrderPayPage'
   }
 ];

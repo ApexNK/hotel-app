@@ -3,6 +3,8 @@ import {  NavController, NavParams } from 'ionic-angular';
 import { HotelMap } from "../../../models/hotelmap";
 import { Geolocation } from '@ionic-native/geolocation';
 
+declare var baidu_location;
+
 
 /**
  * Generated class for the MapPage page.
@@ -31,14 +33,31 @@ export class MapPage {
 
   showMap () {
     let map = new HotelMap(this.mapElement.nativeElement);
-    this.getCurrentPosition().then( (location:any) => {
-      map.createMapByCoordinate(location.longitude,location.latitude);
-      map.customMark(location.longitude,location.latitude,"¥162起 | 32套");
+/*    this.geolocation.getCurrentPosition().then( (location:any) => {
+      let long = location.coords.longitude;
+      let lati = location.coords.latitude;
+      console.info('long:' + long);
+      map.createMapByCoordinate(long,lati);
+      map.customMark(long,lati,"¥162起 | 32套");
+    }).catch((error) => {
+      console.info('error:'+ error.toString());
+    });*/
+    if (baidu_location) {
+      baidu_location.getCurrentPosition(function (result) {
+        console.log(JSON.stringify(result, null, 4));
+        console.info(result);
+        let long = result.lontitude;
+        let lati = result.latitude;
+        console.info('long:' + long);
+        map.createMapByCoordinate(long,lati);
+        map.customMark(long,lati,"¥162起 | 32套");
 
-    });
-    //map.createMapByCity("北京");
-    //map.markLocation();
-
+      }, function (error) {
+      });
+    }else{
+      map.createMapByCity("北京");
+      map.markLocation();
+    }
   }
 
   getCurrentPosition() {
