@@ -3,7 +3,7 @@
     <name> 卧客</name>
     <description>This is app for woke</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="http://192.168.5.101:8100" original-src="index.html"/>
+    <content src="index.html"/>
     <access origin="*"/>
     <allow-navigation href="http://ionic.local/*"/>
     <allow-navigation href="http://192.168.5.101:8100"/>
@@ -87,4 +87,7 @@
     <plugin name="cordova-plugin-whitelist" spec="^1.3.1"/>
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1"/>
     <plugin name="cordova-plugin-geolocation" spec="~2.4.3"/>
+    <plugin name="com.qdc.plugins.baidu.location" spec="https://github.com/liangzhenghui/cordova-qdc-baidu-location">
+        <variable name="API_KEY" value="cM583ZCN1X1rm8zvpzTX0A50G1h37MFd"/>
+    </plugin>
 </widget>
