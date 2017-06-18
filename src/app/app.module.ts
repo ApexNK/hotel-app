@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule} from '@angular/http';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler , IonicPageModule} from 'ionic-angular';
 import { Storage, IonicStorageModule } from '@ionic/storage';
 import { ComponentModule } from '../components/component.module';
 import { PipeModule } from '../pipes/pipe.module';
@@ -23,9 +23,13 @@ import { ShowConfirmProvider } from '../providers/show-confirm/show-confirm';
 import { ShowLoadingProvider } from '../providers/show-loading/show-loading';
 import config from '../config/config';
 
+import { TabsPageModule } from '../pages/tabs/tabs.module';
+import { HotelMapPageModule } from '../pages/hotel/hotel-map/hotel-map.module';
+import { HotelMapPage } from '../pages/hotel/hotel-map/hotel-map';
+import { ListMasterPageModule } from '../pages/hotel/hotel-list/list-master.module';
 import { TabsPage } from '../pages/tabs/tabs';
 import { KeySearchPage } from '../pages/key/key-search/key-search';
-import { ListMasterPage } from '../pages/hotel/hotel-list/list-master';
+import { HotelListPage } from '../pages/hotel-list/hotel-list';
 import { OrderListPage } from '../pages/order/order-list/order-list'
 import { UserCenterPage } from '../pages/user/user-center/user-center';
 
@@ -69,7 +73,7 @@ export function declarations() {
     MyApp,
     TabsPage,
     KeySearchPage,
-    ListMasterPage,
+    HotelListPage,
     OrderListPage,
     UserCenterPage
   ];
@@ -108,7 +112,11 @@ export function providers() {
     ComponentModule,
     PipeModule,
     IonicModule.forRoot(MyApp, APP_CONFIG),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    // TabsPageModule,
+    // HotelMapPageModule,
+    // ListMasterPageModule,
+    // IonicPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: entryComponents(),

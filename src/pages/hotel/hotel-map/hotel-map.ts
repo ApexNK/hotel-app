@@ -1,7 +1,7 @@
 import { Component , ViewChild, ElementRef} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { HotelMap } from "../../models/hotelmap";
+import { HotelMap } from "../../../models/hotelmap";
 import { Geolocation } from '@ionic-native/geolocation';
 
 /**
@@ -11,7 +11,8 @@ import { Geolocation } from '@ionic-native/geolocation';
  * on Ionic pages and navigation.
  */
 @IonicPage({
-  segment: 'hotel-map'
+  segment: 'HotelMapPage',
+  name: 'HotelMapPage'
 })
 @Component({
   selector: 'page-hotel-map',
