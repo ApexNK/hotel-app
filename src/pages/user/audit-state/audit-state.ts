@@ -7,7 +7,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-//@IonicPage()
+@IonicPage({
+  segment: 'AuditStatePage',
+  name: 'AuditStatePage'
+})
 @Component({
   selector: 'page-audit-state',
   templateUrl: 'audit-state.html',
