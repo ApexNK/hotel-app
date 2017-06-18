@@ -1,7 +1,6 @@
 import { ItemDetailPage } from './hotel-detail/item-detail';
 import { ListMasterPage } from './hotel-list/list-master';
 import { RoomListPage } from  './room-list/room-list';
-import { MapPage} from './map/map';
 
 export const HotelRoutes = [
   {
@@ -18,10 +17,5 @@ export const HotelRoutes = [
     component: ItemDetailPage,
     segment: 'ItemDetailPage',
     name: 'TabsPage.ItemDetailPage'
-  },
-  {
-    component: MapPage,
-    segment: 'HotelMapPage',
-    name: 'TabsPage.HotelMapPage'
   }
 ];

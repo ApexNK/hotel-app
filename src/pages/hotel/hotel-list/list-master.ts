@@ -4,7 +4,6 @@ import { NavController, ModalController } from 'ionic-angular';
 import { RoomListPage } from '../room-list/room-list';
 import { Items } from '../../../providers/providers';
 //import { Api } from '../../../providers/api';
-import { MapPage } from '../map/map';
 import { ShowConfirmProvider} from '../../../providers/show-confirm/show-confirm';
 import { ShowLoadingProvider} from '../../../providers/show-loading/show-loading';
 import { Item } from '../../../models/item';
@@ -63,10 +62,11 @@ export class ListMasterPage {
   }
 
   openMap() {
-    this.confirm.showConfirm({message: '是否跳转到地图页面'}).subscribe(result => {
+    this.navCtrl.push("HotelMapPage");
+/*    this.confirm.showConfirm({message: '是否跳转到地图页面'}).subscribe(result => {
       if (result === true) {
-        this.navCtrl.push(MapPage);
+
       }
-    });
+    });*/
   }
 }
