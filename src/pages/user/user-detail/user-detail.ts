@@ -7,10 +7,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-// @IonicPage()
+@IonicPage({
+  segment:"user-detail"
+})
 @Component({
   selector: 'page-user-detail',
-  templateUrl: 'user-detail.html',
+  templateUrl: './user-detail.html',
 })
 export class UserDetailPage {
 

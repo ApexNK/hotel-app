@@ -8,8 +8,7 @@ import {IonicPage, NavController, NavParams } from 'ionic-angular';
  * on Ionic pages and navigation.
  */
 @IonicPage({
-  segment: 'AuditStatePage',
-  name: 'AuditStatePage'
+  segment: 'balancete-page',
 })
 @Component({
   selector: 'page-balance',

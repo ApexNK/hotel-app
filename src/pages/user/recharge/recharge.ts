@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams ,IonicPage} from 'ionic-angular';
 
 /**
  * Generated class for the RechargeComponent component.
@@ -7,6 +7,9 @@ import { NavController, NavParams } from 'ionic-angular';
  * See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
  * for more info on Angular Components.
  */
+@IonicPage({
+  segment:"recharge-page"
+})
 @Component({
   selector: 'recharge',
   templateUrl: './recharge.html'
