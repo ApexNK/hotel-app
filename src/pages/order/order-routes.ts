@@ -1,13 +1,13 @@
 import {OrderListPage} from './order-list/order-list';
-import {OrderPayPage} from './order-pay/order-pay';
+import {ReservationPage} from './reservation/reservation';
 export const OrderRoutes = [
   {
     component: OrderListPage,
     segment: 'OrderListPage'
   },
   {
-    component: OrderPayPage,
-    segment: 'OrderPayPage',
-    name: 'OrderPayPage'
+    component: ReservationPage,
+    segment: 'ReservationPage',
+    name: 'ReservationPage'
   }
 ];

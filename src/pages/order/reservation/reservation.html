@@ -20,8 +20,8 @@
         入住时间
       </ion-col>
     </ion-row>
-    <ion-row text-center padding-bottom padding-top class="date-picker-container">
-      <ion-col class="date-picker">
+    <ion-row text-center class="data-select" no-padding padding-left padding-right>
+      <ion-col text-left col-5>
         <ion-datetime
           [cancelText]="'取消'" [doneText]="'确定'"
           no-padding
@@ -31,7 +31,7 @@
         </ion-datetime>
         <span class="primary">入住</span>
       </ion-col>
-      <ion-col  class="date-picker">
+      <ion-col text-left   col-5>
         <ion-datetime
           [cancelText]="'取消'" [doneText]="'确定'"
           no-padding
@@ -42,12 +42,41 @@
         <span class="primary">离开</span>
 
       </ion-col>
-
+      <ion-col text-right>
+        <span class="primary">住1晚</span>
+      </ion-col>
     </ion-row>
-
+    <!--<ion-list>
+      <ion-item>
+        <ion-row>
+          <ion-col>
+               <ion-datetime style="display: inline-block"
+                  [cancelText]="'取消'" [doneText]="'确定'"
+                  no-padding
+                  displayFormat="YYYY-MM-DD"
+                  pickerFormat="YYYY-MM-DD"
+                  [(ngModel)]="startDate">
+                </ion-datetime>
+                <span class="primary">入住</span>
+          </ion-col>
+          <ion-col>
+               <ion-datetime
+                [cancelText]="'取消'" [doneText]="'确定'"
+                no-padding
+                displayFormat="YYYY-MM-DD"
+                pickerFormat="YYYY-MM-DD"
+                [(ngModel)]="endDate">
+              </ion-datetime>
+              <span class="primary">离开</span>
+          </ion-col>
+        </ion-row>
+       
+       
+      </ion-item>
+    </ion-list>-->
     <ion-row padding-top padding-bottom class="has-border-bottom title-row">
       <ion-col  text-center>
-        入住时间
+        入住信息
       </ion-col>
     </ion-row>
     <ion-list>
@@ -86,5 +115,12 @@
   </ion-grid>
 </ion-content>
 <ion-footer no-padding>
-  <button ion-button full no-padding no-margin>支付</button>
+  <ion-row>
+    
+  
+    <ion-col col-8 text-center class="danger">
+      实付款: ￥80
+    </ion-col>
+    <button col-4 ion-col ion-button  no-padding color="danger" no-margin>支付</button>
+</ion-row>
 </ion-footer>
