@@ -1,4 +1,3 @@
-import { HotelRoutes } from './hotel/hoter-route';
 import { KeyRoutes } from './key/key-routes';
 import { UserRoutes } from './user/user-routes';
 import { OrderRoutes } from './order/order-routes';
@@ -22,7 +21,6 @@ export function getRouter (): {links: IonicPageMetadata[]} {
                 component: TabsPage,
                 segment: 'TabsPage'
             },
-            ...HotelRoutes,
             ...KeyRoutes,
             ...UserRoutes,
             ...OrderRoutes

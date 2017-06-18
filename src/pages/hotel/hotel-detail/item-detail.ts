@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
 
 import { Items } from '../../../providers/providers';
 
+@IonicPage({
+  name:"HotelDetail",
+  segment: 'item-detail'
+})
 @Component({
   selector: 'page-item-detail',
   templateUrl: 'item-detail.html'

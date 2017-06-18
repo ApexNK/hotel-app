@@ -1,7 +1,6 @@
 import { Component ,Inject} from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 
-import { RoomListPage } from '../room-list/room-list';
 import { Items } from '../../../providers/providers';
 //import { Api } from '../../../providers/api';
 import { ShowConfirmProvider} from '../../../providers/show-confirm/show-confirm';
@@ -56,7 +55,7 @@ export class ListMasterPage {
    * Navigate to the detail page for this item.
    */
   openItem(item: Item) {
-    this.navCtrl.push(RoomListPage, {
+    this.navCtrl.push("RoomListPage", {
       item: item
     });
   }
