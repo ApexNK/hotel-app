@@ -4,7 +4,6 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { Items } from '../../../providers/providers';
 
 @IonicPage({
-  name:"HotelDetail",
   segment: 'item-detail'
 })
 @Component({

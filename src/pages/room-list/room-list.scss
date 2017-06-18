@@ -1,4 +1,4 @@
-page-room-list {
+room-list {
   ion-content{
     background: #f8f9fa;
   }
@@ -8,18 +8,11 @@ page-room-list {
     background-size: 100% auto;
     height: 38vw;
   }
-  .icon-box{
-    color: #999;
-    .iconfont {
-      font-size: 2em;
-    }
-  }
+
   .item-detail {
     width: 100%;
     color: #999;
     background: #fff;
-    //background: white;
-    //position: absolute;
     p{
       overflow: hidden;
       margin:0;
@@ -54,10 +47,12 @@ page-room-list {
     color: color($colors, primary);
   }
 
-  .img-list{
-    img{
-      width: 45vw;
-      height: 34.3vw;
-    }
+  .segment-bar {
+    background: #fff;
   }
+  ion-item.item-block {
+    background: #fff;
+  }
+
 }
+
