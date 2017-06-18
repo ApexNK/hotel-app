@@ -19,12 +19,21 @@ import { Geolocation } from '@ionic-native/geolocation';
 })
 export class HotelMapPage {
   @ViewChild('map') mapElement: ElementRef;
-
+  showHeader: boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HotelMapPage');
+  }
+
+  ionViewWillLeave() {
+    console.log('ionViewWillLeave');
+    this.showHeader = false;
+  }
+
+  ionViewDidLeave() {
+    console.info('ionViewDidLeave');
   }
 
   ionViewWillEnter() {

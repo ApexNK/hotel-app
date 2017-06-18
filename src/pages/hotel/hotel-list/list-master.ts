@@ -35,9 +35,9 @@ export class ListMasterPage {
     // this.loading.show();
     // this.loading.show({delay: 100, duration: 100000});
     // this.loading.hide(200);
-    this.api.get("queryGy/list").then( res => {
-     console.info(res);
-     });
+    //this.api.get("queryGy/list").then( res => {
+    // console.info(res);
+    // });
   }
 
   public toggleBanner () {
@@ -61,6 +61,10 @@ export class ListMasterPage {
   }
 
   openMap() {
+/*    this.api.wkHttp({
+      servicekey: "mem-0003",
+      parameter:{sjhm:"15850591859"}
+    }).then( res => {console.info(res)});*/
     this.navCtrl.push("HotelMapPage");
 /*    this.confirm.showConfirm({message: '是否跳转到地图页面'}).subscribe(result => {
       if (result === true) {

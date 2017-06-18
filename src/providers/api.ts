@@ -35,15 +35,8 @@ export class Api {
     return this.http.post(this.url + '/' + endpoint, body, options);
   }
 
-  put(endpoint: string, body: any, options?: RequestOptions) {
-    return this.http.put(this.url + '/' + endpoint, body, options);
-  }
+  wkHttp( body: any, options?: RequestOptions){
+    return this.http.post(this.url, body, options).map( res => { console.info(res);res.json();}).toPromise();
 
-  delete(endpoint: string, options?: RequestOptions) {
-    return this.http.delete(this.url + '/' + endpoint, options);
-  }
-
-  patch(endpoint: string, body: any, options?: RequestOptions) {
-    return this.http.put(this.url + '/' + endpoint, body, options);
   }
 }
