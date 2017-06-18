@@ -1,11 +1,10 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule, Http } from '@angular/http';
+import { HttpModule} from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { Storage, IonicStorageModule } from '@ionic/storage';
 import { ComponentModule } from '../components/component.module';
 import { PipeModule } from '../pipes/pipe.module';
-import { getRouter } from '../pages/router';
 import { MyApp } from './app.component';
 import { Api } from '../providers/api';
 import { Items } from '../mocks/providers/items';
@@ -24,6 +23,11 @@ import { ShowConfirmProvider } from '../providers/show-confirm/show-confirm';
 import { ShowLoadingProvider } from '../providers/show-loading/show-loading';
 import config from '../config/config';
 
+import { TabsPage } from '../pages/tabs/tabs';
+import { KeySearchPage } from '../pages/key/key-search/key-search';
+import { ListMasterPage } from '../pages/hotel/hotel-list/list-master';
+import { OrderListPage } from '../pages/order/order-list/order-list'
+import { UserCenterPage } from '../pages/user/user-center/user-center';
 
 export function provideSettings(storage: Storage) {
   /**
@@ -46,7 +50,7 @@ export function provideSettings(storage: Storage) {
  * We then take these pages and inject them into our NgModule so Angular
  * can find them. As you add and remove pages, make sure to keep this list up to date.
  */
-const routers = getRouter();
+
 const APP_CONFIG = {
       activator: 'ripple',
       backButtonText: '',
@@ -58,12 +62,21 @@ const APP_CONFIG = {
       tabsPlacement: 'bottom',
       pageTransition: 'ios-transition'
     };
+
 export function declarations() {
-  return [MyApp].concat(routers.links.map(link => link.component));
+ // return [MyApp].concat(routers.links.map(link => link.component));
+  return [
+    MyApp,
+    TabsPage,
+    KeySearchPage,
+    ListMasterPage,
+    OrderListPage,
+    UserCenterPage
+  ];
 }
 
 export function entryComponents() {
-  return [MyApp].concat(routers.links.map(link => link.component));
+  return declarations();
 }
 
 export function providers() {
@@ -94,13 +107,10 @@ export function providers() {
     HttpModule,
     ComponentModule,
     PipeModule,
-    IonicModule.forRoot(MyApp, APP_CONFIG, {
-      links: routers.links
-    }),
+    IonicModule.forRoot(MyApp, APP_CONFIG),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
-  // entryComponents: [MyApp].concat(routers.links.map(link => link.component)),
   entryComponents: entryComponents(),
   providers: providers()
 })

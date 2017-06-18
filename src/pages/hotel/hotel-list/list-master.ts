@@ -1,10 +1,8 @@
 import { Component ,Inject} from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 
-import { RoomListPage } from '../room-list/room-list';
 import { Items } from '../../../providers/providers';
 //import { Api } from '../../../providers/api';
-import { MapPage } from '../map/map';
 import { ShowConfirmProvider} from '../../../providers/show-confirm/show-confirm';
 import { ShowLoadingProvider} from '../../../providers/show-loading/show-loading';
 import { Item } from '../../../models/item';
@@ -57,16 +55,17 @@ export class ListMasterPage {
    * Navigate to the detail page for this item.
    */
   openItem(item: Item) {
-    this.navCtrl.push(RoomListPage, {
+    this.navCtrl.push("RoomListPage", {
       item: item
     });
   }
 
   openMap() {
-    this.confirm.showConfirm({message: '是否跳转到地图页面'}).subscribe(result => {
+    this.navCtrl.push("HotelMapPage");
+/*    this.confirm.showConfirm({message: '是否跳转到地图页面'}).subscribe(result => {
       if (result === true) {
-        this.navCtrl.push(MapPage);
+
       }
-    });
+    });*/
   }
 }

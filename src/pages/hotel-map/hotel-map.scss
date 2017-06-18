@@ -1,0 +1,30 @@
+page-hotel-map {
+  #map{
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    margin:0;
+    font-family:"微软雅黑";
+
+  }
+  .scroll{
+    height: 100%;
+  }
+
+  .search-form{
+    background: color($colors, gray);
+    // border-lefradius: 50%;
+    border-radius: 14px;
+  }
+  .search-input {
+    height: 28px;
+    line-height: 28px;
+    border: none;
+    background: transparent;
+  }
+  .search-icon {
+    transform: translateY(1px);
+  }
+
+}

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { ItemDetailPage } from '../hotel-detail/item-detail';
+import { NavController, NavParams ,IonicPage} from 'ionic-angular';
 import { Items } from '../../../providers/providers';
 
+@IonicPage({
+  segment: 'room-list',
+})
 @Component({
   selector: 'room-list',
   templateUrl: 'room-list.html'
@@ -16,6 +18,6 @@ export class RoomListPage {
     this.item = navParams.get('item') || items.defaultItem;
   }
   public goRoomDetail () {
-    this.navCtrl.push(ItemDetailPage);
+    this.navCtrl.push('HotelDetail');
   }
 }
