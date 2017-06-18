@@ -20,5 +20,7 @@ export class ReservationPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderPayPage');
   }
-
+  public goPay () {
+    this.navCtrl.push('OrderPayPage');
+  }
 }

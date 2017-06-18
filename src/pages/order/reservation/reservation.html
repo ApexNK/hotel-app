@@ -46,34 +46,6 @@
         <span class="primary">住1晚</span>
       </ion-col>
     </ion-row>
-    <!--<ion-list>
-      <ion-item>
-        <ion-row>
-          <ion-col>
-               <ion-datetime style="display: inline-block"
-                  [cancelText]="'取消'" [doneText]="'确定'"
-                  no-padding
-                  displayFormat="YYYY-MM-DD"
-                  pickerFormat="YYYY-MM-DD"
-                  [(ngModel)]="startDate">
-                </ion-datetime>
-                <span class="primary">入住</span>
-          </ion-col>
-          <ion-col>
-               <ion-datetime
-                [cancelText]="'取消'" [doneText]="'确定'"
-                no-padding
-                displayFormat="YYYY-MM-DD"
-                pickerFormat="YYYY-MM-DD"
-                [(ngModel)]="endDate">
-              </ion-datetime>
-              <span class="primary">离开</span>
-          </ion-col>
-        </ion-row>
-       
-       
-      </ion-item>
-    </ion-list>-->
     <ion-row padding-top padding-bottom class="has-border-bottom title-row">
       <ion-col  text-center>
         入住信息
@@ -89,8 +61,8 @@
       <span item-right>15950528787</span>
     </ion-item>
     <ion-item no-lines>
-      <span item-left>入住人数</span>
-      <span item-right>3</span>
+      <span item-left>身份证号码</span>
+      <span item-right>350582198871155444</span>
     </ion-item>
     </ion-list>
     <ion-row padding-top padding-bottom class="has-border-bottom title-row">
@@ -121,6 +93,6 @@
     <ion-col col-8 text-center class="danger">
       实付款: ￥80
     </ion-col>
-    <button col-4 ion-col ion-button  no-padding color="danger" no-margin>支付</button>
+    <button (tap)="goPay()" col-4 ion-col ion-button  no-padding color="danger" no-margin>支付</button>
 </ion-row>
 </ion-footer>
