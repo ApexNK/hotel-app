@@ -1,0 +1,22 @@
+page-order-pay {
+  .title-row {
+    background: #f8f9fa;
+  }
+  ion-row {
+    background: #fff;
+  }
+  .list-md {
+    margin-bottom: 0;
+    &>.item-md{
+      margin-bottom: 1px;
+    }
+  }
+  .data-select{
+    line-height: 44px;
+    height: 44px;
+    ion-datetime{
+      display: inline-block;
+      transform: translateY(4px);
+    }
+  }
+}

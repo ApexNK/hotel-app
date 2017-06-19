@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams, IonicPage } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
  * Generated class for the OrderPayPage page.
@@ -8,23 +8,20 @@ import {  NavController, NavParams, IonicPage } from 'ionic-angular';
  * on Ionic pages and navigation.
  */
 @IonicPage({
-  name:"ReservationPage",
-  segment: 'ReservationPage'
+  name: 'OrderPayPage',
+  segment: 'OrderPayPage'
 })
 @Component({
-  selector: 'page-reservation',
-  templateUrl: 'reservation.html',
+  selector: 'page-order-pay',
+  templateUrl: 'order-pay.html',
 })
-export class ReservationPage {
-  public startDate = '2017-05-27';
-  public endDate = '2017-06-01';
+export class OrderPayPage {
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderPayPage');
   }
-  public goPay () {
-    this.navCtrl.push('OrderPayPage');
-  }
+
 }

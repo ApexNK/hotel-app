@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>预定</ion-title>
+    <ion-title>付款</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -20,32 +20,20 @@
         入住时间
       </ion-col>
     </ion-row>
-    <ion-row text-center class="data-select" no-padding padding-left padding-right>
-      <ion-col text-left col-5>
-        <ion-datetime
-          [cancelText]="'取消'" [doneText]="'确定'"
-          no-padding
-          displayFormat="YYYY-MM-DD"
-          pickerFormat="YYYY-MM-DD"
-          [(ngModel)]="startDate">
-        </ion-datetime>
-        <span class="primary">入住</span>
-      </ion-col>
-      <ion-col text-left   col-5>
-        <ion-datetime
-          [cancelText]="'取消'" [doneText]="'确定'"
-          no-padding
-          displayFormat="YYYY-MM-DD"
-          pickerFormat="YYYY-MM-DD"
-          [(ngModel)]="endDate">
-        </ion-datetime>
-        <span class="primary">离开</span>
-
-      </ion-col>
-      <ion-col text-right>
-        <span class="primary">住1晚</span>
-      </ion-col>
-    </ion-row>
+    <ion-list>
+      <ion-item no-lines>
+        <span item-left>入住时间</span>
+        <span item-right class="primary">2017-05-10</span>
+      </ion-item>
+      <ion-item no-lines>
+        <span item-left>离开时间</span>
+        <span item-right class="primary">2017-05-11</span>
+      </ion-item>
+      <ion-item no-lines>
+        <span item-left>共计</span>
+        <span item-right class="primary">住1晚</span>
+      </ion-item>
+    </ion-list>
     <ion-row padding-top padding-bottom class="has-border-bottom title-row">
       <ion-col  text-center>
         入住信息
@@ -57,13 +45,13 @@
         <span item-right>李刚</span>
       </ion-item>
       <ion-item no-lines>
-      <span item-left>入住人电话</span>
-      <span item-right>15950528787</span>
-    </ion-item>
-    <ion-item no-lines>
-      <span item-left>身份证号码</span>
-      <span item-right>350582198871155444</span>
-    </ion-item>
+        <span item-left>入住人电话</span>
+        <span item-right>15950528787</span>
+      </ion-item>
+      <ion-item no-lines>
+        <span item-left>身份证号码</span>
+        <span item-right>350582198871155444</span>
+      </ion-item>
     </ion-list>
     <ion-row padding-top padding-bottom class="has-border-bottom title-row">
       <ion-col  text-center>
@@ -77,22 +65,16 @@
       </ion-item>
       <ion-item no-lines>
         <span item-left>优惠券</span>
-        <span item-right>5张</span>
-      </ion-item>
-      <ion-item no-lines>
-        <span item-left>还需支付</span>
-        <span item-right><span class="money">￥80</span></span>
+        <span item-right>未使用</span>
       </ion-item>
     </ion-list>
   </ion-grid>
 </ion-content>
 <ion-footer no-padding>
   <ion-row>
-
-
     <ion-col col-8 text-center class="danger" style="line-height: 32px;">
       实付款: ￥80
     </ion-col>
     <button (tap)="goPay()" col-4 ion-col ion-button  no-padding color="danger" no-margin>支付</button>
-</ion-row>
+  </ion-row>
 </ion-footer>
