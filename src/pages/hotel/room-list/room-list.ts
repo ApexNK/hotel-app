@@ -4,7 +4,7 @@ import { Items } from '../../../providers/providers';
 
 @IonicPage({
   name:"RoomListPage",
-  segment: 'room-list'
+  segment: 'RoomListPage'
 })
 @Component({
   selector: 'room-list',

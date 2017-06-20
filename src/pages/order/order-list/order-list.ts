@@ -15,6 +15,6 @@ export class OrderListPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
   public goPay () {
-    this.navCtrl.push('ReservationPage');
+    this.navCtrl.push('OrderPayPage');
   }
 }
