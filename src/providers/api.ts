@@ -31,6 +31,8 @@ export class Api {
     return this.http.get(this.url, options).map( res => res.json()).toPromise()
       .then(
         this.successHandle,
+        () => {}
+      ).catch(
         this.failedHandle
       );
   }
@@ -38,6 +40,8 @@ export class Api {
   post( body: any, options?: RequestOptions) {
     return this.http.post(this.url ,body, options).toPromise().then(
       this.successHandle,
+      () => {}
+    ).catch(
       this.failedHandle
     );
   }
@@ -48,6 +52,7 @@ export class Api {
   };
 
   private failedHandle = (err) => {
+    debugger;
     console.log(err);
     return Promise.reject(err);
   };
