@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {LoginManagerProvider} from '../../providers/index';
 
 import { KeySearchPage } from '../key/key-search/key-search';
 //import { HotelListPage } from '../hotel/hotel-list/hotel-list';
@@ -21,7 +22,11 @@ export class TabsPage {
   keySearchTitle = "钥匙";
   mineTitle = '我的';
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, private loginManager: LoginManagerProvider) {
+    this.init();
+  }
+  public async init () {
+    this.loginManager.getValiCode('15950528684');
+    // this.loginManager.login('15950528684',)
   }
 }

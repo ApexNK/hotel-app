@@ -1,5 +1,6 @@
 import { Injectable,Inject } from '@angular/core';
 import { Http, RequestOptions, URLSearchParams } from '@angular/http';
+import {API} from '../web.config';
 import 'rxjs/add/operator/map';
 
 /**
@@ -7,13 +8,13 @@ import 'rxjs/add/operator/map';
  */
 @Injectable()
 export class Api {
-  url: string ;
+  private readonly url: string = API;
+
 //= 'https://example.com/api/v1'
-  constructor(public http: Http, @Inject('ApiURL') apiurl) {
-    this.url = apiurl;
+  constructor(public http: Http) {
   }
 
-  get(endpoint: string, params?: any, options?: RequestOptions) {
+  get( params?: any, options?: RequestOptions) {
     if (!options) {
       options = new RequestOptions();
     }
@@ -27,16 +28,32 @@ export class Api {
       // a order-list field set in options.
       options.search = !options.search && p || options.search;
     }
-    let reqUrl = this.url + endpoint;
-    return this.http.get(reqUrl, options).map( res => res.json()).toPromise();
+    return this.http.get(this.url, options).map( res => res.json()).toPromise()
+      .then(
+        this.successHandle,
+        () => {}
+      ).catch(
+        this.failedHandle
+      );
   }
 
-  post(endpoint: string, body: any, options?: RequestOptions) {
-    return this.http.post(this.url + '/' + endpoint, body, options);
+  post( body: any, options?: RequestOptions) {
+    return this.http.post(this.url ,body, options).toPromise().then(
+      this.successHandle,
+      () => {}
+    ).catch(
+      this.failedHandle
+    );
   }
 
-  wkHttp( body: any, options?: RequestOptions){
-    return this.http.post(this.url, body, options).map( res => { console.info(res);res.json();}).toPromise();
+  private successHandle =  (res) => {
+    console.log(res);
+    return Promise.resolve(res);
+  };
 
-  }
+  private failedHandle = (err) => {
+    debugger;
+    console.log(err);
+    return Promise.reject(err);
+  };
 }

@@ -1,5 +1,5 @@
 import { Component ,Inject} from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, IonicPage } from 'ionic-angular';
 
 import { Items } from '../../../providers/providers';
 //import { Api } from '../../../providers/api';
@@ -7,6 +7,10 @@ import { ShowConfirmProvider} from '../../../providers/show-confirm/show-confirm
 import { ShowLoadingProvider} from '../../../providers/show-loading/show-loading';
 import { Item } from '../../../models/item';
 
+@IonicPage({
+  name:"RoomListPage",
+  segment: 'RoomListPage'
+})
 @Component({
   selector: 'page-list-master',
   templateUrl: 'list-master.html'
