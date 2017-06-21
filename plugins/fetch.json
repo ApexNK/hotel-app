@@ -81,5 +81,13 @@
         "variables": {
             "API_KEY": "cM583ZCN1X1rm8zvpzTX0A50G1h37MFd"
         }
+    },
+    "cordova-plugin-camera": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-camera"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

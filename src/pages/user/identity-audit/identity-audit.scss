@@ -55,6 +55,7 @@ page-identity-audit {
         background: #f0f3f5;
         color: #ccd2d7;
         line-height: 30px;
+        vertical-align: middle;
         .no-img-text{
           position: absolute;
           height: 60px;
@@ -66,6 +67,13 @@ page-identity-audit {
         .iconfont{
           color: #d8dde1;
           font-size: 30px;
+        }
+        img{
+          position: absolute;
+          top:0;
+          left: 0;
+          right: 0;
+          bottom: 0;
         }
       }
     }
@@ -91,4 +99,12 @@ page-identity-audit {
 
     }
   }
+  .action-sheets-basic-page .action-sheet-group .button-inner
+  {
+    padding: 0 10px;
+    text-align: left !important;
+    color:#ec9605;
+  }
+
+
 }

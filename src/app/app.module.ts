@@ -12,7 +12,7 @@ import { Settings } from '../providers/settings';
 import { User } from '../providers/user';
 
 import { Camera } from '@ionic-native/camera';
-import { GoogleMaps } from '@ionic-native/google-maps';
+// import { GoogleMaps } from '@ionic-native/google-maps';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -84,7 +84,7 @@ export function providers() {
     Items,
     User,
     Camera,
-    GoogleMaps,
+     // GoogleMaps,
     SplashScreen,
     StatusBar,
     Geolocation,

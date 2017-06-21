@@ -31,7 +31,5 @@ export class KeySearchPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad KeySearchPage');
-
   }
-
 }

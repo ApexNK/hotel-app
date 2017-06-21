@@ -33,14 +33,15 @@
       <span item-left class="item-label">手持身份证照片</span>
 
     </ion-item>
-    <ion-item text-center class="has-border-bottom"  no-padding>
+    <ion-item text-center class="has-border-bottom"  no-padding (click)="presentPicActionSheet()">
       <div class="no-img" text-center>
         <div class="no-img-text">
           <i class="iconfont icon-camera"></i><br/>
           点击拍照或者上传图片
         </div>
+        <img [src]="imgUrl">
       </div>
-      <!--<img src="" >-->
+
     </ion-item>
     <ion-item  class="has-border-bottom explain"  no-padding>
       <h2>*手持身份证照片要求说明</h2>
@@ -66,7 +67,7 @@
     </ion-item>
   </ion-list>
 </ion-content>
-<ion-footer class="fixed-footer">
+<ion-footer class="fixed-footer" *ngIf="showFooter">
   <button ion-button full (click)="submit()">提交审核</button>
   <button ion-button full outline>稍后审核</button>
 </ion-footer>
