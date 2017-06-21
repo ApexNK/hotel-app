@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController , IonicPage} from 'ionic-angular';
 import { TabsPage as MainPage} from '../../tabs/tabs';
 import { User } from '../../../providers/user';
-
+@IonicPage({
+  segment:"LoginPage",
+  name: 'LoginPage'
+})
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
