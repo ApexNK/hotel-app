@@ -6,7 +6,7 @@ import { Storage } from '@ionic/storage';
  * A simple settings/config class for storing key/value pairs with persistence.
  */
 @Injectable()
-export class UserInfo {
+export class LocalUserInfo {
   private readonly KEY: string = 'userInfo';
   constructor(public storage: Storage) {
 

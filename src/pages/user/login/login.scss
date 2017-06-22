@@ -1,5 +1,10 @@
 page-login {
-
+  position: fixed;
+  z-index: 19;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   ion-content.login-content{
     background: #fff !important;
     ion-item{

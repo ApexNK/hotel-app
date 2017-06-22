@@ -15,13 +15,13 @@
     <ion-list padding>
 
       <ion-item no-padding margin-bottom>
-        <ion-label fixed><ion-icon name="person" color="primary"></ion-icon>&ensp;&ensp;用户名</ion-label>
-        <ion-input type="text" [(ngModel)]="account.user" name="username"></ion-input>
+        <ion-label fixed><ion-icon name="person" color="primary"></ion-icon>&ensp;&ensp;手机号</ion-label>
+        <ion-input type="text" [(ngModel)]="account.mobile" name="username"></ion-input>
       </ion-item>
       <ion-item no-padding margin-bottom>
         <ion-label fixed><ion-icon name="key" color="primary"></ion-icon>&ensp;&ensp;验证码</ion-label>
-        <ion-input type="number" [(ngModel)]="account.password" name="password"></ion-input>
-        <button type="button" ion-button item-right outline round>发送验证码(60s)</button>
+        <ion-input type="number" [(ngModel)]="validCode" name="validCode"></ion-input>
+        <button type="button" [disabled]="leftTimes !== 60" (tap)="getValidCode()" ion-button item-right outline round>发送验证码({{leftTimes}}s)</button>
       </ion-item>
 
       <button type="submit" ion-button color="primary" block style="margin-top: 40px; border-radius: 6px;">登陆</button>

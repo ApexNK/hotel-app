@@ -1,32 +1,34 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule} from '@angular/http';
-import { IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
-import { Storage, IonicStorageModule } from '@ionic/storage';
-import { ComponentModule } from '../components/component.module';
-import { PipeModule } from '../pipes/pipe.module';
-import { MyApp } from './app.component';
-import { Api } from '../providers/api';
-import { Items } from '../mocks/providers/items';
-import { Settings } from '../providers/settings';
-import { User } from '../providers/user';
+import {NgModule, ErrorHandler} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {HttpModule} from '@angular/http';
+import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
+import {Storage, IonicStorageModule} from '@ionic/storage';
+import {ComponentModule} from '../components/component.module';
+import {PipeModule} from '../pipes/pipe.module';
+import {MyApp} from './app.component';
+import {LoginPage} from  '../pages/user/login/login'
+import {Api} from '../providers/api';
+import {Items} from '../mocks/providers/items';
+import {Settings} from '../providers/settings';
+import {User} from '../providers/user';
 
-import { Camera } from '@ionic-native/camera';
+import {Camera} from '@ionic-native/camera';
 // import { GoogleMaps } from '@ionic-native/google-maps';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
-import { Geolocation } from '@ionic-native/geolocation';
-
+import {SplashScreen} from '@ionic-native/splash-screen';
+import {StatusBar} from '@ionic-native/status-bar';
+import {Geolocation} from '@ionic-native/geolocation';
+// localstorage
+import {LocalUserInfo} from '../LocalDatas/index';
 
 // provides
-import {LoginManagerProvider, ShowConfirmProvider, ShowLoadingProvider} from '../providers/index'
+import {LoginManagerProvider, ShowConfirmProvider, ShowLoadingProvider, Toast} from '../providers/index'
 import config from '../config/config';
 
-import { TabsPage } from '../pages/tabs/tabs';
-import { KeySearchPage } from '../pages/key/key-search/key-search';
-import { ListMasterPage } from '../pages/hotel/hotel-list/list-master';
-import { OrderListPage } from '../pages/order/order-list/order-list'
-import { UserCenterPage } from '../pages/user/user-center/user-center';
+import {TabsPage} from '../pages/tabs/tabs';
+import {KeySearchPage} from '../pages/key/key-search/key-search';
+import {ListMasterPage} from '../pages/hotel/hotel-list/list-master';
+import {OrderListPage} from '../pages/order/order-list/order-list'
+import {UserCenterPage} from '../pages/user/user-center/user-center';
 
 export function provideSettings(storage: Storage) {
   /**
@@ -51,26 +53,27 @@ export function provideSettings(storage: Storage) {
  */
 
 const APP_CONFIG = {
-      activator: 'ripple',
-      backButtonText: '',
-      preloadModules: true,
-      // locationStrategy: 'path',
-      iconMode: 'md',
-      modalEnter: 'modal-slide-in',
-      modalLeave: 'modal-slide-out',
-      tabsPlacement: 'bottom',
-      pageTransition: 'ios-transition'
-    };
+  activator: 'ripple',
+  backButtonText: '',
+  preloadModules: true,
+  // locationStrategy: 'path',
+  iconMode: 'md',
+  modalEnter: 'modal-slide-in',
+  modalLeave: 'modal-slide-out',
+  tabsPlacement: 'bottom',
+  pageTransition: 'ios-transition'
+};
 
 export function declarations() {
- // return [MyApp].concat(routers.links.map(link => link.component));
+  // return [MyApp].concat(routers.links.map(link => link.component));
   return [
     MyApp,
     TabsPage,
     KeySearchPage,
     ListMasterPage,
     OrderListPage,
-    UserCenterPage
+    UserCenterPage,
+    LoginPage
   ];
 }
 
@@ -83,20 +86,22 @@ export function providers() {
     Items,
     User,
     Camera,
-     // GoogleMaps,
+    // GoogleMaps,
     SplashScreen,
     StatusBar,
     Geolocation,
-    { provide: Settings, useFactory: provideSettings, deps: [Storage] },
+    Toast,
+    {provide: Settings, useFactory: provideSettings, deps: [Storage]},
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
     //inject the apiUrl const
-    { provide: 'ApiURL', useValue: config.isDev ? config.devUrl : config.proUrl},
+    {provide: 'ApiURL', useValue: config.isDev ? config.devUrl : config.proUrl},
     Api,
-    { provide: 'ApiService', useClass: Api},
+    {provide: 'ApiService', useClass: Api},
     LoginManagerProvider,
     ShowConfirmProvider,
-    ShowLoadingProvider
+    ShowLoadingProvider,
+    LocalUserInfo
   ];
 }
 
@@ -114,4 +119,5 @@ export function providers() {
   entryComponents: entryComponents(),
   providers: providers()
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -5,4 +5,5 @@
     <ion-tab [root]="keySearchTab" [tabTitle]="keySearchTitle" tabIcon="key" tabsHideOnSubPages></ion-tab>
     <ion-tab [root]="settingTab" [tabTitle]="mineTitle" tabIcon="md-person" tabsHideOnSubPages></ion-tab>
   </ion-tabs>
+  <page-login [hidden]="!isShowLoginPage"></page-login>
 </div>

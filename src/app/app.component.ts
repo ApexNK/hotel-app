@@ -13,7 +13,10 @@ import { Settings } from '../providers/providers';
 
 
 @Component({
-  template: `<ion-nav #content [root]="rootPage"></ion-nav>`
+  template: `<div>
+                <ion-nav #content [root]="rootPage"></ion-nav>
+             </div>
+              `
 })
 export class MyApp {
   rootPage = FirstRunPage;
