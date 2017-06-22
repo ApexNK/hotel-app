@@ -23,16 +23,15 @@ export class TabsPage {
   orderTitle = "订单";
   keySearchTitle = "钥匙";
   mineTitle = '我的';
-  public isShowLoginPage = true;
+  public isHideLoginPage = false;
   public userInfo:any;
   constructor(public navCtrl: NavController, private loginManager: LoginManagerProvider, private localUserInfo: LocalUserInfo) {
     this.init();
     this.loginManager.subscribeLoginState(res => {
-      this.isShowLoginPage = res;
+      this.isHideLoginPage = res;
     });
   }
   public async init (){
-
     this.userInfo = await this.localUserInfo.get();
     if (this.userInfo) {
       this.loginManager.emitLogin();

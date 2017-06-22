@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController , IonicPage} from 'ionic-angular';
-import { TabsPage as MainPage} from '../../tabs/tabs';
+import { NavController , IonicPage} from 'ionic-angular';
+
 import { User } from '../../../providers/user';
 import {LoginManagerProvider} from '../../../providers/index';
 import {LocalUserInfo} from '../../../LocalDatas/user-info';
