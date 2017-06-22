@@ -23,7 +23,10 @@ export class IdentityAuditPage {
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
     allowEdit: false,
-    saveToPhotoAlbum: false
+    saveToPhotoAlbum: false,
+    correctOrientation: true,
+    targetWidth: 275,
+    targetHeight:275
   };
   public imgUrl:string = '';
   showFooter:boolean = true;

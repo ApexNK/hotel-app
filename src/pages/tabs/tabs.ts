@@ -26,7 +26,7 @@ export class TabsPage {
   public isHideLoginPage = false;
   public userInfo:any;
   constructor(public navCtrl: NavController, private loginManager: LoginManagerProvider, private localUserInfo: LocalUserInfo) {
-    this.init();
+    // this.init();
     this.loginManager.subscribeLoginState(res => {
       this.isHideLoginPage = res;
     });

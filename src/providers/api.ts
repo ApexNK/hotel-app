@@ -43,7 +43,7 @@ export class Api {
       servicekey: api,
       "uid": "2342534534534534",
       "sign": "93004fe2aa39650d965df7881c24c988",
-      "timestamp": new Date().getTime(),
+      "timestamp": '20170928120909',//new Date().getTime(),
     };
     const param = Object.assign({}, defaultParam, {
       parameter: body
@@ -60,6 +60,48 @@ export class Api {
       this.failedHandle
     );
   }
+
+  httpByUser(api: string, body = {}, options?: RequestOptions){
+    body['sjhm'] = '18963609578';//通过本地存储接口获取手机号码
+    return this.htttPost(api,body,options);
+  }
+
+  private htttPost(api: string, body = {}, options?: RequestOptions) {
+    const defaultParam = {
+      servicekey: api,
+      "uid": "2342534534534534",
+      "sign": "93004fe2aa39650d965df7881c24c988",
+      "timestamp": '20170928120909',//new Date().getTime(),
+    };
+    const param = Object.assign({}, defaultParam, {
+      parameter: body
+    });
+    return this.http.post(this.url ,param, options)
+      .map( (res) => {
+        console.info(res);
+        return res.json();
+      })
+      .toPromise().then(
+        this.successCB,
+        this.failedCB
+      );
+  }
+
+  private successCB = (res) => {
+    try {
+      if(res.code !== 0) {
+        this.presentToast(res.message);
+        return false;
+      }
+    } catch (err) {
+      console.info(err);
+    }
+    return res;
+  };
+
+  private failedCB = (err) => {
+    return Promise.reject(err);
+  };
 
   private successHandle =  (res) => {
     console.log(res);
