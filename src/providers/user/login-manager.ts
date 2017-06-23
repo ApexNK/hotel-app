@@ -2,6 +2,7 @@ import {Injectable, EventEmitter, Injector} from '@angular/core';
 import {Api} from '../api';
 import 'rxjs/add/operator/map';
 import {VALID_KEY, LOGIN_KEY} from '../API_MARCO';
+import {LocalUserInfo} from '../../LocalDatas/index';
 
 /*
  Generated class for the LoginManagerProvider provider.
@@ -14,7 +15,7 @@ export class LoginManagerProvider {
   private loginStateEv = new EventEmitter<boolean>();
   private http: any;
 
-  constructor(private injector: Injector) {
+  constructor(private injector: Injector, private localUserInfo: LocalUserInfo) {
     this.http = this.injector.get(Api);
     console.log('Hello LoginManagerProvider Provider');
   }
@@ -24,19 +25,20 @@ export class LoginManagerProvider {
   }
 
   public async getValiCode(mobile: string) {
-    return this.http.post(VALID_KEY, {
+    return this.http.httpPost(VALID_KEY, {
       sjhm: mobile
     });
   }
 
   public async login(mobile: string, valiCode: string) {
     try {
-      const result = await this.http.post(LOGIN_KEY, {
+      const result = await this.http.httpPost(LOGIN_KEY, {
         sjhm: mobile,
         valiCode
       });
       if (result) {
-        this.emitLogin();
+        this.localUserInfo.save(mobile);
+        this.emitLogin(true);
       }
     } catch (e) {
       console.log(e);
@@ -44,7 +46,7 @@ export class LoginManagerProvider {
 
   }
 
-  public emitLogin() {
-    this.loginStateEv.emit(true);
+  public emitLogin(result: boolean) {
+    this.loginStateEv.emit(result);
   }
 }

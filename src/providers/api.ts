@@ -3,16 +3,16 @@ import { Http, RequestOptions, URLSearchParams } from '@angular/http';
 import {Toast} from '../providers/index';
 import {API as URL} from '../web.config';
 import 'rxjs/add/operator/map';
-
+import {LocalUserInfo} from '../LocalDatas/index';
+import {LoginManagerProvider} from './index';
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */
 @Injectable()
 export class Api {
   private readonly url: string = URL;
-
-//= 'https://example.com/api/v1'
-  constructor(public http: Http,  private injector: Injector) {
+  //= 'https://example.com/api/v1'
+  constructor(public http: Http,  private injector: Injector, private localUser: LocalUserInfo) {
   }
 
   get(api:string, params: any = {}, options?: RequestOptions) {
@@ -38,35 +38,39 @@ export class Api {
       );
   }
 
-  post(api: string, body = {}, options?: RequestOptions) {
-    const defaultParam = {
-      servicekey: api,
-      "uid": "2342534534534534",
-      "sign": "93004fe2aa39650d965df7881c24c988",
-      "timestamp": '20170928120909',//new Date().getTime(),
-    };
-    const param = Object.assign({}, defaultParam, {
-      parameter: body
-    });
-    return this.http.post(this.url ,param, options)
-      .map((res: any) => {
-          console.log(res);
-          return JSON.parse(res._body)
-      })
-      .toPromise().then(
-      this.successHandle,
-      () => {}
-    ).catch(
-      this.failedHandle
-    );
+  // post(api: string, body = {}, options?: RequestOptions) {
+  //   const defaultParam = {
+  //     servicekey: api,
+  //     "uid": "2342534534534534",
+  //     "sign": "93004fe2aa39650d965df7881c24c988",
+  //     "timestamp": '20170928120909',//new Date().getTime(),
+  //   };
+  //   const param = Object.assign({}, defaultParam, {
+  //     parameter: body
+  //   });
+  //   return this.http.post(this.url ,param, options)
+  //     .map((res: any) => {
+  //         console.log(res);
+  //         return JSON.parse(res._body)
+  //     })
+  //     .toPromise().then(
+  //     this.successHandle,
+  //     () => {}
+  //   ).catch(
+  //     this.failedHandle
+  //   );
+  // }
+
+  public async httpByUser(api: string, body = {}, options?: RequestOptions){
+    const mobile = await this.localUser.get();
+    if (!mobile) {
+      this.injector.get(LoginManagerProvider).emitLogin(false);
+    }
+    body['sjhm'] = mobile;//通过本地存储接口获取手机号码
+    return this.httpPost(api,body,options);
   }
 
-  httpByUser(api: string, body = {}, options?: RequestOptions){
-    body['sjhm'] = '18963609578';//通过本地存储接口获取手机号码
-    return this.htttPost(api,body,options);
-  }
-
-  private htttPost(api: string, body = {}, options?: RequestOptions) {
+  public httpPost(api: string, body = {}, options?: RequestOptions) {
     const defaultParam = {
       servicekey: api,
       "uid": "2342534534534534",
@@ -82,29 +86,28 @@ export class Api {
         return res.json();
       })
       .toPromise().then(
-        this.successCB,
-        this.failedCB
+        this.successHandle,
+        this.failedHandle
       );
   }
 
-  private successCB = (res) => {
-    try {
-      if(res.code !== 0) {
-        this.presentToast(res.message);
-        return false;
-      }
-    } catch (err) {
-      console.info(err);
-    }
-    return res;
-  };
-
-  private failedCB = (err) => {
-    return Promise.reject(err);
-  };
+  // private successCB = (res) => {
+  //   try {
+  //     if(res.code !== '0') {
+  //       this.presentToast(res.message);
+  //       return false;
+  //     }
+  //   } catch (err) {
+  //     console.info(err);
+  //   }
+  //   return res;
+  // };
+  //
+  // private failedCB = (err) => {
+  //   return Promise.reject(err);
+  // };
 
   private successHandle =  (res) => {
-    console.log(res);
     if (!res.parameter) {
       return Promise.reject(res);
     }
@@ -112,6 +115,7 @@ export class Api {
       this.presentToast(res.parameter.message);
       return Promise.reject(res);
     }
+    return Promise.resolve(res.parameter);
   };
 
   private failedHandle = (err) => {

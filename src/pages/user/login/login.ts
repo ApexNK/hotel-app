@@ -21,8 +21,6 @@ export class LoginPage {
   };
   public validCode = '';
   public leftTimes = 60;
-  // Our translated text strings
-  private loginErrorString: string;
   private timer = null;
   constructor(
     private userInfo: LocalUserInfo,

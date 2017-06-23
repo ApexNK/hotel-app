@@ -21,7 +21,7 @@ import {Geolocation} from '@ionic-native/geolocation';
 import {LocalUserInfo} from '../LocalDatas/index';
 
 // provides
-import {LoginManagerProvider, ShowConfirmProvider, ShowLoadingProvider, Toast} from '../providers/index'
+import {LoginManagerProvider, UserManagerProvider, ShowConfirmProvider, ShowLoadingProvider, Toast} from '../providers/index'
 import config from '../config/config';
 
 import {TabsPage} from '../pages/tabs/tabs';
@@ -101,6 +101,7 @@ export function providers() {
     LoginManagerProvider,
     ShowConfirmProvider,
     ShowLoadingProvider,
+    UserManagerProvider,
     LocalUserInfo
   ];
 }

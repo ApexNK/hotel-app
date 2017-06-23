@@ -29,6 +29,6 @@ export class ShowConfirmProvider {
         }
       ]
     }).present();
-    return this.ev.share();
+    return this.ev;
   }
 }

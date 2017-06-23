@@ -5,5 +5,5 @@
     <ion-tab [root]="keySearchTab" [tabTitle]="keySearchTitle" tabIcon="key" tabsHideOnSubPages></ion-tab>
     <ion-tab [root]="settingTab" [tabTitle]="mineTitle" tabIcon="md-person" tabsHideOnSubPages></ion-tab>
   </ion-tabs>
- <!-- <page-login  [ngClass]="{'show-page': !isHideLoginPage}"></page-login>-->
+  <page-login  *ngIf="isLoginPageShow"></page-login>
 </div>

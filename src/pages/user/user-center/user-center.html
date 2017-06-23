@@ -20,13 +20,13 @@
         <ion-grid no-padding>
           <ion-row class="msg-row">
             <ion-col text-center (click)="goBalancePage()">
-              <span>60.00</span><br/>我的余额
+              <span>{{userMsg?.wdye}}</span><br/>我的余额
             </ion-col>
             <ion-col text-center>
-              <span>2</span><br/>优惠券
+              <span>{{userMsg?.yhqsl}}</span><br/>优惠券
             </ion-col>
             <ion-col text-center>
-              <span>60.00</span><br/>押金
+              <span>{{userMsg?.yjje}}</span><br/>押金
             </ion-col>
           </ion-row>
         </ion-grid>
