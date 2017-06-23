@@ -2,7 +2,7 @@ import {Injectable, Injector} from '@angular/core';
 import {Api} from '../api';
 import 'rxjs/add/operator/map';
 import {MINE} from '../API_MARCO';
-import {LocalUserInfo} from '../../LocalDatas/index';
+//import {LocalUserInfo} from '../../LocalDatas/index';
 import {UserMsgs} from './model/UserMsgs';
 /*
  Generated class for the LoginManagerProvider provider.
@@ -14,7 +14,7 @@ import {UserMsgs} from './model/UserMsgs';
 export class UserManagerProvider {
   private http: any;
 
-  constructor(private injector: Injector, private localUserInfo: LocalUserInfo) {
+  constructor(private injector: Injector) {
     this.http = this.injector.get(Api);
 
   }

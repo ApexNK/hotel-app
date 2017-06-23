@@ -11,8 +11,9 @@ import {LoginManagerProvider} from './index';
 @Injectable()
 export class Api {
   private readonly url: string = URL;
-  //= 'https://example.com/api/v1'
-  constructor(public http: Http,  private injector: Injector, private localUser: LocalUserInfo) {
+  private localUser: any;
+  constructor(public http: Http,  private injector: Injector) {
+    this.localUser = this.injector.get(LocalUserInfo);
   }
 
   get(api:string, params: any = {}, options?: RequestOptions) {
@@ -62,11 +63,9 @@ export class Api {
   // }
 
   public async httpByUser(api: string, body = {}, options?: RequestOptions){
-    const mobile = await this.localUser.get();
-    if (!mobile) {
-      this.injector.get(LoginManagerProvider).emitLogin(false);
-    }
-    body['sjhm'] = mobile;//通过本地存储接口获取手机号码
+    const mobile = await this.localUser.getMobile();
+    console.info(mobile);
+    body['sjhm'] = mobile;
     return this.httpPost(api,body,options);
   }
 
@@ -75,7 +74,7 @@ export class Api {
       servicekey: api,
       "uid": "2342534534534534",
       "sign": "93004fe2aa39650d965df7881c24c988",
-      "timestamp": '20170928120909',//new Date().getTime(),
+      "timestamp": '20170928120909',
     };
     const param = Object.assign({}, defaultParam, {
       parameter: body
@@ -91,21 +90,6 @@ export class Api {
       );
   }
 
-  // private successCB = (res) => {
-  //   try {
-  //     if(res.code !== '0') {
-  //       this.presentToast(res.message);
-  //       return false;
-  //     }
-  //   } catch (err) {
-  //     console.info(err);
-  //   }
-  //   return res;
-  // };
-  //
-  // private failedCB = (err) => {
-  //   return Promise.reject(err);
-  // };
 
   private successHandle =  (res) => {
     if (!res.parameter) {
@@ -126,4 +110,5 @@ export class Api {
     this.injector.get(Toast).show(msg);
     // this.toastCtrl.show(msg);
   }
+
 }

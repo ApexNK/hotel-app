@@ -13,15 +13,22 @@ import {LocalUserInfo} from '../../LocalDatas/index';
 @Injectable()
 export class LoginManagerProvider {
   private loginStateEv = new EventEmitter<boolean>();
+  private userDateEv = new EventEmitter<any>();
   private http: any;
+  private localUserInfo: any;
 
-  constructor(private injector: Injector, private localUserInfo: LocalUserInfo) {
+  constructor(private injector: Injector) {
     this.http = this.injector.get(Api);
+    this.localUserInfo = this.injector.get(LocalUserInfo);
     console.log('Hello LoginManagerProvider Provider');
   }
 
   public subscribeLoginState(generatorOrNext?: any, error?: any, complete?: any) {
     return this.loginStateEv.subscribe(generatorOrNext, error, complete);
+  }
+
+  public subscribeUserData(generatorOrNext?: any, error?: any, complete?: any) {
+    return this.userDateEv.subscribe(generatorOrNext, error, complete);
   }
 
   public async getValiCode(mobile: string) {
@@ -39,6 +46,7 @@ export class LoginManagerProvider {
       if (result) {
         this.localUserInfo.save(mobile);
         this.emitLogin(true);
+        this.userDateEv.emit(mobile);
       }
     } catch (e) {
       console.log(e);
