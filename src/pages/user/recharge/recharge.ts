@@ -40,7 +40,7 @@ export class RechargePage {
     let param = {
       czje: 1,
       czlx: RECHARGE_TYPE.YU_E,
-      zflfs: PAY_WAY.ZHI_FU_BAO,
+      zffs: PAY_WAY.ZHI_FU_BAO,
 
     };
     try {

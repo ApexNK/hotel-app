@@ -15,7 +15,7 @@ export class UserCenterPage {
   constructor(public navCtrl: NavController, private userManager: UserManagerProvider) {
   }
   ionViewDidLoad() {
-    this.getUserMsg();
+    // this.getUserMsg();
   }
 
   ionViewWillEnter() {
