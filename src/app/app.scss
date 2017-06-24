@@ -25,6 +25,9 @@
 .gray {
   color: color($colors, gray);
 }
+.sub-info {
+  color: color($colors, subInfo);
+}
 .has-border-bottom {
   border-bottom: 1px solid color($colors, borderColor) !important;
 }

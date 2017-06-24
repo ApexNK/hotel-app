@@ -16,10 +16,31 @@ export class UserCenterPage {
   }
   ionViewDidLoad() {
     // this.getUserMsg();
+    console.info('****');
+    console.info(this.navCtrl.parent);
+    //this.navCtrl.parent.select(2);
   }
 
   ionViewWillEnter() {
+    console.log('tab user ionViewWillLeave');
   }
+
+  ionViewWillLeave() {
+    console.log('tab  user ionViewWillLeave');
+  }
+
+  ionViewDidLeave() {
+    console.info('tab user ionViewDidLeave');
+  }
+
+  ionViewDidEnter() {
+    console.info("tab use ionViewDidEnter");
+  }
+
+  ionViewWillUnload() {
+    console.info("tab user ionViewWillUnload");
+  }
+
 
   ngOnChanges() {
     console.log('Ng All Changes');

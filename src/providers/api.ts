@@ -79,15 +79,20 @@ export class Api {
     const param = Object.assign({}, defaultParam, {
       parameter: body
     });
-    return this.http.post(this.url ,param, options)
-      .map( (res) => {
-        console.info(res);
-        return res.json();
-      })
-      .toPromise().then(
-        this.successHandle,
-        this.failedHandle
-      );
+    try {
+      return this.http.post(this.url ,param, options)
+        .map( (res) => {
+          console.info(res);
+          return res.json();
+        })
+        .toPromise().then(
+          this.successHandle,
+          this.failedHandle
+        );
+    } catch (err) {
+      console.info(err);
+    }
+
   }
 
 

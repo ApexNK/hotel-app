@@ -18,6 +18,6 @@ export class ItemDetailPage {
     this.item = navParams.get('item') || items.defaultItem;
   }
   public goPay () {
-    this.navCtrl.push('ReservationPage')
+    this.navCtrl.push('OrderPayPage',{startDate:this.startDate,endDate:this.endDate, days:1, total: 80});
   }
 }
