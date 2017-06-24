@@ -34,16 +34,15 @@
     <div class="trapezoid"></div>
     <div class="banner-text" (click)="toggleBanner()">
       <i class="iconfont icon-slide-down" [hidden]="isBannerOpening"></i>
-      <span [hidden]="!isBannerOpening">入住时间</span>
-
+      <i class="icon iconfont icon-up"  [hidden]="!isBannerOpening"></i>
     </div>
   </div>
   <ion-grid no-padding>
     <ion-row class="data-picker-box">
       <ion-col class="has-border-right">
         <ion-list>
-          <ion-item>
-            <ion-label>入住</ion-label>
+          <ion-item class="data-picker-item " text-right>
+            <ion-label ><span class="primary">入住</span></ion-label>
             <ion-datetime
                 [cancelText]="'取消'" [doneText]="'确定'"
                 no-padding
@@ -52,8 +51,8 @@
                 [(ngModel)]="startDate">
                 </ion-datetime>
           </ion-item>
-          <ion-item>
-            <ion-label >离开</ion-label>
+          <ion-item  class="data-picker-item " text-right>
+            <ion-label class="primary" ><span class="primary">离开</span></ion-label>
             <ion-datetime
                  [cancelText]="'取消'" [doneText]="'确定'"
                 no-padding
@@ -105,7 +104,7 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <p>1.9km</p>
+            <p><i class="iconfont icon-location"></i>1.9km</p>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -125,7 +124,7 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <p>1.9km</p>
+            <p><i class="iconfont icon-location"></i>1.9km</p>
           </ion-col>
         </ion-row>
       </ion-grid>

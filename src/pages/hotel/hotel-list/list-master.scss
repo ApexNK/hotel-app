@@ -3,6 +3,10 @@ page-list-master {
       background: #fff;
     }
     .search-btn {
+      transform: scale(1.1);
+      border-radius: 5px;
+      //padding: 0 1.4em;
+      //height: 3.4rem;
       .button-inner {
         display: inline;
         //display: -ms-flexbox;
@@ -43,6 +47,9 @@ page-list-master {
       background-size: cover;
       background-position: center;
       transition: height 0.3s ease-in;
+      .iconfont.icon-slide-down.up{
+        transform: rotate(360deg);
+      }
     }
     .banner.close {
       height: 50px;
@@ -68,6 +75,13 @@ page-list-master {
         box-sizing: border-box;
         padding: 15px 0;
         height: 100px;
+    }
+    .data-picker-item {
+      float: right;
+      margin-right: 20px;
+      display: inline-block;
+      width: 126px;
+      line-height: 14px !important;
     }
     .flex-col {
         text-align: center;
