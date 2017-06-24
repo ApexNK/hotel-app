@@ -33,7 +33,7 @@ export class RechargePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, @Inject('ApiService') api, private alipay: Alipay) {
     console.log('Hello RechargeComponent Component');
     this.api = api;
-    this.payWay = this.navParams.get("payWay");
+    this.payWay = this.navParams.get("payWay") || "aliPay";
     console.info(this.payWay);
   }
   public recharge () {
