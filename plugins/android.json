@@ -11,6 +11,13 @@
             "API_KEY": "cM583ZCN1X1rm8zvpzTX0A50G1h37MFd",
             "PACKAGE_NAME": "com.woke.app"
         },
+        "cordova-alipay-base": {
+            "ALI_PID": "2017062007526289",
+            "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.woke.app"
+        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.woke.app"
         },
@@ -30,9 +37,6 @@
             "PACKAGE_NAME": "com.woke.app"
         },
         "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "com.woke.app"
-        },
-        "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.woke.app"
         }
     },

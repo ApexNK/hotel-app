@@ -17,6 +17,8 @@ import {Camera} from '@ionic-native/camera';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
 import {Geolocation} from '@ionic-native/geolocation';
+import { Alipay } from '@ionic-native/alipay';
+
 // localstorage
 import {LocalUserInfo} from '../LocalDatas/index';
 
@@ -57,7 +59,7 @@ const APP_CONFIG = {
   backButtonText: '',
   preloadModules: true,
   // locationStrategy: 'path',
-  iconMode: 'md',
+  iconMode: 'ios',
   modalEnter: 'modal-slide-in',
   modalLeave: 'modal-slide-out',
   tabsPlacement: 'bottom',
@@ -102,7 +104,8 @@ export function providers() {
     ShowConfirmProvider,
     ShowLoadingProvider,
     UserManagerProvider,
-    LocalUserInfo
+    LocalUserInfo,
+    Alipay
   ];
 }
 

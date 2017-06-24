@@ -89,5 +89,16 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-alipay-base": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pipitang/cordova-alipay-base",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {
+            "ALI_PID": "2017062007526289"
+        }
     }
 }
