@@ -47,7 +47,9 @@
   }
 }
 .date-picker {
-
+  &:nth-of-type(1) {
+    border-right: 1px solid color($colors, gray);
+  }
   .primary {
     display: inline-block;
     margin-top: 10px;
