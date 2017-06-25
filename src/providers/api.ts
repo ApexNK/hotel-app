@@ -4,7 +4,6 @@ import {Toast} from '../providers/index';
 import {API as URL} from '../web.config';
 import 'rxjs/add/operator/map';
 import {LocalUserInfo} from '../LocalDatas/index';
-import {LoginManagerProvider} from './index';
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */
