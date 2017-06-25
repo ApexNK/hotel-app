@@ -15,7 +15,7 @@
       <ion-col padding-left padding-right>
         <form novalidate class="search-form">
           <ion-icon name="search" margin-left class="search-icon"></ion-icon>
-          <input type="text" class="search-input" placeholder="输入房间,位置,价格">
+          <input [(ngModel)]="queryKeyWord" [ngModelOptions]="{standalone: true}" type="text" class="search-input" placeholder="输入房间,位置,价格">
         </form>
       </ion-col>
       <ion-col col-auto>
