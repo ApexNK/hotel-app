@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { NavController, NavParams ,IonicPage} from 'ionic-angular';
 import {HotelDetail, RoomItem, HotelManager} from '../../../providers';
 @IonicPage({
@@ -9,7 +9,7 @@ import {HotelDetail, RoomItem, HotelManager} from '../../../providers';
   selector: 'room-list',
   templateUrl: 'room-list.html'
 })
-export class RoomListPage {
+export class RoomListPage{
   item: any;
   public beginDate = '';
   public endDate = '';
@@ -26,6 +26,7 @@ export class RoomListPage {
     this.getHotelDetail();
     // this.getHotelList();
   }
+
   public getHotelDetail () {
     this.hotelManager.getHotelDetail({beginDate: this.beginDate, endDate: this.endDate, flatId: this.id})
       .then((res) => {

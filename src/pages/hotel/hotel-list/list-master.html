@@ -48,6 +48,7 @@
                 no-padding
                 displayFormat="YYYY-MM-DD"
                 pickerFormat="YYYY-MM-DD"
+                (ionChange)="getDays()"
                 [min]="today"
                 [(ngModel)]="startDate">
                 </ion-datetime>
@@ -58,6 +59,7 @@
                  [cancelText]="'取消'" [doneText]="'确定'"
                 no-padding
                 [min]="startDate"
+                 (ionChange)="getDays()"
                 displayFormat="YYYY-MM-DD"
                 pickerFormat="YYYY-MM-DD"
                 [(ngModel)]="endDate">
