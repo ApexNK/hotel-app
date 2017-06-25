@@ -1,18 +1,18 @@
 import {Injectable, Injector} from '@angular/core';
 import {Api} from '../api';
-import {HOTEL_LIST} from '../API_MARCO';
-import {HotelListQuery} from './model/HotelListQuery';
+import {HOTEL_LIST, HOTEL_DETAIL} from '../API_MARCO';
 import {GeoManager} from '../geograph/geo-manager';
+import {WkDate} from '../../util';
+import {HotelDetail, HotelListQuery} from '../index';
 @Injectable()
 export class HotelManager {
   constructor(private http: Api, private injector: Injector) {
 
   }
 
-  public getHotelList(query: HotelListQuery = {}): Promise<{count: number, list: any[]}> {
-    const now = new Date();
-    const today = this.toStringDate(now);
-    const tomorrow = this.toStringDate(new Date(now.getTime() + 60 * 60 * 1000 * 24));
+  public getHotelList(query: HotelListQuery = {}): Promise<{ count: number, list: any[] }> {
+    const today = WkDate.getToday();
+    const tomorrow = WkDate.getTomorrow();
     const curPos = this.injector.get(GeoManager).getLatitudeAndLongitude();
     const deafaultParam = {
       "beginDate": today,
@@ -33,11 +33,13 @@ export class HotelManager {
       }).catch(e => console.log(e));
   }
 
-  private toDouble(n): string {
-    return n < 10 ? `0${n}` : n.toString();
-  }
-
-  private toStringDate(time: Date) {
-    return `${time.getFullYear()}-${this.toDouble(time.getMonth() + 1)}-${this.toDouble(time.getDate())}`;
+  public getHotelDetail(query: {
+    flatId: string;
+    beginDate: string;
+    endDate: string;
+  }): Promise<HotelDetail> {
+    return this.http.httpByUser(HOTEL_DETAIL, query).then(res => {
+      return Promise.resolve(res.datas as HotelDetail);
+    });
   }
 }

@@ -1,22 +1,14 @@
 import {Component, Inject} from '@angular/core';
-import {NavController, ModalController, IonicPage} from 'ionic-angular';
+import {NavController, ModalController} from 'ionic-angular';
 import {WkDate} from '../../../util';
-import {Items} from '../../../providers/providers';
-//import { Api } from '../../../providers/api';
+
 import {ShowConfirmProvider, HotelManager, ShowLoadingProvider, HotelItem} from '../../../providers/index';
-import {Item} from '../../../models/item';
 
-
-// @IonicPage({
-//   name:"RoomListPage",
-//   segment: 'RoomListPage'
-// })
 @Component({
   selector: 'page-list-master',
   templateUrl: 'list-master.html'
 })
 export class ListMasterPage {
-  currentItems: Item[];
   public areaCode = '120104';
   public today = WkDate.getToday();
   public startDate = WkDate.getToday();
@@ -33,13 +25,12 @@ export class ListMasterPage {
   private curKeyWord = '';
   private curAreaCode = '120104';
   constructor(public navCtrl: NavController,
-              public items: Items,
               public modalCtrl: ModalController,
               public loading: ShowLoadingProvider,
               private hotelManger: HotelManager,
               public confirm: ShowConfirmProvider,
               @Inject('ApiService') api) {
-    this.currentItems = this.items.query();
+
     this.api = api;
   }
 
@@ -90,19 +81,16 @@ export class ListMasterPage {
     this.curKeyWord = this.queryKeyWord;
     this.curAreaCode = this.areaCode;
   }
-  /**
-   * Delete an item from the list of items.
-   */
-  deleteItem(item) {
-    this.items.delete(item);
-  }
+
 
   /**
    * Navigate to the detail page for this item.
    */
-  openItem(item: Item) {
+  openItem(id) {
     this.navCtrl.push("RoomListPage", {
-      item: item
+      flatId: id,
+      beginDate: this.curStartDate,
+      endDate: this.curEndDate
     });
   }
 

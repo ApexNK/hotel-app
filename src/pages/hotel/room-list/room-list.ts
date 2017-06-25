@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams ,IonicPage} from 'ionic-angular';
-import { Items } from '../../../providers/providers';
-
+import {HotelDetail, RoomItem, HotelManager} from '../../../providers';
 @IonicPage({
   name:"RoomListPage",
-  segment: 'RoomListPage'
+  segment: 'RoomListPage/:flatId/:beginDate/:endDate'
 })
 @Component({
   selector: 'room-list',
@@ -12,11 +11,26 @@ import { Items } from '../../../providers/providers';
 })
 export class RoomListPage {
   item: any;
-  public startDate = '2017-05-27';
-  public endDate = '2017-06-01';
-  public rooms = new Array(20);
-  constructor(public navCtrl: NavController, navParams: NavParams, items: Items) {
-    this.item = navParams.get('item') || items.defaultItem;
+  public beginDate = '';
+  public endDate = '';
+  public id = '';
+  public hotelDetail: HotelDetail;
+  constructor(public navCtrl: NavController,
+              private hotelManager:  HotelManager,
+              navParams: NavParams) {
+    this.id = navParams.get('flatId');
+    this.beginDate = navParams.get('beginDate');
+    this.endDate = navParams.get('endDate');
+  }
+  ionViewDidLoad() {
+    this.getHotelDetail();
+    // this.getHotelList();
+  }
+  public getHotelDetail () {
+    this.hotelManager.getHotelDetail({beginDate: this.beginDate, endDate: this.endDate, flatId: this.id})
+      .then((res) => {
+        this.hotelDetail = res as HotelDetail;
+      });
   }
   public goRoomDetail () {
     this.navCtrl.push("ItemDetailPage");
