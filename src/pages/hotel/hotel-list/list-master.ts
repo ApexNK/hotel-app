@@ -18,6 +18,7 @@ import {Item} from '../../../models/item';
 export class ListMasterPage {
   currentItems: Item[];
   public areaCode = '120104';
+  public today = WkDate.getToday();
   public startDate = WkDate.getToday();
   public endDate = WkDate.getTomorrow();
   public isBannerOpening = true;
