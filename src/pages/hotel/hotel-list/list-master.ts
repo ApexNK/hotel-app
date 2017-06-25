@@ -17,7 +17,7 @@ import {Item} from '../../../models/item';
 })
 export class ListMasterPage {
   currentItems: Item[];
-  public curAddress = 'nes';
+  public areaCode = '120104';
   public startDate = WkDate.getToday();
   public endDate = WkDate.getTomorrow();
   public isBannerOpening = true;
@@ -29,7 +29,7 @@ export class ListMasterPage {
   private curStartDate: string;
   private curEndDate: string;
   private curKeyWord = '';
-
+  private curAreaCode = '120104';
   constructor(public navCtrl: NavController,
               public items: Items,
               public modalCtrl: ModalController,
@@ -75,15 +75,18 @@ export class ListMasterPage {
   }
 
   public searchHotel() {
+    this.resetQuery();
+    this.getHotelList();
+  }
+  private resetQuery () {
     this.hotelList = [];
     this.curStartDate = this.startDate;
     this.curEndDate = this.endDate;
     this.curHotelListPage = 1;
     this.notLoadOver = true;
     this.curKeyWord = this.queryKeyWord;
-    this.getHotelList();
+    this.curAreaCode = this.areaCode;
   }
-
   /**
    * Delete an item from the list of items.
    */
