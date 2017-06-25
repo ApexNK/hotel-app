@@ -19,9 +19,11 @@ export class UserManagerProvider {
 
   }
 
-  public async getUserMessages(): Promise<UserMsgs> {
+  public getUserMessages(): Promise<UserMsgs> {
     try {
-      return await this.http.httpByUser(MINE) as UserMsgs;
+      return this.http.httpByUser(MINE).then( res => {
+        return res.datas as UserMsgs;
+      });
     } catch (e) {
       console.error(e);
     }

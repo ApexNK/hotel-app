@@ -26,7 +26,7 @@
               <span>{{userMsg?.yhqsl}}</span><br/>优惠券
             </ion-col>
             <ion-col text-center>
-              <span>{{userMsg?.yjje}}</span><br/>押金
+              <span>{{userMsg?.yjye}}</span><br/>押金
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -44,6 +44,7 @@
           <i class="iconfont icon-audit" item-left></i>
 
           身份审核
+          <span item-right class="reminder-info">{{userMsg?.sfshzt === '1' ? '已审核' : '未审核'}}</span>
           <ion-icon name="ios-arrow-forward-outline" class="arrow-right" item-right></ion-icon>
         </button>
         <button ion-item >
