@@ -25,6 +25,8 @@ export class ListMasterPage {
   public hotelList:HotelItem[] = [];
   public curHotelListPage = 1;
   public notLoadOver = true;
+  private curStartDate: string;
+  private curEndDate: string;
   constructor(public navCtrl: NavController,
               public items: Items,
               public modalCtrl: ModalController,
@@ -40,13 +42,34 @@ export class ListMasterPage {
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
-    this.getHotelList();
+    this.searchHotel();
+    // this.getHotelList();
   }
-
+  public getHotelList ($event?) {
+    return this.hotelManger
+      .getHotelList({pageNo: this.curHotelListPage, beginDate: this.curStartDate, endDate: this.curEndDate})
+      .then((res) => {
+      if (res.list.length) {
+        this.hotelList  = [...this.hotelList, ...res.list];
+        this.curHotelListPage ++ ;
+      }
+      if (this.hotelList.length >= res.count) {
+        this.notLoadOver = false;
+      }
+      return Promise.resolve(true);
+    });
+  }
   public toggleBanner () {
     this.isBannerOpening = !this.isBannerOpening;
   }
-
+  public searchHotel () {
+    this.hotelList = [];
+    this.curStartDate = this.startDate;
+    this.curEndDate = this.endDate;
+    this.curHotelListPage = 1;
+    this.notLoadOver = true;
+    this.getHotelList();
+  }
   /**
    * Delete an item from the list of items.
    */
@@ -76,16 +99,5 @@ export class ListMasterPage {
     });*/
   }
 
-  public getHotelList ($event?) {
-    return this.hotelManger.getHotelList({pageNo: this.curHotelListPage, beginDate: this.startDate, endDate: this.endDate}).then((res) => {
-      if (res.list.length) {
-        this.hotelList  = [...this.hotelList, ...res.list];
-        this.curHotelListPage ++ ;
-      }
-      if (this.hotelList.length >= res.count) {
-        this.notLoadOver = false;
-      }
-      return Promise.resolve(true);
-    });
-  }
+
 }
