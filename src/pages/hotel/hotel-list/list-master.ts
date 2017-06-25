@@ -21,6 +21,7 @@ export class ListMasterPage {
   public startDate = WkDate.getToday();
   public endDate = WkDate.getTomorrow();
   public isBannerOpening = true;
+  public days = 1;
   public api: any;
   public hotelList: HotelItem[] = [];
   public queryKeyWord = '';
@@ -79,6 +80,7 @@ export class ListMasterPage {
     this.getHotelList();
   }
   private resetQuery () {
+    this.days = WkDate.getDays(new Date(this.endDate), new Date(this.startDate));
     this.hotelList = [];
     this.curStartDate = this.startDate;
     this.curEndDate = this.endDate;
