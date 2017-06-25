@@ -50,6 +50,7 @@
         <ion-datetime
           [cancelText]="'取消'" [doneText]="'确定'"
           no-padding
+          (ionChange)="getHotelDetail()"
           displayFormat="YYYY-MM-DD"
           pickerFormat="YYYY-MM-DD"
           [(ngModel)]="beginDate">
@@ -60,6 +61,7 @@
         <ion-datetime
           [cancelText]="'取消'" [doneText]="'确定'"
           no-padding
+          (ionChange)="getHotelDetail()"
           displayFormat="YYYY-MM-DD"
           pickerFormat="YYYY-MM-DD"
           [(ngModel)]="endDate">

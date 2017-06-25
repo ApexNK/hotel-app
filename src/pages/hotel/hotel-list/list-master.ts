@@ -72,7 +72,7 @@ export class ListMasterPage {
     this.getHotelList();
   }
   private resetQuery () {
-    this.days = WkDate.getDays(new Date(this.endDate), new Date(this.startDate));
+
     this.hotelList = [];
     this.curStartDate = this.startDate;
     this.curEndDate = this.endDate;
@@ -81,7 +81,9 @@ export class ListMasterPage {
     this.curKeyWord = this.queryKeyWord;
     this.curAreaCode = this.areaCode;
   }
-
+  public getDays () {
+    this.days = WkDate.getDays(new Date(this.endDate), new Date(this.startDate));
+  }
 
   /**
    * Navigate to the detail page for this item.
