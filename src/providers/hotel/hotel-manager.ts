@@ -27,7 +27,7 @@ export class HotelManager {
       "areaCode": "120104"
     };
     const queryParam = {...deafaultParam, ...query};
-    return this.http.httpByUser(HOTEL_LIST, queryParam)
+    return this.http.httpPost(HOTEL_LIST, queryParam)
       .then(res => {
         return Promise.resolve({count: res.count, list: res.datas});
       }).catch(e => console.log(e));
