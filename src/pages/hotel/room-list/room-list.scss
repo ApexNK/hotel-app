@@ -8,7 +8,17 @@ room-list {
     background-size: 100% auto;
     height: 38vw;
   }
-
+  ion-item {
+    h3{
+      margin: 0 !important;
+    }
+    .primary {
+      padding-right: 20px;
+      .price {
+        font-size: 20px;
+      }
+    }
+  }
   .item-detail {
     width: 100%;
     color: #999;

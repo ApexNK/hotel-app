@@ -6,6 +6,8 @@ export {UserMsgs} from './user/model/UserMsgs';
 export {Toast} from './show-toast/toast';
 export {HotelListQuery} from './hotel/model/HotelListQuery';
 export {HotelItem} from './hotel/model/HotelItem'
+export {RoomItem} from './hotel/model/RoomItem';
+export {HotelDetail} from './hotel/model/HotelDetail';
 export {HotelManager} from './hotel/hotel-manager';
 export {GeoManager} from './geograph/geo-manager';
 export {Api} from './api';

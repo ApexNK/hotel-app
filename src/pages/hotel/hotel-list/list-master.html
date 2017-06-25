@@ -93,7 +93,7 @@
   <ion-list>
     <ion-item
       *ngFor="let item of hotelList"
-      (click)="openItem(item)" class="has-thumbnail">
+      (click)="openItem(item.id)" class="has-thumbnail">
       <ion-thumbnail item-left>
         <img [src]="item.thumbnail">
       </ion-thumbnail>
