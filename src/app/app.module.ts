@@ -23,7 +23,13 @@ import { Alipay } from '@ionic-native/alipay';
 import {LocalUserInfo} from '../LocalDatas/index';
 
 // provides
-import {LoginManagerProvider, UserManagerProvider, ShowConfirmProvider, ShowLoadingProvider, Toast} from '../providers/index'
+import {LoginManagerProvider,
+        UserManagerProvider,
+        ShowConfirmProvider,
+        ShowLoadingProvider,
+        GeoManager,
+        HotelManager,
+        Toast} from '../providers/index'
 import config from '../config/config';
 
 import {TabsPage} from '../pages/tabs/tabs';
@@ -104,7 +110,9 @@ export function providers() {
     ShowConfirmProvider,
     ShowLoadingProvider,
     UserManagerProvider,
+    GeoManager,
     LocalUserInfo,
+    HotelManager,
     Alipay
   ];
 }

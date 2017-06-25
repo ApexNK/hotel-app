@@ -1,11 +1,11 @@
 import { Component ,Inject} from '@angular/core';
 import { NavController, ModalController, IonicPage } from 'ionic-angular';
-
+import {WkDate} from '../../../util';
 import { Items } from '../../../providers/providers';
 //import { Api } from '../../../providers/api';
-import { ShowConfirmProvider} from '../../../providers/show-confirm/show-confirm';
-import { ShowLoadingProvider} from '../../../providers/show-loading/show-loading';
+import { ShowConfirmProvider, HotelManager, ShowLoadingProvider, HotelItem} from '../../../providers/index';
 import { Item } from '../../../models/item';
+
 
 // @IonicPage({
 //   name:"RoomListPage",
@@ -18,14 +18,18 @@ import { Item } from '../../../models/item';
 export class ListMasterPage {
   currentItems: Item[];
   public curAddress = 'nes';
-  public startDate = '2017-05-27';
-  public endDate = '2017-06-01';
+  public startDate = WkDate.getToday();
+  public endDate = WkDate.getTomorrow();
   public isBannerOpening = true;
   public api:any;
+  public hotelList:HotelItem[] = [];
+  public curHotelListPage = 1;
+  public notLoadOver = true;
   constructor(public navCtrl: NavController,
               public items: Items,
               public modalCtrl: ModalController,
               public loading: ShowLoadingProvider,
+              private hotelManger: HotelManager,
               public confirm: ShowConfirmProvider,
               @Inject('ApiService') api) {
     this.currentItems = this.items.query();
@@ -36,12 +40,7 @@ export class ListMasterPage {
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
-    // this.loading.show();
-    // this.loading.show({delay: 100, duration: 100000});
-    // this.loading.hide(200);
-    //this.api.get("queryGy/list").then( res => {
-    // console.info(res);
-    // });
+    this.getHotelList();
   }
 
   public toggleBanner () {
@@ -75,5 +74,18 @@ export class ListMasterPage {
 
       }
     });*/
+  }
+
+  public getHotelList ($event?) {
+    return this.hotelManger.getHotelList({pageNo: this.curHotelListPage, beginDate: this.startDate, endDate: this.endDate}).then((res) => {
+      if (res.list.length) {
+        this.hotelList  = [...this.hotelList, ...res.list];
+        this.curHotelListPage ++ ;
+      }
+      if (this.hotelList.length >= res.count) {
+        this.notLoadOver = false;
+      }
+      return Promise.resolve(true);
+    });
   }
 }

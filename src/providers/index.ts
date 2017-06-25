@@ -4,4 +4,8 @@ export {LoginManagerProvider} from './user/login-manager';
 export {UserManagerProvider} from './user/user-manager';
 export {UserMsgs} from './user/model/UserMsgs';
 export {Toast} from './show-toast/toast';
+export {HotelListQuery} from './hotel/model/HotelListQuery';
+export {HotelItem} from './hotel/model/HotelItem'
+export {HotelManager} from './hotel/hotel-manager';
+export {GeoManager} from './geograph/geo-manager';
 export {Api} from './api';

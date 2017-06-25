@@ -89,46 +89,35 @@
     </ion-row>
   </ion-grid>
   <ion-list>
-    <ion-item (click)="openItem(item)" class="has-thumbnail">
+    <ion-item
+      *ngFor="let item of hotelList"
+      (click)="openItem(item)" class="has-thumbnail">
       <ion-thumbnail item-left>
-        <img [src]="currentItems[0].profilePic">
+        <img [src]="item.thumbnail">
       </ion-thumbnail>
       <ion-grid no-padding>
         <ion-row class="title">
-          <ion-col><h2  text-nowrap>北京华腾美居</h2></ion-col>
-          <ion-col col-auto text-right><span class="money">￥<span class="money-num">162</span></span> 起</ion-col>
+          <ion-col><h2  text-nowrap>{{item.gymc}}</h2></ion-col>
+          <ion-col col-auto text-right><span class="money">￥<span class="money-num">{{item.minPrice}}</span></span> 起</ion-col>
         </ion-row>
         <ion-row class="title">
-          <ion-col text-nowrap><p>金鱼胡同3号王府井</p></ion-col>
-          <ion-col col-auto text-right><p>剩余12</p></ion-col>
+          <ion-col text-nowrap><p>{{item.gydz}}</p></ion-col>
+          <ion-col col-auto text-right><p>剩余{{item.availableRooms}}</p></ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <p><i class="iconfont icon-location"></i>1.9km</p>
+            <p><i class="iconfont icon-location"></i>{{item.distance / 1000}}km</p>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>
-    <ion-item (click)="openItem(item)" class="has-thumbnail">
-      <ion-thumbnail item-left>
-        <img [src]="currentItems[0].profilePic">
-      </ion-thumbnail>
-      <ion-grid no-padding>
-        <ion-row class="title">
-          <ion-col><h2  text-nowrap>北京华腾美居</h2></ion-col>
-          <ion-col col-auto text-right><span class="money">￥<span class="money-num">162</span></span> 起</ion-col>
-        </ion-row>
-        <ion-row class="title">
-          <ion-col text-nowrap><p>金鱼胡同3号王府井</p></ion-col>
-          <ion-col col-auto text-right><p>剩余12</p></ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <p><i class="iconfont icon-location"></i>1.9km</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
-  </ion-list>
 
+  </ion-list>
+  <ion-infinite-scroll [enabled]="notLoadOver" (ionInfinite)="$event.waitFor(getHotelList($event))">
+    <ion-infinite-scroll-content
+
+      loadingSpinner="bubbles"
+      loadingText="加载中......">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
