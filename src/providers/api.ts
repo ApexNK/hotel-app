@@ -99,7 +99,11 @@ export class Api {
     if (!res.parameter) {
       return Promise.reject(res);
     }
-    if (res.parameter.code !== '0000' || res.resultcode !== '0000') {
+    if (res.resultcode !== '0000') {
+      this.presentToast(res.parameter.message);
+      return Promise.reject(res);
+    }
+    if( !(res.parameter.code === '0000' || res.parameter.code === '0')){
       this.presentToast(res.parameter.message);
       return Promise.reject(res);
     }

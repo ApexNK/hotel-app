@@ -17,7 +17,7 @@ export class UserCenterPage {
   private userInfo: LocalUserInfo, private plt: Platform) {
   }
   ionViewDidLoad() {
-    // this.getUserMsg();
+    this.getUserMsg();
     console.info(this.navCtrl.parent);
     //this.navCtrl.parent.select(2);
   }
