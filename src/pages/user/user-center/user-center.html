@@ -19,14 +19,14 @@
       <ion-card-content>
         <ion-grid no-padding>
           <ion-row class="msg-row">
-            <ion-col text-center (click)="goBalancePage()">
-              <span>{{userMsg?.wdye}}</span><br/>我的余额
+            <ion-col text-center (click)="goBalancePage()" class="">
+              <span class="number-content sub-info">{{userMsg?.wdye}}</span><span class="sub-info number_unit">元</span><br/>我的余额
             </ion-col>
             <ion-col text-center>
-              <span>{{userMsg?.yhqsl}}</span><br/>优惠券
+              <span class="sub-info number-content">{{userMsg?.yhqsl}}</span><br/>优惠券
             </ion-col>
             <ion-col text-center>
-              <span>{{userMsg?.yjye}}</span><br/>押金
+              <span class="sub-info number-content">{{userMsg?.yjye}}</span><span class="sub-info number_unit">元</span><br/>押金
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -38,26 +38,26 @@
           <i class="iconfont icon-personal_information" item-left></i>
           <!--<ion-icon name="ios-paper-outline" item-left class="icon-left"></ion-icon>-->
           个人信息
-          <ion-icon name="ios-arrow-forward-outline" item-right class="arrow-right"></ion-icon>
+          <!--<ion-icon name="ios-arrow-forward-outline" item-right class="arrow-right"></ion-icon>-->
         </button>
         <button ion-item class="has-margin-bottom" (tap)="goAudit()">
           <i class="iconfont icon-audit" item-left></i>
 
           身份审核
           <span item-right class="reminder-info">{{userMsg?.sfshzt === '1' ? '已审核' : '未审核'}}</span>
-          <ion-icon name="ios-arrow-forward-outline" class="arrow-right" item-right></ion-icon>
+          <!--<ion-icon name="ios-arrow-forward-outline" class="arrow-right" item-right></ion-icon>-->
         </button>
         <button ion-item >
           <i class="iconfont icon-service" item-left></i>
           <!--<ion-icon name="ios-information-circle-outline" item-left class="icon-left"></ion-icon>-->
           联系客服
-          <ion-icon name="ios-arrow-forward-outline" item-right class="arrow-right"></ion-icon>
+         <!-- <ion-icon name="ios-arrow-forward-outline" item-right class="arrow-right"></ion-icon>-->
         </button>
         <button ion-item class="has-margin-bottom">
           <i class="iconfont icon-system_message" item-left></i>
           <!--<ion-icon name="ios-text-outline" item-left class="icon-left"></ion-icon>-->
           系统消息
-          <ion-icon name="ios-arrow-forward-outline" class="arrow-right" item-right></ion-icon>
+          <!--<ion-icon name="ios-arrow-forward-outline" class="arrow-right" item-right></ion-icon>-->
         </button>
         <button ion-item text-center class="log-out" (tap)="loginOut()">
           退出登陆
