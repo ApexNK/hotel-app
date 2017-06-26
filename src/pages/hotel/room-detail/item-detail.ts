@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import {RoomDetail, HotelManager} from '../../../providers';
-
+import {WkDate} from '../../../util';
 
 @IonicPage({
   name: 'ItemDetailPage',
@@ -12,7 +12,7 @@ import {RoomDetail, HotelManager} from '../../../providers';
   templateUrl: 'item-detail.html'
 })
 export class ItemDetailPage {
-
+  public today = WkDate.getToday();
   public beginDate = '';
   public endDate = '';
   private roomId = '';
@@ -27,7 +27,10 @@ export class ItemDetailPage {
     // this.getHotelList();
   }
   public goPay () {
-    this.navCtrl.push('OrderPayPage',{startDate:this.beginDate,endDate:this.endDate, days:1, total: 80});
+    const days = WkDate.getDays(new Date(this.endDate), new Date(this.beginDate));
+    this.navCtrl.push('OrderPayPage',{startDate:this.beginDate,
+      endDate:this.endDate,
+      days, total: this.roomDetail.fjjg});
   }
   private async getRoomDetail () {
     try {

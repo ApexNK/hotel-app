@@ -6,4 +6,4 @@ export const MINE = 'mem-myinfo'; // 个人信息
 
 export const HOTEL_LIST = 'flat-0003';
 export const HOTEL_DETAIL = 'flat-0002';
-export const ROOM_DETAIL = 'flat-00001';
+export const ROOM_DETAIL = 'flat-0001';

@@ -34,7 +34,6 @@ export class RoomListPage{
       });
   }
   public goRoomDetail (roomId, beginDate, endDate) {
-    debugger;
     this.navCtrl.push("ItemDetailPage", {
       roomId,
       beginDate,

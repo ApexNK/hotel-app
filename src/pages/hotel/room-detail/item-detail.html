@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>北京华腾美居303室</ion-title>
+    <ion-title>{{roomDetail?.fjmc}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -73,6 +73,7 @@
         <ion-datetime
           [cancelText]="'取消'" [doneText]="'确定'"
           no-padding
+          [min]="today"
           displayFormat="YYYY-MM-DD"
           pickerFormat="YYYY-MM-DD"
           [(ngModel)]="beginDate">
@@ -83,6 +84,7 @@
         <ion-datetime
           [cancelText]="'取消'" [doneText]="'确定'"
           no-padding
+          [min]="beginDate"
           displayFormat="YYYY-MM-DD"
           pickerFormat="YYYY-MM-DD"
           [(ngModel)]="endDate">
