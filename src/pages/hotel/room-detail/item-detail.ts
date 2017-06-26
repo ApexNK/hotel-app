@@ -27,17 +27,19 @@ export class ItemDetailPage {
     // this.getHotelList();
   }
   public goPay () {
-    const days = WkDate.getDays(new Date(this.endDate), new Date(this.beginDate));
+    // 传时间、天数、总价和订单编号给支付页面
+    //this.navCtrl.push('OrderPayPage',{startDate:this.startDate,endDate:this.endDate, days:1, total: 80, orderNo: 'R20170615105325641742'});
+/*    const days = WkDate.getDays(new Date(this.endDate), new Date(this.beginDate));
     this.navCtrl.push('OrderPayPage',{startDate:this.beginDate,
       endDate:this.endDate,
-      days, total: this.roomDetail.fjjg});
+      days, total: this.roomDetail.fjjg});*/
   }
   private async getRoomDetail () {
-    try {
+/*    try {
       this.roomDetail = await this.hotelManager.getRoomDetail(this.roomId);
     }catch (e) {
       console.error(e);
-    }
+    }*/
   }
 
 }

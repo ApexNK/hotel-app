@@ -26,6 +26,7 @@ export class OrderPayPage {
   public total: number;
   public orderNo: string;
   public user: object = { name:'李刚', phoneNumber: '15950528787', IDCard: '350582198871155444'};
+  public showSuccessPage = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private confirmCtrl: ShowConfirmProvider,@Inject('ApiService') api) {
     this.api = api;
     this.startDate = this.navParams.get("startDate");
@@ -43,8 +44,12 @@ export class OrderPayPage {
     this.api.httpPost(ORDER_PAY,{ddbh:this.orderNo}).then(
       res => {
         console.info(res);
-        if( res.code === '1') {
-          this.goToKeyTabs();
+        if( res.code === '0') {
+          this.showSuccessPage = true;
+          setTimeout(()=> {
+            this.goToKeyTabs();
+          },2000);
+
         }else {
           this.confirmCtrl.showConfirm({message:"余额不足，不能满足付款",okText:"去充值", cancelText:"取消"}).subscribe(
             result => {
