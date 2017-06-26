@@ -1,9 +1,9 @@
 import {Injectable, Injector} from '@angular/core';
 import {Api} from '../api';
-import {HOTEL_LIST, HOTEL_DETAIL} from '../API_MARCO';
+import {HOTEL_LIST, HOTEL_DETAIL, ROOM_DETAIL} from '../API_MARCO';
 import {GeoManager} from '../geograph/geo-manager';
 import {WkDate} from '../../util';
-import {HotelDetail, HotelListQuery} from '../index';
+import {HotelDetail, HotelListQuery, RoomDetail} from '../index';
 @Injectable()
 export class HotelManager {
   constructor(private http: Api, private injector: Injector) {
@@ -41,5 +41,12 @@ export class HotelManager {
     return this.http.httpPost(HOTEL_DETAIL, query).then(res => {
       return Promise.resolve(res.datas as HotelDetail);
     });
+  }
+
+  public getRoomDetail(roomId): Promise<RoomDetail> {
+    return this.http.httpPost(ROOM_DETAIL, {roomId})
+      .then(res => {
+        return Promise.resolve(res.datas as RoomDetail);
+      });
   }
 }
