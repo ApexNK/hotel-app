@@ -38,7 +38,7 @@ export class HotelManager {
     beginDate: string;
     endDate: string;
   }): Promise<HotelDetail> {
-    return this.http.httpByUser(HOTEL_DETAIL, query).then(res => {
+    return this.http.httpPost(HOTEL_DETAIL, query).then(res => {
       return Promise.resolve(res.datas as HotelDetail);
     });
   }
