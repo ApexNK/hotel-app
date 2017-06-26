@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title text-center>北京华腾美居303室</ion-title>
+    <ion-title>北京华腾美居303室</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -10,35 +10,24 @@
 <ion-content>
   <ion-slides pager class="item-profile">
 
-    <ion-slide style="background-color: green">
-      <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
+    <ion-slide style="background-color: green" *ngFor="let item of roomDetail?.fjtp">
+      <div class="item-profile" text-center  [style.background-image]="'url(' + item.tplj + ')'">
       </div>
     </ion-slide>
-
-    <ion-slide style="background-color: blue">
-      <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
-      </div>
-    </ion-slide>
-
-    <ion-slide style="background-color: red">
-      <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
-      </div>
-    </ion-slide>
-
   </ion-slides>
 
   <div class="item-detail" padding>
-    <h2 class="money">价格：￥80</h2>
+    <h2 class="money">价格：￥{{roomDetail?.fjjg}}</h2>
     <p >
-      <span float-left>面积：45m²</span>
-      <span float-right>窗户朝向：南北朝向</span>
+      <span float-left>面积：{{roomDetail?.fjmj}}m²</span>
+      <span float-right>窗户朝向：{{roomDetail?.chcx}}</span>
     </p>
     <p  >
-      <span float-left>楼层：1楼</span>
+      <span float-left>楼层：{{roomDetail?.sslc}}楼</span>
       <span float-right>床宽：1.8m</span>
     </p>
     <p >
-      <span float-left>地址：南方花园丰菜园</span>
+      <span float-left>地址：{{roomDetail?.fjdz}}</span>
       <span float-right><ion-icon name="pin"></ion-icon> 1.4km</span>
     </p>
   </div>
@@ -86,7 +75,7 @@
           no-padding
           displayFormat="YYYY-MM-DD"
           pickerFormat="YYYY-MM-DD"
-          [(ngModel)]="startDate">
+          [(ngModel)]="beginDate">
         </ion-datetime>
         <span>入住</span>
       </ion-col>
@@ -111,18 +100,11 @@
       </ion-col>
     </ion-row>
     <ion-row text-center padding-top class="img-list">
-      <ion-col col-6 >
-        <img [src]="item.profilePic" alt="">
+      <ion-col col-6 *ngFor="let item of hotelDetail?.fjtp">
+        <img [src]="item.Tplj" alt="">
       </ion-col>
-      <ion-col col-6 >
-        <img [src]="item.profilePic" alt="">
-      </ion-col>
-      <ion-col col-6 >
-        <img [src]="item.profilePic" alt="">
-      </ion-col>
-      <ion-col col-6 >
-        <img [src]="item.profilePic" alt="">
-      </ion-col>
+
+
     </ion-row>
   </ion-grid>
 </ion-content>
