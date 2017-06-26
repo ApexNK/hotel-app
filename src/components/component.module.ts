@@ -3,9 +3,11 @@ import { OrderItemComponentModule }  from './order-item/order-item.module';
 import { KeyItemComponent } from '../pages/key/key-item/key-item';
 import { PipeModule } from '../pipes/pipe.module';
 import { IonicModule } from 'ionic-angular';
+//import { PaySuccessComponent } from "./pay-success/pay-success"
 @NgModule({
   declarations: [
-    KeyItemComponent
+    KeyItemComponent,
+    //PaySuccessComponent
   ],
   imports: [
     IonicModule,
@@ -13,7 +15,8 @@ import { IonicModule } from 'ionic-angular';
     PipeModule
   ],
   exports: [
-    KeyItemComponent
+    KeyItemComponent,
+    //PaySuccessComponent
   ]
 })
 export class ComponentModule {}

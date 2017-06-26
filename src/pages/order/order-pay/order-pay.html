@@ -78,3 +78,4 @@
     <button (tap)="goPay()" col-4 ion-col ion-button  no-padding no-border color="danger" class="no-radius" style="height: auto" no-margin>支付</button>
   </ion-row>
 </ion-footer>
+<pay-success [total]="total" *ngIf="showSuccessPage"></pay-success>
