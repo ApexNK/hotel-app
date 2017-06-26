@@ -18,6 +18,7 @@ export class ItemDetailPage {
     this.item = navParams.get('item') || items.defaultItem;
   }
   public goPay () {
-    this.navCtrl.push('OrderPayPage',{startDate:this.startDate,endDate:this.endDate, days:1, total: 80});
+    // 传时间、天数、总价和订单编号给支付页面
+    this.navCtrl.push('OrderPayPage',{startDate:this.startDate,endDate:this.endDate, days:1, total: 80, orderNo: 'R20170615105325641742'});
   }
 }
