@@ -33,11 +33,12 @@ export class RoomListPage{
         this.hotelDetail = res as HotelDetail;
       });
   }
-  public goRoomDetail (roomId, beginDate, endDate) {
+  public goRoomDetail (roomId, beginDate, endDate, fjbh) {
     this.navCtrl.push("ItemDetailPage", {
       roomId,
       beginDate,
-      endDate
+      endDate,
+      fjbh
     });
   }
 }

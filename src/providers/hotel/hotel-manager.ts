@@ -1,6 +1,6 @@
 import {Injectable, Injector} from '@angular/core';
 import {Api} from '../api';
-import {HOTEL_LIST, HOTEL_DETAIL, ROOM_DETAIL} from '../API_MARCO';
+import {HOTEL_LIST, HOTEL_DETAIL, ROOM_DETAIL, ORDER_ROOM} from '../API_MARCO';
 import {GeoManager} from '../geograph/geo-manager';
 import {WkDate} from '../../util';
 import {HotelDetail, HotelListQuery, RoomDetail} from '../index';
@@ -48,5 +48,18 @@ export class HotelManager {
       .then(res => {
         return Promise.resolve(res.datas as RoomDetail);
       });
+  }
+  public reservationRoom (param: {
+    fjbh: string;
+    // sjhm: string;
+    kssj: string;
+    jssj: string;
+    zfzj: number;
+    yhqid?: number;
+  }): Promise<string> {
+    return this.http.httpByUser(ORDER_ROOM, param)
+      .then(res => {
+        return Promise.resolve(res.ddbh)
+      }).catch(e => Promise.reject(e));
   }
 }

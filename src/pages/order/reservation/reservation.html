@@ -27,7 +27,7 @@
           no-padding
           displayFormat="YYYY-MM-DD"
           pickerFormat="YYYY-MM-DD"
-          [(ngModel)]="startDate">
+          [(ngModel)]="beginDate">
         </ion-datetime>
         <span class="primary">入住</span>
       </ion-col>
@@ -43,7 +43,7 @@
 
       </ion-col>
       <ion-col text-right>
-        <span class="primary">住1晚</span>
+        <span class="primary">住{{days}}晚</span>
       </ion-col>
     </ion-row>
     <ion-row padding-top padding-bottom class="has-border-bottom title-row">
