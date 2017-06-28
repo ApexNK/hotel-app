@@ -35,7 +35,6 @@ export class UserDetailPage {
       let userInfo = res.datas;
       try{
         this.photoUrl = userInfo.wdtx || './assets/img/default_avatar.png';
-        debugger;
         this.userName = userInfo.xm;
         this.telNo = userInfo.lxfs;
         this.cardID = userInfo.sfzh;

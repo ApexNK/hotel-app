@@ -30,10 +30,12 @@ export class RechargePage {
   public payWay:string;
   public api:any;
   public customValue:any;
+  public isRefund = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, @Inject('ApiService') api, private alipay: Alipay) {
     console.log('Hello RechargeComponent Component');
     this.api = api;
     this.payWay = this.navParams.get("payWay") || "aliPay";
+    this.isRefund = this.navParams.get('isRefund');
     console.info(this.payWay);
   }
   public recharge () {

@@ -1,6 +1,6 @@
 export interface UserMsgs {
-  wdye: string;
-  yjje: string;
-  yhqsl: string;
+  wdye: number;
+  yjye: number;
+  yhqsl: number;
   sfshzt: string;
 }
