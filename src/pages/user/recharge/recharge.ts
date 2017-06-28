@@ -26,10 +26,10 @@ enum RECHARGE_TYPE {
 })
 export class RechargePage {
 
-  public activeNum = 0;
+  public activeNum = 100;
   public payWay:string;
   public api:any;
-
+  public customValue:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, @Inject('ApiService') api, private alipay: Alipay) {
     console.log('Hello RechargeComponent Component');
     this.api = api;
@@ -57,6 +57,16 @@ export class RechargePage {
 
   }
 
+  public valueChange(event) {
+    console.info(event);
+    console.info(this.customValue);
+    this.activeNum = this.customValue;
+  }
+
+  public changeValue(value){
+    this.activeNum = value;
+    this.customValue = '';
+  }
 
   private requestForAliPay (data){
     // data 为后端返回的订单信息，为字符串，接口中alipay.pay 需要传递一个AlipayOrder类型
