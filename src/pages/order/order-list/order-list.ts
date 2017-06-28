@@ -32,6 +32,14 @@ export class OrderListPage {
       console.error(e);
     }
   }
+  public async leaveRoom (ddbh, index) {
+    try {
+      await this.orderManager.leaveRoom(ddbh);
+      this.orderItems.splice(index,1);
+    }catch (e) {
+      console.error(e);
+    }
+  }
   public tabChange () {
     this.curPage = 1;
     this.orderItems = [];

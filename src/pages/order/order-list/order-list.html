@@ -54,7 +54,7 @@
         </ion-item>
         <ion-item class="item-footer" *ngSwitchCase="ORDER_ENUM.USING">
           <button (tap)="goPay()" padding-left  padding-right ion-button item-right round outline>获取钥匙</button>
-          <button (tap)="goPay()" padding-left  padding-right ion-button item-right round outline>退房</button>
+          <button (tap)="leaveRoom(order.ddbh, index)" padding-left  padding-right ion-button item-right round outline>退房</button>
         </ion-item>
         <ion-item class="item-footer" *ngSwitchCase="ORDER_ENUM.REVOKED">
           <button  padding-left  padding-right ion-button item-right round outline>退款失败</button>
