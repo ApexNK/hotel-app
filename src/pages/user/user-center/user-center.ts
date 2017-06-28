@@ -27,7 +27,7 @@ export class UserCenterPage {
     console.log('Ng All Changes');
   }
   public goBalancePage () {
-    this.navCtrl.push('BalancePage');
+    this.navCtrl.push('BalancePage',{total:this.userMsg.wdye});
   }
   public goAudit () {
     this.navCtrl.push('IdentityAuditPage');
