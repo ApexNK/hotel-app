@@ -5,8 +5,24 @@ order-list {
   .item-block{
     font-size: 13px;
   }
+  .address{
+    margin-top: 5px;
+  }
+  .min-font{
+    margin-top: 15px;
+  }
   ion-item-group {
+    color: #b2b2b2;
+
+    i.iconfont{
+      color: #b2b2b2;
+      font-size: 13px;
+    }
     margin-bottom: 10px;
+    .sub-title{
+      overflow: hidden;
+      // margin-top: -20px;
+    }
     .item-block{
       min-height: inherit;
     }
