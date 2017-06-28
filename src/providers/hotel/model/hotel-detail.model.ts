@@ -1,4 +1,4 @@
-import {RoomItem} from './RoomItem';
+import {RoomItem} from './room-item.model';
 export interface HotelDetail {
   gymc:string; // 公寓名称
   gydz: string; //公寓地址

@@ -4,11 +4,11 @@ export {LoginManagerProvider} from './user/login-manager';
 export {UserManagerProvider} from './user/user-manager';
 export {UserMsgs} from './user/model/UserMsgs';
 export {Toast} from './show-toast/toast';
-export {HotelListQuery} from './hotel/model/HotelListQuery';
-export {HotelItem} from './hotel/model/HotelItem'
-export {RoomItem} from './hotel/model/RoomItem';
-export {HotelDetail} from './hotel/model/HotelDetail';
-export {RoomDetail} from './hotel/model/RoomDetail';
+export {HotelListQuery} from './hotel/model/hotel-list-query.model';
+export {HotelItem} from './hotel/model/hotel-item.model'
+export {RoomItem} from './hotel/model/room-item.model';
+export {HotelDetail} from './hotel/model/hotel-detail.model';
+export {RoomDetail} from './hotel/model/room-detail.model';
 export {HotelManager} from './hotel/hotel-manager';
 export {GeoManager} from './geograph/geo-manager';
 export {Api} from './api';
