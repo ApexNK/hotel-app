@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { OrderItemComponentModule }  from './order-item/order-item.module';
-import { KeyItemComponent } from '../pages/key/key-item/key-item';
+
+import {ScaleItem} from './scale-item/scale-size.componet';
 import { PipeModule } from '../pipes/pipe.module';
 import { IonicModule } from 'ionic-angular';
 //import { PaySuccessComponent } from "./pay-success/pay-success"
 @NgModule({
   declarations: [
-    KeyItemComponent,
+
+    ScaleItem
     //PaySuccessComponent
   ],
   imports: [
@@ -15,7 +17,8 @@ import { IonicModule } from 'ionic-angular';
     PipeModule
   ],
   exports: [
-    KeyItemComponent,
+
+    ScaleItem
     //PaySuccessComponent
   ]
 })

@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import {LocalUserInfo} from '../../LocalDatas'
 
 
-import { KeySearchPage } from '../key/key-search/key-search';
+import { KeyItemComponent } from '../key/key-item/key-item';
 import { ListMasterPage } from '../hotel/hotel-list/list-master';
 import { OrderListPage } from '../order/order-list/order-list'
 import { UserCenterPage } from '../user/user-center/user-center';
@@ -17,7 +17,7 @@ export class TabsPage {
   homeTab: any = ListMasterPage;
   OrderListTab: any = OrderListPage;
   settingTab: any = UserCenterPage;
-  keySearchTab = KeySearchPage;
+  keySearchTab = KeyItemComponent;
   homeTitle = "首页";
   orderTitle = "订单";
   keySearchTitle = "钥匙";

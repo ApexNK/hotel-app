@@ -12,10 +12,16 @@ import { KeyInfo } from './key-item-models';
   templateUrl: './key-item.html'
 })
 export class KeyItemComponent {
-  @Input() keyInfo: KeyInfo;
 
+  public keyInfo: KeyInfo;
   constructor() {
-
+    this.keyInfo = {
+      roomName:'北京华腾美居 1楼103室',
+      roomPic : './assets/img/timg.jpg',
+      checkInTime : "2017-5-10-2017-5-11",
+      address : "西大望路甲16号",
+      leaveTime : "2017-05-11 12:00"
+    };
   }
 
 }

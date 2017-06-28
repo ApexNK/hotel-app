@@ -1,9 +1,9 @@
-<div>
+<div scaleSize>
   <ion-tabs (ionChange)="ionchange($event)">
     <ion-tab [root]="homeTab" [tabTitle]="homeTitle" tabIcon="home" tabUrlPath="home" tabsHideOnSubPages></ion-tab>
     <ion-tab [root]="OrderListTab" [tabTitle]="orderTitle" tabIcon="list-box" tabUrlPath="order" tabsHideOnSubPages></ion-tab>
     <ion-tab [root]="keySearchTab" [tabTitle]="keySearchTitle" tabIcon="key"  tabUrlPath="key" tabsHideOnSubPages></ion-tab>
-    <ion-tab [root]="settingTab" [tabTitle]="mineTitle" tabIcon="md-person" tabUrlPath="user"  selecttabsHideOnSubPages></ion-tab>
+    <ion-tab [root]="settingTab" [tabTitle]="mineTitle" tabIcon="md-person" tabUrlPath="user" tabsHideOnSubPages></ion-tab>
   </ion-tabs>
   <page-login  *ngIf="isLoginPageShow"></page-login>
 </div>

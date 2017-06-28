@@ -1,30 +1,42 @@
-<!-- Generated template for the KeyItemComponent component -->
-<div class="main-content" padding>
-  <div class="sub-content" padding-horizontal>
-    <div style="width: 100%; position: relative; height: 100%">
-      <div class="room-name" text-center text-nowrap>
-        <span>{{keyInfo.roomName}}</span>
-      </div>
-      <ion-item class="has-thumbnail">
-        <ion-thumbnail item-left>
-          <ion-img [width]="'80px'" [height]="'60px'" [src]="keyInfo.roomPic"></ion-img>
-        </ion-thumbnail>
-        <ion-grid>
-          <ion-row>
-            <ion-col><ion-icon name="pin"></ion-icon> <span text-nowrap></span>{{keyInfo.address}}</ion-col>
-          </ion-row>
-          <ion-row >
-            <ion-col text-nowrap><ion-icon name="time"></ion-icon> {{keyInfo.checkInTime}}</ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-      <div class="leave-time" margin-vertical text-center>
-        <span>退房时间：<span class="time">{{keyInfo.leaveTime}}</span></span>
-      </div>
-      <div class="key-code">
-          <ion-img scaleSize [width]="'264'" [height]="'264'" [src]="keyInfo.roomPic"></ion-img>
+<ion-header>
 
-      </div>
+  <ion-navbar>
+    <ion-grid>
+      <ion-row align-items-center no-padding text-center>
+        <ion-col>
+          <span class="main-title">钥匙</span>
+          <div float-right class="sub-title">刷新</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <div class="sub-content" padding>
+    <div class="room-name" text-center text-nowrap>
+      <span>{{keyInfo.roomName}}</span>
     </div>
+    <ion-list>
+    <ion-item class="has-thumbnail">
+      <ion-thumbnail item-left>
+        <ion-img [width]="'80px'" [height]="'60px'" [src]="keyInfo.roomPic"></ion-img>
+      </ion-thumbnail>
+      <ion-grid>
+        <ion-row>
+          <ion-col><ion-icon name="pin"></ion-icon> <span text-nowrap></span>{{keyInfo.address}}</ion-col>
+        </ion-row>
+        <ion-row >
+          <ion-col text-nowrap><ion-icon name="time"></ion-icon> {{keyInfo.checkInTime}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    </ion-list>
+    <div class="leave-time" margin-vertical text-center>
+      <span>退房时间：<span class="time">{{keyInfo.leaveTime}}</span></span>
+    </div>
+    <scale-item [src]="keyInfo.roomPic"></scale-item>
   </div>
-</div>
+
+</ion-content>

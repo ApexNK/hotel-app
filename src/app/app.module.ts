@@ -31,11 +31,11 @@ import {LoginManagerProvider,
         HotelManager,
         OrderManager,
         Toast} from '../providers'
-import {ScaleSize} from '../directive';
+
 import config from '../config/config';
 
 import {TabsPage} from '../pages/tabs/tabs';
-import {KeySearchPage} from '../pages/key/key-search/key-search';
+import {KeyItemComponent} from '../pages/key/key-item/key-item';
 import {ListMasterPage} from '../pages/hotel/hotel-list/list-master';
 import {OrderListPage} from '../pages/order/order-list/order-list'
 import {UserCenterPage} from '../pages/user/user-center/user-center';
@@ -81,7 +81,7 @@ export function declarations() {
   return [
     MyApp,
     TabsPage,
-    KeySearchPage,
+    KeyItemComponent,
     ListMasterPage,
     OrderListPage,
     UserCenterPage,
@@ -125,7 +125,7 @@ export function providers() {
 }
 
 @NgModule({
-  declarations: [...declarations(), ScaleSize],
+  declarations: declarations(),
   imports: [
     BrowserModule,
     HttpModule,
