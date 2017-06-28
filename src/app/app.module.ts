@@ -38,6 +38,8 @@ import {ListMasterPage} from '../pages/hotel/hotel-list/list-master';
 import {OrderListPage} from '../pages/order/order-list/order-list'
 import {UserCenterPage} from '../pages/user/user-center/user-center';
 
+import { PaySuccessComponent } from "../components/pay-success/pay-success";
+
 export function provideSettings(storage: Storage) {
   /**
    * The Settings provider takes a set of default user-center for your app.
@@ -81,7 +83,8 @@ export function declarations() {
     ListMasterPage,
     OrderListPage,
     UserCenterPage,
-    LoginPage
+    LoginPage,
+    PaySuccessComponent
   ];
 }
 
