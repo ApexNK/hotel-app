@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Api} from '../api';
-import {ORDER_LIST} from '../API_MARCO';
+import {ORDER_LIST, ORDER_CANCEL} from '../API_MARCO';
 import {OrderItem} from './model/order-item.model';
 import {OrderType} from '../index';
 @Injectable()
@@ -13,5 +13,8 @@ export class OrderManager {
       .then(res => Promise.resolve({list: res.datas as OrderItem[], total: Number(res.total)}))
       .catch(e => Promise.reject(e));
 
+  }
+  public cancelOrder (ddbh) {
+    return this.http.httpByUser(ORDER_CANCEL, {ddbh});
   }
 }

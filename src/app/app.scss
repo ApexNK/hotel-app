@@ -31,6 +31,18 @@
 .has-border-bottom {
   border-bottom: 1px solid color($colors, borderColor) !important;
 }
+.mgn-top-close {
+  margin-top: $close-distance;
+}
+.mgn-top-middle {
+  margin-top: $middle-distance;
+}
+.mgn-top-far {
+  margin-top: $far-distance;
+}
+.translate-to-y-close{
+  transform: translateY($close-distance);
+}
 .min-font{
   font-size: 10px;
 }

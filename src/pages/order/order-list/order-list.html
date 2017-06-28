@@ -33,13 +33,13 @@
         <img src="./assets/img/no_order.png" alt="" >
         <p>您还没有订单哦!</p>
       </div>
-      <ion-item-group *ngFor="let order of orderItems">
+      <ion-item-group *ngFor="let order of orderItems; let index = index">
         <ion-item-divider class="item-header" color="light">{{order.gymc}} {{order.sslc}}楼{{order.fjhb}}室</ion-item-divider>
         <ion-item class="item-content">
           <ion-thumbnail item-start>
             <img src="assets/img/thumbnail-puppy-1.jpg">
           </ion-thumbnail>
-          <div style="overflow:hidden;">
+          <div style="overflow:hidden;" >
             <span float-left>面积45m²&ensp;&ensp;床宽1.5m</span>
             <h2 float-right class="money">￥{{order.ddje}}</h2>
           </div>
@@ -50,7 +50,7 @@
           <button (tap)="goPay()" padding-left  padding-right ion-button item-right round outline>支付</button>
         </ion-item>
         <ion-item class="item-footer" *ngSwitchCase="ORDER_ENUM.WAIT_USE">
-          <button (tap)="goPay()" padding-left  padding-right ion-button item-right round outline>申请退订</button>
+          <button (tap)="cancelOrder(order.ddbh, index)" padding-left  padding-right ion-button item-right round outline>申请退订</button>
         </ion-item>
         <ion-item class="item-footer" *ngSwitchCase="ORDER_ENUM.USING">
           <button (tap)="goPay()" padding-left  padding-right ion-button item-right round outline>获取钥匙</button>
