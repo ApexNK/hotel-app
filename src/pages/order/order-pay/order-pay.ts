@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ShowConfirmProvider } from '../../../providers/show-confirm/show-confirm';
 import { ORDER_PAY, ORDER_DETAIL } from '../../../providers/API_MARCO';
-import {WkDate} from '../../../util';
+import { WkDate } from '../../../util';
 
 /**
  * Generated class for the OrderPayPage page.
@@ -50,7 +50,7 @@ export class OrderPayPage {
         if( res.code === '0') {
           this.showSuccessPage = true;
           setTimeout(()=> {
-            this.goToKeyTabs();
+            this.goToOrderTabs();
           },2000);
 
         }else {
@@ -77,10 +77,10 @@ export class OrderPayPage {
     this.navCtrl.popToRoot();
   }
 
-  private goToKeyTabs() {
+/*  private goToKeyTabs() {
     this.navCtrl.parent.select(2);
     this.navCtrl.popToRoot();
-  }
+  }*/
 
   private getOrderDetail() {
     this.api.httpPost(ORDER_DETAIL,{ddbh:this.orderNo}).then( res => {

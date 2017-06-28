@@ -11,8 +11,7 @@ import { Component, Input} from '@angular/core';
   templateUrl: 'pay-success.html'
 })
 export class PaySuccessComponent {
-  @Input()  total : Number;
-
+  @Input()total : Number;
   constructor() {
   }
 

@@ -38,7 +38,7 @@ import {ListMasterPage} from '../pages/hotel/hotel-list/list-master';
 import {OrderListPage} from '../pages/order/order-list/order-list'
 import {UserCenterPage} from '../pages/user/user-center/user-center';
 
-import { PaySuccessComponent } from "../components/pay-success/pay-success";
+//import { PaySuccessComponent } from "../components/pay-success/pay-success";
 
 export function provideSettings(storage: Storage) {
   /**
@@ -84,7 +84,7 @@ export function declarations() {
     OrderListPage,
     UserCenterPage,
     LoginPage,
-    PaySuccessComponent
+    //PaySuccessComponent
   ];
 }
 

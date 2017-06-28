@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content [hidden]="showSuccessPage">
   <ion-grid no-padding>
     <ion-row padding-top padding-bottom class="has-border-bottom title-row">
       <ion-col  text-center class="sub-info">
@@ -78,5 +78,5 @@
     <button (tap)="goPay()" col-4 ion-col ion-button  no-padding no-border color="danger" class="no-radius" style="height: auto" no-margin>支付</button>
   </ion-row>
 </ion-footer>
-<!--<pay-success [total]="amount" *ngIf="showSuccessPage"></pay-success>-->
+<pay-success *ngIf="showSuccessPage" [total]="amount"></pay-success>
 

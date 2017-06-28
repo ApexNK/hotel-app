@@ -39,7 +39,7 @@ export class ItemDetailPage {
         }
       );
       const days = WkDate.getDays(new Date(this.endDate), new Date(this.beginDate));
-      this.navCtrl.push('ReservationPage',{beginDate:this.beginDate,
+      this.navCtrl.push('OrderPayPage',{beginDate:this.beginDate,
         endDate:this.endDate,
         orderNo,
         days, total: this.roomDetail.fjjg * days});
