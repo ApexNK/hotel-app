@@ -24,6 +24,22 @@ export class OrderListPage {
   public goPay () {
     this.navCtrl.push('OrderPayPage');
   }
+  public async cancelOrder (ddbh, index) {
+    try {
+      await this.orderManager.cancelOrder(ddbh);
+      this.orderItems.splice(index,1);
+    }catch (e) {
+      console.error(e);
+    }
+  }
+  public async leaveRoom (ddbh, index) {
+    try {
+      await this.orderManager.leaveRoom(ddbh);
+      this.orderItems.splice(index,1);
+    }catch (e) {
+      console.error(e);
+    }
+  }
   public tabChange () {
     this.curPage = 1;
     this.orderItems = [];
