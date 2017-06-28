@@ -41,23 +41,19 @@
           </ion-thumbnail>
           <div class="sub-title">
             <h3 float-left>{{order.gymc}} {{order.sslc}}楼{{order.fjhb}}室</h3>
-            <h2 float-right class="money">￥{{order.ddje}}</h2>
+            <h2 float-right >￥{{order.ddje}}</h2>
           </div>
           <div class="address"><i class="iconfont icon-location"></i> {{order.gydz}}</div>
-          <div class="min-font"><i class="iconfont icon-time"></i>{{order.rzkssj}}~{{order.rzjssj}}</div>
+          <div class="min-font"><i class="iconfont icon-time"></i> {{order.rzkssj}}~{{order.rzjssj}}</div>
         </ion-item>
-        <ion-item class="item-footer" *ngSwitchCase="ORDER_ENUM.WAIT_PAY">
-          <button (tap)="goPay()" padding-left  padding-right ion-button item-right round outline>支付</button>
-        </ion-item>
-        <ion-item class="item-footer" *ngSwitchCase="ORDER_ENUM.WAIT_USE">
-          <button (tap)="cancelOrder(order.ddbh, index)" padding-left  padding-right ion-button item-right round outline>申请退订</button>
-        </ion-item>
-        <ion-item class="item-footer" *ngSwitchCase="ORDER_ENUM.USING">
-          <button (tap)="goPay()" padding-left  padding-right ion-button item-right round outline>获取钥匙</button>
-          <button (tap)="leaveRoom(order.ddbh, index)" padding-left  padding-right ion-button item-right round outline>退房</button>
-        </ion-item>
-        <ion-item class="item-footer" *ngSwitchCase="ORDER_ENUM.REVOKED">
-          <button  padding-left  padding-right ion-button item-right round outline>退款失败</button>
+        <ion-item class="item-footer">
+          <!--<div item-left="">-->
+            <!--优惠券折扣: ￥{{}}-->
+          <!--</div>-->
+          <button *ngSwitchCase="ORDER_ENUM.WAIT_PAY" (tap)="goPay()" padding-left  padding-right ion-button item-right round outline>支付</button>
+          <button *ngSwitchCase="ORDER_ENUM.WAIT_USE" (tap)="cancelOrder(order.ddbh, index)" padding-left  padding-right ion-button item-right round outline>申请退订</button>
+          <button *ngSwitchCase="ORDER_ENUM.USING" (tap)="leaveRoom(order.ddbh, index)" padding-left  padding-right ion-button item-right round outline>退房</button>
+          <button *ngSwitchCase="ORDER_ENUM.REVOKED" padding-left  padding-right ion-button item-right round outline>退款失败</button>
         </ion-item>
       </ion-item-group>
     </ion-list>
