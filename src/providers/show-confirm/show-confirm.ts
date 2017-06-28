@@ -29,7 +29,6 @@ export class ShowConfirmProvider {
         }
       ]
     }).present();
-    console.info(this.ev);
     return this.ev;
   }
 
