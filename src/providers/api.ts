@@ -4,7 +4,7 @@ import {Toast} from '../providers/index';
 import {API as URL} from '../web.config';
 import 'rxjs/add/operator/map';
 import {LocalUserInfo} from '../LocalDatas/index';
-import { ORDER_PAY } from  "./API_MARCO"
+import { ORDER_PAY, PERSON_INFO } from  "./API_MARCO"
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */
@@ -104,7 +104,7 @@ export class Api {
       this.presentToast(res.parameter.message);
       return Promise.reject(res);
     }
-    if ( res.servicekey === ORDER_PAY ) { //订单支付不拦截
+    if ( res.servicekey === ORDER_PAY || res.servicekey === PERSON_INFO) { //订单支付不拦截,个人详情不拦截
       return Promise.resolve(res.parameter);
     }
     if( !(res.parameter.code === '0000' || res.parameter.code === '0')){
