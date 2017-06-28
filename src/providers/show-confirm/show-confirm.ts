@@ -29,6 +29,27 @@ export class ShowConfirmProvider {
         }
       ]
     }).present();
+    console.info(this.ev);
     return this.ev;
+  }
+
+  public show (opt?: {title?: string, message?: string, okText?: string, cancelText?: string}) {
+    opt = Object.assign({title:'', message: '', okText: '确定', cancelText: '取消'}, (opt || {}));
+    return new Promise( (resolve,reject) => {
+      this.confirm.create({
+        title: opt.title ,
+        message: opt.message ,
+        buttons: [
+          {
+            text: opt.cancelText ,
+            handler: () => {resolve(false)}
+          }
+          ,{
+            text: opt.okText,
+            handler: () => {resolve(true)}
+          }
+        ]
+      }).present();
+    });
   }
 }

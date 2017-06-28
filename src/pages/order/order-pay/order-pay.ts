@@ -44,6 +44,7 @@ export class OrderPayPage {
   }
 
   goPay () {
+    let hasResult = false;
     this.api.httpPost(ORDER_PAY,{ddbh:this.orderNo}).then(
       res => {
         console.info(res);
@@ -54,10 +55,11 @@ export class OrderPayPage {
           },2000);
 
         }else {
-          this.confirmCtrl.showConfirm({message:"余额不足，不能满足付款",okText:"去充值", cancelText:"取消"}).subscribe(
+          this.confirmCtrl.show({message:"余额不足，不能满足付款",okText:"去充值", cancelText:"取消"}).then(
             result => {
               if(result){
-                this.navCtrl.push("RechargePage");
+                console.info('go to rechange page');
+                this.navCtrl.push("RechargePage",{payWay:'aliPay'});
               } else {
                 this.goToOrderTabs();
               }
