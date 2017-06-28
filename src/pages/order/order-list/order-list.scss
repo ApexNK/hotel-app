@@ -1,9 +1,24 @@
 order-list {
+  ion-segment{
+    background: #fff;
+  }
   .item-block{
     font-size: 13px;
   }
   ion-item-group {
     margin-bottom: 10px;
+    .item-block{
+      min-height: inherit;
+    }
+    .item-md ion-thumbnail[item-start] {
+      margin: 8px 8px 8px 0;
+    }
+    .item-content{
+      background: #f3f3f6;
+      .min-font{
+        font-size: 10px;
+      }
+    }
   }
   ion-item-divider.item-header {
     background: #fff !important;

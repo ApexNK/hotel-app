@@ -31,7 +31,9 @@
 .has-border-bottom {
   border-bottom: 1px solid color($colors, borderColor) !important;
 }
-
+.min-font{
+  font-size: 10px;
+}
 .has-thumbnail {
   .label-md {
     // margin-top: 0;
