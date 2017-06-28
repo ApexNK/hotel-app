@@ -16,26 +16,24 @@
     <ion-grid no-padding>
       <ion-row margin-top>
         <ion-col text-left margin-top>
-          <div class="circle">100元</div>
+          <div class="circle" [ngClass]="{'active': activeNum === 100}" (tap)="changeValue(100)">100元</div>
         </ion-col>
         <ion-col text-center margin-top>
-          <div class="circle">100元</div>
+          <div class="circle" [ngClass]="{'active': activeNum === 200}" (tap)="changeValue(200)"> 200元</div>
         </ion-col>
         <ion-col text-right margin-top>
-          <div class="circle">100元</div>
+          <div class="circle" [ngClass]="{'active': activeNum === 500}" (tap)="changeValue(500)">500元</div>
         </ion-col>
       </ion-row>
       <ion-row margin-top>
-        <input margin-top type="text" ion-col class="round-input" placeholder="请输入其他金额">
-      </ion-row>
-    </ion-grid>
-  </div>
+      <input margin-top type="number" ion-col class="round-input" placeholder="请输入其他金额" [(ngModel)]="customValue"
+               (ngModelChange)="valueChange($event)">
+    </ion-row>
+  </ion-grid>
+</div>
 
   <div margin-top style="background: #FFf; overflow: hidden;">
     <ion-list radio-group [(ngModel)]="payWay">
-      <!--<ion-list-header class="radio-group-header" no-margin no-padding text-center >-->
-      <!--支付方式-->
-      <!--</ion-list-header>-->
       <div class="radio-group-header" text-center>
         支付方式
       </div>
@@ -51,8 +49,8 @@
 
 
     </ion-list>
-    <div padding>
-      <button ion-button full no-padding text-center round (click)="recharge()">充值</button>
+    <div padding style="height: 78px;">
+      <button ion-button full no-padding text-center (click)="recharge()" style="height: 49px; border-radius: 5px;">充值</button>
     </div>
   </div>
 </ion-content>
