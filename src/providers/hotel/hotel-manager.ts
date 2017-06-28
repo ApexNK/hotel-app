@@ -10,7 +10,7 @@ export class HotelManager {
 
   }
 
-  public getHotelList(query: HotelListQuery = {}): Promise<{ count: number, list: any[] }> {
+  public getHotelList(query: HotelListQuery = {}): Promise<{ count: number, list: any }> {
     const today = WkDate.getToday();
     const tomorrow = WkDate.getTomorrow();
     const curPos = this.injector.get(GeoManager).getLatitudeAndLongitude();

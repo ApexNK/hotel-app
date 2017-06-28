@@ -52,14 +52,20 @@ export class ListMasterPage {
         }
       )
       .then((res) => {
-        if (res.list.length) {
-          this.hotelList = [...this.hotelList, ...res.list];
-          this.curHotelListPage++;
+        try {
+          let hotels = res.list.flats;
+          let count = res.list.count;
+          if (hotels.length) {
+           this.hotelList = [...this.hotelList, ...hotels];
+           this.curHotelListPage++;
+           }
+           if (this.hotelList.length >= count) {
+           this.notLoadOver = false;
+           }
+          return Promise.resolve(true);
+        } catch(err) {
+          return Promise.reject(err);
         }
-        if (this.hotelList.length >= res.count) {
-          this.notLoadOver = false;
-        }
-        return Promise.resolve(true);
       });
   }
 
