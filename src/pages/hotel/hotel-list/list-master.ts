@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {NavController, ModalController} from 'ionic-angular';
 import {WkDate} from '../../../util';
 
-import {ShowConfirmProvider, HotelManager, ShowLoadingProvider, HotelItem} from '../../../providers/index';
+import {ShowConfirmProvider, HotelManager, ShowLoadingProvider, HotelItem} from '../../../providers';
 
 @Component({
   selector: 'page-list-master',

@@ -1,6 +1,6 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, NavParams ,IonicPage} from 'ionic-angular';
-import {HotelDetail, RoomItem, HotelManager} from '../../../providers';
+import {HotelDetail, HotelManager} from '../../../providers';
 @IonicPage({
   name:"RoomListPage",
   segment: 'RoomListPage/:flatId/:beginDate/:endDate'
