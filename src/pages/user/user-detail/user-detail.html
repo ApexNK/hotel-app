@@ -18,22 +18,22 @@
     <ion-item class="has-border-bottom" no-lines>
       <div item-start>头像</div>
       <ion-avatar item-end>
-        <img src="./assets/img/default_avatar.png">
-        
+        <img [src]="photoUrl">
+
       </ion-avatar>
       <i class="icon-arrow-right iconfont" item-right></i>
     </ion-item>
     <ion-item class="has-border-bottom"  no-lines>
       <div item-start>姓名</div>
-      <div item-right>蜗客</div>
+      <div item-right>{{userName}}</div>
     </ion-item>
     <ion-item class="has-border-bottom"  no-lines>
       <div item-start>联系方式</div>
-      <div item-right>蜗客</div>
+      <div item-right>{{telNo}}</div>
     </ion-item>
     <ion-item class="has-border-bottom"  no-lines>
       <div item-start>身份证号</div>
-      <div item-right>350582198611072555</div>
+      <div item-right>{{cardID}}</div>
     </ion-item>
   </ion-list>
 </ion-content>
