@@ -30,7 +30,8 @@ import {LoginManagerProvider,
         GeoManager,
         HotelManager,
         OrderManager,
-        Toast} from '../providers/index'
+        Toast} from '../providers'
+import {ScaleSize} from '../directive';
 import config from '../config/config';
 
 import {TabsPage} from '../pages/tabs/tabs';
@@ -85,6 +86,7 @@ export function declarations() {
     OrderListPage,
     UserCenterPage,
     LoginPage,
+
     //PaySuccessComponent
   ];
 }
@@ -123,7 +125,7 @@ export function providers() {
 }
 
 @NgModule({
-  declarations: declarations(),
+  declarations: [...declarations(), ScaleSize],
   imports: [
     BrowserModule,
     HttpModule,
