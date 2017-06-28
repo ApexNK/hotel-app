@@ -34,7 +34,7 @@ export class OrderPayPage {
     this.api = api;
     this.days = 0;
     this.total = 0;
-    this.orderNo = 'R20170628104236685026';//this.navParams.get("orderNo");
+    this.orderNo = this.navParams.get("orderNo");
     this.getOrderDetail();
     this.amount = this.total;
   }
