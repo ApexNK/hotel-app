@@ -29,6 +29,7 @@ import {LoginManagerProvider,
         ShowLoadingProvider,
         GeoManager,
         HotelManager,
+        OrderManager,
         Toast} from '../providers/index'
 import config from '../config/config';
 
@@ -113,6 +114,7 @@ export function providers() {
     ShowConfirmProvider,
     ShowLoadingProvider,
     UserManagerProvider,
+    OrderManager,
     GeoManager,
     LocalUserInfo,
     HotelManager,
