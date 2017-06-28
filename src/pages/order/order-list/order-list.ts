@@ -21,8 +21,13 @@ export class OrderListPage {
     this.getOrder();
     // this.getHotelList();
   }
-  public goPay () {
-    this.navCtrl.push('OrderPayPage');
+
+  ionViewWillEnter () {
+    //this.getOrder();
+  }
+
+  public goPay (orderNo,index) {
+    this.navCtrl.push('OrderPayPage',{orderNo});
   }
   public async cancelOrder (ddbh, index) {
     try {
