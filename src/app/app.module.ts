@@ -86,7 +86,7 @@ export function declarations() {
     OrderListPage,
     UserCenterPage,
     LoginPage,
-    ScaleSize
+
     //PaySuccessComponent
   ];
 }
@@ -125,7 +125,7 @@ export function providers() {
 }
 
 @NgModule({
-  declarations: declarations(),
+  declarations: [...declarations(), ScaleSize],
   imports: [
     BrowserModule,
     HttpModule,
