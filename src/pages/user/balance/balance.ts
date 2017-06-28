@@ -19,6 +19,7 @@ export class BalancePage {
   public payWay:string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.payWay = "aliPay";
+    this.activeNum = this.navParams.get('total');
   }
 
   ionViewDidLoad() {
