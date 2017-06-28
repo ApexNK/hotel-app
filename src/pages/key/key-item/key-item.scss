@@ -1,82 +1,91 @@
 key-item {
 
-}
+  .main-content {
+    background-color: #ec9605;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
 
-.main-content {
-  background-color: #ec9605;
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
+  .sub-content {
+    position: relative;
+    height: 100%;
+    border-color: #f35f2e;
+    border-style: solid;
+    border-width: 38px 16px 16px 16px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 0px 32px;
+    margin-bottom: 24px;
+  }
 
-.sub-content {
-  position: relative;
-  height: 100%;
-  border-color: #f35f2e;
-  border-style: solid;
-  border-width: 38px 16px 16px 16px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  padding: 0px 32px;
-  margin-bottom: 24px;
-}
+  .room-name {
+    width: 100%;
+    position: absolute;
+    top: -38px;
+    color: #ffffff;
+    line-height: 38px;
+    font-size: 15px;
+  }
 
-.room-name {
-  width:100%;
-  position: absolute;
-  top:-38px;
-  color:#ffffff;
-  line-height: 38px;
-  font-size: 15px;
-}
+  .room-name span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    display: inline-block;
+  }
+  .has-thumbnail {
+    color: #fff;
+    ion-thumbnail {
+      margin-right: 0 !important;
+      ion-img {
+        width: 80px;
+        height: 60px;
+      }
+      border: 2px solid #fff;
+      min-height: 60px;
+    }
+  }
 
-.room-name span {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  width: 100%;
-  display: inline-block;
-}
-.main-content ion-thumbnail img {
-  width:80px;
-  height: 60px;
-}
-.main-content .item {
-  padding-left: 0px;
-  background-color: transparent;
 
-}
+  .main-content .item {
+    padding-left: 0px;
+    background-color: transparent;
 
-.main-content .item-inner {
-  border-bottom-width: 0px !important;
-}
+  }
 
-.leave-time {
-  background-color: #fffd08;
-  color:#ec9605;
-  border-radius: 20px;
-  height: 40px;
-  line-height: 40px;
-  padding: 0 5px;
-}
+  .main-content .item-inner {
+    border-bottom-width: 0px !important;
+  }
 
-.leave-time .time {
-  color: #ff0000;
-  font-size: 16px;
-}
+  .leave-time {
+    background-color: #fffd08;
+    color: #ec9605;
+    border-radius: 20px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 5px;
+  }
 
-.key-code {
-  width: 100%;
-  height: 0;
-  padding-bottom: 100%;
-  background-color: #2ec95c;
-  position: relative;
-}
-.key-code>img {
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right:0;
-  bottom: 0;
-  height:100%;
+  .leave-time .time {
+    color: #ff0000;
+    font-size: 16px;
+  }
+
+  .key-code {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    background-color: #2ec95c;
+    position: relative;
+  }
+  .key-code > img {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+  }
 }

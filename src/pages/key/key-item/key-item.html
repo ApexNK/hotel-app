@@ -5,24 +5,25 @@
       <div class="room-name" text-center text-nowrap>
         <span>{{keyInfo.roomName}}</span>
       </div>
-      <ion-item>
+      <ion-item class="has-thumbnail">
         <ion-thumbnail item-left>
-          <img [src]="keyInfo.roomPic">
+          <ion-img [width]="'80px'" [height]="'60px'" [src]="keyInfo.roomPic"></ion-img>
         </ion-thumbnail>
         <ion-grid>
           <ion-row>
-            <ion-col><ion-icon name="pin"></ion-icon><span text-nowrap></span>{{keyInfo.address}}</ion-col>
+            <ion-col><ion-icon name="pin"></ion-icon> <span text-nowrap></span>{{keyInfo.address}}</ion-col>
           </ion-row>
           <ion-row >
-            <ion-col text-nowrap><ion-icon name="time"></ion-icon>{{keyInfo.checkInTime}}</ion-col>
+            <ion-col text-nowrap><ion-icon name="time"></ion-icon> {{keyInfo.checkInTime}}</ion-col>
           </ion-row>
         </ion-grid>
       </ion-item>
-      <div class="leave-time" margin-vertical>
+      <div class="leave-time" margin-vertical text-center>
         <span>退房时间：<span class="time">{{keyInfo.leaveTime}}</span></span>
       </div>
       <div class="key-code">
-          <img [src]="keyInfo.roomPic">
+          <ion-img [width]="'264'" [height]="'264'" [src]="keyInfo.roomPic"></ion-img>
+
       </div>
     </div>
   </div>

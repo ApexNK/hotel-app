@@ -12,7 +12,7 @@ order-list {
     margin-top: 15px;
   }
   ion-item-group {
-    color: #b2b2b2;
+    color: #999;
 
     i.iconfont{
       color: #b2b2b2;
@@ -21,6 +21,7 @@ order-list {
     margin-bottom: 10px;
     .sub-title{
       overflow: hidden;
+      color: #333;
       // margin-top: -20px;
     }
     .item-block{
