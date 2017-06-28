@@ -44,7 +44,6 @@ export class OrderPayPage {
   }
 
   goPay () {
-    let hasResult = false;
     this.api.httpPost(ORDER_PAY,{ddbh:this.orderNo}).then(
       res => {
         console.info(res);
