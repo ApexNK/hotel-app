@@ -22,12 +22,12 @@
     <ion-item class="has-border-bottom" no-padding >
 
 
-      <span item-left class="item-label">真实姓名</span>
-      <span item-right class="item-value">李刚</span>
+      <ion-note item-left>真实姓名</ion-note>
+      <ion-input type="text" [(ngModel)]="userName" name="username"></ion-input>
     </ion-item>
     <ion-item  class="has-border-bottom"  no-padding >
       <span item-left class="item-label">身份证号</span>
-      <span item-right class="item-value">350582198611442088</span>
+      <ion-input type="text" [(ngModel)]="cardID" name="cardid"></ion-input>
     </ion-item>
     <ion-item class="has-border-bottom"  no-padding>
       <span item-left class="item-label">手持身份证照片</span>
@@ -69,5 +69,5 @@
 </ion-content>
 <ion-footer class="fixed-footer" *ngIf="showFooter">
   <button ion-button full (click)="submit()">提交审核</button>
-  <button ion-button full outline>稍后审核</button>
+  <button ion-button full outline type="button">稍后审核</button>
 </ion-footer>
