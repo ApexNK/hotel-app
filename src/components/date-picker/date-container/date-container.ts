@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ViewController ,Events} from 'ionic-angular';
 /**
  * Generated class for the DateContainerComponent component.
  *
@@ -10,13 +10,19 @@ import { ViewController } from 'ionic-angular';
   selector: 'date-container',
   templateUrl: 'date-container.html'
 })
-export class DateContainerComponent {
+export class DateContainerComponent implements OnInit, OnDestroy{
 
-  text: string;
+  constructor(private viewCtrl: ViewController, private ev: Events) {
 
-  constructor(private viewCtrl: ViewController) {
-    console.log('Hello DateContainerComponent Component');
-    this.text = 'Hello World';
+  }
+  ngOnInit () {
+    this.ev.subscribe('hideDatePickerModal', this.hide);
+  }
+  ngOnDestroy () {
+    this.ev.unsubscribe('hideDatePickerModal', this.hide);
+  }
+  public hide = () => {
+    this.viewCtrl.dismiss();
   }
 
 }

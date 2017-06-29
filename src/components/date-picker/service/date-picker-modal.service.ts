@@ -3,12 +3,13 @@ import {ModalController} from 'ionic-angular';
 import {DateContainerComponent} from '../date-container/date-container';
 @Injectable()
 export class DatePickModal {
+  private modal;
   constructor(public modalCtrl: ModalController) {
-
+    this.modal = this.modalCtrl.create(DateContainerComponent);
   }
 
   public show() {
-    const modal = this.modalCtrl.create(DateContainerComponent);
-    return modal.present()
+    return this.modal.present()
   }
+
 }
