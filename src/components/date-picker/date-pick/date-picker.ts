@@ -17,7 +17,7 @@ export class DatePickerComponent implements OnDestroy, OnInit{
   @Input() date = WkDate.getToday();
   // @Output() ngModel = new EventEmitter<string>()
   @Output() onDateChange = new EventEmitter<string>();
-  public curDate = '';
+  public curDate =  WkDate.getToday();
   constructor(private modal: DatePickModal, private ev: Events) {
 
   }
@@ -34,10 +34,11 @@ export class DatePickerComponent implements OnDestroy, OnInit{
     this.ev.subscribe('onDateSelected', this.dateChangeHandle)
   }
   private dateChangeHandle = (date) => {
-    debugger;
     if (this.curDate) {
       this.ev.publish('removeOldActiveClassByOldDate', this.curDate);
     }
     this.curDate = date;
+    this.onDateChange.emit(this.curDate);
+    this.ev.publish('hideDatePickerModal');
   }
 }

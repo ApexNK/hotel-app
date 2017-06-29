@@ -43,10 +43,15 @@ export class MonthComponent implements OnChanges, OnInit {
   }
   private clickHandle = (ev: Event) =>{
     const srcElement = ev.srcElement;
+    const date = Number(srcElement.innerHTML);
+    const clickedDay = this.dayList[date-1];
+    if (clickedDay.isOldDay === true) {
+      return;
+    }
     if (srcElement.classList.contains('month-component-day')) {
-      const date = Number(srcElement.innerHTML);
+
       const chosenDate = new Date(this.year,this.month - 1, date);
-      this.dayList[date-1].isInChosenList = true;
+      clickedDay.isInChosenList = true;
       this.ev.publish('onDateSelected', WkDate.toStringDate(chosenDate))
     }
   };
