@@ -1,3 +1,8 @@
 date-container {
-
+  .close{
+    position: absolute;
+    left: 15px;
+    z-index: 99;
+    top: 1px;
+  }
 }

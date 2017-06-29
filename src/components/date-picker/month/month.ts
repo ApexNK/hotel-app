@@ -1,5 +1,6 @@
-import {Component, Input, OnChanges, SimpleChange} from '@angular/core';
-
+import {Component, Input, OnChanges, SimpleChange, OnInit, ElementRef} from '@angular/core';
+import {WkDate} from '../../../util'
+import { Events } from 'ionic-angular';
 /**
  * Generated class for the MonthComponent component.
  *
@@ -10,7 +11,7 @@ import {Component, Input, OnChanges, SimpleChange} from '@angular/core';
   selector: 'month',
   templateUrl: 'month.html'
 })
-export class MonthComponent implements OnChanges {
+export class MonthComponent implements OnChanges, OnInit {
   @Input() year: number = new Date().getFullYear();
   @Input() month: number = new Date().getMonth() + 1;
   public dayList: {
@@ -21,11 +22,14 @@ export class MonthComponent implements OnChanges {
     isOldDay: boolean
   } [] = [];
   public spaceList = [];
-
-  constructor() {
-
+  private ele: HTMLDivElement;
+  constructor(private ev: Events, private eleRef: ElementRef) {
+    this.ele = this.eleRef.nativeElement;
   }
-
+  ngOnInit () {
+    this.removeActiveClassByOldChosenDate();
+    this.bindClick();
+  }
   ngOnChanges(change: {
     year: SimpleChange,
     month: SimpleChange
@@ -34,7 +38,32 @@ export class MonthComponent implements OnChanges {
       this.createDays();
     }
   }
-
+  private bindClick () {
+    this.ele.addEventListener('click', this.clickHandle)
+  }
+  private clickHandle = (ev: Event) =>{
+    const srcElement = ev.srcElement;
+    if (srcElement.classList.contains('month-component-day')) {
+      const date = Number(srcElement.innerHTML);
+      const chosenDate = new Date(this.year,this.month - 1, date);
+      this.dayList[date-1].isInChosenList = true;
+      this.ev.publish('onDateSelected', WkDate.toStringDate(chosenDate))
+    }
+  };
+  private removeActiveClassByOldChosenDate () {
+    this.ev.subscribe('removeOldActiveClassByOldDate', date => {
+      const dateArr = date.split('-');
+      const oldChosenYear = Number(dateArr[0]);
+      const oldChosenMonth = Number(dateArr[1]);
+      const oldChoseDate = Number(dateArr[2]);
+      this.removeActiveClass(oldChosenYear, oldChosenMonth, oldChoseDate);
+    });
+  }
+  private removeActiveClass (year, month, date) {
+    if (this.year === year && this.month === month) {
+      this.dayList[date - 1].isInChosenList = false;
+    }
+  }
   private createDays() {
     this.spaceList = this.getSpaceList(this.year, this.month);
     this.dayList = this.getDayList(this.year, this.month);

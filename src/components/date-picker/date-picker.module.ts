@@ -16,8 +16,9 @@ import {DatePickerComponent} from './date-pick/date-picker';
     IonicModule],
   exports: [
     DateContainerComponent,
-    DateContainerComponent
+    DatePickerComponent
   ],
+  entryComponents: [DateContainerComponent],
   providers: [
     DatePickModal
   ]

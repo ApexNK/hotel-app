@@ -2,5 +2,7 @@
 <div class="month-title">{{year}}年{{month}}月</div>
 <div class="day-container">
   <div class="day-item" *ngFor="let space of spaceList"></div>
-  <div class="day-item" *ngFor="let day of dayList" [ngClass]="{'old-day': day.isOldDay}">{{day.text}}</div>
+  <div class="day-item month-component-day"
+       *ngFor="let day of dayList"
+       [ngClass]="{'old-day': day.isOldDay,'in-chosens': day.isInChosenList}">{{day.text}}</div>
 </div>

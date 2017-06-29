@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { ViewController } from 'ionic-angular';
 /**
  * Generated class for the DateContainerComponent component.
  *
@@ -14,7 +14,7 @@ export class DateContainerComponent {
 
   text: string;
 
-  constructor() {
+  constructor(private viewCtrl: ViewController) {
     console.log('Hello DateContainerComponent Component');
     this.text = 'Hello World';
   }
