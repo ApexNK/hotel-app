@@ -1,5 +1,5 @@
 import { Component,Inject } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, Events} from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { APPLY_AUDIT } from '../../../providers/API_MARCO';
 
@@ -36,7 +36,7 @@ export class IdentityAuditPage {
   private api:any;
   private base64Data:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private  camera: Camera,
-              public actionSheetCtrl: ActionSheetController, @Inject('ApiService') api) {
+              public actionSheetCtrl: ActionSheetController,private events:Events,@Inject('ApiService') api) {
     this.api = api;
   }
 
@@ -57,6 +57,7 @@ export class IdentityAuditPage {
     this.api.httpByUser(APPLY_AUDIT,param).then(res => {
       console.info(res);
       this.navCtrl.pop();
+      this.events.publish('updateUserCenter',true);
     }, err => {
       console.info(err);
     })
@@ -76,7 +77,6 @@ export class IdentityAuditPage {
     this.camera.getPicture(this.options).then((imageData) => {
       let base64Image = 'data:image/jpeg;base64,'+imageData;
       this.base64Data = imageData;
-      console.info(base64Image);
       this.imgUrl = base64Image;
     }, (err) => {
       console.info(err);

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Platform } from 'ionic-angular';
+import { NavController, NavParams, Platform, Events } from 'ionic-angular';
 import { UserManagerProvider, UserMsgs } from '../../../providers/index'
 import { LocalUserInfo } from '../../../LocalDatas/user-info';
 import { ShowConfirmProvider } from '../../../providers/show-confirm/show-confirm';
@@ -16,12 +16,15 @@ export class UserCenterPage {
   public userMsg:UserMsgs;
   private callNumber:string = '400-800-8888';
   constructor(public navCtrl: NavController, private params: NavParams,private userManager: UserManagerProvider,
-  private userInfo: LocalUserInfo, private plt: Platform,private confirmCtrl: ShowConfirmProvider) {
+  private userInfo: LocalUserInfo, private plt: Platform,private events:Events,private confirmCtrl: ShowConfirmProvider) {
   }
   ionViewDidLoad() {
     this.getUserMsg();
     console.info(this.navCtrl.parent);
     //this.navCtrl.parent.select(2);
+    this.events.subscribe('updateUserCenter', () => {
+      this.getUserMsg();
+    })
   }
 
 
