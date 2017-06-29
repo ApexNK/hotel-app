@@ -6,5 +6,6 @@ export interface KeyInfo {
   roomPic:string,
   checkInTime: string,
   address: string,
-  leaveTime: string
+  leaveTime: string,
+  codePic: string
 };

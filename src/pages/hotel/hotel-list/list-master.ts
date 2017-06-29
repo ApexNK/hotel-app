@@ -103,11 +103,12 @@ export class ListMasterPage {
   }
 
   openMap() {
+    this.navCtrl.push('ApplyRefundPage');
     /*    this.api.wkHttp({
      servicekey: "mem-0003",
      parameter:{sjhm:"15850591859"}
      }).then( res => {console.info(res)});*/
-    this.navCtrl.push("HotelMapPage");
+    //this.navCtrl.push("HotelMapPage");
     /*    this.confirm.showConfirm({message: '是否跳转到地图页面'}).subscribe(result => {
      if (result === true) {
 

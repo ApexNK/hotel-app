@@ -1,4 +1,4 @@
-import { KeyRoutes } from './key/key-routes';
+
 import { OrderRoutes } from './order/order-routes';
 import { TabsPage } from './tabs/tabs';
 
@@ -20,7 +20,6 @@ export function getRouter (): {links: IonicPageMetadata[]} {
                 component: TabsPage,
                 segment: 'TabsPage'
             },
-            ...KeyRoutes,
             ...OrderRoutes
         ]
     };
