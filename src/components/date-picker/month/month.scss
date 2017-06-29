@@ -22,6 +22,10 @@ month {
     &.old-day {
       color: color($colors, gray);
     }
+    &.in-chosens {
+      background: color($colors, primary);;
+      color: #fff;
+    }
   }
 
 }

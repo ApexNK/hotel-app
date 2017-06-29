@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 /**
  * Generated class for the MonthListComponent component.
@@ -17,6 +17,7 @@ export class MonthListComponent {
   public curYear: number = this.now.getFullYear();
   public curMonth: number = this.now.getMonth() + 1;
   public monthList: { year: number; month: number }[] = [{year: this.curYear, month: this.curMonth}];
+  @Output() onDateSelected = new EventEmitter<string>();
   private readonly PAGE_SIZE = 3;
 
   constructor() {
