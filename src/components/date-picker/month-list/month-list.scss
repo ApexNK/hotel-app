@@ -10,6 +10,11 @@ month-list {
     flex-wrap: wrap;
     flex-direction: row;
   }
+  .fixed-header {
+    position: fixed;
+    left: 0; right: 0;
+    top: 0;
+  }
   .week-day-item{
     height: 28px;
     line-height: 28px;
@@ -17,5 +22,8 @@ month-list {
     flex:0 0 14.2857%;
     width: 14.2857%;
     max-width: 14.2857%;;
+  }
+  ion-content{
+    margin-top: 28px;
   }
 }

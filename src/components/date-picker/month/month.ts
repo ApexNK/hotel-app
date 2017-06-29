@@ -17,7 +17,8 @@ export class MonthComponent implements OnChanges {
     isStart: boolean,
     text: number,
     isInChosenList: boolean,
-    isEnd: boolean
+    isEnd: boolean,
+    isOldDay: boolean
   } [] = [];
   public spaceList = [];
 
@@ -42,12 +43,17 @@ export class MonthComponent implements OnChanges {
   private getDayList(year, month): any[] {
     const dayList = [];
     const dayLength = new Date(year, month, 0).getDate();
+    const now = new Date();
+    const today = now.getDate();
+    const curYear = now.getFullYear();
+    const curMonth = now.getMonth() + 1;
     for (let i = 1; i <= dayLength; i++) {
       dayList.push({
         isStart: false,
         text: i,
         isInChosenList: false,
-        isEnd: false
+        isEnd: false,
+        isOldDay: i < today && year <= curYear && month <= curMonth
       })
     }
     return dayList;

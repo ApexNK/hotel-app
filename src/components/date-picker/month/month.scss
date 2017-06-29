@@ -17,6 +17,11 @@ month {
     text-align: center;
     flex:0 0 14.2857%;
     width: 14.2857%;
-    max-width: 14.2857%;;
+    max-width: 14.2857%;
+
+    &.old-day {
+      color: color($colors, gray);
+    }
   }
+
 }

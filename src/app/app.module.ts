@@ -18,7 +18,7 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
 import {Geolocation} from '@ionic-native/geolocation';
 import { Alipay } from '@ionic-native/alipay';
-
+import {DatePickerModule} from '../components/date-picker/date-picker.module';
 // localstorage
 import {LocalUserInfo} from '../LocalDatas/index';
 
@@ -40,9 +40,7 @@ import {ListMasterPage} from '../pages/hotel/hotel-list/list-master';
 import {OrderListPage} from '../pages/order/order-list/order-list'
 import {UserCenterPage} from '../pages/user/user-center/user-center';
 
-//import { PaySuccessComponent } from "../components/pay-success/pay-success";
-import {MonthComponentModule} from '../components/month/month.module';
-import {MonthListComponentModule} from '../components/month-list/month-list.module';
+
 export function provideSettings(storage: Storage) {
   /**
    * The Settings provider takes a set of default user-center for your app.
@@ -134,8 +132,7 @@ export function providers() {
     PipeModule,
     IonicModule.forRoot(MyApp, APP_CONFIG),
     IonicStorageModule.forRoot(),
-    // MonthComponentModule,
-    MonthListComponentModule
+    DatePickerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: entryComponents(),
