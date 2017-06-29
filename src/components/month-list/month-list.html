@@ -1,0 +1,17 @@
+<ion-content>
+  <div class="week-days day-row">
+    <div class="week-day-item" *ngFor="let day of weekDays">{{day}}</div>
+  </div>
+  <ion-list no-padding>
+    <ion-item *ngFor="let month of monthList" no-padding>
+      <month [year]="month.year" [month]="month.month"></month>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll  (ionInfinite)="$event.waitFor(loadFutureMonths($event))">
+    <ion-infinite-scroll-content
+
+      loadingSpinner="bubbles"
+      loadingText="加载中......">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -41,7 +41,8 @@ import {OrderListPage} from '../pages/order/order-list/order-list'
 import {UserCenterPage} from '../pages/user/user-center/user-center';
 
 //import { PaySuccessComponent } from "../components/pay-success/pay-success";
-
+import {MonthComponentModule} from '../components/month/month.module';
+import {MonthListComponentModule} from '../components/month-list/month-list.module';
 export function provideSettings(storage: Storage) {
   /**
    * The Settings provider takes a set of default user-center for your app.
@@ -132,7 +133,9 @@ export function providers() {
     ComponentModule,
     PipeModule,
     IonicModule.forRoot(MyApp, APP_CONFIG),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    // MonthComponentModule,
+    MonthListComponentModule
   ],
   bootstrap: [IonicApp],
   entryComponents: entryComponents(),

@@ -1,0 +1,6 @@
+<!-- Generated template for the MonthComponent component -->
+<div class="month-title">{{year}}年{{month}}月</div>
+<div class="day-container">
+  <div class="day-item" *ngFor="let space of spaceList"></div>
+  <div class="day-item" *ngFor="let day of dayList">{{day.text}}</div>
+</div>
