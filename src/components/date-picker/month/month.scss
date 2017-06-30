@@ -20,7 +20,7 @@ month {
     max-width: 14.2857%;
 
     &.old-day {
-      color: color($colors, gray);
+      color: #ccc;
     }
     &.in-chosens {
       background: color($colors, primary);;

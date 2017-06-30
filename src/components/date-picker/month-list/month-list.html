@@ -6,7 +6,7 @@
 
   <ion-list no-padding>
     <ion-item *ngFor="let month of monthList" no-padding>
-      <month [year]="month.year" [month]="month.month"></month>
+      <month [curDate]="curDate" [year]="month.year" [month]="month.month"></month>
     </ion-item>
   </ion-list>
   <ion-infinite-scroll  (ionInfinite)="$event.waitFor(loadFutureMonths($event))">

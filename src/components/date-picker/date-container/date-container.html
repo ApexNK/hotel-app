@@ -1,9 +1,9 @@
 <ion-header>
-  <button (click)="hide()" ion-button class="close" clear  >关闭</button>
+  <button (click)="hide()" ion-button class="close" clear>关闭</button>
   <ion-navbar>
 
     <ion-title text-center>请选择日期</ion-title>
   </ion-navbar>
 
 </ion-header>
-<month-list></month-list>
+<month-list [curDate]='curDate'></month-list>
