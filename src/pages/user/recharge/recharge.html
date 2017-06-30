@@ -37,7 +37,21 @@
       <div class="radio-group-header" text-center>
         支付方式
       </div>
-      <ion-item>
+      <ion-item class="radio-item">
+        <ion-thumbnail item-start>
+          <img src="./assets/img/alipay.png">
+        </ion-thumbnail>
+        <ion-label>支付宝</ion-label>
+        <ion-radio checked="true" value="aliPay"></ion-radio>
+      </ion-item>
+      <ion-item class="radio-item">
+        <ion-thumbnail item-start>
+          <img src="./assets/img/wechat.png">
+        </ion-thumbnail>
+        <ion-label>微信</ion-label>
+        <ion-radio value="wechat"></ion-radio>
+      </ion-item>
+<!--      <ion-item>
         <ion-label>支付宝</ion-label>
         <ion-radio checked="true" value="aliPay"></ion-radio>
       </ion-item>
@@ -45,7 +59,7 @@
       <ion-item>
         <ion-label>微信</ion-label>
         <ion-radio value="wechat"></ion-radio>
-      </ion-item>
+      </ion-item>-->
 
 
     </ion-list>

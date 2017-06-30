@@ -34,4 +34,16 @@ recharge {
   .list-md .item-block .item-inner{
     border-bottom: 1px solid #dedede !important;
   }
+  ion-item.item-block {
+    ion-thumbnail {
+      min-width: 40px;
+      height: 40px;
+      margin: 0;
+      min-height: 40px;
+      ion-img,img{
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
 }
