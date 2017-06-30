@@ -12,6 +12,7 @@ import { Events } from 'ionic-angular';
   templateUrl: 'month.html'
 })
 export class MonthComponent implements OnChanges, OnInit {
+  @Input() curDate:string;
   @Input() year: number = new Date().getFullYear();
   @Input() month: number = new Date().getMonth() + 1;
   public dayList: {
@@ -72,6 +73,10 @@ export class MonthComponent implements OnChanges, OnInit {
   private createDays() {
     this.spaceList = this.getSpaceList(this.year, this.month);
     this.dayList = this.getDayList(this.year, this.month);
+    if (this.curDate) {
+      this.setChoseDate(this.curDate)
+    }
+
   }
 
   private getDayList(year, month): any[] {
@@ -92,7 +97,15 @@ export class MonthComponent implements OnChanges, OnInit {
     }
     return dayList;
   }
-
+  public setChoseDate (inputDate) {
+    const dateArr = inputDate.split('-');
+    const year = Number(dateArr[0]);
+    const month = Number(dateArr[1]);
+    const date = Number(dateArr[2]);
+    if (this.year === year && this.month === month) {
+      this.dayList[date - 1].isInChosenList = true;
+    }
+  }
   private getSpaceList(year, month) {
     const spaceLen = new Date(year, month - 1, 1).getDay();
     const spaces = [];

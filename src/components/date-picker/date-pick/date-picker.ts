@@ -14,10 +14,10 @@ import { Events } from 'ionic-angular';
 })
 export class DatePickerComponent implements OnDestroy, OnInit{
 
-  @Input() date = WkDate.getToday();
+  @Input() curDate = WkDate.getToday();
   // @Output() ngModel = new EventEmitter<string>()
   @Output() onDateChange = new EventEmitter<string>();
-  public curDate =  WkDate.getToday();
+  // public curDate =  WkDate.getToday();
   constructor(private modal: DatePickModal, private ev: Events) {
 
   }
@@ -28,7 +28,7 @@ export class DatePickerComponent implements OnDestroy, OnInit{
     this.ev.unsubscribe('onDateSelected', this.dateChangeHandle);
   }
   public click () {
-    this.modal.show();
+    this.modal.show({curDate: this.curDate})
   }
   private listenDateChange () {
     this.ev.subscribe('onDateSelected', this.dateChangeHandle)
