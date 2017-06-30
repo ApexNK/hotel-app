@@ -22,6 +22,7 @@ export class BalanceDetailPage {
   public detailList = [];
   private api: any;
   public curListPage = 1;
+  private pageSize = 10;
   constructor(public navCtrl: NavController, public navParams: NavParams,@Inject('ApiService') api) {
     this.api = api;
   }
@@ -34,21 +35,41 @@ export class BalanceDetailPage {
   public getDetailList() {
      let param = {
        pageNum: this.curListPage,
-       pageSize: 100
+       pageSize: this.pageSize
      };
-     this.api.httpByUser(ACCOUNT_DETAIL,param)
+     return this.api.httpByUser(ACCOUNT_DETAIL,param)
       .then((res) => {
         try {
           let details = res.datas;
           if (details.length) {
             this.detailList = [...this.detailList, ...details];
-            this.curListPage++;
+          }
+          if(details.length < this.pageSize){
+            return true;//已经没有数据可以加载了
+          }else{
+            return false;
           }
         } catch(err) {
+          return false;
         }
       },err => {
        console.info(err);
       });
   }
 
+  public doInfinite(infiniteScroll:any): Promise<any> {
+    console.log('doInfinite, start is currently '+ this.curListPage);
+    this.curListPage++;
+    return new Promise((resolve,reject) => {
+      this.getDetailList().then( res => {
+        if(res){
+          console.log('Async operation has ended');
+          resolve();
+          infiniteScroll.enable(false);
+        }else{
+          reject();
+        }
+      });
+    })
+  }
 }
