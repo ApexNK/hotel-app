@@ -45,6 +45,10 @@ export class KeyItemComponent {
     this.getKeys();
   }
 
+  public updateKey() {
+    this.getKeys();
+  }
+
   private getKeys() {
     this.api.httpByUser(KEY_LIST,{}).then( res => {
       try{
@@ -66,5 +70,6 @@ export class KeyItemComponent {
       console.info(err);
     })
   }
+
 
 }
