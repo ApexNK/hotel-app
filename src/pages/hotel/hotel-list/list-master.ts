@@ -114,6 +114,15 @@ export class ListMasterPage {
 
      }
      });*/
+
+/*    Wechat.share({
+      text: "This is just a plain string",
+      scene: Wechat.Scene.TIMELINE   // share to Timeline
+    }, function () {
+      alert("Success");
+    }, function (reason) {
+      alert("Failed: " + reason);
+    });*/
   }
 
 

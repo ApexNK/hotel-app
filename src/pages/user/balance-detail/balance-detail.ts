@@ -18,7 +18,7 @@ import { ACCOUNT_DETAIL } from '../../../providers/API_MARCO'
   templateUrl: 'balance-detail.html',
 })
 export class BalanceDetailPage {
-  public detailMsg = {1:'订房支出',2:'损坏罚款',3:'充值',4:'退款'};
+  public detailMsg = {1:'订房支出',2:'余额',3:'押金'};
   public detailList = [];
   private api: any;
   public curListPage = 1;

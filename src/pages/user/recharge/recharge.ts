@@ -46,11 +46,22 @@ export class RechargePage {
       zffs: PAY_WAY.ZHI_FU_BAO,
 
     };
+    if (this.payWay === 'wechat'){
+      param.zffs = PAY_WAY.WEI_XIN;
+    }
+    if ( this.isRefund ){
+      param.czlx = RECHARGE_TYPE.YA_JIN;
+    }
     try {
       this.api.httpByUser(RECHARGE,param).then( data => {
         console.info(data.orderInfo);
-        if (data.orderInfo){
+        if (!data.orderInfo){
+            return;
+        }
+        if(param.zffs === PAY_WAY.ZHI_FU_BAO){
           this.requestForAliPay(data.orderInfo);
+        }else{
+          this.requestForWechat();
         }
       })
     } catch (err){
@@ -83,6 +94,22 @@ export class RechargePage {
         console.log(error); // Failed
         // go to pay failed page
       });
+  }
+
+  private requestForWechat () {
+    let params = {
+      partnerid: '10000100', // merchant id
+      prepayid: 'wx201411101639507cbf6ffd8b0779950874', // prepay id
+      noncestr: '1add1a30ac87aa2db72f57a2375d8fec', // nonce
+      timestamp: '1439531364', // timestamp
+      sign: '0CB01533B8C1EF103065174F50BCA001', // signed string
+    };
+    console.info(Wechat);
+    Wechat.sendPaymentRequest(params, function () {
+     alert("Success");
+     }, function (reason) {
+     alert("Failed: " + reason);
+     });
   }
 
 }

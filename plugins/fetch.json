@@ -100,5 +100,15 @@
         "variables": {
             "ALI_PID": "2017062007526289"
         }
+    },
+    "cordova-plugin-wechat": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-wechat"
+        },
+        "is_top_level": true,
+        "variables": {
+            "WECHATAPPID": "wxd91cddb380fc83f0"
+        }
     }
 }

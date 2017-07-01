@@ -33,6 +33,10 @@
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.woke.app"
         },
+        "cordova-plugin-wechat": {
+            "WECHATAPPID": "wxd91cddb380fc83f0",
+            "PACKAGE_NAME": "com.woke.app"
+        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.woke.app"
         },
