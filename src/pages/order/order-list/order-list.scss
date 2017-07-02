@@ -13,7 +13,9 @@ order-list {
   }
   ion-item-group {
     color: #999;
-
+    .label-md {
+      margin: 5px 8px 5px 0;
+    }
     i.iconfont{
       color: #b2b2b2;
       font-size: 13px;
