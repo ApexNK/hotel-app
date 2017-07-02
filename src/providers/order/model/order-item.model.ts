@@ -2,7 +2,7 @@ export interface OrderItem {
   ddbh: string; //订单标号
   gymc: string; //公寓名称
   gydz; string; // 公寓地址
-  fjhb: string; // 房间编号
+  fjbh: string; // 房间编号
   sslc:number // 所属楼层
   ddje:number // 订单金额
   rzkssj:string ;// 入住开始时间
