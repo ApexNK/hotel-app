@@ -40,32 +40,42 @@
   <ion-grid no-padding>
     <ion-row class="data-picker-box">
       <ion-col class="has-border-right">
-        <ion-list>
-          <ion-item class="data-picker-item " text-right>
-            <ion-label ><span class="primary">入住</span></ion-label>
-            <ion-datetime
-                [cancelText]="'取消'" [doneText]="'确定'"
-                no-padding
-                displayFormat="YYYY-MM-DD"
-                pickerFormat="YYYY-MM-DD"
-                (ionChange)="getDays()"
-                [min]="today"
-                [(ngModel)]="startDate">
-                </ion-datetime>
-          </ion-item>
-          <ion-item  class="data-picker-item " text-right>
-            <ion-label class="primary" ><span class="primary">离开</span></ion-label>
-            <ion-datetime
-                 [cancelText]="'取消'" [doneText]="'确定'"
-                no-padding
-                [min]="startDate"
-                 (ionChange)="getDays()"
-                displayFormat="YYYY-MM-DD"
-                pickerFormat="YYYY-MM-DD"
-                [(ngModel)]="endDate">
-                </ion-datetime>
-          </ion-item>
-        </ion-list>
+        <div>
+          <div text-right class="date-item">
+            <span class="primary">入住</span>&ensp;&ensp;
+            <date-picker  (onDateChange)="beginDateChange($event)" [(curDate)]="startDate"></date-picker>
+          </div>
+          <div text-right class="date-item">
+            <span class="primary">离开</span>&ensp;&ensp;
+            <date-picker  (onDateChange)="endDateChange($event)" [(curDate)]="endDate"></date-picker>
+          </div>
+
+          <!--<ion-item class="data-picker-item " text-right>-->
+            <!--<ion-label ><span class="primary">入住</span></ion-label>-->
+            <!--<date-picker (onDateChange)="getDays()" ></date-picker>-->
+            <!--&lt;!&ndash;<ion-datetime&ndash;&gt;-->
+                <!--&lt;!&ndash;[cancelText]="'取消'" [doneText]="'确定'"&ndash;&gt;-->
+                <!--&lt;!&ndash;no-padding&ndash;&gt;-->
+                <!--&lt;!&ndash;displayFormat="YYYY-MM-DD"&ndash;&gt;-->
+                <!--&lt;!&ndash;pickerFormat="YYYY-MM-DD"&ndash;&gt;-->
+                <!--&lt;!&ndash;(ionChange)="getDays()"&ndash;&gt;-->
+                <!--&lt;!&ndash;[min]="today"&ndash;&gt;-->
+                <!--&lt;!&ndash;[(ngModel)]="startDate">&ndash;&gt;-->
+                <!--&lt;!&ndash;</ion-datetime>&ndash;&gt;-->
+          <!--</ion-item>-->
+          <!--<ion-item  class="data-picker-item " text-right>-->
+            <!--<ion-label class="primary" ><span class="primary">离开</span></ion-label>-->
+            <!--<ion-datetime-->
+                 <!--[cancelText]="'取消'" [doneText]="'确定'"-->
+                <!--no-padding-->
+                <!--[min]="startDate"-->
+                 <!--(ionChange)="getDays()"-->
+                <!--displayFormat="YYYY-MM-DD"-->
+                <!--pickerFormat="YYYY-MM-DD"-->
+                <!--[(ngModel)]="endDate">-->
+                <!--</ion-datetime>-->
+          <!--</ion-item>-->
+        </div>
       </ion-col>
       <ion-col>
         <ion-row>
@@ -126,5 +136,6 @@
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>
-<!--<date-picker></date-picker>-->
+
 <!--<date-container></date-container>-->
+<!--<date-picker (onDateChange)="getDays()" ></date-picker>-->

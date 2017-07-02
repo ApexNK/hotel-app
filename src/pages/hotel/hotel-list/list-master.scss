@@ -83,6 +83,13 @@ page-list-master {
       width: 140px;
       line-height: 14px !important;
     }
+    .date-item {
+      padding-right: 28px;
+      date-picker{
+        line-height: 34px;
+        background: transparent;
+      }
+    }
     .flex-col {
         text-align: center;
         height: 100%;

@@ -87,6 +87,14 @@ export class ListMasterPage {
     this.curKeyWord = this.queryKeyWord;
     this.curAreaCode = this.areaCode;
   }
+  public beginDateChange (beginDate) {
+    this.startDate = beginDate;
+    this.getDays();
+  }
+  public endDateChange (endDate) {
+    this.endDate = endDate;
+    this.getDays();
+  }
   public getDays () {
     this.days = WkDate.getDays(new Date(this.endDate), new Date(this.startDate));
   }

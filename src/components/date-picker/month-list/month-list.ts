@@ -13,11 +13,12 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class MonthListComponent {
 
   public now = new Date();
-  public weekDays = ['日', '一', '二', '三', '四', '五', '六'];
+
   public curYear: number = this.now.getFullYear();
   public curMonth: number = this.now.getMonth() + 1;
   public monthList: { year: number; month: number }[] = [{year: this.curYear, month: this.curMonth}];
   @Input() curDate:string;
+  @Input() uuid:string;
   @Output() onDateSelected = new EventEmitter<string>();
   private readonly PAGE_SIZE = 3;
 

@@ -1,12 +1,10 @@
-<!--<div class="week-days day-row fixed-header">-->
-  <!--<div class="week-day-item" *ngFor="let day of weekDays">{{day}}</div>-->
-<!--</div>-->
+
 
 <ion-content class="has-header">
 
   <ion-list no-padding>
     <ion-item *ngFor="let month of monthList" no-padding>
-      <month [curDate]="curDate" [year]="month.year" [month]="month.month"></month>
+      <month [uuid]="uuid" [curDate]="curDate" [year]="month.year" [month]="month.month"></month>
     </ion-item>
   </ion-list>
   <ion-infinite-scroll  (ionInfinite)="$event.waitFor(loadFutureMonths($event))">

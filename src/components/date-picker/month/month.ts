@@ -15,6 +15,7 @@ export class MonthComponent implements OnChanges, OnInit {
   @Input() curDate:string;
   @Input() year: number = new Date().getFullYear();
   @Input() month: number = new Date().getMonth() + 1;
+  @Input() uuid:string;
   public dayList: {
     isStart: boolean,
     text: number,
@@ -53,11 +54,11 @@ export class MonthComponent implements OnChanges, OnInit {
 
       const chosenDate = new Date(this.year,this.month - 1, date);
       clickedDay.isInChosenList = true;
-      this.ev.publish('onDateSelected', WkDate.toStringDate(chosenDate))
+      this.ev.publish('onDateSelected'+ this.uuid, WkDate.toStringDate(chosenDate))
     }
   };
   private removeActiveClassByOldChosenDate () {
-    this.ev.subscribe('removeOldActiveClassByOldDate', date => {
+    this.ev.subscribe('removeOldActiveClassByOldDate'+ this.uuid, date => {
       const dateArr = date.split('-');
       const oldChosenYear = Number(dateArr[0]);
       const oldChosenMonth = Number(dateArr[1]);

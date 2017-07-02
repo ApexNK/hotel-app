@@ -1,9 +1,18 @@
 <ion-header>
   <button (click)="hide()" ion-button class="close" clear>关闭</button>
   <ion-navbar>
-
     <ion-title text-center>请选择日期</ion-title>
   </ion-navbar>
-
 </ion-header>
-<month-list [curDate]='curDate'></month-list>
+<div class="week-days day-row fixed-header">
+  <div class="week-day-item">日</div>
+
+  <div class="week-day-item">一</div>
+  <div class="week-day-item">二</div>
+  <div class="week-day-item">三</div>
+  <div class="week-day-item">四</div>
+  <div class="week-day-item">五</div>
+  <div class="week-day-item">六</div>
+
+</div>
+<month-list [curDate]='curDate' [uuid]="uuid"></month-list>
