@@ -3,6 +3,12 @@ import { NavController, NavParams, Events } from 'ionic-angular';
 import { KeyInfo } from './key-item-models';
 import { KEY_LIST } from "../../../providers/API_MARCO"
 
+// DIRECTION_NONE 0,DIRECTION_LEFT 2,DIRECTION_RIGHT 4,DIRECTION_UP 8,DIRECTION_DOWN 16,DIRECTION_HORIZONTAL 6,
+// DIRECTION_VERTICAL 2, DIRECTION_ALL 30
+enum SWIPE {
+  DIRECTION_LEFT = 2,
+  DIRECTION_RIGHT = 4
+};
 /**
  * Generated class for the KeyItemComponent component.
  *
@@ -14,19 +20,10 @@ import { KEY_LIST } from "../../../providers/API_MARCO"
   templateUrl: './key-item.html'
 })
 export class KeyItemComponent {
-
-  public keyInfo: KeyInfo;
   public keyList: KeyInfo[] = [];
   private api: any;
+  public currentKeyIndex:number = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams,private events:Events, @Inject('ApiService') api) {
-    this.keyInfo = {
-      roomName:'',
-      roomPic : '',
-      checkInTime : "",
-      address : "",
-      leaveTime : "",
-      codePic: ''
-    };
     this.api = api;
     events.subscribe('updateKey',()=>{
       this.getKeys();
@@ -41,10 +38,25 @@ export class KeyItemComponent {
   public updateKey() {
     this.getKeys();
   }
+
+  public swipeEvent(event) {
+    console.error(event.direction);
+    if(event.direction === SWIPE.DIRECTION_LEFT){
+      console.info('left');
+      if (this.currentKeyIndex < this.keyList.length - 1){
+        this.currentKeyIndex++;
+      }
+    }
+    if(event.direction === SWIPE.DIRECTION_RIGHT){
+      console.info('right');
+      if( this.currentKeyIndex > 0){
+        this.currentKeyIndex--;
+      }
+    }
+  }
   // fjbh 房间编号, fjkey开锁二维码链接, fkkh房卡编号, gydz公寓地址,gymc公寓名称,rzkssj开始时间,rzjssj结束时间,sslc楼层
 
   private getKeys() {
-    console.info(this.keyList);
     this.api.httpByUser(KEY_LIST,{}).then( res => {
       try{
         if(res.datas.length > 0){
@@ -57,15 +69,11 @@ export class KeyItemComponent {
               codePic: info.fjkey,
               roomPic: './assets/img/timg.jpg'
             };
-/*            keyInfo['roomName'] = info.gymc + ' ' + info.fjbh;
-            keyInfo.address = info.gydz;
-            keyInfo.checkInTime = info.rzkssj+'-'+info.rzjssj;
-            keyInfo.leaveTime = info.rzjssj;
-            keyInfo.codePic = info.fjkey;
-            keyInfo.roomPic = './assets/img/timg.jpg';*/
             this.keyList.push(keyInfo);
           });
-          this.keyInfo = this.keyList[0];
+          if(this.currentKeyIndex > (this.keyList.length - 1)){
+            this.currentKeyIndex = this.keyList.length - 1;
+          }
         }
 
       }catch (err){
