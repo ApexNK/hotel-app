@@ -16,16 +16,9 @@ import { KEY_LIST } from "../../../providers/API_MARCO"
 export class KeyItemComponent {
 
   public keyInfo: KeyInfo;
+  public keyList: KeyInfo[] = [];
   private api: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private events:Events, @Inject('ApiService') api) {
-/*    this.keyInfo = {
-      roomName:'北京华腾美居 1楼103室',
-      roomPic : './assets/img/timg.jpg',
-      checkInTime : "2017-5-10-2017-5-11",
-      address : "西大望路甲16号",
-      leaveTime : "2017-05-11 12:00",
-      codePic: './assets/img/timg.jpg'
-    }; */
     this.keyInfo = {
       roomName:'',
       roomPic : '',
@@ -48,18 +41,31 @@ export class KeyItemComponent {
   public updateKey() {
     this.getKeys();
   }
+  // fjbh 房间编号, fjkey开锁二维码链接, fkkh房卡编号, gydz公寓地址,gymc公寓名称,rzkssj开始时间,rzjssj结束时间,sslc楼层
 
   private getKeys() {
+    console.info(this.keyList);
     this.api.httpByUser(KEY_LIST,{}).then( res => {
       try{
-        if(res.datas){
-          let info = res.datas;
-          this.keyInfo.roomName = info.gymc + ' ' + info.fjbh;
-          this.keyInfo.address = info.gydz;
-          this.keyInfo.checkInTime = info.rzkssj+'-'+info.rzjssj;
-          this.keyInfo.leaveTime = info.rzjssj;
-          this.keyInfo.codePic = info.fjkey;
-          this.keyInfo.roomPic = './assets/img/timg.jpg';
+        if(res.datas.length > 0){
+          res.datas.forEach( info => {
+            let keyInfo: KeyInfo = {
+              roomName: info.gymc + ' ' + info.sslc+'楼'+info.fjbh+'室',
+              address: info.gydz,
+              checkInTime: info.rzkssj.split(' ')[0]+'-'+info.rzjssj.split(' ')[0],
+              leaveTime: info.rzjssj,
+              codePic: info.fjkey,
+              roomPic: './assets/img/timg.jpg'
+            };
+/*            keyInfo['roomName'] = info.gymc + ' ' + info.fjbh;
+            keyInfo.address = info.gydz;
+            keyInfo.checkInTime = info.rzkssj+'-'+info.rzjssj;
+            keyInfo.leaveTime = info.rzjssj;
+            keyInfo.codePic = info.fjkey;
+            keyInfo.roomPic = './assets/img/timg.jpg';*/
+            this.keyList.push(keyInfo);
+          });
+          this.keyInfo = this.keyList[0];
         }
 
       }catch (err){
