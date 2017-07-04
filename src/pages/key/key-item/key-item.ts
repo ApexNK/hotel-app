@@ -2,6 +2,7 @@ import { Component, Inject} from '@angular/core';
 import { NavController, NavParams, Events } from 'ionic-angular';
 import { KeyInfo } from './key-item-models';
 import { KEY_LIST } from "../../../providers/API_MARCO"
+import {DomSanitizer} from '@angular/platform-browser';
 
 // DIRECTION_NONE 0,DIRECTION_LEFT 2,DIRECTION_RIGHT 4,DIRECTION_UP 8,DIRECTION_DOWN 16,DIRECTION_HORIZONTAL 6,
 // DIRECTION_VERTICAL 2, DIRECTION_ALL 30
@@ -23,8 +24,11 @@ export class KeyItemComponent {
   public keyList: KeyInfo[] = [];
   private api: any;
   public currentKeyIndex:number = 0;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private events:Events, @Inject('ApiService') api) {
+  public keyUrl:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private events:Events,
+              private sanitizer: DomSanitizer, @Inject('ApiService') api) {
     this.api = api;
+    this.keyUrl = this.sanitizer.bypassSecurityTrustResourceUrl('http://cz.uclbrt.com/room');//http://url.cn/4BGx1ku
     events.subscribe('updateKey',()=>{
       this.getKeys();
     })
@@ -32,7 +36,7 @@ export class KeyItemComponent {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad keyitem');
-    this.getKeys();
+    //this.getKeys();
   }
 
   public updateKey() {
