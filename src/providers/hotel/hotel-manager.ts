@@ -1,6 +1,6 @@
 import {Injectable, Injector} from '@angular/core';
 import {Api} from '../api';
-import {HOTEL_LIST, HOTEL_DETAIL, ROOM_DETAIL, ORDER_ROOM} from '../API_MARCO';
+import {HOTEL_LIST, HOTEL_DETAIL, ROOM_DETAIL, ORDER_ROOM, AREA_LIST} from '../API_MARCO';
 import {GeoManager} from '../geograph/geo-manager';
 import {WkDate} from '../../util';
 import {HotelDetail, HotelListQuery, RoomDetail} from '../index';
@@ -61,5 +61,13 @@ export class HotelManager {
       .then(res => {
         return Promise.resolve(res.ddbh)
       }).catch(e => Promise.reject(e));
+  }
+
+  public getAreaList(areaCode: string = '0'):Promise<any> {
+    return this.http.httpPost(AREA_LIST).then(res => {
+      return this.http.httpPost(AREA_LIST,{areaCode:res.datas[0].id}).then(res => {
+        return Promise.resolve(res.datas);
+      });
+    });
   }
 }

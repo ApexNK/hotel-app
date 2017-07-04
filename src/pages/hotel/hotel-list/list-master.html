@@ -1,7 +1,7 @@
 <ion-header>
   <ion-grid no-padding>
 
-    <ion-row align-items-center  no-padding>
+    <ion-row align-items-center no-padding>
       <ion-col col-auto>
         <ion-select [(ngModel)]="areaCode" okText="确定" cancelText="取消">
           <ion-option value="120104">北京</ion-option>
@@ -15,7 +15,8 @@
       <ion-col padding-left padding-right>
         <form novalidate class="search-form">
           <ion-icon name="search" margin-left class="search-icon"></ion-icon>
-          <input [(ngModel)]="queryKeyWord" [ngModelOptions]="{standalone: true}" type="text" class="search-input" placeholder="输入房间,位置,价格">
+          <input [(ngModel)]="queryKeyWord" [ngModelOptions]="{standalone: true}" type="text" class="search-input"
+                 placeholder="输入房间,位置,价格">
         </form>
       </ion-col>
       <ion-col col-auto>
@@ -23,18 +24,19 @@
           <span class="iconfont icon-map" style="font-size: 24px;"></span>
           <!--<ion-icon name="pin"></ion-icon>-->
         </button>
-     </ion-col>
+      </ion-col>
     </ion-row>
   </ion-grid>
 
 </ion-header>
 
 <ion-content>
-  <div class="banner" [ngClass]="{'close': !isBannerOpening}" [style.background-image]="'url(./assets/img/banner2.png)'">
+  <div class="banner" [ngClass]="{'close': !isBannerOpening}"
+       [style.background-image]="'url(./assets/img/banner2.png)'">
     <div class="trapezoid"></div>
     <div class="banner-text" (click)="toggleBanner()">
       <i class="iconfont icon-slide-down" [hidden]="isBannerOpening"></i>
-      <i class="icon iconfont icon-up"  [hidden]="!isBannerOpening"></i>
+      <i class="icon iconfont icon-up" [hidden]="!isBannerOpening"></i>
     </div>
   </div>
   <ion-grid no-padding>
@@ -43,37 +45,37 @@
         <div>
           <div text-right class="date-item">
             <span class="primary">入住</span>&ensp;&ensp;
-            <date-picker  (onDateChange)="beginDateChange($event)" [(curDate)]="startDate"></date-picker>
+            <date-picker (onDateChange)="beginDateChange($event)" [(curDate)]="startDate"></date-picker>
           </div>
           <div text-right class="date-item">
             <span class="primary">离开</span>&ensp;&ensp;
-            <date-picker  (onDateChange)="endDateChange($event)" [(curDate)]="endDate"></date-picker>
+            <date-picker (onDateChange)="endDateChange($event)" [(curDate)]="endDate"></date-picker>
           </div>
 
           <!--<ion-item class="data-picker-item " text-right>-->
-            <!--<ion-label ><span class="primary">入住</span></ion-label>-->
-            <!--<date-picker (onDateChange)="getDays()" ></date-picker>-->
-            <!--&lt;!&ndash;<ion-datetime&ndash;&gt;-->
-                <!--&lt;!&ndash;[cancelText]="'取消'" [doneText]="'确定'"&ndash;&gt;-->
-                <!--&lt;!&ndash;no-padding&ndash;&gt;-->
-                <!--&lt;!&ndash;displayFormat="YYYY-MM-DD"&ndash;&gt;-->
-                <!--&lt;!&ndash;pickerFormat="YYYY-MM-DD"&ndash;&gt;-->
-                <!--&lt;!&ndash;(ionChange)="getDays()"&ndash;&gt;-->
-                <!--&lt;!&ndash;[min]="today"&ndash;&gt;-->
-                <!--&lt;!&ndash;[(ngModel)]="startDate">&ndash;&gt;-->
-                <!--&lt;!&ndash;</ion-datetime>&ndash;&gt;-->
+          <!--<ion-label ><span class="primary">入住</span></ion-label>-->
+          <!--<date-picker (onDateChange)="getDays()" ></date-picker>-->
+          <!--&lt;!&ndash;<ion-datetime&ndash;&gt;-->
+          <!--&lt;!&ndash;[cancelText]="'取消'" [doneText]="'确定'"&ndash;&gt;-->
+          <!--&lt;!&ndash;no-padding&ndash;&gt;-->
+          <!--&lt;!&ndash;displayFormat="YYYY-MM-DD"&ndash;&gt;-->
+          <!--&lt;!&ndash;pickerFormat="YYYY-MM-DD"&ndash;&gt;-->
+          <!--&lt;!&ndash;(ionChange)="getDays()"&ndash;&gt;-->
+          <!--&lt;!&ndash;[min]="today"&ndash;&gt;-->
+          <!--&lt;!&ndash;[(ngModel)]="startDate">&ndash;&gt;-->
+          <!--&lt;!&ndash;</ion-datetime>&ndash;&gt;-->
           <!--</ion-item>-->
           <!--<ion-item  class="data-picker-item " text-right>-->
-            <!--<ion-label class="primary" ><span class="primary">离开</span></ion-label>-->
-            <!--<ion-datetime-->
-                 <!--[cancelText]="'取消'" [doneText]="'确定'"-->
-                <!--no-padding-->
-                <!--[min]="startDate"-->
-                 <!--(ionChange)="getDays()"-->
-                <!--displayFormat="YYYY-MM-DD"-->
-                <!--pickerFormat="YYYY-MM-DD"-->
-                <!--[(ngModel)]="endDate">-->
-                <!--</ion-datetime>-->
+          <!--<ion-label class="primary" ><span class="primary">离开</span></ion-label>-->
+          <!--<ion-datetime-->
+          <!--[cancelText]="'取消'" [doneText]="'确定'"-->
+          <!--no-padding-->
+          <!--[min]="startDate"-->
+          <!--(ionChange)="getDays()"-->
+          <!--displayFormat="YYYY-MM-DD"-->
+          <!--pickerFormat="YYYY-MM-DD"-->
+          <!--[(ngModel)]="endDate">-->
+          <!--</ion-datetime>-->
           <!--</ion-item>-->
         </div>
       </ion-col>
@@ -82,7 +84,8 @@
           <ion-col text-center align-self-center>住{{days}}晚</ion-col>
           <ion-col>
             <button type="button" (tap)="searchHotel()" ion-button text-center class="search-btn">
-              <ion-icon name="search"></ion-icon><br/>搜索
+              <ion-icon name="search"></ion-icon>
+              <br/>搜索
             </button>
           </ion-col>
         </ion-row>
@@ -92,10 +95,15 @@
 
   <ion-grid class="segment-bar">
     <ion-row>
-      <ion-col  text-center align-self-center ion-button color="dark" clear>
-        全程&ensp;&ensp;<ion-icon name="arrow-dropdown"></ion-icon>
+      <ion-col text-center align-self-center ion-button color="dark" clear>
+        <ion-item>
+          <ion-label>全城</ion-label>
+          <ion-select [(ngModel)]="areaList" interface="popover">
+            <ion-option *ngFor="let area of areaList;" value="area.id">{{area.text}}</ion-option>
+          </ion-select>
+        </ion-item>
       </ion-col>
-      <ion-col  text-center align-self-center ion-button color="dark" clear>
+      <ion-col text-center align-self-center ion-button color="dark" clear>
         距离&ensp;&ensp;<ion-icon name="arrow-dropdown"></ion-icon>
       </ion-col>
       <ion-col text-center align-self-center ion-button color="dark" clear>
@@ -112,8 +120,9 @@
       </ion-thumbnail>
       <ion-grid no-padding>
         <ion-row class="title">
-          <ion-col><h2  text-nowrap>{{item.gymc}}</h2></ion-col>
-          <ion-col col-auto text-right><span class="money">￥<span class="money-num">{{item.minPrice}}</span></span> 起</ion-col>
+          <ion-col><h2 text-nowrap>{{item.gymc}}</h2></ion-col>
+          <ion-col col-auto text-right><span class="money">￥<span class="money-num">{{item.minPrice}}</span></span> 起
+          </ion-col>
         </ion-row>
         <ion-row class="title">
           <ion-col text-nowrap><p>{{item.gydz}}</p></ion-col>

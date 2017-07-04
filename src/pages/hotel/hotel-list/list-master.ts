@@ -10,6 +10,7 @@ import {ShowConfirmProvider, HotelManager, ShowLoadingProvider, HotelItem} from 
 })
 export class ListMasterPage {
   public areaCode = '120104';
+  public areaList;
   public today = WkDate.getToday();
   public startDate = WkDate.getToday();
   public endDate = WkDate.getTomorrow();
@@ -24,6 +25,7 @@ export class ListMasterPage {
   private curEndDate: string;
   private curKeyWord = '';
   private curAreaCode = '120104';
+
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController,
               public loading: ShowLoadingProvider,
@@ -39,13 +41,15 @@ export class ListMasterPage {
    */
   ionViewDidLoad() {
     this.searchHotel();
+    this.getAreaList();
     // this.getHotelList();
   }
 
   public getHotelList($event?) {
     return this.hotelManger
       .getHotelList(
-        {pageNo: this.curHotelListPage,
+        {
+          pageNo: this.curHotelListPage,
           beginDate: this.curStartDate,
           endDate: this.curEndDate,
           queryString: this.curKeyWord
@@ -56,14 +60,14 @@ export class ListMasterPage {
           let hotels = res.list.flats;
           let count = res.list.count;
           if (hotels.length) {
-           this.hotelList = [...this.hotelList, ...hotels];
-           this.curHotelListPage++;
-           }
-           if (this.hotelList.length >= count) {
-           this.notLoadOver = false;
-           }
+            this.hotelList = [...this.hotelList, ...hotels];
+            this.curHotelListPage++;
+          }
+          if (this.hotelList.length >= count) {
+            this.notLoadOver = false;
+          }
           return Promise.resolve(true);
-        } catch(err) {
+        } catch (err) {
           return Promise.reject(err);
         }
       });
@@ -77,7 +81,8 @@ export class ListMasterPage {
     this.resetQuery();
     this.getHotelList();
   }
-  private resetQuery () {
+
+  private resetQuery() {
 
     this.hotelList = [];
     this.curStartDate = this.startDate;
@@ -87,15 +92,18 @@ export class ListMasterPage {
     this.curKeyWord = this.queryKeyWord;
     this.curAreaCode = this.areaCode;
   }
-  public beginDateChange (beginDate) {
+
+  public beginDateChange(beginDate) {
     this.startDate = beginDate;
     this.getDays();
   }
-  public endDateChange (endDate) {
+
+  public endDateChange(endDate) {
     this.endDate = endDate;
     this.getDays();
   }
-  public getDays () {
+
+  public getDays() {
     this.days = WkDate.getDays(new Date(this.endDate), new Date(this.startDate));
   }
 
@@ -123,15 +131,16 @@ export class ListMasterPage {
      }
      });*/
 
-/*    Wechat.share({
-      text: "This is just a plain string",
-      scene: Wechat.Scene.TIMELINE   // share to Timeline
-    }, function () {
-      alert("Success");
-    }, function (reason) {
-      alert("Failed: " + reason);
-    });*/
+    /*    Wechat.share({
+     text: "This is just a plain string",
+     scene: Wechat.Scene.TIMELINE   // share to Timeline
+     }, function () {
+     alert("Success");
+     }, function (reason) {
+     alert("Failed: " + reason);
+     });*/
   }
-
-
+  private async getAreaList() {
+    this.areaList = await this.hotelManger.getAreaList();
+}
 }
