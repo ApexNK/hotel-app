@@ -1,4 +1,4 @@
-<ion-header>
+<!--<ion-header>
 
   <ion-navbar>
     <ion-grid>
@@ -12,8 +12,8 @@
 
   </ion-navbar>
 
-</ion-header>
-<ion-content padding>
+</ion-header>-->
+<!--<ion-content padding>
   <div *ngFor="let keyInfo of keyList; index as i;">
     <div class="sub-content" padding (swipe)="swipeEvent($event)" *ngIf="i===currentKeyIndex">
       <div class="room-name" text-center text-nowrap>
@@ -40,4 +40,9 @@
       <scale-item [src]="keyInfo.codePic"></scale-item>
     </div>
   </div>
+</ion-content>-->
+<ion-content scroll="true" overflow-scroll="true">
+  <iframe data-tap-disabled="true" style="height:100%;width:100%;"  sandbox="allow-scripts allow-top-navigation allow-pointer-lock allow-same-origin allow-popups allow-forms"
+          [src]="keyUrl">
+  </iframe>
 </ion-content>
