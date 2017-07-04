@@ -52,24 +52,29 @@ export class HotelMapPage {
      }).catch((error) => {
      console.info('error:'+ error.toString());
      });*/
-    /*    if (baidu_location) {
-     baidu_location.getCurrentPosition(function (result) {
-     console.log(JSON.stringify(result, null, 4));
-     console.info(result);
-     let long = result.lontitude;
-     let lati = result.latitude;
-     console.info('long:' + long);
-     map.createMapByCoordinate(long,lati);
-     map.customMark(long,lati,"¥162起 | 32套");
+    map.getCurrentCity();
+    try {
+      if (baidu_location) {
+        baidu_location.getCurrentPosition(function (result) {
+          console.log(JSON.stringify(result, null, 4));
+          console.info(result);
+          let long = result.lontitude;
+          let lati = result.latitude;
+          console.info('long:' + long);
+          map.createMapByCoordinate(long,lati);
+          map.customMark(long,lati,"¥162起 | 32套");
 
-     }, function (error) {
-     });
-     }else{
-     map.createMapByCity("北京");
-     map.markLocation();
-     }*/
-    map.createMapByCity("北京");
-    map.markLocation();
+        }, function (error) {
+        });
+      }else{
+        map.createMapByCity("北京");
+        map.markLocation();
+      }
+    }catch (err) {
+      map.createMapByCity("北京");
+      map.markLocation();
+    }
+
   }
 
   getCurrentPosition() {

@@ -25,6 +25,7 @@ export class ListMasterPage {
   private curEndDate: string;
   private curKeyWord = '';
   private curAreaCode = '120104';
+  public showHeader = true;
 
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController,
@@ -43,6 +44,14 @@ export class ListMasterPage {
     this.searchHotel();
     this.getAreaList();
     // this.getHotelList();
+  }
+
+  ionViewWillLeave() {
+    this.showHeader = false;
+  }
+
+  ionViewWillEnter () {
+    this.showHeader = true;
   }
 
   public getHotelList($event?) {

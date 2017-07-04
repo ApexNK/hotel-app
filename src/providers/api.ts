@@ -30,13 +30,7 @@ export class Api {
     // Set the order-list field if we have params and don't already have
     // a order-list field set in options.
     options.search = !options.search && p || options.search;
-    return this.http.get(this.url, options).map( res => res.json()).toPromise()
-      .then(
-        this.successHandle,
-        () => {}
-      ).catch(
-        this.failedHandle
-      );
+    return this.http.get(api, options).map( res => res.json()).toPromise();
   }
 
   // post(api: string, body = {}, options?: RequestOptions) {

@@ -13,3 +13,4 @@
 */
 declare module '*';
 declare var Wechat;
+declare var baidu_location;

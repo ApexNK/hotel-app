@@ -119,6 +119,18 @@ export class HotelMap {
     this.map.addOverlay(myCompOverlay);
   }
 
-
+  getCurrentCity(){
+    let myCity = new BMap.LocalCity();
+    myCity.get(myFun);
+    function myFun(result){
+      console.info(result);
+      let cityName = result.name;
+      // map.setCenter(cityName);   //关于setCenter()可参考API文档---”传送门“
+      alert(cityName);
+      alert(JSON.stringify(result));
+    }
+    //http://api.map.baidu.com/api?v=2.0&ak=I6qKjXgv6l10WynfjsMIqt3GqeZD7IOD&location=118.89201,32.130975&output=json&pois=1
+//http://api.map.baidu.com/geocoder/v2/?ak=I6qKjXgv6l10WynfjsMIqt3GqeZD7IOD&location=32.130975,118.89201&output=json&pois=1
+  }
 }
 
