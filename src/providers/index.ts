@@ -14,6 +14,9 @@ export {HotelManager} from './hotel/hotel-manager';
 export {OrderManager} from './order/order-manager';
 export {GeoManager} from './geograph/geo-manager';
 export {Api} from './api';
+export {MapServer} from  './mapServer'
+export { User } from './user';
+export { Settings } from './settings';
 export {
   LOGIN_KEY,
   VALID_KEY,

@@ -14,3 +14,6 @@
 declare module '*';
 declare var Wechat;
 declare var baidu_location;
+declare var BMap;
+declare var BMap_Symbol_SHAPE_FORWARD_CLOSED_ARROW;
+declare var BMAP_STATUS_SUCCESS;

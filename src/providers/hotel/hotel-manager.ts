@@ -1,7 +1,7 @@
 import {Injectable, Injector} from '@angular/core';
 import {Api} from '../api';
 import {HOTEL_LIST, HOTEL_DETAIL, ROOM_DETAIL, ORDER_ROOM, AREA_LIST} from '../API_MARCO';
-import {GeoManager} from '../geograph/geo-manager';
+//import {GeoManager} from '../geograph/geo-manager';
 import {WkDate} from '../../util';
 import {HotelDetail, HotelListQuery, RoomDetail} from '../index';
 @Injectable()
@@ -13,18 +13,17 @@ export class HotelManager {
   public getHotelList(query: HotelListQuery = {}): Promise<{ count: number, list: any }> {
     const today = WkDate.getToday();
     const tomorrow = WkDate.getTomorrow();
-    const curPos = this.injector.get(GeoManager).getLatitudeAndLongitude();
+   // const curPos = this.injector.get(GeoManager).getLatitudeAndLongitude();
     const deafaultParam = {
       "beginDate": today,
       "endDate": tomorrow,
       "pageSize": 10,
       "distance": 4000,
-      "longitude": curPos.Longitude,
-      "latitude": curPos.Latitude,
+      "longitude": 39.913673,
+      "latitude": 116.330696,
       "queryString": "",
       "pageNo": 1,
-
-      "areaCode": "120104"
+      "areaCode": '120104'
     };
     const queryParam = {...deafaultParam, ...query};
     return this.http.httpPost(HOTEL_LIST, queryParam)

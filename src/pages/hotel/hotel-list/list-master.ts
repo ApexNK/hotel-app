@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {NavController, ModalController} from 'ionic-angular';
 import {WkDate} from '../../../util';
 
-import {ShowConfirmProvider, HotelManager, ShowLoadingProvider, HotelItem} from '../../../providers';
+import {ShowConfirmProvider, HotelManager, ShowLoadingProvider, HotelItem, MapServer} from '../../../providers';
 
 @Component({
   selector: 'page-list-master',
@@ -32,7 +32,8 @@ export class ListMasterPage {
               public loading: ShowLoadingProvider,
               private hotelManger: HotelManager,
               public confirm: ShowConfirmProvider,
-              @Inject('ApiService') api) {
+              @Inject('ApiService') api,
+              private mapServer: MapServer) {
 
     this.api = api;
   }
@@ -54,14 +55,18 @@ export class ListMasterPage {
     this.showHeader = true;
   }
 
-  public getHotelList($event?) {
+  public async getHotelList($event?) {
+    let location = await this.getLocation();
     return this.hotelManger
       .getHotelList(
         {
           pageNo: this.curHotelListPage,
           beginDate: this.curStartDate,
           endDate: this.curEndDate,
-          queryString: this.curKeyWord
+          queryString: this.curKeyWord,
+          distance: 400000,//距离
+          longitude: location['long'],
+          latitude: location['lati']
         }
       )
       .then((res) => {
@@ -80,6 +85,27 @@ export class ListMasterPage {
           return Promise.reject(err);
         }
       });
+  }
+
+  private getLocation() {
+    let targetLoca = {
+      lati:39.913673,
+      long:116.330696
+    };
+    return this.mapServer.getCurrentLocation().then( loc => {
+      console.info(loc);
+      targetLoca.lati = loc['lati'];
+      targetLoca.long = loc['long'];
+      return this.mapServer.getCityByLocation(loc['lati'],loc['long']);
+    }).then ( city => {
+      if(city['cityCode'] === '131'){ //当前位置在北京地区
+          return targetLoca;
+      }else{
+         return this.mapServer.getCityCenterLocation('北京'); //不在北京，返回北京的目标地址
+      }
+    });
+
+
   }
 
   public toggleBanner() {

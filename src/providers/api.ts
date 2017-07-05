@@ -16,45 +16,20 @@ export class Api {
     this.localUser = this.injector.get(LocalUserInfo);
   }
 
-  get(api:string, params: any = {}, options?: RequestOptions) {
+  public httpGet(url:string, params: any = {}, options?: RequestOptions) {
     if (!options) {
       options = new RequestOptions();
     }
-    // Support easy query params for GET requests
-    let p = new URLSearchParams();
-    p.set('servicekey', api);
 
-    // for (let k in params) {
-    //   p.set(k, params[k]);
-    // }
+    let p = new URLSearchParams();
+    for (let k in params) {
+      p.set(k, params[k]);
+    }
     // Set the order-list field if we have params and don't already have
     // a order-list field set in options.
     options.search = !options.search && p || options.search;
-    return this.http.get(api, options).map( res => res.json()).toPromise();
+    return this.http.get(url, options).map( res => res.json()).toPromise();
   }
-
-  // post(api: string, body = {}, options?: RequestOptions) {
-  //   const defaultParam = {
-  //     servicekey: api,
-  //     "uid": "2342534534534534",
-  //     "sign": "93004fe2aa39650d965df7881c24c988",
-  //     "timestamp": '20170928120909',//new Date().getTime(),
-  //   };
-  //   const param = Object.assign({}, defaultParam, {
-  //     parameter: body
-  //   });
-  //   return this.http.post(this.url ,param, options)
-  //     .map((res: any) => {
-  //         console.log(res);
-  //         return JSON.parse(res._body)
-  //     })
-  //     .toPromise().then(
-  //     this.successHandle,
-  //     () => {}
-  //   ).catch(
-  //     this.failedHandle
-  //   );
-  // }
 
   public async httpByUser(api: string, body = {}, options?: RequestOptions){
     const mobile = await this.localUser.getMobile();

@@ -7,10 +7,10 @@ import {ComponentModule} from '../components/component.module';
 import {PipeModule} from '../pipes/pipe.module';
 import {MyApp} from './app.component';
 import {LoginPage} from  '../pages/user/login/login'
-import {Api} from '../providers/api';
+//import {Api} from '../providers/api';
 import {Items} from '../mocks/providers/items';
-import {Settings} from '../providers/settings';
-import {User} from '../providers/user';
+//import {Settings} from '../providers/settings';
+//import {User} from '../providers/user';
 
 import {Camera} from '@ionic-native/camera';
 // import { GoogleMaps } from '@ionic-native/google-maps';
@@ -30,7 +30,12 @@ import {LoginManagerProvider,
         GeoManager,
         HotelManager,
         OrderManager,
-        Toast} from '../providers'
+        Toast,
+        User,
+        MapServer,
+        Settings,
+        Api
+      } from '../providers'
 
 import config from '../config/config';
 
@@ -119,7 +124,8 @@ export function providers() {
     GeoManager,
     LocalUserInfo,
     HotelManager,
-    Alipay
+    Alipay,
+    MapServer
   ];
 }
 
