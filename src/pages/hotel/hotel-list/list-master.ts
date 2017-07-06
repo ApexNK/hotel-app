@@ -1,6 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {NavController, ModalController} from 'ionic-angular';
 import {WkDate} from '../../../util';
+import {CityChoose} from '../modal/city-choose';
 
 import {ShowConfirmProvider, HotelManager, ShowLoadingProvider, HotelItem, MapServer} from '../../../providers';
 
@@ -118,6 +119,11 @@ export class ListMasterPage {
   public searchHotel() {
     this.resetQuery();
     this.getHotelList();
+  }
+
+  public cityChoose(){
+    let cityChooseModal = this.modalCtrl.create(CityChoose);
+    cityChooseModal.present();
   }
 
   private resetQuery() {

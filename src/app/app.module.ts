@@ -44,6 +44,7 @@ import {KeyItemComponent} from '../pages/key/key-item/key-item';
 import {ListMasterPage} from '../pages/hotel/hotel-list/list-master';
 import {OrderListPage} from '../pages/order/order-list/order-list'
 import {UserCenterPage} from '../pages/user/user-center/user-center';
+import {CityChoose} from  '../pages/hotel/modal/city-choose';
 
 
 export function provideSettings(storage: Storage) {
@@ -90,6 +91,7 @@ export function declarations() {
     OrderListPage,
     UserCenterPage,
     LoginPage,
+    CityChoose
 
     //PaySuccessComponent
   ];
