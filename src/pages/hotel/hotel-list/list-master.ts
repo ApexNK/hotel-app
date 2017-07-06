@@ -10,7 +10,10 @@ import {ShowConfirmProvider, HotelManager, ShowLoadingProvider, HotelItem, MapSe
 })
 export class ListMasterPage {
   public areaCode = '120104';
-  public areaList;
+  public area = {id: '120104', text: '全城'};
+  public distance: number = 0;
+  public houseResource: number = 0;
+  public areaList: Array<any>;
   public today = WkDate.getToday();
   public startDate = WkDate.getToday();
   public endDate = WkDate.getTomorrow();
@@ -51,7 +54,7 @@ export class ListMasterPage {
     this.showHeader = false;
   }
 
-  ionViewWillEnter () {
+  ionViewWillEnter() {
     this.showHeader = true;
   }
 
@@ -89,19 +92,19 @@ export class ListMasterPage {
 
   private getLocation() {
     let targetLoca = {
-      lati:39.913673,
-      long:116.330696
+      lati: 39.913673,
+      long: 116.330696
     };
-    return this.mapServer.getCurrentLocation().then( loc => {
+    return this.mapServer.getCurrentLocation().then(loc => {
       console.info(loc);
       targetLoca.lati = loc['lati'];
       targetLoca.long = loc['long'];
-      return this.mapServer.getCityByLocation(loc['lati'],loc['long']);
-    }).then ( city => {
-      if(city['cityCode'] === '131'){ //当前位置在北京地区
-          return targetLoca;
-      }else{
-         return this.mapServer.getCityCenterLocation('北京'); //不在北京，返回北京的目标地址
+      return this.mapServer.getCityByLocation(loc['lati'], loc['long']);
+    }).then(city => {
+      if (city['cityCode'] === '131') { //当前位置在北京地区
+        return targetLoca;
+      } else {
+        return this.mapServer.getCityCenterLocation('北京'); //不在北京，返回北京的目标地址
       }
     });
 
@@ -175,7 +178,9 @@ export class ListMasterPage {
      alert("Failed: " + reason);
      });*/
   }
+
   private async getAreaList() {
     this.areaList = await this.hotelManger.getAreaList();
-}
+    console.log(this.areaList);
+  }
 }

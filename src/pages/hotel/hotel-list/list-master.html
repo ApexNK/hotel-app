@@ -97,17 +97,30 @@
     <ion-row>
       <ion-col text-center align-self-center ion-button color="dark" clear>
         <ion-item>
-          <ion-label>全城</ion-label>
-          <ion-select [(ngModel)]="areaList" interface="popover">
-            <ion-option *ngFor="let area of areaList;" value="area.id">{{area.text}}</ion-option>
+          <ion-select [(ngModel)]="area.id" interface="popover">
+            <ion-option value="120104">全城</ion-option>
+            <ion-option *ngFor="let area of areaList" [value]="area.id">{{area.text}}</ion-option>
           </ion-select>
         </ion-item>
       </ion-col>
       <ion-col text-center align-self-center ion-button color="dark" clear>
-        距离&ensp;&ensp;<ion-icon name="arrow-dropdown"></ion-icon>
+        <ion-item>
+          <ion-select [(ngModel)]="distance" interface="popover">
+            <ion-option value=0>距离</ion-option>
+            <ion-option value=1>1 km</ion-option>
+            <ion-option value=3>3 km</ion-option>
+            <ion-option value=5>5 km</ion-option>
+            <ion-option value=10>10 km</ion-option>
+          </ion-select>
+        </ion-item>
       </ion-col>
       <ion-col text-center align-self-center ion-button color="dark" clear>
-        全部&ensp;&ensp;<ion-icon name="arrow-dropdown"></ion-icon>
+        <ion-item>
+          <ion-select [(ngModel)]="houseResource" interface="popover">
+            <ion-option value=0>全部</ion-option>
+            <ion-option value=1>有房源</ion-option>
+          </ion-select>
+        </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
