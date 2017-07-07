@@ -120,7 +120,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  
+
   <ion-list>
     <ion-item *ngFor="let item of hotelList" (click)="openItem(item.id)" class="has-thumbnail">
       <ion-thumbnail item-left>
@@ -143,8 +143,8 @@
         </ion-row>
       </ion-grid>
     </ion-item>
-
   </ion-list>
+
   <ion-infinite-scroll [enabled]="notLoadOver" (ionInfinite)="$event.waitFor(getHotelList($event))">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中......">
     </ion-infinite-scroll-content>
