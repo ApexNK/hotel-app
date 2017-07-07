@@ -108,9 +108,18 @@ page-list-master {
             }
         }
     }
-    .segment-bar{
+    .segment-bar {
         height: 35px;
         background: #f8f9fa;
+        border-top:solid .55px #e1e1e1;
+        border-bottom:solid .55px #e1e1e1;
+        overflow:hidden;
+        .item-ion{
+          background: #f8f9fa; min-height: 35px;
+        }
+      .item-sel{
+        flex:1; padding: 0 5px 0 0; max-width:100%; font-size: 1.5rem;
+      }
     }
     .title{
         overflow: hidden;
