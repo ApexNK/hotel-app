@@ -87,7 +87,7 @@ export class OrderPayPage {
       let datas = res.data;
       this.startDate = datas.kssj;
       this.endDate = datas.jssj;
-      this.days = WkDate.getDays(new Date(this.endDate), new Date(this.startDate));
+      this.days =datas.jgsj//WkDate.getDays(new Date(this.endDate), new Date(this.startDate));
       this.total = datas.ddje;
       this.amount = this.total;
       this.user.name = datas.hyxm;
