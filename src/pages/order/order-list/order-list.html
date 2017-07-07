@@ -34,7 +34,10 @@
         <p>您还没有订单哦!</p>
       </div>
       <ion-item-group *ngFor="let order of orderItems; let index = index">
-        <ion-item-divider class="item-header" color="light">订单编号:{{order.ddbh}}</ion-item-divider>
+        <ion-item class="item-header sub-info" color="light">
+          <div item-start>{{order.ddbh}}</div>
+          <div item-end>时间 :{{order.createtime}}</div>
+        </ion-item>
         <ion-item class="item-content">
           <ion-thumbnail item-start>
             <img src="assets/img/thumbnail-puppy-1.jpg">
@@ -47,13 +50,16 @@
           <div class="min-font"><i class="iconfont icon-time"></i> {{order.rzkssj}}~{{order.rzjssj}}</div>
         </ion-item>
         <ion-item class="item-footer">
-          <!--<div item-left="">-->
-            <!--优惠券折扣: ￥{{}}-->
-          <!--</div>-->
+          <div item-left>
+            优惠券折扣: ￥{{order.hdje}}
+          </div>
+          <div item-left text-center >
+            实付款：¥{{order.sjje}}
+          </div>
           <button *ngSwitchCase="ORDER_ENUM.WAIT_PAY" (tap)="goPay(order.ddbh, index)" padding-left  padding-right ion-button item-right round outline>支付</button>
           <button *ngSwitchCase="ORDER_ENUM.WAIT_USE" (tap)="cancelOrder(order.ddbh, index)" padding-left  padding-right ion-button item-right round outline>申请退订</button>
           <button *ngSwitchCase="ORDER_ENUM.USING" (tap)="leaveRoom(order.ddbh, index)" padding-left  padding-right ion-button item-right round outline>退房</button>
-          <button *ngSwitchCase="ORDER_ENUM.REVOKED" padding-left  padding-right ion-button item-right round outline>退款失败</button>
+          <div *ngSwitchCase="ORDER_ENUM.REVOKED" padding-left  padding-right item-right>退款失败</div>
         </ion-item>
       </ion-item-group>
     </ion-list>

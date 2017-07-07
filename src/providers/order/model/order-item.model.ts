@@ -7,6 +7,7 @@ export interface OrderItem {
   ddje:number // 订单金额
   rzkssj:string ;// 入住开始时间
   rzjssj:string; //入住结束时间
-  createtime:string // 订单时间
-
+  createtime:string; // 订单时间
+  hdje:number;//优惠券抵扣
+  sjje:number;//实付款
 }
