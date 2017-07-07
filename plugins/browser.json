@@ -1,0 +1,55 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com.qdc.plugins.baidu.location": {
+            "API_KEY": "cM583ZCN1X1rm8zvpzTX0A50G1h37MFd",
+            "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-crosswalk-webview": {
+            "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.woke.app"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-alipay-base": {
+            "ALI_PID": "2017062007526289",
+            "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-wechat": {
+            "WECHATAPPID": "wxd91cddb380fc83f0",
+            "PACKAGE_NAME": "com.woke.app"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.woke.app"
+        }
+    }
+}

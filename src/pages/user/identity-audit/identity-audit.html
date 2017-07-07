@@ -49,25 +49,28 @@
       <p>2.正面照</p>
       <p>2.照片清晰</p>
     </ion-item>
-    <ion-item  no-padding text-center class="has-border-bottom">
+    <ion-item>
       <ion-row>
         <ion-col>
-          正确示意图
+          <div text-center>
+            <img src="./assets/img/right.png" style="width: 14px;height: 12px;">&nbsp;正确示意图
+          </div>
+          <div>
+            <img src="./assets/img/right_demo.png" alt="">
+          </div>
         </ion-col>
         <ion-col>
-          错误示意图
+          <div text-center>
+            <img src="./assets/img/wrong.png"style="width: 12px;height: 12px;">&nbsp;错误示意图
+          </div>
+          <div>
+            <img src="./assets/img/wrong_demo.png" alt="">
+          </div>
         </ion-col>
-      </ion-row>
-    </ion-item>
-    <ion-item no-padding class="explain-imgs">
-      <ion-row>
-        <ion-col><img src="assets/img/speakers/bear.jpg" alt=""></ion-col>
-        <ion-col><img src="assets/img/speakers/bear.jpg" alt=""></ion-col>
       </ion-row>
     </ion-item>
   </ion-list>
 </ion-content>
 <ion-footer class="fixed-footer" *ngIf="showFooter">
   <button ion-button full (click)="submit()">提交审核</button>
-  <button ion-button full outline type="button">稍后审核</button>
 </ion-footer>
