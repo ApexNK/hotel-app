@@ -92,16 +92,16 @@
   <ion-grid class="segment-bar">
     <ion-row>
       <ion-col text-center align-self-center ion-button color="dark" clear>
-        <ion-item>
-          <ion-select [(ngModel)]="area.id" interface="popover">
+        <ion-item class="item-ion">
+          <ion-select [(ngModel)]="area.id" interface="popover" class="item-sel">
             <ion-option value="120104">全城</ion-option>
             <ion-option *ngFor="let area of areaList" [value]="area.id">{{area.text}}</ion-option>
           </ion-select>
         </ion-item>
       </ion-col>
       <ion-col text-center align-self-center ion-button color="dark" clear>
-        <ion-item>
-          <ion-select [(ngModel)]="distance" interface="popover">
+        <ion-item class="item-ion">
+          <ion-select [(ngModel)]="distance" interface="popover" class="item-sel">
             <ion-option value=0>距离</ion-option>
             <ion-option value=1>1 km</ion-option>
             <ion-option value=3>3 km</ion-option>
@@ -111,8 +111,8 @@
         </ion-item>
       </ion-col>
       <ion-col text-center align-self-center ion-button color="dark" clear>
-        <ion-item>
-          <ion-select [(ngModel)]="houseResource" interface="popover">
+        <ion-item class="item-ion">
+          <ion-select [(ngModel)]="houseResource" interface="popover" class="item-sel">
             <ion-option value=0>全部</ion-option>
             <ion-option value=1>有房源</ion-option>
           </ion-select>
@@ -120,10 +120,9 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  
   <ion-list>
-    <ion-item
-      *ngFor="let item of hotelList"
-      (click)="openItem(item.id)" class="has-thumbnail">
+    <ion-item *ngFor="let item of hotelList" (click)="openItem(item.id)" class="has-thumbnail">
       <ion-thumbnail item-left>
         <img [src]="item.thumbnail">
       </ion-thumbnail>
@@ -147,10 +146,7 @@
 
   </ion-list>
   <ion-infinite-scroll [enabled]="notLoadOver" (ionInfinite)="$event.waitFor(getHotelList($event))">
-    <ion-infinite-scroll-content
-
-      loadingSpinner="bubbles"
-      loadingText="加载中......">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中......">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>
