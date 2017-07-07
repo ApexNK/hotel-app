@@ -63,10 +63,14 @@ export class HotelManager {
   }
 
   public getAreaList(areaCode: string = '0'):Promise<any> {
-    return this.http.httpPost(AREA_LIST).then(res => {
+    return this.http.httpPost(AREA_LIST,{cityCode:131}).then(res => {
+      return Promise.resolve(res.datas);
+    });
+
+/*    return this.http.httpPost(AREA_LIST,{cityCode:131}).then(res => {
       return this.http.httpPost(AREA_LIST,{areaCode:res.datas[0].id}).then(res => {
         return Promise.resolve(res.datas);
       });
-    });
+    });*/
   }
 }
