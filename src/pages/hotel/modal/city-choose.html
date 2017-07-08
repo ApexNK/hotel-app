@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Description
+    <ion-title style="font-weight: normal;">
+      当前城市-北京
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -12,6 +12,27 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div>aaaaaaaa</div>
+<ion-content style="background:#fff;">
+  <div style="background: #e1e1e1; height: 40px; padding: 5px 0;">
+    <div style="width: 98%; height: 30px; line-height: 30px; text-align:center; margin:0 auto; background: #fff; border-radius: 16px; color:#999;">
+      <ion-icon name="search" margin-left class="search-icon" style="vertical-align: middle;"></ion-icon> 搜索城市
+    </div>
+  </div>
+
+  <ion-grid class="device-list" no-padding padding-left padding-right padding-bottom margin-bottom>
+    <ion-row>
+      <ion-col class="city-bar">
+        定位城市
+      </ion-col>
+    </ion-row>
+    <ion-row text-center class="city-row">
+      <div class="city-item">离地铁近</div>
+      <div class="city-item">首次出租</div>
+      <div class="city-item">新小区</div>
+      <div class="city-item">免费维修</div>
+      <div class="city-item">双周保洁</div>
+      <div class="city-item">WiFi覆盖</div>
+      <div class="city-item">木棉4.0</div>
+    </ion-row>
+  </ion-grid>
 </ion-content>
