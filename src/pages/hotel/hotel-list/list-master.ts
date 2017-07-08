@@ -10,10 +10,17 @@ import {ShowConfirmProvider, HotelManager, ShowLoadingProvider, HotelItem, MapSe
   templateUrl: 'list-master.html'
 })
 export class ListMasterPage {
-  public areaCode = '120104';
-  public area = {id: '120104', text: '全城'};
-  public distance: number = 0;
-  public houseResource: number = 0;
+  public currentCity = {
+    name:"北京",
+    id:'110000',
+    cityCode:131,
+    lati:39.915098,
+    long:116.40398
+  };
+  public areaCode = '110000';
+  public area = {id: '110000', text: '全城'};//城市区域
+  public distance: string = '1000000'; //距离
+  public houseResource: number = 0; //房源
   public areaList: Array<any>;
   public today = WkDate.getToday();
   public startDate = WkDate.getToday();
@@ -28,8 +35,12 @@ export class ListMasterPage {
   private curStartDate: string;
   private curEndDate: string;
   private curKeyWord = '';
-  private curAreaCode = '120104';
+  private curAreaCode = '110000';
   public showHeader = true;
+  private centerLocation = {
+    lati:39.913673,
+    long:116.40398
+  };
 
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController,
@@ -46,9 +57,8 @@ export class ListMasterPage {
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
-    this.searchHotel();
+    this.getCurrentCityHotels();
     this.getAreaList();
-    // this.getHotelList();
   }
 
   ionViewWillLeave() {
@@ -59,8 +69,7 @@ export class ListMasterPage {
     this.showHeader = true;
   }
 
-  public async getHotelList($event?) {
-    let location = await this.getLocation();
+  public async getHotelList(center) {
     return this.hotelManger
       .getHotelList(
         {
@@ -68,9 +77,10 @@ export class ListMasterPage {
           beginDate: this.curStartDate,
           endDate: this.curEndDate,
           queryString: this.curKeyWord,
-          distance: 400000,//距离
-          longitude: location['long'],
-          latitude: location['lati']
+          distance: this.distance,//距离
+          longitude: center['long'],
+          latitude: center['lati'],
+          areaCode: this.currentCity.id
         }
       )
       .then((res) => {
@@ -91,6 +101,11 @@ export class ListMasterPage {
       });
   }
 
+  private async getCurrentCityHotels(){
+    this.centerLocation = await this.getLocation();
+    this.searchHotel(this.centerLocation);
+  }
+
   private getLocation() {
     let targetLoca = {
       lati: 39.913673,
@@ -105,7 +120,9 @@ export class ListMasterPage {
       if (city['cityCode'] === '131') { //当前位置在北京地区
         return targetLoca;
       } else {
-        return this.mapServer.getCityCenterLocation('北京'); //不在北京，返回北京的目标地址
+        targetLoca.lati = this.currentCity.lati;
+        targetLoca.long = this.currentCity.long;
+        return targetLoca; //不在北京，将北京的中心点位置返回
       }
     });
 
@@ -116,9 +133,36 @@ export class ListMasterPage {
     this.isBannerOpening = !this.isBannerOpening;
   }
 
-  public searchHotel() {
+  public searchHotelByKey() { //输入关键字搜索
     this.resetQuery();
-    this.getHotelList();
+    this.curKeyWord = this.queryKeyWord;
+    this.distance = '1000000';//默认为最大距离
+    this.getHotelList(this.centerLocation);
+  }
+
+  public updateHotelsByChange(type){ //select option has changed
+    this.resetQuery();
+    let center = {
+      lati:39.913673,
+      long:116.40398
+    };
+    if(this.area.id === this.currentCity.id){
+      center = this.centerLocation;
+    }else{
+      for(let i = 0,length = this.areaList.length; i < length; i++){
+        if(this.area.id === this.areaList[i].id){
+          center['long'] = this.areaList[i].longitude;
+          center['lati'] = this.areaList[i].latitude;
+          break;
+        }
+      }
+    }
+    this.getHotelList(center);
+  }
+
+  public searchHotel(center) {
+    this.resetQuery();
+    this.getHotelList(center);
   }
 
   public cityChoose(){
@@ -133,8 +177,9 @@ export class ListMasterPage {
     this.curEndDate = this.endDate;
     this.curHotelListPage = 1;
     this.notLoadOver = true;
-    this.curKeyWord = this.queryKeyWord;
-    this.curAreaCode = this.areaCode;
+    this.curKeyWord = '';
+    this.curKeyWord = '';
+    //this.curAreaCode = this.areaCode;
   }
 
   public beginDateChange(beginDate) {

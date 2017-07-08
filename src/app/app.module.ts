@@ -73,6 +73,7 @@ const APP_CONFIG = {
   preloadModules: true,
   // locationStrategy: 'path',
   iconMode: 'ios',
+  mode: 'ios',
   modalEnter: 'modal-slide-in',
   modalLeave: 'modal-slide-out',
   tabsPlacement: 'bottom',

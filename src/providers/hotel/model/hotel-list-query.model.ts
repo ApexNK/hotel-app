@@ -1,7 +1,7 @@
 export interface HotelListQuery {
   "beginDate"?:string;
   "endDate"?:string;
-  "distance"?:number;
+  "distance"?:string;
   "longitude"?: number;
   "latitude"?: number;
   "queryString"?:string;

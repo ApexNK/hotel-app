@@ -3,10 +3,7 @@
 
     <ion-row align-items-center no-padding>
       <ion-col col-auto (click)="cityChoose()">
-        北京&ensp;&ensp;<ion-icon name="arrow-dropdown" ></ion-icon>
-        <!--<ion-select [(ngModel)]="areaCode" okText="确定" cancelText="取消">-->
-          <!--<ion-option value="120104">北京</ion-option>-->
-        <!--</ion-select>-->
+        &ensp;&ensp;{{currentCity.name}}&ensp;&ensp;<ion-icon name="arrow-dropdown" ></ion-icon>
       </ion-col>
       <ion-col padding-left padding-right>
         <form novalidate class="search-form">
@@ -47,39 +44,13 @@
             <span class="primary">离开</span>&ensp;&ensp;
             <date-picker (onDateChange)="endDateChange($event)" [(curDate)]="endDate"></date-picker>
           </div>
-
-          <!--<ion-item class="data-picker-item " text-right>-->
-          <!--<ion-label ><span class="primary">入住</span></ion-label>-->
-          <!--<date-picker (onDateChange)="getDays()" ></date-picker>-->
-          <!--&lt;!&ndash;<ion-datetime&ndash;&gt;-->
-          <!--&lt;!&ndash;[cancelText]="'取消'" [doneText]="'确定'"&ndash;&gt;-->
-          <!--&lt;!&ndash;no-padding&ndash;&gt;-->
-          <!--&lt;!&ndash;displayFormat="YYYY-MM-DD"&ndash;&gt;-->
-          <!--&lt;!&ndash;pickerFormat="YYYY-MM-DD"&ndash;&gt;-->
-          <!--&lt;!&ndash;(ionChange)="getDays()"&ndash;&gt;-->
-          <!--&lt;!&ndash;[min]="today"&ndash;&gt;-->
-          <!--&lt;!&ndash;[(ngModel)]="startDate">&ndash;&gt;-->
-          <!--&lt;!&ndash;</ion-datetime>&ndash;&gt;-->
-          <!--</ion-item>-->
-          <!--<ion-item  class="data-picker-item " text-right>-->
-          <!--<ion-label class="primary" ><span class="primary">离开</span></ion-label>-->
-          <!--<ion-datetime-->
-          <!--[cancelText]="'取消'" [doneText]="'确定'"-->
-          <!--no-padding-->
-          <!--[min]="startDate"-->
-          <!--(ionChange)="getDays()"-->
-          <!--displayFormat="YYYY-MM-DD"-->
-          <!--pickerFormat="YYYY-MM-DD"-->
-          <!--[(ngModel)]="endDate">-->
-          <!--</ion-datetime>-->
-          <!--</ion-item>-->
         </div>
       </ion-col>
       <ion-col>
         <ion-row>
           <ion-col text-center align-self-center>住{{days}}晚</ion-col>
           <ion-col>
-            <button type="button" (tap)="searchHotel()" ion-button text-center class="search-btn">
+            <button type="button" (tap)="searchHotelByKey()" ion-button text-center class="search-btn">
               <ion-icon name="search"></ion-icon>
               <br/>搜索
             </button>
@@ -93,26 +64,26 @@
     <ion-row>
       <ion-col text-center align-self-center ion-button color="dark" clear>
         <ion-item class="item-ion">
-          <ion-select [(ngModel)]="area.id" interface="popover" class="item-sel">
-            <ion-option value="120104">全城</ion-option>
+          <ion-select [(ngModel)]="area.id" interface="popover" class="item-sel" (ngModelChange)="updateHotelsByChange('area')">
+            <ion-option value="110000">全城</ion-option>
             <ion-option *ngFor="let area of areaList" [value]="area.id">{{area.text}}</ion-option>
           </ion-select>
         </ion-item>
       </ion-col>
       <ion-col text-center align-self-center ion-button color="dark" clear>
         <ion-item class="item-ion">
-          <ion-select [(ngModel)]="distance" interface="popover" class="item-sel">
-            <ion-option value=0>距离</ion-option>
-            <ion-option value=1>1 km</ion-option>
-            <ion-option value=3>3 km</ion-option>
-            <ion-option value=5>5 km</ion-option>
-            <ion-option value=10>10 km</ion-option>
+          <ion-select [(ngModel)]="distance" interface="popover" class="item-sel" (ngModelChange)="updateHotelsByChange('distance')">
+            <ion-option value='1000000'>距离</ion-option>
+            <ion-option value='1000'>1 km</ion-option>
+            <ion-option value='3000'>3 km</ion-option>
+            <ion-option value='5000'>5 km</ion-option>
+            <ion-option value='10000'>10 km</ion-option>
           </ion-select>
         </ion-item>
       </ion-col>
       <ion-col text-center align-self-center ion-button color="dark" clear>
         <ion-item class="item-ion">
-          <ion-select [(ngModel)]="houseResource" interface="popover" class="item-sel">
+          <ion-select [(ngModel)]="houseResource" interface="popover" class="item-sel" (ngModelChange)="updateHotelsByChange('houseResource')">
             <ion-option value=0>全部</ion-option>
             <ion-option value=1>有房源</ion-option>
           </ion-select>

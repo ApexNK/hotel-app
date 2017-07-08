@@ -1,32 +1,39 @@
-import {Injectable, Injector} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Api} from '../api';
 import {HOTEL_LIST, HOTEL_DETAIL, ROOM_DETAIL, ORDER_ROOM, AREA_LIST} from '../API_MARCO';
-//import {GeoManager} from '../geograph/geo-manager';
 import {WkDate} from '../../util';
 import {HotelDetail, HotelListQuery, RoomDetail} from '../index';
 @Injectable()
 export class HotelManager {
-  constructor(private http: Api, private injector: Injector) {
+  constructor(private http: Api) {
 
   }
 
   public getHotelList(query: HotelListQuery = {}): Promise<{ count: number, list: any }> {
     const today = WkDate.getToday();
     const tomorrow = WkDate.getTomorrow();
-   // const curPos = this.injector.get(GeoManager).getLatitudeAndLongitude();
     const deafaultParam = {
       "beginDate": today,
       "endDate": tomorrow,
       "pageSize": 10,
-      "distance": 4000,
+      "distance": '100000000',
       "longitude": 39.913673,
       "latitude": 116.330696,
       "queryString": "",
       "pageNo": 1,
-      "areaCode": '120104'
+      "areaCode": '110000'
     };
     const queryParam = {...deafaultParam, ...query};
-    return this.http.httpPost(HOTEL_LIST, queryParam)
+    let param = {};
+    for(let k in queryParam){
+      if( k === 'distance'){
+        param['distance'] = parseInt(queryParam.distance);
+      }else{
+        param[k] = queryParam[k];
+      }
+    }
+
+    return this.http.httpPost(HOTEL_LIST, param)
       .then(res => {
         return Promise.resolve({count: res.count, list: res.datas});
       }).catch(e => console.log(e));
@@ -39,14 +46,14 @@ export class HotelManager {
   }): Promise<HotelDetail> {
     return this.http.httpPost(HOTEL_DETAIL, query).then(res => {
       return Promise.resolve(res.datas as HotelDetail);
-    });
+    }).catch( e => console.info(e));
   }
 
   public getRoomDetail(roomId): Promise<RoomDetail> {
     return this.http.httpPost(ROOM_DETAIL, {roomId})
       .then(res => {
         return Promise.resolve(res.datas as RoomDetail);
-      });
+      }).catch(err => console.info(err));
   }
   public reservationRoom (param: {
     fjbh: string;

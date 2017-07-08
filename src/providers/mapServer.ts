@@ -59,14 +59,15 @@ export class MapServer {
             let lati = result.latitude;
             console.info('long:' + long);
             self.currentLocation = {lati,long};
-            alert(JSON.stringify(self.currentLocation));
+            //alert(JSON.stringify(self.currentLocation));
             reslove(self.currentLocation)
 
           }, function (error) {
           });
         }
       }catch (err) {
-        setTimeout( function () {
+        reslove({lati:39915098,long:116.40398});
+/*        setTimeout( function () {
           let geolocation = new BMap.Geolocation();
           geolocation.getCurrentPosition((position)=>{
             //0代表调用成功，具体状态可见百度地图api
@@ -77,7 +78,7 @@ export class MapServer {
               console.log(position);
             }
           });
-        },3000);
+        },1000);*/
 
       };
     });
