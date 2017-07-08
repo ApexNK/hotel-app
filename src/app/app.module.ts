@@ -7,12 +7,10 @@ import {ComponentModule} from '../components/component.module';
 import {PipeModule} from '../pipes/pipe.module';
 import {MyApp} from './app.component';
 import {LoginPage} from  '../pages/user/login/login'
-//import {Api} from '../providers/api';
 import {Items} from '../mocks/providers/items';
-//import {Settings} from '../providers/settings';
-//import {User} from '../providers/user';
 
 import {Camera} from '@ionic-native/camera';
+import { CallNumber } from '@ionic-native/call-number';
 // import { GoogleMaps } from '@ionic-native/google-maps';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
@@ -127,7 +125,8 @@ export function providers() {
     LocalUserInfo,
     HotelManager,
     Alipay,
-    MapServer
+    MapServer,
+    CallNumber
   ];
 }
 

@@ -3,6 +3,7 @@ import { NavController, NavParams, Platform, Events } from 'ionic-angular';
 import { UserManagerProvider, UserMsgs } from '../../../providers/index'
 import { LocalUserInfo } from '../../../LocalDatas/user-info';
 import { ShowConfirmProvider } from '../../../providers/show-confirm/show-confirm';
+import { CallNumber } from '@ionic-native/call-number';
 /**
  * The Settings page is a simple form that syncs with a Settings provider
  * to enable the user to customize settings for the app.
@@ -16,7 +17,8 @@ export class UserCenterPage {
   public userMsg:UserMsgs;
   private callNumber:string = '400-800-8888';
   constructor(public navCtrl: NavController, private params: NavParams,private userManager: UserManagerProvider,
-  private userInfo: LocalUserInfo, private plt: Platform,private events:Events,private confirmCtrl: ShowConfirmProvider) {
+      private userInfo: LocalUserInfo, private plt: Platform,private events:Events,private confirmCtrl: ShowConfirmProvider,
+      private caller: CallNumber) {
   }
   ionViewDidLoad() {
     this.getUserMsg();
@@ -41,10 +43,14 @@ export class UserCenterPage {
     this.navCtrl.push('UserDetailPage');
   }
   public contactServer () {
+    let self = this;
     this.confirmCtrl.show({message:this.callNumber,okText:"呼叫", cancelText:"取消"}).then(
       res => {
         if(res){
           console.info('call server');
+          self.caller.callNumber(self.callNumber, true)
+            .then(() => console.log('Launched dialer!'))
+            .catch(() => console.log('Error launching dialer'));
         }
       }, err => {
         console.info(err);
