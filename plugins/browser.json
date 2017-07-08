@@ -45,6 +45,9 @@
         "cordova-plugin-wechat": {
             "WECHATAPPID": "wxd91cddb380fc83f0",
             "PACKAGE_NAME": "com.woke.app"
+        },
+        "mx.ferreyra.callnumber": {
+            "PACKAGE_NAME": "com.woke.app"
         }
     },
     "dependent_plugins": {

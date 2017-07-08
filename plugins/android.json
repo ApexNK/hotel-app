@@ -42,6 +42,9 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.woke.app"
+        },
+        "mx.ferreyra.callnumber": {
+            "PACKAGE_NAME": "com.woke.app"
         }
     },
     "dependent_plugins": {

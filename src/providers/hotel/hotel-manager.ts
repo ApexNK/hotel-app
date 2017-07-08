@@ -68,7 +68,7 @@ export class HotelManager {
     });
 
 /*    return this.http.httpPost(AREA_LIST,{cityCode:131}).then(res => {
-      return this.http.httpPost(AREA_LIST,{areaCode:res.datas[0].id}).then(res => {
+      return this.http.httpPost(AREA_LIST,{areaCode:res.datas[0].cityCode}).then(res => {
         return Promise.resolve(res.datas);
       });
     });*/
