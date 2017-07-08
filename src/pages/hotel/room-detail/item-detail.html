@@ -7,7 +7,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content style="bottom:3.2rem">
   <ion-slides pager class="item-profile">
 
     <ion-slide style="background-color: green" *ngFor="let item of roomDetail?.fjtp">
@@ -40,25 +40,14 @@
         便利设施
       </ion-col>
     </ion-row>
-    <ion-row text-center padding-top class="icon-box">
-      <ion-col>
-        <i class="iconfont icon-air-condition"></i><br/>
-        <!--<ion-icon name="easel"></ion-icon><br/>-->
-        空调
-      </ion-col>
-      <ion-col>
-        <i class="icon-toilet iconfont"></i><br/>
-        <!--<ion-icon name="water"></ion-icon><br/>-->
-        卫生间
-      </ion-col>
-      <ion-col>
-        <i class="iconfont icon-wifi"></i><br/>
-        WIFI
-      </ion-col>
-      <ion-col>
-        <i class="iconfont icon-entranceguard"></i><br/>
-        门禁
-      </ion-col>
+    <ion-row text-center padding-top class="icon-box facilities-row">
+      <div class="facilities">离地铁近</div>
+      <div class="facilities">首次出租</div>
+      <div class="facilities">新小区</div>
+      <div class="facilities">免费维修</div>
+      <div class="facilities">双周保洁</div>
+      <div class="facilities">WiFi覆盖</div>
+      <div class="facilities">木棉4.0</div>
     </ion-row>
   </ion-grid>
 
@@ -111,5 +100,5 @@
   </ion-grid>
 </ion-content>
 <ion-footer no-padding>
-  <button ion-button full no-padding no-margin (click)="goPay()">立即预定</button>
+  <button ion-button full no-padding no-margin (click)="goPay()">立即预定 </button>
 </ion-footer>
