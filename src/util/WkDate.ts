@@ -13,11 +13,12 @@ export class WkDate {
     return Math.ceil((endDate.getTime() - startDate.getTime()) / WkDate.DAY_TIME);
   }
 
-  public static getFutureDay = (n: number) => {
-    const now = new Date();
+  public static getFutureDay = (n: number, now = new Date()) => {
+    //const now = new Date();
     const future = new Date(new Date(now.getTime() + WkDate.DAY_TIME * n));
     return WkDate.toStringDate(future);
   };
+
 
   public static toStringDate(time: Date) {
     return `${time.getFullYear()}-${WkDate.toDouble(time.getMonth() + 1)}-${WkDate.toDouble(time.getDate())}`;

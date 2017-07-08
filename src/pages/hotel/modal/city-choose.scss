@@ -1,15 +1,22 @@
-.scroll-content {
-  margin-top: 40px;
-}
-.city-list{
-  padding: 0 !important;
-}
-.city-bar.col{
-  background: #f0f0f4; color:#333; padding:5px 0 5px 10px !important;
-}
-.city-row{
-  padding: 0 2%;
-}
-.city-item{
-  float:left; width: 28%; margin:16px 2.5% 0; padding: 8px 0; background:#f8f9fa;
-}
+
+  .scroll-content {
+    //margin-top: 40px;
+  }
+  .city-list {
+    padding: 0 !important;
+  }
+  .city-bar.col {
+    background: #f0f0f4;
+    color: #333;
+    padding: 5px 0 5px 10px !important;
+  }
+  .city-row {
+    padding: 0 2%;
+  }
+  .city-item {
+    float: left;
+    width: 28%;
+    margin: 16px 2.5% 0;
+    padding: 8px 0;
+    background: #f8f9fa;
+  }

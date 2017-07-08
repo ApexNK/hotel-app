@@ -185,11 +185,19 @@ export class ListMasterPage {
   public beginDateChange(beginDate) {
     this.startDate = beginDate;
     this.getDays();
+    if(this.days < 1){
+      this.endDate = WkDate.getFutureDay(1,new Date(this.startDate));
+      this.days = 1;
+    }
   }
 
   public endDateChange(endDate) {
     this.endDate = endDate;
     this.getDays();
+    if(this.days < 1){
+      this.startDate = WkDate.getFutureDay(-1,new Date(this.endDate));
+      this.days = 1;
+    }
   }
 
   public getDays() {
