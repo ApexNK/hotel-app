@@ -6,4 +6,15 @@ page-apply-refund {
   .footer{
     // background: #f4f4f4;
   }
+  .note-info {
+    margin: 0px !important;
+  }
+  .item-block{
+    padding:0px 12px !important;
+  }
+
+  //解决item末尾一行有底线的问题
+  ion-item-group .item-ios:last-child .item-inner, ion-item-group .item-wrapper:last-child .item-ios .item-inner {
+    border-bottom: 0.55px solid #c8c7cc;
+  }
 }
