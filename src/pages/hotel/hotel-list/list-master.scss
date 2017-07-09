@@ -172,6 +172,23 @@ page-list-master {
   .has-thumbnail ion-row {
     margin-bottom: 5px;
   }
+
+  .closePosition{
+    position: absolute;
+    overflow: auto;
+    top:35px;
+    left:0px;
+    bottom: 0px;
+    right:0px;
+  }
+  .openPosition{
+    position: absolute;
+    overflow: auto;
+    top:135px;
+    left:0px;
+    bottom: 0px;
+    right:0px;
+  }
 }
 
 
