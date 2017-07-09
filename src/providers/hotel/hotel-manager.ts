@@ -21,7 +21,7 @@ export class HotelManager {
       "latitude": 116.330696,
       "queryString": "",
       "pageNo": 1,
-      "areaCode": '110000'
+      "hasRoom": ''
     };
     const queryParam = {...deafaultParam, ...query};
     let param = {};

@@ -7,5 +7,5 @@ export interface HotelListQuery {
   "queryString"?:string;
   "pageNo"?: number;
   "pageSize"?: number;
-  "areaCode"?: string
+  "hasRoom"?: string
 }

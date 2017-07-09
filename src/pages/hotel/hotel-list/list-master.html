@@ -84,8 +84,8 @@
       <ion-col text-center align-self-center ion-button color="dark" clear>
         <ion-item class="item-ion">
           <ion-select [(ngModel)]="houseResource" interface="popover" class="item-sel" (ngModelChange)="updateHotelsByChange('houseResource')">
-            <ion-option value=0>全部</ion-option>
-            <ion-option value=1>有房源</ion-option>
+            <ion-option value=''>全部</ion-option>
+            <ion-option value='1'>有房源</ion-option>
           </ion-select>
         </ion-item>
       </ion-col>
@@ -96,17 +96,17 @@
       <ion-list>
         <ion-item *ngFor="let item of hotelList" (click)="openItem(item.id)" class="has-thumbnail">
           <ion-thumbnail item-left>
-            <img [src]="item.thumbnail">
+            <img [src]="item.thumbnail | imgUrl">
           </ion-thumbnail>
           <ion-grid no-padding>
             <ion-row class="title">
               <ion-col><h2 text-nowrap>{{item.gymc}}</h2></ion-col>
-              <ion-col col-auto text-right><span class="money">￥<span class="money-num">{{item.minPrice}}</span></span> 起
+              <ion-col col-auto text-right><span class="money">￥<span class="money-num">{{item.minPrice || '--'}}</span></span> 起
               </ion-col>
             </ion-row>
             <ion-row class="title">
               <ion-col text-nowrap><p>{{item.gydz}}</p></ion-col>
-              <ion-col col-auto text-right><p>剩余{{item.availableRooms}}</p></ion-col>
+              <ion-col col-auto text-right><p>剩余{{item.availableRooms || 0}}</p></ion-col>
             </ion-row>
             <ion-row>
               <ion-col>

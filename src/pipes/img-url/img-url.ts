@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import config from '../../config/config'
 
 /**
  * Generated class for the ImgUrlPipe pipe.
@@ -14,6 +15,6 @@ export class ImgUrlPipe implements PipeTransform {
    * Takes a value and makes it lowercase.
    */
   transform(value: string, ...args) {
-    return "http://www.baidu.com" + value;
+    return config.imgServerUrl + value;
   }
 }

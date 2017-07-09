@@ -20,7 +20,7 @@ export class ListMasterPage {
   public areaCode = '110000';
   public area = {id: '110000', text: '全城'};//城市区域
   public distance: string = '1000000'; //距离
-  public houseResource: number = 0; //房源
+  public houseResource: string = ''; //房源
   public areaList: Array<any>;
   public today = WkDate.getToday();
   public startDate = WkDate.getToday();
@@ -80,7 +80,7 @@ export class ListMasterPage {
           distance: this.distance,//距离
           longitude: center['long'],
           latitude: center['lati'],
-          areaCode: this.currentCity.id
+          hasRoom: this.houseResource
         }
       )
       .then((res) => {
@@ -137,6 +137,7 @@ export class ListMasterPage {
     this.resetQuery();
     this.curKeyWord = this.queryKeyWord;
     this.distance = '1000000';//默认为最大距离
+    this.houseResource = '';//全部房源
     this.getHotelList(this.centerLocation);
   }
 
