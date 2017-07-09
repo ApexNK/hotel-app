@@ -132,43 +132,46 @@ page-list-master {
     // font-size: 16px;
     color: color($colors, primary)
   }
+
+  //  不能放在外面，否则为全局样式，影响了订单列表页
+  .list-ios {
+    margin: 0 0 32px;
+  }
+
+  .list-ios > .item-block:first-child {
+    border-top: none;
+  }
+
+  .list-ios .item-block {
+    padding-top:10px;
+    padding-bottom:10px;
+    border-bottom: 0.55px solid #c8c7cc;
+  }
+
+  .list-ios .item-block .item-inner {
+    border-bottom: none;
+  }
+
+  .item-ios ion-thumbnail img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .item-ios.item-block {
+    border-bottom: 0.55px solid #c8c7cc;
+  }
+
+  .item-ios.item-block .item-inner {
+    border-bottom: none;
+  }
+
+  .item-ios ion-thumbnail[item-left] {
+    margin-right: 8px;
+  }
+
+  .has-thumbnail ion-row {
+    margin-bottom: 5px;
+  }
 }
 
-.list-ios {
-  margin: 0 0 32px;
-}
 
-.list-ios > .item-block:first-child {
-  border-top: none;
-}
-
-.list-ios .item-block {
-  padding-top:10px;
-  padding-bottom:10px;
-  border-bottom: 0.55px solid #c8c7cc;
-}
-
-.list-ios .item-block .item-inner {
-  border-bottom: none;
-}
-
-.item-ios ion-thumbnail img {
-  width: 70px;
-  height: 70px;
-}
-
-.item-ios.item-block {
-  border-bottom: 0.55px solid #c8c7cc;
-}
-
-.item-ios.item-block .item-inner {
-  border-bottom: none;
-}
-
-.item-ios ion-thumbnail[item-left] {
-  margin-right: 8px;
-}
-
-.has-thumbnail ion-row {
-  margin-bottom: 5px;
-}
