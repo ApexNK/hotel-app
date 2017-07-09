@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar [hidden]="!showHeader">
     <ion-title>我的余额</ion-title>
     <ion-buttons end>
       <button ion-button clear (tap)="goBalanceDetail()" style="font-size: 14px;color:#333333">

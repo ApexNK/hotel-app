@@ -16,9 +16,11 @@ import { CallNumber } from '@ionic-native/call-number';
 export class UserCenterPage {
   public userMsg:UserMsgs;
   private callNumber:string = '400-800-8888';
+  public photoUrl:string;
   constructor(public navCtrl: NavController, private params: NavParams,private userManager: UserManagerProvider,
       private userInfo: LocalUserInfo, private plt: Platform,private events:Events,private confirmCtrl: ShowConfirmProvider,
       private caller: CallNumber) {
+    this.photoUrl = './assets/img/default_avatar.png';
   }
   ionViewDidLoad() {
     this.getUserMsg();

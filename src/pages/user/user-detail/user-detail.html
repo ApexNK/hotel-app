@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar [hidden]="!showHeader">
     <ion-title>个人信息</ion-title>
   </ion-navbar>
 
@@ -14,26 +14,25 @@
 
 
 <ion-content no-padding style="background:#fff">
-  <ion-list padding>
+  <ion-list style="padding: 25px 12px;">
     <ion-item class="has-border-bottom" no-lines>
-      <div item-start>头像</div>
+      <ion-note>头像</ion-note>
       <ion-avatar item-end>
         <img [src]="photoUrl">
-
       </ion-avatar>
-      <i class="icon-arrow-right iconfont" item-right></i>
+      <i class="icon-arrow-right iconfont" style="color: #aeacb4;" item-right></i>
     </ion-item>
     <ion-item class="has-border-bottom"  no-lines>
-      <div item-start>姓名</div>
-      <div item-right>{{userName}}</div>
+      <ion-note>姓名</ion-note>
+      <div item-end>{{userName}}</div>
     </ion-item>
     <ion-item class="has-border-bottom"  no-lines>
-      <div item-start>联系方式</div>
-      <div item-right>{{telNo}}</div>
+      <ion-note>联系方式</ion-note>
+      <div item-end>{{telNo}}</div>
     </ion-item>
     <ion-item class="has-border-bottom"  no-lines>
-      <div item-start>身份证号</div>
-      <div item-right>{{cardID}}</div>
+      <ion-note>身份证号</ion-note>
+      <div item-end>{{cardID}}</div>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -46,7 +46,7 @@ page-user-center {
       padding: 3px;
       left: 50%;
       top: 50%;
-      margin-top: -45px;
+      margin-top: -60px;
       margin-left: -35px;
       width: 70px;
       height: 70px;
@@ -64,14 +64,14 @@ page-user-center {
       line-height: 30px;
       position: absolute;
       top: 50%;
-      margin-top: 30px;
+      margin-top: 15px;
       color: #fff;
     }
   }
 
   .user-content {
     position: relative;
-    margin-top: -25px;
+    margin-top: -60px;
     ion-card {
       &.card-md {
         box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(6, 185, 229, 0.3);
@@ -108,12 +108,18 @@ page-user-center {
   }
   .log-out {
     color: color($colors, primary);
+    background-color: #ffffff;
     border: none !important;
+    border-radius: 14px;
+    height: 52px;
   }
   .number-content {
     font-size: 18px;
   }
   .number_unit {
     font-size:12px;
+  }
+  .list-ios {
+    margin: -1px 0 0px;
   }
 }
