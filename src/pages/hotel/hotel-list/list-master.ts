@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {NavController, ModalController} from 'ionic-angular';
+import {NavController, ModalController,AlertController } from 'ionic-angular';
 import {WkDate} from '../../../util';
 import {CityChoose} from '../modal/city-choose';
 
@@ -44,6 +44,7 @@ export class ListMasterPage {
 
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController,
+              public alertCtrl: AlertController,
               public loading: ShowLoadingProvider,
               private hotelManger: HotelManager,
               public confirm: ShowConfirmProvider,
@@ -166,8 +167,14 @@ export class ListMasterPage {
   }
 
   public cityChoose(){
-    let cityChooseModal = this.modalCtrl.create(CityChoose);
-    cityChooseModal.present();
+    // let cityChooseModal = this.modalCtrl.create(CityChoose);
+    // cityChooseModal.present();
+    let alert = this.alertCtrl.create({
+      title: '温馨提示',
+      subTitle: '目前只开放北京城市，其他城市暂未开放，谢谢',
+      buttons: ['确定']
+    });
+    alert.present();
   }
 
   private resetQuery() {
