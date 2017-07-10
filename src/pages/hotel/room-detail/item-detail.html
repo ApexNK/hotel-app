@@ -55,16 +55,15 @@
       </ion-col>
     </ion-row>
     <ion-row text-center padding-top>
-      <ion-col class="date-picker">
+      <ion-col>
         {{beginDate}}
-        <span>入住</span>
+        <span class="subInfo">入住</span>
       </ion-col>
-      <ion-col  class="date-picker">
+      <ion-col>
         {{endDate}}
-        <span>离开</span>
-
+        <span class="subInfo">离开</span>
       </ion-col>
-
+      <ion-col text-right class="primary"> 住{{this.days}}晚</ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

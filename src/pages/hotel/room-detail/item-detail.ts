@@ -17,12 +17,14 @@ export class ItemDetailPage {
   public endDate = '';
   private roomId = '';
   private fjbh = '';
+  public days:number = 1;
   public roomDetail: RoomDetail;
   constructor(public navCtrl: NavController, navParams: NavParams, private hotelManager: HotelManager) {
     this.beginDate = navParams.get('beginDate');
     this.endDate = navParams.get('endDate');
     this.roomId = navParams.get('roomId');
     this.fjbh = navParams.get('fjbh');
+    this.days = WkDate.getDays(new Date(this.endDate), new Date(this.beginDate));
   }
   ionViewDidLoad() {
     this.getRoomDetail();
