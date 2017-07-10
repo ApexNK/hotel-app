@@ -123,3 +123,9 @@ page-user-center {
     margin: -1px 0 0px;
   }
 }
+
+//全局样式
+.alert-ios .alert-button:last-child {
+  border-right: 0;
+  font-weight: normal;
+}

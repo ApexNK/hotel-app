@@ -34,7 +34,12 @@ export class RoomListPage{
     this.hotelManager.getHotelDetail({beginDate: this.beginDate, endDate: this.endDate, flatId: this.id})
       .then((res) => {
         this.hotelDetail = res as HotelDetail;
-        this.showMap({longitude:this.hotelDetail.longitude,latitude: this.hotelDetail.latitude});
+        try{
+          this.showMap({longitude:this.hotelDetail.longitude,latitude: this.hotelDetail.latitude});
+        }catch (err){
+           console.info(err);
+        }
+
       });
   }
   public goRoomDetail (roomId, beginDate, endDate, fjbh) {

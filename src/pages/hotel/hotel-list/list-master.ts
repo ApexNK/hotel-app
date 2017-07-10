@@ -22,9 +22,8 @@ export class ListMasterPage {
   public distance: string = '1000000'; //距离
   public houseResource: string = ''; //房源
   public areaList: Array<any>;
-  public today = WkDate.getToday();
-  public startDate = WkDate.getToday();
-  public endDate = WkDate.getTomorrow();
+  public startDate = WkDate.getTomorrow();
+  public endDate = WkDate.getFutureDay(2);
   public isBannerOpening = true;
   public days = 1;
   public api: any;
