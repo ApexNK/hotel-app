@@ -92,7 +92,7 @@
     </ion-row>
   </ion-grid>
   <!--绝对定位，设置滚动 style="position: absolute; top:38vw; left:0px;right: 0px;bottom: 0px"-->
-    <div [ngClass]="{'closePosition': !isBannerOpening , 'openPosition': isBannerOpening}" style="transform: translateY(38vw);">
+   <!-- <div [ngClass]="{'closePosition': !isBannerOpening , 'openPosition': isBannerOpening}" style="transform: translateY(38vw);">-->
       <ion-list>
         <ion-item *ngFor="let item of hotelList" (click)="openItem(item.id)" class="has-thumbnail">
           <ion-thumbnail item-left>
@@ -121,7 +121,7 @@
         <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中......">
         </ion-infinite-scroll-content>
       </ion-infinite-scroll>
-    </div>
+    <!--</div>-->
 
 </ion-content>
 
