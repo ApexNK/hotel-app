@@ -2,19 +2,16 @@
   <div class="head-container">
     <img src="assets/img/user_center_bg.png" alt="" class="user_center_bg">
     <div class="head-pic-container">
-      <img src="assets/img/speakers/bear.jpg" alt="">
+      <img [src]="photoUrl">
     </div>
     <div class="user-name" text-center>
       吕阿三
     </div>
-
-    <!--<img src="./assets/user_center_bg" >-->
   </div>
   <div class="user-content">
     <ion-card margin-bottom>
       <ion-card-header>
         <i class="iconfont icon-wallet"></i> 我的钱包
-        <!--<ion-icon md="ios-card-outline" ios="ios-card-outline"></ion-icon> 我的钱包-->
       </ion-card-header>
       <ion-card-content>
         <ion-grid no-padding>
@@ -32,7 +29,7 @@
         </ion-grid>
       </ion-card-content>
     </ion-card>
-    <div padding>
+    <div style="margin: 0px 12px;">
       <ion-list no-lines>
         <button ion-item (click)="goUserDetail()">
           <i class="iconfont icon-personal_information" item-left></i>
@@ -59,10 +56,10 @@
           系统消息
           <!--<ion-icon name="ios-arrow-forward-outline" class="arrow-right" item-right></ion-icon>-->
         </button>
-        <button ion-item text-center class="log-out" (tap)="loginOut()">
-          退出登陆
-        </button>
       </ion-list>
+      <button ion-button full text-center class="log-out" (tap)="loginOut()">
+        退出登陆
+      </button>
     </div>
   </div>
 </ion-content>

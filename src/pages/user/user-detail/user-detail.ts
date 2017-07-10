@@ -21,6 +21,7 @@ export class UserDetailPage {
   public userName: string;
   public cardID:string;
   public telNo: string;
+  public showHeader = true;
   constructor(public navCtrl: NavController, public navParams: NavParams,@Inject('ApiService') api) {
     this.api = api;
   }
@@ -28,6 +29,16 @@ export class UserDetailPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserDetailPage');
     this.getPersonInfo();
+  }
+
+  ionViewWillEnter() {
+    console.log('ionViewWillenter');
+    this.showHeader = true;
+  }
+
+  ionViewWillLeave() {
+    console.log('ionViewWillLeave');
+    this.showHeader = false;
   }
 
   private getPersonInfo () {

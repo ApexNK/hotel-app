@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component , ViewChild, ElementRef} from '@angular/core';
 import { NavController, NavParams ,IonicPage} from 'ionic-angular';
 import {HotelDetail, HotelManager} from '../../../providers';
+import { HotelMap } from "../../../models/hotelmap";
+
 @IonicPage({
   name:"RoomListPage",
   segment: 'RoomListPage/:flatId/:beginDate/:endDate'
@@ -15,6 +17,7 @@ export class RoomListPage{
   public endDate = '';
   public id = '';
   public hotelDetail: HotelDetail;
+  @ViewChild('hotelmap') mapElement: ElementRef;
   constructor(public navCtrl: NavController,
               private hotelManager:  HotelManager,
               navParams: NavParams) {
@@ -31,6 +34,7 @@ export class RoomListPage{
     this.hotelManager.getHotelDetail({beginDate: this.beginDate, endDate: this.endDate, flatId: this.id})
       .then((res) => {
         this.hotelDetail = res as HotelDetail;
+        this.showMap({longitude:this.hotelDetail.longitude,latitude: this.hotelDetail.latitude});
       });
   }
   public goRoomDetail (roomId, beginDate, endDate, fjbh) {
@@ -40,5 +44,12 @@ export class RoomListPage{
       endDate,
       fjbh
     });
+  }
+
+  private showMap (location:any) {
+    let map = new HotelMap(this.mapElement.nativeElement);
+    let long = location.longitude;
+    let lati = location.latitude;
+    map.createHotelNearbyMap(long,lati);
   }
 }

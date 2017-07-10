@@ -1,22 +1,22 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar *ngIf="showHeader">
     <ion-title>申请退押金</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
   <ion-item-group>
     <ion-item-divider color="light" text-center>退款信息</ion-item-divider>
-    <ion-item>
+    <ion-item padding>
       <ion-note>退款金额</ion-note>
       <div item-right>{{total}}元</div>
     </ion-item>
     <ion-item>
       <ion-note> 退款方式</ion-note>
-      <div item-right>1-7个工作日内退款到原支付方</div>
+      <div item-right class="note-info">1-7个工作日内退款到原支付方</div>
     </ion-item>
   </ion-item-group>
 

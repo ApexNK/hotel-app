@@ -17,6 +17,7 @@ import {IonicPage, NavController, NavParams } from 'ionic-angular';
 export class BalancePage {
   public activeNum = 0;
   public payWay:string;
+  public showHeader = true;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.payWay = "aliPay";
     this.activeNum = this.navParams.get('total');
@@ -24,6 +25,15 @@ export class BalancePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BalancePage');
+  }
+  ionViewWillEnter() {
+    console.log('ionViewWillenter');
+    this.showHeader = true;
+  }
+
+  ionViewWillLeave() {
+    console.log('ionViewWillLeave');
+    this.showHeader = false;
   }
   public goBalanceDetail () {
     this.navCtrl.push('BalanceDetailPage');

@@ -18,6 +18,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ApplyRefundPage {
   public total = 0;
   public reason: string;
+  public showHeader = true;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.total = this.navParams.get('total') || 0;
   }
@@ -26,6 +27,10 @@ export class ApplyRefundPage {
     console.log('ionViewDidLoad ApplyRefundPage');
   }
 
+  ionViewWillLeave() {
+    console.log('ionViewWillLeave');
+    this.showHeader = false;
+  }
   public applyForRefund () {
 
   }

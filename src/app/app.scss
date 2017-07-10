@@ -87,3 +87,11 @@
 .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated{
   color: color($colors, primary);
 }
+
+//设置返回建颜色
+.bar-button-default-ios,
+.bar-button-default.bar-button-ios-default,
+.bar-button-clear-ios-default {
+  color: #000000;
+  background-color: transparent;
+}

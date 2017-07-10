@@ -22,7 +22,7 @@
 
 </ion-header>
 
-<ion-content>
+<ion-content style="position: relative;">
   <div class="banner" [ngClass]="{'close': !isBannerOpening}"
        [style.background-image]="'url(./assets/img/banner2.png)'">
     <div class="trapezoid"></div>
@@ -31,6 +31,7 @@
       <i class="icon iconfont icon-up" [hidden]="!isBannerOpening"></i>
     </div>
   </div>
+  <!--设置时间-->
   <ion-grid no-padding>
     <ion-row class="data-picker-box">
       <ion-col class="has-border-right">
@@ -83,42 +84,45 @@
       <ion-col text-center align-self-center ion-button color="dark" clear>
         <ion-item class="item-ion">
           <ion-select [(ngModel)]="houseResource" interface="popover" class="item-sel" (ngModelChange)="updateHotelsByChange('houseResource')">
-            <ion-option value=0>全部</ion-option>
-            <ion-option value=1>有房源</ion-option>
+            <ion-option value=''>全部</ion-option>
+            <ion-option value='1'>有房源</ion-option>
           </ion-select>
         </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
+  <!--绝对定位，设置滚动 style="position: absolute; top:38vw; left:0px;right: 0px;bottom: 0px"-->
+    <div [ngClass]="{'closePosition': !isBannerOpening , 'openPosition': isBannerOpening}" style="transform: translateY(38vw);">
+      <ion-list>
+        <ion-item *ngFor="let item of hotelList" (click)="openItem(item.id)" class="has-thumbnail">
+          <ion-thumbnail item-left>
+            <img [src]="item.thumbnail | imgUrl">
+          </ion-thumbnail>
+          <ion-grid no-padding>
+            <ion-row class="title">
+              <ion-col><h2 text-nowrap>{{item.gymc}}</h2></ion-col>
+              <ion-col col-auto text-right><span class="money">￥<span class="money-num">{{item.minPrice || '--'}}</span></span> 起
+              </ion-col>
+            </ion-row>
+            <ion-row class="title">
+              <ion-col text-nowrap><p>{{item.gydz}}</p></ion-col>
+              <ion-col col-auto text-right><p>剩余{{item.availableRooms || 0}}</p></ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <p><i class="iconfont icon-location"></i>{{item.distance / 1000}}km</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
 
-  <ion-list>
-    <ion-item *ngFor="let item of hotelList" (click)="openItem(item.id)" class="has-thumbnail">
-      <ion-thumbnail item-left>
-        <img [src]="item.thumbnail">
-      </ion-thumbnail>
-      <ion-grid no-padding>
-        <ion-row class="title">
-          <ion-col><h2 text-nowrap>{{item.gymc}}</h2></ion-col>
-          <ion-col col-auto text-right><span class="money">￥<span class="money-num">{{item.minPrice}}</span></span> 起
-          </ion-col>
-        </ion-row>
-        <ion-row class="title">
-          <ion-col text-nowrap><p>{{item.gydz}}</p></ion-col>
-          <ion-col col-auto text-right><p>剩余{{item.availableRooms}}</p></ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <p><i class="iconfont icon-location"></i>{{item.distance / 1000}}km</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
-  </ion-list>
+      <ion-infinite-scroll [enabled]="notLoadOver" (ionInfinite)="$event.waitFor(getHotelList($event))">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中......">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
 
-  <ion-infinite-scroll [enabled]="notLoadOver" (ionInfinite)="$event.waitFor(getHotelList($event))">
-    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中......">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
 </ion-content>
 
 <!--<date-container></date-container>-->

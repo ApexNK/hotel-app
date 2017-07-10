@@ -87,6 +87,18 @@ export class HotelMap {
     this.map.centerAndZoom(point,15);//设置中心和地图显示级别
   }
 
+  createHotelNearbyMap(longitude:number, latitude:number): void {
+    this.createMapInstance ();
+    let point = new BMap.Point(longitude, latitude);// 创建点坐标
+    this.map.enableScrollWheelZoom(false);//启动滚轮放大缩小，默认禁用
+    this.map.enableContinuousZoom(false);//连续缩放效果，默认禁用
+    this.map.centerAndZoom(point,16);//设置中心和地图显示级别
+    let marker = new BMap.Marker(point);
+    this.map.addOverlay(marker);
+    this.map.disableDragging();
+    marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+  }
+
   markLocation(): void {
     let geolocation = new BMap.Geolocation();
     geolocation.getCurrentPosition((position)=>{
