@@ -192,3 +192,19 @@ page-list-master {
 }
 
 
+.popover-ios .popover-content{
+  width: 30% !important;
+  max-height: 220px;
+}
+
+.item-ios{
+  padding: 0 10px !important;
+}
+
+.item-block{
+  min-height: auto;
+}
+
+.item-ios .radio-ios{
+  display: none;
+}
