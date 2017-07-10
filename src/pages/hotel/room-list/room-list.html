@@ -32,25 +32,29 @@
     </ion-row>
     <ion-row text-center padding-top>
       <ion-col class="date-picker">
-        <ion-datetime
+        {{beginDate}}
+<!--        <ion-datetime
           [cancelText]="'取消'" [doneText]="'确定'"
           no-padding
           (ionChange)="getHotelDetail()"
           displayFormat="YYYY-MM-DD"
           pickerFormat="YYYY-MM-DD"
           [(ngModel)]="beginDate">
-        </ion-datetime>
+        </ion-datetime>-->
+        <br>
         <span>入住</span>
       </ion-col>
       <ion-col  class="date-picker">
-        <ion-datetime
+        {{endDate}}
+<!--        <ion-datetime
           [cancelText]="'取消'" [doneText]="'确定'"
           no-padding
           (ionChange)="getHotelDetail()"
           displayFormat="YYYY-MM-DD"
           pickerFormat="YYYY-MM-DD"
           [(ngModel)]="endDate">
-        </ion-datetime>
+        </ion-datetime>-->
+        <br>
         <span>离开</span>
 
       </ion-col>

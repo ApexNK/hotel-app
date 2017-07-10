@@ -6,7 +6,7 @@ page-item-detail {
     width: 100%;
     background-position: center center;
     background-size: 100% auto;
-    height: 38vw;
+    height: 60vw;
   }
   .icon-box{
     color: #999;
@@ -51,7 +51,7 @@ page-item-detail {
     color: color($colors, dark);
   }
   .date-picker span {
-    color: color($colors, primary);
+    color: color($colors, subInfo);
   }
 
   .img-list{

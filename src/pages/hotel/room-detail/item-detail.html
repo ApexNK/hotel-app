@@ -11,7 +11,7 @@
   <ion-slides pager class="item-profile">
 
     <ion-slide style="background-color: green" *ngFor="let item of roomDetail?.fjtp">
-      <div class="item-profile" text-center  [style.background-image]="'url(' + item.tplj + ')'">
+      <div class="item-profile" text-center  [style.background-image]="'url(' + (item.imgPath | imgUrl) + ')'">
       </div>
     </ion-slide>
   </ion-slides>
@@ -31,10 +31,7 @@
       <span float-right><ion-icon name="pin"></ion-icon> 1.4km</span>
     </p>
   </div>
-  <div class="remark" padding-left padding-right>
-    备注信息：还没有备注信息呢？
-  </div>
-  <ion-grid class="device-list" no-padding padding-left padding-right padding-bottom margin-bottom>
+  <ion-grid class="device-list" no-padding padding-left padding-right padding-bottom margin-bottom margin-top>
     <ion-row>
       <ion-col class="has-border-bottom">
         便利设施
@@ -59,42 +56,14 @@
     </ion-row>
     <ion-row text-center padding-top>
       <ion-col class="date-picker">
-        <ion-datetime
-          [cancelText]="'取消'" [doneText]="'确定'"
-          no-padding
-          [min]="today"
-          displayFormat="YYYY-MM-DD"
-          pickerFormat="YYYY-MM-DD"
-          [(ngModel)]="beginDate">
-        </ion-datetime>
+        {{beginDate}}
         <span>入住</span>
       </ion-col>
       <ion-col  class="date-picker">
-        <ion-datetime
-          [cancelText]="'取消'" [doneText]="'确定'"
-          no-padding
-          [min]="beginDate"
-          displayFormat="YYYY-MM-DD"
-          pickerFormat="YYYY-MM-DD"
-          [(ngModel)]="endDate">
-        </ion-datetime>
+        {{endDate}}
         <span>离开</span>
 
       </ion-col>
-
-    </ion-row>
-  </ion-grid>
-  <ion-grid class="device-list" no-padding padding-left padding-right padding-bottom margin-bottom>
-    <ion-row>
-      <ion-col class="has-border-bottom">
-        房间图片
-      </ion-col>
-    </ion-row>
-    <ion-row text-center padding-top class="img-list">
-      <ion-col col-6 *ngFor="let item of hotelDetail?.fjtp">
-        <img [src]="item.Tplj" alt="">
-      </ion-col>
-
 
     </ion-row>
   </ion-grid>
