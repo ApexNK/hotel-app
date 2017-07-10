@@ -205,6 +205,9 @@ page-list-master {
   min-height: auto;
 }
 
-.item-ios .radio-ios{
-  display: none;
+.radio-ios .radio-checked .radio-inner {
+  display: none !important;
+}
+.item-radio.item-ios ion-label {
+  overflow: visible;
 }
