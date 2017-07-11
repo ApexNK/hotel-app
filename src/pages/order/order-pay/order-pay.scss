@@ -1,5 +1,6 @@
 page-order-pay {
   .title-row {
+    padding: 10px 0;
     background: #f8f9fa;
   }
   ion-row {
@@ -22,4 +23,17 @@ page-order-pay {
   .no-radius {
     border-radius: 0px !important;
   }
+  .time-list{
+    margin-bottom: 0;
+  }
+  .time-list,
+  .time-list .item{
+    background: #fff;
+  }
+  .time-list .item[no-lines]{ width: 95%; margin: 0 auto; border-top:solid 1px #f0f3f5 !important; padding: 0 !important;}
+  .time-list .item[no-lines]:first-child{border:none !important;}
+  .time-list .item-inner{
+    text-align: right;padding: 0 !important;
+  }
+  .time-list .item-inner .label {padding: 0 !important;}
 }

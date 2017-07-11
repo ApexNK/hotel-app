@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{orderTitle}}</ion-title>
+    <ion-title style="background: #fff">{{orderTitle}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,57 +15,57 @@
 
 <ion-content [hidden]="showSuccessPage">
   <ion-grid no-padding>
-    <ion-row padding-top padding-bottom class="has-border-bottom title-row">
+    <ion-row class="has-border-bottom title-row">
       <ion-col  text-center class="sub-info">
         入住时间
       </ion-col>
     </ion-row>
-    <ion-list>
+    <ion-list class="time-list">
       <ion-item no-lines>
         <span item-left class="sub-info">入住时间</span>
-        <span item-right>{{startDate}}</span>
+        <span>{{startDate}}</span>
       </ion-item>
       <ion-item no-lines>
         <span item-left class="sub-info">离开时间</span>
-        <span item-right>{{endDate}}</span>
+        <span>{{endDate}}</span>
       </ion-item>
       <ion-item no-lines>
         <span item-left class="sub-info">共计</span>
-        <span item-right class="primary">住{{days}}晚</span>
+        <span class="primary">住{{days}}晚</span>
       </ion-item>
     </ion-list>
-    <ion-row padding-top padding-bottom class="has-border-bottom title-row">
+    <ion-row class="has-border-bottom title-row">
       <ion-col  text-center class="sub-info">
         入住信息
       </ion-col>
     </ion-row>
-    <ion-list>
+    <ion-list class="time-list">
       <ion-item no-lines>
         <span item-left class="sub-info">入住人姓名</span>
-        <span item-right>{{user.name}}</span>
+        <span>{{user.name}}</span>
       </ion-item>
       <ion-item no-lines>
         <span item-left class="sub-info">入住人电话</span>
-        <span item-right>{{user.phoneNumber}}</span>
+        <span>{{user.phoneNumber}}</span>
       </ion-item>
       <ion-item no-lines>
         <span item-left class="sub-info">身份证号码</span>
-        <span item-right>{{user.IDCard}}</span>
+        <span>{{user.IDCard}}</span>
       </ion-item>
     </ion-list>
-    <ion-row padding-top padding-bottom class="has-border-bottom title-row">
+    <ion-row class="has-border-bottom title-row">
       <ion-col  text-center class="sub-info">
         价格
       </ion-col>
     </ion-row>
-    <ion-list>
+    <ion-list class="time-list">
       <ion-item no-lines>
         <span item-left class="sub-info">总价</span>
-        <span item-right>￥{{total}}</span>
+        <span>￥{{total}}</span>
       </ion-item>
       <ion-item no-lines>
         <span item-left class="sub-info">优惠券</span>
-        <span item-right>0张</span>
+        <span>0张</span>
       </ion-item>
     </ion-list>
   </ion-grid>
