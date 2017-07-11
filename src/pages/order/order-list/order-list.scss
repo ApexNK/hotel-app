@@ -2,14 +2,39 @@ order-list {
   ion-segment{
     background: #fff;
   }
+  .segment-ios .segment-button.segment-activated{
+    background:#fff; color:#06b9e5; border-bottom: solid 2px #06b9e5
+  }
+  .segment-ios .segment-button:first-of-type{
+    border-radius: 0;
+  }
+  .segment-ios .segment-button:last-of-type{
+    border-radius: 0;
+  }
+  .segment-ios .segment-button{
+    color:#666;
+    border:none;
+  }
   .item-block{
     font-size: 13px;
   }
-  .address{
-    margin-top: 5px;
+  .item-ios ion-thumbnail[item-start]{
+    margin-right: 10px;
   }
+  .item-ios ion-thumbnail img {
+    width: 80px;
+    height: 70px;
+  }
+  .address,
   .min-font{
-    margin-top: 15px;
+    margin-top: 5px;
+    color:#999;
+  }
+  .item-ios.item-block .item-inner{
+    padding-right: 0;
+  }
+  .label-ios{
+    margin-right: 0;
   }
   ion-item-group {
     color: #999;
@@ -25,6 +50,7 @@ order-list {
       overflow: hidden;
       color: #333;
       // margin-top: -20px;
+      h3 { width: 70%; overflow: hidden; text-overflow: ellipsis}
     }
     .item-block{
       min-height: inherit;

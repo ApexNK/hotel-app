@@ -8,6 +8,16 @@ page-login {
   //transition: all 0.3s ease-in-out;
   //transform: scale(0);
   //opacity: 0;
+  ion-label[fixed]{
+    flex: 0 0 80px;
+    width: 80px;
+    min-width: 80px;
+    max-width: 80px;
+    text-overflow: initial;
+    &.label{
+      margin-right: 0;
+    }
+  }
   &.show-page {
     transform: scale(1);;
     opacity: 1;
@@ -16,6 +26,9 @@ page-login {
     background: #fff !important;
     ion-item{
       background: #fff;
+      [item-right]{
+        margin: 8px 0;
+      }
     }
   }
   form {
