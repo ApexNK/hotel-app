@@ -4,7 +4,7 @@
       订单
     </ion-title>
   </ion-navbar>
-  <ion-segment  [(ngModel)]="curTab" (ionChange)="tabChange($event)">
+  <ion-segment  [(ngModel)]="curTab" (ionChange)="tabChange($event)" style="border-bottom:solid 1px #ccc">
     <ion-segment-button [value]="ORDER_ENUM.WAIT_PAY">
       待支付
     </ion-segment-button>

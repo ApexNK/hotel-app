@@ -2,6 +2,19 @@ order-list {
   ion-segment{
     background: #fff;
   }
+  .segment-ios .segment-button.segment-activated{
+    background:#fff; color:#06b9e5; border-bottom: solid 2px #06b9e5
+  }
+  .segment-ios .segment-button:first-of-type{
+    border-radius: 0;
+  }
+  .segment-ios .segment-button:last-of-type{
+    border-radius: 0;
+  }
+  .segment-ios .segment-button{
+    color:#666;
+    border:none;
+  }
   .item-block{
     font-size: 13px;
   }
