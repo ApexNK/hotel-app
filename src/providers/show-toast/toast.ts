@@ -12,10 +12,12 @@ export class Toast {
     console.log('Hello ShowLoadingProvider Provider');
   }
   public show(message?: string, duration: number = 2000, delay?: number) {
-    let toast = this.toast.create({
+    let opt = {
       message: message,
-      duration: duration
-    });
+      duration: duration,
+      cssClass: 'toast-hk'
+    };
+    let toast = this.toast.create(opt);
     toast.present();
   }
 

@@ -46,7 +46,7 @@ export class UserCenterPage {
   }
   public contactServer () {
     let self = this;
-    this.confirmCtrl.show({message:this.callNumber,okText:"呼叫", cancelText:"取消"}).then(
+    this.confirmCtrl.show({message:this.callNumber,okText:"呼叫", cancelText:"取消", cssClass:"call-confirm"}).then(
       res => {
         if(res){
           console.info('call server');

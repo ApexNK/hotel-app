@@ -95,3 +95,25 @@
   color: #000000;
   background-color: transparent;
 }
+
+//confirm确认按钮字体不加粗
+.alert-ios .alert-button:last-child {
+  border-right: 0;
+  font-weight: normal;
+}
+
+//设置toast的样式
+.toast-hk .toast-message{
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.toast-hk .toast-wrapper{
+  border-radius: 2.65rem;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+//设置confirm样式
+.call-confirm .alert-message{
+  font-size: 20px;
+}
