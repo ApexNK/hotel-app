@@ -6,7 +6,13 @@ month-list {
       margin: 0;
     }
   }
+  ul   {
+    margin: 0;
+    li {
+      overflow: hidden;
+    }
 
+  }
   ion-content{
     margin-top: 84px;
     // padding-top: 28px;

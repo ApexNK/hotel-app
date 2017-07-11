@@ -2,6 +2,7 @@ month {
   display: block;
   background: #fff;
   overflow: hidden;
+  margin-top:1px;
   .month-title{
     text-align: center;
     line-height: 44px;
@@ -27,5 +28,12 @@ month {
       color: #fff;
     }
   }
-
+  .item-ios.item-block{
+    .item-inner{
+      padding: 0;
+      .label{
+        padding: 0;
+      }
+    }
+  }
 }

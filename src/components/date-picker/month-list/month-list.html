@@ -2,11 +2,10 @@
 
 <ion-content class="has-header">
 
-  <ion-list no-padding>
-    <ion-item *ngFor="let month of monthList" no-padding>
-      <month [uuid]="uuid" [curDate]="curDate" [year]="month.year" [month]="month.month"></month>
-    </ion-item>
-  </ion-list>
+  <div no-padding>
+    <month *ngFor="let month of monthList" [uuid]="uuid" [curDate]="curDate" [year]="month.year" [month]="month.month"></month>
+
+  </div>
   <ion-infinite-scroll  (ionInfinite)="$event.waitFor(loadFutureMonths($event))">
     <ion-infinite-scroll-content
 
