@@ -19,7 +19,7 @@
             <ion-col text-center (click)="goBalancePage()" class="">
               <span class="number-content sub-info">{{userMsg?.wdye}}</span><span class="sub-info number_unit">元</span><br/>我的余额
             </ion-col>
-            <ion-col text-center>
+            <ion-col text-center (click)="goCouponPage()">
               <span class="sub-info number-content">{{userMsg?.yhqsl}}</span><br/>优惠券
             </ion-col>
             <ion-col text-center (click)="applyRefund()">

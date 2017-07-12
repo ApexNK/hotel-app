@@ -36,7 +36,6 @@ export class SystemInfoPage {
     };
     try {
       return this.api.httpByUser(SYSTEM_INFORMATION, param).then(res => {
-        console.log(res);
         let sysInfoItem = res.datas;
         if (sysInfoItem.length) {
           this.sysInfoList = [...this.sysInfoList, ...sysInfoItem];

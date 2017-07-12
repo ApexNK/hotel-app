@@ -42,6 +42,10 @@ export class UserCenterPage {
     this.navCtrl.push('BalancePage', {total: this.userMsg.wdye});
   }
 
+  public goCouponPage() {
+    this.navCtrl.push('CouponPage');
+  }
+
   public goAudit() {
     this.navCtrl.push('IdentityAuditPage');
   }
