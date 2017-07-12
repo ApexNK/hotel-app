@@ -53,4 +53,11 @@ page-login {
   {
      box-shadow: none;
    }
+
+  .list-ios > .item-block:first-child {
+    border-top: none;
+  }
+  .label-ios + ion-input .text-input, .label-ios + ion-textarea .text-input, .label-ios + .input + .cloned-input {
+    margin-left: 5px;
+  }
 }
