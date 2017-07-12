@@ -11,9 +11,9 @@
 
 
 <ion-content>
-  <div padding class="gray-background">
-    <div>充值金额</div>
-    <ion-grid no-padding>
+  <div padding class="gray-background" *ngIf="!isRefund">
+    <div class="sub-info">充值金额</div>
+    <ion-grid no-padding >
       <ion-row margin-top>
         <ion-col text-left margin-top>
           <div class="circle" [ngClass]="{'active': activeNum === 100}" (tap)="changeValue(100)">100元</div>
@@ -31,13 +31,21 @@
     </ion-row>
   </ion-grid>
 </div>
+  <div *ngIf="isRefund">
+    <div class="gray-background" text-center style="height: 236px;">
+      <div style="padding-top: 61px; color:#999999; font-size:13px; line-height: 13px;" class="sub-info">充值金额(元)</div>
+      <div style="padding-top: 22px;padding-bottom: 12vh; color:#333333; font-size: 50px;line-height：50px;">{{activeNum}}</div>
+    </div>
+    <div  style="height: 8px;background-color: #efeff4"></div>
+  </div>
+
 
   <div margin-top style="background: #FFf; overflow: hidden;">
     <ion-list radio-group [(ngModel)]="payWay">
       <div class="radio-group-header" text-center>
         支付方式
       </div>
-      <ion-item class="radio-item">
+      <ion-item class="radio-item has-bottom">
         <ion-thumbnail item-start>
           <img src="./assets/img/alipay.png">
         </ion-thumbnail>

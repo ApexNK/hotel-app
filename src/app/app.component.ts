@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, Config , App, Keyboard } from 'ionic-angular';
+import { Platform, Nav, Config , App, Keyboard , Events  } from 'ionic-angular';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,7 +23,7 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
   constructor(private platform: Platform, settings: Settings, private config: Config, statusBar: StatusBar, splashScreen: SplashScreen,
-              private app: App, private keyboard: Keyboard,private toast:Toast) {
+              private app: App, private keyboard: Keyboard,private toast:Toast, private events:Events) {
 
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -40,7 +40,7 @@ export class MyApp {
   private registerBackButtonAction() {
     this.platform.registerBackButtonAction(() => {
       debugger;
-
+      this.events.publish('goback');
       if (this.keyboard.isOpen()) {
         this.keyboard.close();
         return;
@@ -57,7 +57,6 @@ export class MyApp {
       let page = activeVC.instance;
 
       console.log(page);
-      debugger;
 
       //if (page instanceof IonTabsPage) {
        // this.app.goBack();

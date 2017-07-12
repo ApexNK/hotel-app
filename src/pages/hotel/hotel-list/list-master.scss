@@ -189,6 +189,7 @@ page-list-master {
     bottom: 0px;
     right:0px;
   }
+
 }
 
 
@@ -205,9 +206,12 @@ page-list-master {
   min-height: auto;
 }
 
+//select 样式隐藏勾
+
 .radio-ios .radio-checked .radio-inner {
   display: none !important;
 }
+
 .item-radio.item-ios ion-label {
   overflow: visible;
 }

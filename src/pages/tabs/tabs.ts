@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events  } from 'ionic-angular';
 import {LocalUserInfo} from '../../LocalDatas'
 
 
@@ -24,10 +24,13 @@ export class TabsPage {
   mineTitle = '我的';
   public isLoginPageShow = false;
   public userInfo:any;
-  constructor(public navCtrl: NavController, private loginManager: LoginManagerProvider, private localUserInfo: LocalUserInfo) {
+  constructor(public navCtrl: NavController, private events:Events,private loginManager: LoginManagerProvider, private localUserInfo: LocalUserInfo) {
     // this.init();
     this.loginManager.subscribeLoginState(res => {
       this.isLoginPageShow = !res;
+    });
+    events.subscribe('goback',()=>{
+      this.isLoginPageShow = false;
     });
   }
   public async init (){

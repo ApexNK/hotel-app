@@ -78,8 +78,9 @@ export class UserCenterPage {
     if (this.userMsg.yjye > 0) {
       this.navCtrl.push('ApplyRefundPage', {total: this.userMsg.yjye});
     } else {
-      this.navCtrl.push('RechargePage', {isRefund: true});
+      this.navCtrl.push('RechargePage', {isRefund: true, refundValue:this.userMsg.yjye});
     }
+
   }
 
   private async getUserMsg() {
@@ -88,11 +89,19 @@ export class UserCenterPage {
   }
 
   loginOut() {
-    console.info('loginOut');
     console.info(this.plt);
-    this.userInfo.remove().then(() => {
-      console.info('exit app');
-      this.plt.exitApp();
-    })
+    let self = this;
+    this.confirmCtrl.show({message: "请问是否退出当前账号？", okText: "去意已决", cancelText: "我再逛逛"}).then(
+      res => {
+        if (res) {
+          self.userInfo.remove().then(() => {
+            console.info('exit app');
+            self.plt.exitApp();
+          })
+        }
+      }, err => {
+        console.info(err);
+      }
+    );
   }
 }

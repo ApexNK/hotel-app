@@ -36,7 +36,7 @@ export class KeyItemComponent {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad keyitem');
-    //this.getKeys();
+    this.getKeys();
   }
 
   public updateKey() {

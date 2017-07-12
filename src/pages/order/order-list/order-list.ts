@@ -17,11 +17,15 @@ export class OrderListPage {
   constructor(public navCtrl: NavController, private orderManager: OrderManager,
               navParams: NavParams,private events:Events, private confirmCtrl: ShowConfirmProvider) {
     events.subscribe('updateOrder',(tabName)=>{
-      if(tabName && tabName !== this.curTab){
-        this.curTab = tabName;
-      }else{
-        this.getOrder();
-      }
+      setTimeout( (function () {
+        console.info("update order");
+        if(tabName && tabName !== this.curTab){
+          this.curTab = tabName;
+        }else{
+          this.getOrder();
+        }
+      }).bind(this),1000);
+
     })
   }
   ionViewDidLoad() {

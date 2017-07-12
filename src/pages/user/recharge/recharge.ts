@@ -35,7 +35,10 @@ export class RechargePage {
     console.log('Hello RechargeComponent Component');
     this.api = api;
     this.payWay = this.navParams.get("payWay") || "aliPay";
-    this.isRefund = this.navParams.get('isRefund');
+    this.isRefund = this.navParams.get('isRefund'); // 是否为押金充值
+    if(this.isRefund){
+      this.activeNum = this.navParams.get('refundValue');
+    }
     console.info(this.payWay);
   }
   public recharge () {
