@@ -10,14 +10,14 @@
 <ion-content style="background: #fff">
   <ion-list [virtualScroll]="sysInfoList">
 
-    <ion-item *virtualItem="let item">
+    <ion-item *virtualItem="let item" (tap)="openSystemInfo(item)">
       <ion-row>
         <ion-col col-2>
           <img src="../../../assets/img/notice_ico.png" style="max-height: 40px;">
         </ion-col>
         <ion-col col-8 style="line-height: 20px">
-            系统消息<br>
-            {{item.title}}
+            <span style="font-size: 14px;">系统消息</span><br>
+            <span style="font-size: 12px;" class="sub-info">{{item.title}}</span>
         </ion-col>
         <ion-col col-2>
           {{item.createTime| date:'MM-dd'}}

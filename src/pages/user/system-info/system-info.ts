@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SYSTEM_INFORMATION } from '../../../providers/API_MARCO'
+import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { SYSTEM_INFORMATION,SYSTEM_INFORDETAIL } from '../../../providers/API_MARCO'
 
 /**
  * Generated class for the SystemInfoPage page.
@@ -20,7 +20,7 @@ export class SystemInfoPage {
   public curListPage = 1;
   private pageSize = 10;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,@Inject('ApiService') api) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,@Inject('ApiService') api,private alertCtrl: AlertController,) {
     this.api = api;
   }
 
@@ -67,5 +67,21 @@ export class SystemInfoPage {
         }
       });
     })
+  }
+
+  public openSystemInfo(item){
+    console.info(item);
+    var self= this;
+    this.api.httpByUser(SYSTEM_INFORDETAIL,{messageId:item.id}).then( res => {
+      if(res.code === '0') {
+        let alert = self.alertCtrl.create({
+          title: '消息详情',
+          subTitle: res.message,
+          buttons: ['确定']
+        });
+        alert.present();
+      }
+    });
+
   }
 }
