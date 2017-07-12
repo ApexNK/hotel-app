@@ -18,12 +18,7 @@
 
     <ion-item *virtualItem="let item">
       <ion-row align-items-center>
-        <ion-col col-6 style="line-height: 24px;">
-          <span class="msg-info">{{detailMsg[item.mxlx]}}</span><br><span class="light-color">{{item.fssj}}</span>
-        </ion-col>
-        <ion-col col-6 text-right [ngStyle]="{'color': (item.jzlx === '1') ? '#25bee7' : '#ff5731'}" style="font-size: 17px;">
-          <span [hidden]="item.jzlx === '1'">-</span><span [hidden]="item.jzlx !== '1'">+</span>{{item.je}}元
-        </ion-col>
+        {{item}}
       </ion-row>
     </ion-item>
 
@@ -31,14 +26,6 @@
   <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite($event))">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
-<!--  <ion-row class="has-border-bottom"  *ngFor="let item of detailList">
-    <ion-col col-6>
-      {{detailMsg[item.mxlx]}}<br><span class="light-color">{{item.fssj}}</span>
-    </ion-col>
-    <ion-col col-6 text-right [ngStyle]="{'color': (item.jzlx === '1') ? '#25bee7' : '#ff5731'}" style="font-size: 17px;">
-      <span [hidden]="item.jzlx === '1'">-</span><span [hidden]="item.jzlx !== '1'">+</span>{{item.je}}元
-    </ion-col>
-  </ion-row>-->
 </ion-content>
 
 

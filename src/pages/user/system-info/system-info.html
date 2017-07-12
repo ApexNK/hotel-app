@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>系统消息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background: #fff">
+  <ion-list [virtualScroll]="sysInfoList">
+
+    <ion-item *virtualItem="let item">
+      <ion-row>
+        <ion-col col-2>
+          <img src="../../../assets/img/notice_ico.png" style="max-height: 40px;">
+        </ion-col>
+        <ion-col col-8 style="line-height: 20px">
+            系统消息<br>
+            {{item.title}}
+        </ion-col>
+        <ion-col col-2>
+          {{item.createTime| date:'MM-dd'}}
+        </ion-col>
+      </ion-row>
+    </ion-item>
+
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite($event))">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+
+

@@ -29,3 +29,4 @@ export const ORDER_STATE_ENUM: {
 
 export const KEY_LIST = 'orders-0007';// 钥匙查询
 export const APPLY_AUDIT = 'mem-idaudit'; // 审核提交
+export const SYSTEM_INFORMATION = 'mem-messageQuery';

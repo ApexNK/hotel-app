@@ -21,7 +21,7 @@ export class UserManagerProvider {
 
   public getUserMessages(): Promise<UserMsgs> {
     try {
-      return this.http.httpByUser(MINE).then( res => {
+      return this.http.httpByUser(MINE).then(res => {
         return res.datas as UserMsgs;
       });
     } catch (e) {
@@ -29,5 +29,4 @@ export class UserManagerProvider {
     }
 
   }
-
 }
