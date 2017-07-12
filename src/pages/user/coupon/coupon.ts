@@ -1,6 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {Coupon} from '../../../providers/API_MARCO'
+import {Coupon} from '../../../providers/API_MARCO';
+import {LocalUserInfo} from '../../../LocalDatas/index';
 
 /**
  * Generated class for the CouponPage page.
@@ -29,7 +30,7 @@ export class CouponPage {
   };
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, @Inject('ApiService') api) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, @Inject('ApiService') api, private localUser: LocalUserInfo) {
     this.api = api;
     this.curTab = this.ORDER_STATE_ENUM.WAIT_USE;
   }
@@ -39,22 +40,26 @@ export class CouponPage {
     this.curPage = 1;
     this.couponsList = [];
     this.notLoadOver = true;
-    this.getCoupons(this.curPage);
+    this.getCoupons(this.curTab);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CouponPage');
+    this.getCoupons(this.curTab);
   }
 
-  private getCoupons(couponState) {
+  private async getCoupons(couponState) {
+    const mobile = await this.localUser.getMobile();
     let param = {
+      receiverphone: mobile,
       couponstate: couponState,
-      pageNum: this.curListPage,
+      curPage: this.curListPage,
       pageSize: this.pageSize
     };
     try {
-      return this.api.httpByUser(Coupon, param).then(res => {
+      return this.api.httpPost(Coupon, param).then(res => {
         let couponItem = res.datas;
+        debugger;
         if (couponItem.length) {
           this.couponsList = [...this.couponsList, ...couponItem];
         }
