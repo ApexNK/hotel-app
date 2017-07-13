@@ -50,6 +50,11 @@ export class RoomListPage{
       fjbh
     });
   }
+  public openBaiDuMap() {
+    let target = 'bdapp://map/geocoder?location=' + this.hotelDetail.latitude + ',' + this.hotelDetail.longitude;
+    console.log(target);
+    window.location.href = target;
+  }
 
   private showMap (location:any) {
     let map = new HotelMap(this.mapElement.nativeElement);

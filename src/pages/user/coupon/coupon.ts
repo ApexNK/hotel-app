@@ -16,13 +16,13 @@ import {LocalUserInfo} from '../../../LocalDatas/index';
 })
 export class CouponPage {
 
-  public couponsList = [];
   private api: any;
+  private pageSize = 10;
+  public notLoadOver: boolean;
+  public couponsList = [];
   public curTab: number;
   public curListPage = 1;
-  private pageSize = 10;
   public curPage: number;
-  private notLoadOver: boolean;
   public ORDER_STATE_ENUM = {
     WAIT_USE: 0,
     COMPLETED: 1,
@@ -35,33 +35,34 @@ export class CouponPage {
     this.curTab = this.ORDER_STATE_ENUM.WAIT_USE;
   }
 
-  public tabChange(event:Event) {
-    console.info(event);
+  public tabChange() {
     this.curPage = 1;
     this.couponsList = [];
     this.notLoadOver = true;
-    this.getCoupons(this.curTab);
+    this.getCoupons();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CouponPage');
-    this.getCoupons(this.curTab);
+    this.getCoupons();
   }
 
-  private async getCoupons(couponState) {
+  private async getCoupons() {
     const mobile = await this.localUser.getMobile();
     let param = {
       receiverphone: mobile,
-      couponstate: couponState,
+      couponstate: this.curTab,
       curPage: this.curListPage,
       pageSize: this.pageSize
     };
     try {
       return this.api.httpPost(Coupon, param).then(res => {
         let couponItem = res.datas;
-        debugger;
         if (couponItem.length) {
           this.couponsList = [...this.couponsList, ...couponItem];
+        }
+        if (this.couponsList.length === 0) {
+          this.notLoadOver = false;
         }
         if (couponItem.length < this.pageSize) {
           return true;//已经没有数据可以加载了
@@ -70,19 +71,21 @@ export class CouponPage {
         }
       }, err => {
         console.log(err);
+        this.notLoadOver = false;
         return false;
       });
     } catch (e) {
+      this.notLoadOver = false;
       console.log(e);
     }
   }
 
 
-  public doInfinite(couponState: number = 0, infiniteScroll: any): Promise<any> {
+  public doInfinite(infiniteScroll: any): Promise<any> {
     console.log('doInfinite, start is currently ' + this.curListPage);
     this.curListPage++;
     return new Promise((resolve, reject) => {
-      this.getCoupons(couponState).then(res => {
+      this.getCoupons().then(res => {
         if (res) {
           console.log('Async operation has ended');
           resolve();
