@@ -16,14 +16,13 @@ import {LocalUserInfo} from '../../../LocalDatas/index';
 })
 export class CouponPage {
 
-  public couponsList = [];
   private api: any;
+  private pageSize = 10;
+  public notLoadOver: boolean;
+  public couponsList = [];
   public curTab: number;
   public curListPage = 1;
-  private pageSize = 10;
   public curPage: number;
-  private notLoadOver: boolean;
-  public bgImage: string;
   public ORDER_STATE_ENUM = {
     WAIT_USE: 0,
     COMPLETED: 1,
@@ -34,11 +33,9 @@ export class CouponPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, @Inject('ApiService') api, private localUser: LocalUserInfo) {
     this.api = api;
     this.curTab = this.ORDER_STATE_ENUM.WAIT_USE;
-    this.bgImage = 'has_coupon';
   }
 
   public tabChange() {
-    this.bgImage = this.curTab === 2 ? 'void_coupon' : 'has_coupon';
     this.curPage = 1;
     this.couponsList = [];
     this.notLoadOver = true;
