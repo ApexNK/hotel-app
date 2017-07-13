@@ -18,3 +18,5 @@ declare var BMap;
 declare var BMap_Symbol_SHAPE_FORWARD_CLOSED_ARROW;
 declare var BMAP_STATUS_SUCCESS;
 declare var BMAP_ANIMATION_BOUNCE;
+declare const win: any;
+export { win as window };
