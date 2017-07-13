@@ -10,7 +10,7 @@
       优惠券
     </ion-title>
   </ion-navbar>
-  <ion-segment  [(ngModel)]="curTab" (ionChange)="tabChange($event)" style="border-bottom:solid 1px #ccc">
+  <ion-segment [(ngModel)]="curTab" (ionChange)="tabChange($event)" style="">
     <ion-segment-button [value]="ORDER_STATE_ENUM.WAIT_USE">
       待使用
     </ion-segment-button>
@@ -25,5 +25,23 @@
 
 
 <ion-content padding>
-
+  <div [ngSwitch]="curTab">
+    <ion-list>
+      <div text-center class="no-data" *ngIf="couponsList.length === 0 && !notLoadOver">
+        <img src="./assets/img/no_coupon.png" alt="">
+        <p>您还没有优惠券哦!</p>
+      </div>
+      <ion-item [ngClass]="curTab === 2?'void_coupon':'has_coupon'"  *ngFor="let coupon of couponsList; let index = index">
+        <ion-row>
+          <ion-col col-3>
+            <span style="color:#fff">￥</span><span style="font-size:25px;color:#fff">{{coupon.money}}</span>
+          </ion-col>
+          <ion-col col-9>
+            <span>{{coupon.title}}</span><br>
+            <span>有效期限:{{coupon.expirydate}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

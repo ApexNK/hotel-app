@@ -24,6 +24,7 @@ export class LocalUserInfo {
     return this.storage.remove(this.KEY);
   }
   public async getMobile () {
+    //return Promise.resolve('15850591859');
     let mobile = await this.get();
     if( mobile ){
       return Promise.resolve(mobile);
