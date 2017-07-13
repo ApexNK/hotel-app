@@ -7,5 +7,5 @@ export interface KeyInfo {
   checkInTime: string,
   address: string,
   leaveTime: string,
-  codePic: string
+  codePic: any
 };

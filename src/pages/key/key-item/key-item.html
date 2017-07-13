@@ -42,7 +42,10 @@
   </div>
 </ion-content>-->
 <ion-content>
+ <div *ngIf="keyList.length < 1" padding text-center>
+   暂无公寓房间钥匙信息
+ </div>
   <iframe data-tap-disabled="true" style="min-height:100%;width:100%; margin-right: -15px; margin-bottom: -30px;" sandbox="allow-scripts allow-top-navigation allow-pointer-lock allow-same-origin allow-popups allow-forms"
-          [src]="keyUrl">
+          [src]="keyUrl" *ngIf="keyList.length > 0">
   </iframe>
 </ion-content>

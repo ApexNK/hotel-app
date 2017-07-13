@@ -12,4 +12,7 @@ page-balance-detail {
   .item-inner .label{
     margin: 5px 8px 5px 0;
   }
+  .list-ios > .item-block:first-child {
+    border-top: hidden;
+  }
 }
