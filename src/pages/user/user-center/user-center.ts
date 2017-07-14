@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams, Platform, Events} from 'ionic-angular';
-import {UserManagerProvider, UserMsgs} from '../../../providers/index'
+import {UserManagerProvider, UserMsgs,LoginManagerProvider} from '../../../providers/index'
 import {LocalUserInfo} from '../../../LocalDatas/user-info';
 import {ShowConfirmProvider} from '../../../providers/show-confirm/show-confirm';
 import {CallNumber} from '@ionic-native/call-number';
+
 /**
  * The Settings page is a simple form that syncs with a Settings provider
  * to enable the user to customize settings for the app.
@@ -20,7 +21,7 @@ export class UserCenterPage {
 
   constructor(public navCtrl: NavController, private params: NavParams, private userManager: UserManagerProvider,
               private userInfo: LocalUserInfo, private plt: Platform, private events: Events, private confirmCtrl: ShowConfirmProvider,
-              private caller: CallNumber) {
+              private caller: CallNumber,private loginManager: LoginManagerProvider,) {
     this.photoUrl = './assets/img/default_avatar.png';
   }
 
@@ -91,12 +92,13 @@ export class UserCenterPage {
   loginOut() {
     console.info(this.plt);
     let self = this;
-    this.confirmCtrl.show({message: "请问是否退出当前账号？", okText: "去意已决", cancelText: "我再逛逛"}).then(
+    this.confirmCtrl.show({message: "请问是否退出当前账号？", okText: "确定", cancelText: "取消"}).then(
       res => {
         if (res) {
           self.userInfo.remove().then(() => {
             console.info('exit app');
-            self.plt.exitApp();
+            self.loginManager.emitLogin(false);
+            //self.plt.exitApp();
           })
         }
       }, err => {

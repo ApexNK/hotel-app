@@ -15,6 +15,9 @@ export class ImgUrlPipe implements PipeTransform {
    * Takes a value and makes it lowercase.
    */
   transform(value: string, ...args) {
+    if(!value || value === ''){
+      return './assets/img/default.png';
+    }
     return config.imgServerUrl + value;
   }
 }
