@@ -79,16 +79,11 @@ page-identity-audit {
     }
   }
   .fixed-footer{
-    position: fixed;
+    position: absolute;
     height: 70px;
     width: 100%;
     bottom: 0;
-    z-index: 999;
     padding: 10px 26px;
-    background: transparent;
-    &.footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
-      content: none;
-    }
     button {
       border-radius: 10px;
       &.button-full.button-outline{
@@ -105,6 +100,8 @@ page-identity-audit {
     text-align: left !important;
     color:#ec9605;
   }
-
+  .item-ios .item-button {
+    height: 40px;
+  }
 
 }

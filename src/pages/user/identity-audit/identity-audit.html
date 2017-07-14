@@ -17,7 +17,7 @@
   <div text-center class="list-header">
     填写身份信息
   </div>
-  <ion-list no-lines padding-left padding-right no-margin class="list">
+  <ion-list no-lines padding-left padding-right no-margin class="list" style="position: relative">
 
     <ion-item class="has-border-bottom" no-padding >
 
@@ -69,8 +69,8 @@
         </ion-col>
       </ion-row>
     </ion-item>
+    <ion-item class="fixed-footer" *ngIf="showFooter">
+      <button ion-button full (click)="submit()">提交审核</button>
+    </ion-item>
   </ion-list>
 </ion-content>
-<ion-footer class="fixed-footer" *ngIf="showFooter">
-  <button ion-button full (click)="submit()">提交审核</button>
-</ion-footer>
