@@ -1,51 +1,36 @@
-<!--<ion-header>
+<ion-header>
 
   <ion-navbar>
-    <ion-grid>
-      <ion-row align-items-center no-padding text-center>
-        <ion-col>
-          <span class="main-title">钥匙</span>
-          <div float-right class="sub-title" (click)="updateKey()">刷新</div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
+    <ion-title>
+      钥匙
+    </ion-title>
   </ion-navbar>
 
-</ion-header>-->
-<!--<ion-content padding>
-  <div *ngFor="let keyInfo of keyList; index as i;">
-    <div class="sub-content" padding (swipe)="swipeEvent($event)" *ngIf="i===currentKeyIndex">
-      <div class="room-name" text-center text-nowrap>
-        <span>{{keyInfo.roomName}}</span>
-      </div>
-      <ion-list>
-        <ion-item class="has-thumbnail">
-          <ion-thumbnail item-left>
-            <ion-img [width]="'80px'" [height]="'60px'" [src]="keyInfo.roomPic"></ion-img>
-          </ion-thumbnail>
-          <ion-grid>
-            <ion-row>
-              <ion-col style="font-size: 14px;"><ion-icon name="pin"></ion-icon> <span text-nowrap></span>{{keyInfo.address}}</ion-col>
-            </ion-row>
-            <ion-row >
-              <ion-col text-nowrap style="font-size: 14px;"><ion-icon name="time"></ion-icon>{{keyInfo.checkInTime}}</ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-item>
-      </ion-list>
-      <div class="leave-time" margin-vertical text-center>
-        <span>退房时间：<span class="time">{{keyInfo.leaveTime}}</span></span>
-      </div>
-      <scale-item [src]="keyInfo.codePic"></scale-item>
-    </div>
-  </div>
-</ion-content>-->
+</ion-header>
 <ion-content>
- <div *ngIf="keyList.length < 1" padding text-center>
-   暂无公寓房间钥匙信息
- </div>
-  <iframe data-tap-disabled="true" style="min-height:100%;width:100%; margin-right: -15px; margin-bottom: -30px;" sandbox="allow-scripts allow-top-navigation allow-pointer-lock allow-same-origin allow-popups allow-forms"
-          [src]="keyUrl" *ngIf="keyList.length > 0">
-  </iframe>
+  <ion-list >
+    <div text-center class="no-data" *ngIf="keyList.length === 0">
+      <img src="./assets/img/no_order.png" alt="" >
+      <p>您还没有订单哦!</p>
+    </div>
+    <ion-item-group *ngFor="let keyInfo of keyList; let index = index">
+      <ion-item class="item-content">
+        <ion-thumbnail item-start>
+          <img class="room-pic" [src]="'' | imgUrl" width="93" height="70">
+        </ion-thumbnail>
+        <div class="sub-title">
+          <h3 float-left>{{keyInfo.roomName}}</h3>
+        </div>
+        <div class="address">{{keyInfo.address}}</div>
+        <div class="min-font">{{keyInfo.checkInTime}}</div>
+      </ion-item>
+      <ion-item class="item-footer">
+        <div item-left>
+         <span class="sub-info">退房时间:</span>  <span class="danger" style="font-size: larger">{{keyInfo.leaveTime}}之前</span>
+        </div>
+        <button (tap)="checkDetail(keyInfo.keyLink, index)" padding-left  padding-right ion-button item-right outline>使用</button>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
 </ion-content>
+

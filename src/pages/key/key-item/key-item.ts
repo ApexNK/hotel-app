@@ -70,17 +70,11 @@ export class KeyItemComponent {
               address: info.gydz,
               checkInTime: info.rzkssj.split(' ')[0]+'-'+info.rzjssj.split(' ')[0],
               leaveTime: info.rzjssj,
-              codePic: this.sanitizer.bypassSecurityTrustResourceUrl(info.fjkey),
-              roomPic: './assets/img/timg.jpg'
+              keyLink: this.sanitizer.bypassSecurityTrustResourceUrl(info.fjkey),
+              roomPic: ''
             };
             this.keyList.push(keyInfo);
           });
-          if(this.currentKeyIndex > (this.keyList.length - 1)){
-            this.currentKeyIndex = this.keyList.length - 1;
-          }
-          if(this.keyList.length > 0){
-            this.keyUrl = this.keyList[0].codePic;
-          }
         }
 
       }catch (err){
@@ -90,6 +84,10 @@ export class KeyItemComponent {
     }, err => {
       console.info(err);
     })
+  }
+
+  public checkDetail(keyLink,index){
+    this.navCtrl.push('KeyDetailPage',{keyUrl:keyLink});
   }
 
 
