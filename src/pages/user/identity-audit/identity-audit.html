@@ -17,23 +17,23 @@
   <div text-center class="list-header">
     填写身份信息
   </div>
-  <ion-list no-lines padding-left padding-right no-margin class="list" style="position: relative">
+  <ion-list no-lines padding-left padding-right no-margin class="list">
 
-    <ion-item class="has-border-bottom" no-padding >
+    <ion-item class="has-border-bottom" no-padding>
 
 
       <ion-note item-left>真实姓名</ion-note>
       <ion-input type="text" [(ngModel)]="userName" name="username"></ion-input>
     </ion-item>
-    <ion-item  class="has-border-bottom"  no-padding >
+    <ion-item class="has-border-bottom" no-padding>
       <span item-left class="item-label">身份证号</span>
       <ion-input type="text" [(ngModel)]="cardID" name="cardid"></ion-input>
     </ion-item>
-    <ion-item class="has-border-bottom"  no-padding>
+    <ion-item class="has-border-bottom" no-padding>
       <span item-left class="item-label">手持身份证照片</span>
 
     </ion-item>
-    <ion-item text-center class="has-border-bottom"  no-padding (click)="presentPicActionSheet()">
+    <ion-item text-center class="has-border-bottom" no-padding (click)="presentPicActionSheet()">
       <div class="no-img" text-center>
         <div class="no-img-text">
           <i class="iconfont icon-camera"></i><br/>
@@ -43,7 +43,7 @@
       </div>
 
     </ion-item>
-    <ion-item  class="has-border-bottom explain"  no-padding>
+    <ion-item class="has-border-bottom explain" no-padding>
       <h2>*手持身份证照片要求说明</h2>
       <p>1.身份证信息清楚</p>
       <p>2.正面照</p>
@@ -61,7 +61,7 @@
         </ion-col>
         <ion-col>
           <div text-center>
-            <img src="./assets/img/wrong.png"style="width: 12px;height: 12px;">&nbsp;错误示意图
+            <img src="./assets/img/wrong.png" style="width: 12px;height: 12px;">&nbsp;错误示意图
           </div>
           <div>
             <img src="./assets/img/wrong_demo.png" alt="">
@@ -69,8 +69,8 @@
         </ion-col>
       </ion-row>
     </ion-item>
-    <ion-item class="fixed-footer" *ngIf="showFooter">
-      <button ion-button full (click)="submit()">提交审核</button>
-    </ion-item>
+    <div style="position: relative;height:60px;background-color: #fff">
+      <button class="fixed-footer" ion-button full (click)="submit()">提交审核</button>
+    </div>
   </ion-list>
 </ion-content>

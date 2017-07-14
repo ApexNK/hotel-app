@@ -80,19 +80,11 @@ page-identity-audit {
   }
   .fixed-footer{
     position: absolute;
-    height: 70px;
-    width: 100%;
-    bottom: 0;
-    padding: 10px 26px;
-    button {
-      border-radius: 10px;
-      &.button-full.button-outline{
-        border-right-width: 1px;
-        border-left-width: 1px;
-        border-radius: 10px;
-      }
-
-    }
+    height: 70%;
+    width: 70%;
+    top: 0;
+    left: 15%;
+    border-radius: 10px;
   }
   .action-sheets-basic-page .action-sheet-group .button-inner
   {
@@ -100,8 +92,4 @@ page-identity-audit {
     text-align: left !important;
     color:#ec9605;
   }
-  .item-ios .item-button {
-    height: 40px;
-  }
-
 }
