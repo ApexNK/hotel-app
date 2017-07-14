@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {NavController, ModalController,AlertController } from 'ionic-angular';
 import {WkDate} from '../../../util';
-import {CityChoose} from '../modal/city-choose';
+//import {CityChoose} from '../modal/city-choose';
 
 import {ShowConfirmProvider, HotelManager, ShowLoadingProvider, HotelItem, MapServer} from '../../../providers';
 
@@ -34,7 +34,7 @@ export class ListMasterPage {
   private curStartDate: string;
   private curEndDate: string;
   private curKeyWord = '';
-  private curAreaCode = '110000';
+  //private curAreaCode = '110000';
   public showHeader = true;
   private centerLocation = {
     lati:39.913673,

@@ -5,6 +5,9 @@
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
     <access origin="*" />
+    <access origin="weixin:*" launch-external="yes"/>  //打开微信的
+    <access origin="bdapp:*" launch-external="yes"/> //打开百度地图的
+    <access origin="androidamap:*" launch-external="yes"/> //打开高德地图的
     <allow-navigation href="http://ionic.local/*" />
     <allow-navigation href="http://192.168.5.101:8100" />
     <allow-navigation href="*" />

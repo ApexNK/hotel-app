@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController , IonicPage} from 'ionic-angular';
+import { NavController} from 'ionic-angular';
 
 import { User } from '../../../providers/user';
 import {LoginManagerProvider} from '../../../providers/index';
 import {LocalUserInfo} from '../../../LocalDatas/user-info';
-// @IonicPage({
-//   segment:"LoginPage",
-//   name: 'LoginPage'
-// })
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'

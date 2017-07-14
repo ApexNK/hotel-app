@@ -2,7 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { ShowConfirmProvider } from '../../../providers/show-confirm/show-confirm';
 import { ORDER_PAY, ORDER_DETAIL, ORDER_STATE_ENUM } from '../../../providers/API_MARCO';
-import { WkDate } from '../../../util';
 /**
  * Generated class for the OrderPayPage page.
  *

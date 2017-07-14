@@ -58,8 +58,8 @@ export class RoomListPage {
   }
 
   public openBaiDuMap() {
-    let baiduTarget = 'bdapp://map/geocoder?location=' + this.hotelDetail.latitude + ',' + this.hotelDetail.longitude;
-
+    let baiduTarget = 'bdapp://map/geocoder?location=' + this.hotelDetail.latitude + ',' + this.hotelDetail.longitude + '&src=com.woke.app';
+    let gaoDeTarget = 'androidamap://navi?sourceApplication=com.woke.app&amp;lat='+this.hotelDetail.latitude+'&amp;lon='+this.hotelDetail.longitude+'&amp;dev=1&amp;style=2';
     let actionSheet = this.actionSheetCtrl.create({
       cssClass: 'action-sheets-basic-page',
       buttons: [
@@ -74,11 +74,12 @@ export class RoomListPage {
         {
           text: '高德地图',
           handler: () => {
-            alert('暂不支持高德地图');
+            window.open(gaoDeTarget);
+
           }
         },
         {
-          text: 'Cancel',
+          text: '取消',
           role: 'cancel', // will always sort to be on the bottom
           handler: () => {
             console.log('Cancel clicked');
