@@ -89,6 +89,10 @@ export class UserCenterPage {
     console.log(this.userMsg);
   }
 
+  public aboutUs(){
+    this.navCtrl.push('AboutUsPage');
+  }
+
   loginOut() {
     console.info(this.plt);
     let self = this;
