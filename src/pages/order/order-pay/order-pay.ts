@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { ShowConfirmProvider } from '../../../providers/show-confirm/show-confirm';
-import { ORDER_PAY, ORDER_DETAIL, ORDER_STATE_ENUM } from '../../../providers/API_MARCO';
+import { ORDER_PAY, ORDER_DETAIL, ORDER_STATE_ENUM,Coupon } from '../../../providers/API_MARCO';
+import { LocalUserInfo } from '../../../LocalDatas/index';
 /**
  * Generated class for the OrderPayPage page.
  *
@@ -28,12 +29,18 @@ export class OrderPayPage {
   public user = {name:'',phoneNumber:'',IDCard:''};
   public showSuccessPage = false;
   public amount: number;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private events:Events, private confirmCtrl: ShowConfirmProvider,@Inject('ApiService') api) {
+  public coupon = {
+    count:0,
+    id:""
+  };
+  constructor(public navCtrl: NavController, public navParams: NavParams,private events:Events, private confirmCtrl: ShowConfirmProvider,@Inject('ApiService') api,
+              private localUser: LocalUserInfo) {
     this.api = api;
     this.days = 0;
     this.total = 0;
     this.orderNo = this.navParams.get("orderNo");
     this.getOrderDetail();
+    this.getCoupons();
     this.amount = this.total;
   }
 
@@ -69,6 +76,12 @@ export class OrderPayPage {
     );
 
 }
+  public selectCoupon(){
+    if(this.coupon.count > 0){
+      this.navCtrl.push('CouponPage');
+    }
+
+  }
 
   private goToOrderTabs(tab){
     this.navCtrl.parent.select(1);
@@ -93,5 +106,27 @@ export class OrderPayPage {
       this.user.phoneNumber = datas.hysjhm;
       this.user.IDCard = datas.hysfzh;
     });
+  }
+
+  private async getCoupons() {
+    const mobile = await this.localUser.getMobile();
+    let param = {
+      receiverphone: mobile,
+      couponstate: 0,
+      curPage: 1,
+      pageSize: 1000
+    };
+    try {
+      return this.api.httpPost(Coupon, param).then(res => {
+        let couponItem = res.datas;
+        if (couponItem.length) {
+          this.coupon.count = couponItem.length;
+        }
+      }, err => {
+        console.log(err);
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
 }

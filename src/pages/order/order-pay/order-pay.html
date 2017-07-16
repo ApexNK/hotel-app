@@ -63,9 +63,9 @@
         <span item-left class="sub-info">总价</span>
         <span>￥{{total}}</span>
       </ion-item>
-      <ion-item no-lines>
+      <ion-item no-lines (tap)="selectCoupon()">
         <span item-left class="sub-info">优惠券</span>
-        <span>0张</span>
+        <span>{{coupon.count}}张</span>
       </ion-item>
     </ion-list>
   </ion-grid>

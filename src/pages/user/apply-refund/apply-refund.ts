@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,Inject } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { APPLY_FOR_REFUND } from '../../../providers/API_MARCO'
+import {ShowConfirmProvider} from '../../../providers/show-confirm/show-confirm';
 
 /**
  * Generated class for the ApplyRefundPage page.
@@ -20,8 +21,10 @@ export class ApplyRefundPage {
   public total = 0;
   public reason: string;
   public showHeader = true;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private api:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,@Inject('ApiService') api, private confirmCtrl: ShowConfirmProvider) {
     this.total = this.navParams.get('total') || 0;
+    this.api = api;
   }
 
   ionViewDidLoad() {
@@ -33,6 +36,23 @@ export class ApplyRefundPage {
     this.showHeader = false;
   }
   public applyForRefund () {
+    let self = this;
+    this.confirmCtrl.show({message: "请问是否申请退还押金？", okText: "确定", cancelText: "取消"}).then(
+      res => {
+        if (res) {
+          self.requestForRefund();
+        }
+      }, err => {
+        console.info(err);
+      }
+    );
+  }
+
+  private requestForRefund(){
+    let param = {};
+    this.api.httpByUser(APPLY_FOR_REFUND,param).then(data => {
+      console.info(data);
+    })
 
   }
 }
