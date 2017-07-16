@@ -88,6 +88,12 @@ page-coupon {
   .header-md::after {
     background-image: none;
   }
+
+  .coupon_bg {
+    margin-top:10px;
+    width: 360px;
+    height: 90px;
+  }
   .has_coupon {
     margin-top:10px;
     background: url("../../../assets/img/has_coupon.png") no-repeat;

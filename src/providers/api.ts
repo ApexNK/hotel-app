@@ -35,6 +35,7 @@ export class Api {
     const mobile = await this.localUser.getMobile();
     console.info(mobile);
     body['sjhm'] = mobile;
+    body['phone'] = mobile;
     return this.httpPost(api,body,options);
   }
 
