@@ -20,7 +20,7 @@ export class SystemInfoPage {
   public curListPage = 1;
   private pageSize = 10;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,@Inject('ApiService') api,private alertCtrl: AlertController,) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,@Inject('ApiService') api,private alertCtrl: AlertController) {
     this.api = api;
   }
 

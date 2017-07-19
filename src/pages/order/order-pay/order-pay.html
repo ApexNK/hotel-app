@@ -65,7 +65,7 @@
       </ion-item>
       <ion-item no-lines (tap)="selectCoupon()">
         <span item-left class="sub-info">优惠券</span>
-        <span>{{coupon.count}}张</span>
+        <span>{{coupon.moneyText || "未使用"}}</span>
       </ion-item>
     </ion-list>
   </ion-grid>

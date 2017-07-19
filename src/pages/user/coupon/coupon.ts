@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, Events} from 'ionic-angular';
 import {Coupon} from '../../../providers/API_MARCO';
 import {LocalUserInfo} from '../../../LocalDatas/index';
 
@@ -28,11 +28,12 @@ export class CouponPage {
     COMPLETED: 1,
     OVERDUE: 2
   };
+  private fromPay = false;
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, @Inject('ApiService') api, private localUser: LocalUserInfo) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private events:Events, @Inject('ApiService') api, private localUser: LocalUserInfo) {
     this.api = api;
     this.curTab = this.ORDER_STATE_ENUM.WAIT_USE;
+    this.fromPay = this.navParams.get("fromPay") || false;
   }
 
   public tabChange() {
@@ -80,7 +81,6 @@ export class CouponPage {
     }
   }
 
-
   public doInfinite(infiniteScroll: any): Promise<any> {
     console.log('doInfinite, start is currently ' + this.curListPage);
     this.curListPage++;
@@ -95,5 +95,17 @@ export class CouponPage {
         }
       });
     })
+  }
+
+  public selectCoupon(index) {
+    if(this.curTab !== this.ORDER_STATE_ENUM.WAIT_USE){
+      return;
+    }
+    if(!this.fromPay){
+      return;
+    }
+    let selectedCoupon = this.couponsList[index];
+    this.events.publish('updateCoupon',{money:selectedCoupon.money, id:selectedCoupon.id});
+    this.navCtrl.pop();
   }
 }

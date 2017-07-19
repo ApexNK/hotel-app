@@ -1,8 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, AlertController } from 'ionic-angular';
 import { ShowConfirmProvider } from '../../../providers/show-confirm/show-confirm';
-import { ORDER_PAY, ORDER_DETAIL, ORDER_STATE_ENUM,Coupon } from '../../../providers/API_MARCO';
-import { LocalUserInfo } from '../../../LocalDatas/index';
+import { ORDER_PAY, ORDER_DETAIL, ORDER_STATE_ENUM } from '../../../providers/API_MARCO';
 /**
  * Generated class for the OrderPayPage page.
  *
@@ -30,18 +29,19 @@ export class OrderPayPage {
   public showSuccessPage = false;
   public amount: number;
   public coupon = {
-    count:0,
-    id:""
+    id:"",
+    moneyText:'',
+    money:0
   };
-  constructor(public navCtrl: NavController, public navParams: NavParams,private events:Events, private confirmCtrl: ShowConfirmProvider,@Inject('ApiService') api,
-              private localUser: LocalUserInfo) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private events:Events, private alertCtrl: AlertController,
+              private confirmCtrl: ShowConfirmProvider,@Inject('ApiService') api) {
     this.api = api;
     this.days = 0;
     this.total = 0;
     this.orderNo = this.navParams.get("orderNo");
-    this.getOrderDetail();
-    this.getCoupons();
     this.amount = this.total;
+    this.getOrderDetail();
+    this.installCouponEvent();
   }
 
   ionViewDidLoad() {
@@ -49,7 +49,7 @@ export class OrderPayPage {
   }
 
   goPay () {
-    this.api.httpPost(ORDER_PAY,{ddbh:this.orderNo}).then(
+    this.api.httpPost(ORDER_PAY,{ddbh:this.orderNo,couponid:this.coupon.id}).then(
       res => {
         console.info(res);
         if( res.code === '0') {
@@ -58,7 +58,15 @@ export class OrderPayPage {
             this.goToOrderTabs(ORDER_STATE_ENUM.WAIT_USE);
           },2000);
 
-        }else {
+        }else if(res.code === '1'){
+          let alert = this.alertCtrl.create({
+            title: '支付失败',
+            subTitle: res.message,
+            buttons: ['确定']
+          });
+          alert.present();
+          return;
+        } else {
           this.confirmCtrl.show({message:"余额不足，不能满足付款",okText:"去充值", cancelText:"取消"}).then(
             result => {
               if(result){
@@ -77,10 +85,7 @@ export class OrderPayPage {
 
 }
   public selectCoupon(){
-    if(this.coupon.count > 0){
-      this.navCtrl.push('CouponPage');
-    }
-
+    this.navCtrl.push('CouponPage',{fromPay:true});
   }
 
   private goToOrderTabs(tab){
@@ -88,11 +93,6 @@ export class OrderPayPage {
     this.navCtrl.popToRoot();
     this.events.publish('updateOrder',tab);
   }
-
-/*  private goToKeyTabs() {
-    this.navCtrl.parent.select(2);
-    this.navCtrl.popToRoot();
-  }*/
 
   private getOrderDetail() {
     this.api.httpPost(ORDER_DETAIL,{ddbh:this.orderNo}).then( res => {
@@ -108,25 +108,15 @@ export class OrderPayPage {
     });
   }
 
-  private async getCoupons() {
-    const mobile = await this.localUser.getMobile();
-    let param = {
-      receiverphone: mobile,
-      couponstate: 0,
-      curPage: 1,
-      pageSize: 1000
-    };
-    try {
-      return this.api.httpPost(Coupon, param).then(res => {
-        let couponItem = res.datas;
-        if (couponItem.length) {
-          this.coupon.count = couponItem.length;
-        }
-      }, err => {
-        console.log(err);
-      });
-    } catch (e) {
-      console.log(e);
-    }
+  private installCouponEvent(){
+    this.events.subscribe('updateCoupon',(newcoupon)=>{
+      this.coupon.moneyText = '-¥' + newcoupon.money;
+      this.coupon.id = newcoupon.id;
+      this.amount = this.total - newcoupon.money;
+      if(this.amount < 0){
+        this.amount = 0;
+      }
+      this.coupon.money = newcoupon.money;
+    });
   }
 }
