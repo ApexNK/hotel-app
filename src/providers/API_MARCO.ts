@@ -9,6 +9,7 @@ export const HOTEL_LIST = 'flat-0003';
 export const HOTEL_DETAIL = 'flat-0002';
 export const ROOM_DETAIL = 'flat-0001';
 export const AREA_LIST = 'common-0001';
+export const MAP_HOTEL_LIST = 'flat-0004'; //地图公寓列表
 
 export const ORDER_ROOM = 'orders-0002'; // 房间预订
 export const ORDER_PAY = 'orders-0003'; // 订单支付

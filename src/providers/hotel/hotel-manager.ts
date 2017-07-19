@@ -1,12 +1,38 @@
 import {Injectable} from '@angular/core';
 import {Api} from '../api';
-import {HOTEL_LIST, HOTEL_DETAIL, ROOM_DETAIL, ORDER_ROOM, AREA_LIST} from '../API_MARCO';
+import {MAP_HOTEL_LIST, HOTEL_LIST, HOTEL_DETAIL, ROOM_DETAIL, ORDER_ROOM, AREA_LIST} from '../API_MARCO';
 import {WkDate} from '../../util';
-import {HotelDetail, HotelListQuery, RoomDetail} from '../index';
+import {HotelDetail, HotelListQuery, RoomDetail, MapHotelListQuery, MapQueryResult} from '../index';
 @Injectable()
 export class HotelManager {
   constructor(private http: Api) {
 
+  }
+
+  public getMapHotelList(query: MapHotelListQuery): Promise<MapQueryResult[]> {
+    const today = WkDate.getToday();
+    const tomorrow = WkDate.getTomorrow();
+    const defaultParam = {
+      beginDate: today,
+      endDate: tomorrow,
+      distance: '100000000',
+      longitude: 39.913673,
+      latitude: 116.330696,
+      queryString: ""
+    };
+    const queryParam = {...defaultParam, ...query};
+    let param = {};
+    for (let k in queryParam) {
+      if (k === 'distance') {
+        param['distance'] = parseInt(queryParam.distance);
+      } else {
+        param[k] = queryParam[k];
+      }
+    }
+    return this.http.httpPost(MAP_HOTEL_LIST, param)
+      .then(res => {
+        return Promise.resolve(res.datas);
+      }).catch(e => console.log(e));
   }
 
   public getHotelList(query: HotelListQuery = {}): Promise<{ count: number, list: any }> {
@@ -25,10 +51,10 @@ export class HotelManager {
     };
     const queryParam = {...deafaultParam, ...query};
     let param = {};
-    for(let k in queryParam){
-      if( k === 'distance'){
+    for (let k in queryParam) {
+      if (k === 'distance') {
         param['distance'] = parseInt(queryParam.distance);
-      }else{
+      } else {
         param[k] = queryParam[k];
       }
     }
@@ -46,7 +72,7 @@ export class HotelManager {
   }): Promise<HotelDetail> {
     return this.http.httpPost(HOTEL_DETAIL, query).then(res => {
       return Promise.resolve(res.datas as HotelDetail);
-    }).catch( e => console.info(e));
+    }).catch(e => console.info(e));
   }
 
   public getRoomDetail(roomId): Promise<RoomDetail> {
@@ -55,7 +81,8 @@ export class HotelManager {
         return Promise.resolve(res.datas as RoomDetail);
       }).catch(err => console.info(err));
   }
-  public reservationRoom (param: {
+
+  public reservationRoom(param: {
     fjbh: string;
     // sjhm: string;
     kssj: string;
@@ -69,15 +96,15 @@ export class HotelManager {
       }).catch(e => Promise.reject(e));
   }
 
-  public getAreaList(areaCode: string = '0'):Promise<any> {
-    return this.http.httpPost(AREA_LIST,{cityCode:131}).then(res => {
+  public getAreaList(areaCode: string = '0'): Promise<any> {
+    return this.http.httpPost(AREA_LIST, {cityCode: 131}).then(res => {
       return Promise.resolve(res.datas);
     });
 
-/*    return this.http.httpPost(AREA_LIST,{cityCode:131}).then(res => {
-      return this.http.httpPost(AREA_LIST,{areaCode:res.datas[0].cityCode}).then(res => {
-        return Promise.resolve(res.datas);
-      });
-    });*/
+    /*    return this.http.httpPost(AREA_LIST,{cityCode:131}).then(res => {
+     return this.http.httpPost(AREA_LIST,{areaCode:res.datas[0].cityCode}).then(res => {
+     return Promise.resolve(res.datas);
+     });
+     });*/
   }
 }

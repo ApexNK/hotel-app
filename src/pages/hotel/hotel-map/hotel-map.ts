@@ -1,8 +1,9 @@
-import { Component , ViewChild, ElementRef} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-import { HotelMap } from "../../../models/hotelmap";
-import { Geolocation } from '@ionic-native/geolocation';
+import {Component, ViewChild, ElementRef} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {HotelManager} from '../../../providers/hotel/hotel-manager';
+import {MapQueryResult} from '../../../providers/hotel/model/map-hotel.model';
+import {HotelMap} from "../../../models/hotelmap";
+import {Geolocation} from '@ionic-native/geolocation';
 
 /**
  * Generated class for the HotelMapPage page.
@@ -21,7 +22,12 @@ import { Geolocation } from '@ionic-native/geolocation';
 export class HotelMapPage {
   @ViewChild('map') mapElement: ElementRef;
   showHeader: boolean = true;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
+  private queryStr: string = '';
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private geolocation: Geolocation,
+              private hotelSer: HotelManager) {
   }
 
   ionViewDidLoad() {
@@ -41,8 +47,16 @@ export class HotelMapPage {
     this.showMap();
   }
 
-  showMap () {
+  public searchHotels(query) {
+    this.queryStr = query;
+  }
+
+  async showMap() {
     let map = new HotelMap(this.mapElement.nativeElement);
+    let param = this.navParams.get('queryParam');
+    param.queryString = this.queryStr;
+    let hotelListInfo: MapQueryResult[] = await this.hotelSer.getMapHotelList(param);
+    console.log(hotelListInfo);
     /*    this.geolocation.getCurrentPosition().then( (location:any) => {
      let long = location.coords.longitude;
      let lati = location.coords.latitude;
@@ -53,34 +67,16 @@ export class HotelMapPage {
      console.info('error:'+ error.toString());
      });*/
     map.getCurrentCity();
-    try {
-      if (baidu_location) {
-        baidu_location.getCurrentPosition(function (result) {
-          console.log(JSON.stringify(result, null, 4));
-          console.info(result);
-          let long = result.lontitude;
-          let lati = result.latitude;
-          console.info('long:' + long);
-          map.createMapByCoordinate(long,lati);
-          map.customMark(long,lati,"¥162起 | 32套");
-
-        }, function (error) {
-        });
-      }else{
-        map.createMapByCity("北京");
-        map.markLocation();
-      }
-    }catch (err) {
-      map.createMapByCity("北京");
-      map.markLocation();
-    }
-
+    map.createMapByCity("北京");
+    hotelListInfo.forEach( hotelItem => {
+      map.customMark(hotelItem.longitude, hotelItem.latitude, `¥${hotelItem.minPrice}起 | ${hotelItem.availableRooms}套` )
+    });
   }
 
   getCurrentPosition() {
     return this.geolocation.getCurrentPosition().then((resp) => {
       console.info(resp);
-      return {latitude:resp.coords.latitude,longitude:resp.coords.longitude};
+      return {latitude: resp.coords.latitude, longitude: resp.coords.longitude};
     }).catch((error) => {
       console.log('Error getting location', error);
     });

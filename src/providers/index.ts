@@ -9,6 +9,7 @@ export {HotelItem} from './hotel/model/hotel-item.model'
 export {RoomItem} from './hotel/model/room-item.model';
 export {HotelDetail} from './hotel/model/hotel-detail.model';
 export {RoomDetail} from './hotel/model/room-detail.model';
+export {MapHotelListQuery, MapQueryResult} from './hotel/model/map-hotel.model';
 export {OrderItem} from './order/model/order-item.model';
 export {HotelManager} from './hotel/hotel-manager';
 export {OrderManager} from './order/order-manager';
