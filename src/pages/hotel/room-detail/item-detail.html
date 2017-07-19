@@ -50,14 +50,14 @@
 
   <ion-grid class="discount-list" no-padding padding-left padding-right padding-bottom margin-bottom margin-top>
     <ion-row text-center padding-top class="icon-box facilities-row">
-      <div class="discount-item">
+      <div class="discount-item" *ngFor="let discountInfo of roomDetail?.discounts;">
         <div class="discount-ico">折</div>
-        预计时间大于等于10天，95折！
+        {{discountInfo}}
       </div>
-      <div class="discount-item">
+<!--      <div class="discount-item">
         <div class="discount-ico">折</div>
         预计时间大于30天，88折！
-      </div>
+      </div>-->
     </ion-row>
   </ion-grid>
 

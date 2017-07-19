@@ -6,4 +6,5 @@ export interface RoomDetail {
   sslc: number;//所属楼层
   fjdz: string;//房间地址
   fjtp: { imgName: string; imgPath: string;}[]//房间图片
+  discounts: any;//折扣信息
 }
