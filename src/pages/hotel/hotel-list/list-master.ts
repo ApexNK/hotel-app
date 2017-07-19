@@ -1,6 +1,7 @@
 import {Component, Inject} from '@angular/core';
-import {NavController, ModalController,AlertController } from 'ionic-angular';
+import {NavController, ModalController, AlertController} from 'ionic-angular';
 import {WkDate} from '../../../util';
+import {MapHotelListQuery} from '../../../providers/hotel/model/map-hotel.model';
 //import {CityChoose} from '../modal/city-choose';
 
 import {ShowConfirmProvider, HotelManager, ShowLoadingProvider, HotelItem, MapServer} from '../../../providers';
@@ -11,11 +12,11 @@ import {ShowConfirmProvider, HotelManager, ShowLoadingProvider, HotelItem, MapSe
 })
 export class ListMasterPage {
   public currentCity = {
-    name:"北京",
-    id:'110000',
-    cityCode:131,
-    lati:39.915098,
-    long:116.40398
+    name: "北京",
+    id: '110000',
+    cityCode: 131,
+    lati: 39.915098,
+    long: 116.40398
   };
   public areaCode = '110000';
   public area = {id: '110000', text: '全城'};//城市区域
@@ -37,8 +38,8 @@ export class ListMasterPage {
   //private curAreaCode = '110000';
   public showHeader = true;
   private centerLocation = {
-    lati:39.913673,
-    long:116.40398
+    lati: 39.913673,
+    long: 116.40398
   };
 
   constructor(public navCtrl: NavController,
@@ -101,7 +102,7 @@ export class ListMasterPage {
       });
   }
 
-  private async getCurrentCityHotels(){
+  private async getCurrentCityHotels() {
     this.centerLocation = await this.getLocation();
     this.searchHotel(this.centerLocation);
   }
@@ -141,17 +142,17 @@ export class ListMasterPage {
     this.getHotelList(this.centerLocation);
   }
 
-  public updateHotelsByChange(type){ //select option has changed
+  public updateHotelsByChange(type) { //select option has changed
     this.resetQuery();
     let center = {
-      lati:39.913673,
-      long:116.40398
+      lati: 39.913673,
+      long: 116.40398
     };
-    if(this.area.id === this.currentCity.id){
+    if (this.area.id === this.currentCity.id) {
       center = this.centerLocation;
-    }else{
-      for(let i = 0,length = this.areaList.length; i < length; i++){
-        if(this.area.id === this.areaList[i].id){
+    } else {
+      for (let i = 0, length = this.areaList.length; i < length; i++) {
+        if (this.area.id === this.areaList[i].id) {
           center['long'] = this.areaList[i].longitude;
           center['lati'] = this.areaList[i].latitude;
           break;
@@ -166,7 +167,7 @@ export class ListMasterPage {
     this.getHotelList(center);
   }
 
-  public cityChoose(){
+  public cityChoose() {
     // let cityChooseModal = this.modalCtrl.create(CityChoose);
     // cityChooseModal.present();
     let alert = this.alertCtrl.create({
@@ -192,8 +193,8 @@ export class ListMasterPage {
   public beginDateChange(beginDate) {
     this.startDate = beginDate;
     this.getDays();
-    if(this.days < 1){
-      this.endDate = WkDate.getFutureDay(1,new Date(this.startDate));
+    if (this.days < 1) {
+      this.endDate = WkDate.getFutureDay(1, new Date(this.startDate));
       this.days = 1;
     }
     this.curStartDate = this.startDate;
@@ -203,8 +204,8 @@ export class ListMasterPage {
   public endDateChange(endDate) {
     this.endDate = endDate;
     this.getDays();
-    if(this.days < 1){
-      this.startDate = WkDate.getFutureDay(-1,new Date(this.endDate));
+    if (this.days < 1) {
+      this.startDate = WkDate.getFutureDay(-1, new Date(this.endDate));
       this.days = 1;
     }
     this.curStartDate = this.startDate;
@@ -232,7 +233,15 @@ export class ListMasterPage {
      servicekey: "mem-0003",
      parameter:{sjhm:"15850591859"}
      }).then( res => {console.info(res)});*/
-    this.navCtrl.push("HotelMapPage");
+    let queryParam: MapHotelListQuery = {
+      beginDate: this.curStartDate,
+      endDate: this.curEndDate,
+      distance: this.distance,
+      longitude: this.centerLocation.long,
+      latitude: this.centerLocation.lati,
+      queryString: ''
+    };
+    this.navCtrl.push("HotelMapPage", {queryParam: queryParam});
     /*    this.confirm.showConfirm({message: '是否跳转到地图页面'}).subscribe(result => {
      if (result === true) {
 
