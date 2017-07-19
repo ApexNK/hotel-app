@@ -16,6 +16,7 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
 import {Geolocation} from '@ionic-native/geolocation';
 import { Alipay } from '@ionic-native/alipay';
+import { FileTransfer } from '@ionic-native/file-transfer';
 import {DatePickerModule} from '../components/date-picker/date-picker.module';
 // localstorage
 import {LocalUserInfo} from '../LocalDatas/index';
@@ -127,7 +128,8 @@ export function providers() {
     HotelManager,
     Alipay,
     MapServer,
-    CallNumber
+    CallNumber,
+    FileTransfer
   ];
 }
 

@@ -48,6 +48,12 @@
         },
         "mx.ferreyra.callnumber": {
             "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.woke.app"
         }
     },
     "dependent_plugins": {

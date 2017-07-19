@@ -3,6 +3,9 @@ import { IonicPage, NavController, NavParams, ActionSheetController, Events} fro
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { APPLY_AUDIT } from '../../../providers/API_MARCO';
 
+
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+
 /**
  * Generated class for the IdentityAuditPage page.
  *
@@ -20,7 +23,7 @@ export class IdentityAuditPage {
 
   options: CameraOptions = {
     quality: 100,
-    destinationType: this.camera.DestinationType.DATA_URL,
+    destinationType: this.camera.DestinationType.FILE_URI,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
     allowEdit: false,
@@ -36,7 +39,8 @@ export class IdentityAuditPage {
   private api:any;
   private base64Data:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private  camera: Camera,
-              public actionSheetCtrl: ActionSheetController,private events:Events,@Inject('ApiService') api) {
+              public actionSheetCtrl: ActionSheetController,private events:Events,@Inject('ApiService') api,
+              private transfer: FileTransfer) {
     this.api = api;
   }
 
@@ -74,10 +78,18 @@ export class IdentityAuditPage {
   }
 
   private getPicture () {
-    this.camera.getPicture(this.options).then((imageData) => {
+/*    this.camera.getPicture(this.options).then((imageData) => {
       let base64Image = 'data:image/jpeg;base64,'+imageData;
       this.base64Data = imageData;
       this.imgUrl = base64Image;
+    }, (err) => {
+      console.info(err);
+    })*/
+    this.camera.getPicture(this.options).then((imageUrl) => {
+      this.imgUrl = imageUrl;
+      alert(this.imgUrl);
+      this.getFileEntry(imageUrl);
+      //window.resolveLocalFileSystemURL
     }, (err) => {
       console.info(err);
     })
@@ -110,6 +122,71 @@ export class IdentityAuditPage {
       ]
     });
     actionSheet.present();
+  }
+
+  private getFileEntry(imgUrl) {
+    var self = this;
+   // alert(window['resolveLocalFileSystemURL']);
+    window['resolveLocalFileSystemURL'](imgUrl, function success(fileEntry) {
+
+      // Do something with the FileEntry object, like write to it, upload it, etc.
+      // writeFile(fileEntry, imgUri);
+      console.log("got file: " + fileEntry.fullPath);
+      console.log("got file toInternalURL: " + fileEntry.toInternalURL());
+      alert(fileEntry.fullPath);
+      alert(fileEntry.toURL());
+
+      self.upload(fileEntry.toURL());
+      //alert(fileEntry.fullPath);
+      // displayFileData(fileEntry.nativeURL, "Native URL");
+
+    }, function () {
+      // If don't get the FileEntry (which may happen when testing
+      // on some emulators), copy to a new FileEntry.
+     // this.createNewFileEntry(imgUri);
+    });
+  }
+
+  private createNewFileEntry(imgUri) {
+/*    window.resolveLocalFileSystemURL(cordova.file.cacheDirectory, function success(dirEntry) {
+
+      // JPEG file
+      dirEntry.getFile("tempFile.jpeg", { create: true, exclusive: false }, function (fileEntry) {
+
+        // Do something with it, like write to it, upload it, etc.
+        // writeFile(fileEntry, imgUri);
+        console.log("got file: " + fileEntry.fullPath);
+        // displayFileData(fileEntry.fullPath, "File copied to");
+
+      }, onErrorCreateFile);
+
+    }, onErrorResolveUrl);*/
+  }
+
+  private upload(fileURL) {
+    const fileTransfer: FileTransferObject = this.transfer.create();
+    let params = {};
+    params['bussinessType'] = 'idAudit';
+    let options: FileUploadOptions = {
+      fileKey: 'file',
+      fileName: fileURL.substr(fileURL.lastIndexOf('/') + 1),
+      mimeType: 'image/jpeg',
+      params: params
+    };
+    alert("upload");
+
+      fileTransfer.upload(fileURL, encodeURI('http://121.196.194.174:8086/hostel-app-war/app/appUploadImg'), options)
+      .then((data) => {
+        console.info(data);
+        //alert(data);
+        alert("upload success"+JSON.stringify(data));
+        // success
+      }, (err) => {
+        // error
+        console.info(err);
+        alert("upload err"+JSON.stringify(err));
+       //alert(err);
+      })
   }
 
 }
