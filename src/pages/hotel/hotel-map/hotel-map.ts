@@ -49,6 +49,7 @@ export class HotelMapPage {
 
   public searchHotels(query) {
     this.queryStr = query;
+    this.showMap();
   }
 
   async showMap() {
