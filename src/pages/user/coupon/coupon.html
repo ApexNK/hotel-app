@@ -31,7 +31,7 @@
         <img src="./assets/img/no_coupon.png" alt="">
         <p>您还没有优惠券哦!</p>
       </div>
-      <ion-item [style.background]="'url(./assets/img/' + (curTab === 2?'void_coupon.png':'has_coupon.png') + ')'" class="coupon_bg" *ngFor="let coupon of couponsList; let index = index" (tap)="selectCoupon(index)">
+      <ion-item [style.background]="'url(./assets/img/' + (curTab === 1?'has_coupon.png':'void_coupon.png') + ')'" class="coupon_bg" *ngFor="let coupon of couponsList; let index = index" (tap)="selectCoupon(index)">
         <ion-row>
           <ion-col col-3>
             <span style="color:#fff">￥</span><span style="font-size:25px;color:#fff">{{coupon.money}}</span>

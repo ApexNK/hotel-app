@@ -24,9 +24,9 @@ export class CouponPage {
   public curListPage = 1;
   public curPage: number;
   public ORDER_STATE_ENUM = {
-    WAIT_USE: 0,
-    COMPLETED: 1,
-    OVERDUE: 2
+    WAIT_USE: 1,
+    COMPLETED: 2,
+    OVERDUE: 3
   };
   private fromPay = false;
 
