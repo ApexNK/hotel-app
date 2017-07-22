@@ -25,6 +25,8 @@ export class KeyItemComponent {
   private api: any;
   public currentKeyIndex:number = 0;
   public keyUrl:any;
+  private curPage = 1;
+  private pageSize = 50;
   constructor(public navCtrl: NavController, public navParams: NavParams,private events:Events,
               private sanitizer: DomSanitizer, @Inject('ApiService') api) {
     this.api = api;
@@ -61,7 +63,7 @@ export class KeyItemComponent {
   // fjbh 房间编号, fjkey开锁二维码链接, fkkh房卡编号, gydz公寓地址,gymc公寓名称,rzkssj开始时间,rzjssj结束时间,sslc楼层
 
   private getKeys() {
-    this.api.httpByUser(KEY_LIST,{}).then( res => {
+    this.api.httpByUser(KEY_LIST,{curPage: this.curPage, pageSize: this.pageSize}).then( res => {
       try{
         if(res.datas.length > 0){
           res.datas.forEach( info => {
