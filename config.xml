@@ -96,7 +96,7 @@
     </plugin>
     <plugin name="cordova-plugin-camera" spec="~2.4.1"/>
     <plugin name="cordova-alipay-base" spec="https://github.com/pipitang/cordova-alipay-base">
-        <variable name="ALI_PID" value="2017062007526289"/>
+        <variable name="ALI_PID" value="2017071707787400"/>
     </plugin>
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2"/>
     <plugin name="cordova-plugin-file-transfer" spec="~1.6.3"/>

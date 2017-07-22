@@ -1,5 +1,5 @@
 import { Component, Inject} from '@angular/core';
-import { NavController, NavParams ,IonicPage} from 'ionic-angular';
+import { NavController, NavParams ,IonicPage, Events} from 'ionic-angular';
 import { RECHARGE} from '../../../providers/API_MARCO';
 import { Alipay } from '@ionic-native/alipay';
 
@@ -31,7 +31,7 @@ export class RechargePage {
   public api:any;
   public customValue:any;
   public isRefund = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, @Inject('ApiService') api, private alipay: Alipay) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private events:Events, @Inject('ApiService') api, private alipay: Alipay) {
     console.log('Hello RechargeComponent Component');
     this.api = api;
     this.payWay = this.navParams.get("payWay") || "aliPay";
@@ -44,7 +44,7 @@ export class RechargePage {
   public recharge () {
     //this.navCtrl.popToRoot();
     let param = {
-      czje: 1,
+      czje: this.activeNum,
       czlx: RECHARGE_TYPE.YU_E,
       zffs: PAY_WAY.ZHI_FU_BAO,
 
@@ -55,9 +55,11 @@ export class RechargePage {
     if ( this.isRefund ){
       param.czlx = RECHARGE_TYPE.YA_JIN;
     }
+    // window.alert(JSON.stringify(param));
     try {
       this.api.httpByUser(RECHARGE,param).then( data => {
         console.info(data.orderInfo);
+        // window.alert(JSON.stringify(data.orderInfo));
         if (!data.orderInfo){
             return;
         }
@@ -74,7 +76,6 @@ export class RechargePage {
   }
 
   public valueChange(event) {
-    console.info(event);
     console.info(this.customValue);
     this.activeNum = this.customValue;
   }
@@ -86,16 +87,20 @@ export class RechargePage {
 
   private requestForAliPay (data){
     // data 为后端返回的订单信息，为字符串，接口中alipay.pay 需要传递一个AlipayOrder类型
-    // 当ts报错时，将/node_modules/@ionic-native/alipay/index.d.ts入参修改为any
+    let self = this;
     this.alipay.pay(data)
       .then(result => {
         console.log(result); // Success
+        window.alert(JSON.stringify(result));
+        self.events.publish('updateUserCenter',true);
+        self.navCtrl.popToRoot();
         //  go to  pay success page
 
       })
       .catch(error => {
         console.log(error); // Failed
         // go to pay failed page
+        window.alert(JSON.stringify(error));
       });
   }
 
