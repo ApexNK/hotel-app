@@ -8,6 +8,14 @@
 
 
 <ion-content style="background: #fff">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="更新中...">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-list [virtualScroll]="sysInfoList">
 
     <ion-item *virtualItem="let item" (tap)="openSystemInfo(item)">
