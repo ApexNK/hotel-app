@@ -42,13 +42,13 @@ export class RechargePage {
     console.info(this.payWay);
   }
   public recharge () {
-    //this.navCtrl.popToRoot();
     let param = {
       czje: this.activeNum,
       czlx: RECHARGE_TYPE.YU_E,
       zffs: PAY_WAY.ZHI_FU_BAO,
 
     };
+
     if (this.payWay === 'wechat'){
       param.zffs = PAY_WAY.WEI_XIN;
     }
@@ -92,8 +92,7 @@ export class RechargePage {
       .then(result => {
         console.log(result); // Success
         window.alert(JSON.stringify(result));
-        self.events.publish('updateUserCenter',true);
-        self.navCtrl.popToRoot();
+        self.navCtrl.push("PayResultPage",{status:'success',money:self.activeNum});
         //  go to  pay success page
 
       })
@@ -101,6 +100,7 @@ export class RechargePage {
         console.log(error); // Failed
         // go to pay failed page
         window.alert(JSON.stringify(error));
+        self.navCtrl.push("PayResultPage",{status:'fail'});
       });
   }
 
