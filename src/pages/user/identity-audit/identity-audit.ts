@@ -42,7 +42,7 @@ export class IdentityAuditPage {
   private cardIdURl: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, private  camera: Camera,
               public actionSheetCtrl: ActionSheetController,private events:Events,@Inject('ApiService') api,
-              private transfer: FileTransfer,private toast:Toast, ) {
+              private transfer: FileTransfer,private toast:Toast) {
     this.api = api;
   }
 
@@ -74,6 +74,7 @@ export class IdentityAuditPage {
     })
   }
 
+  // 上传图片
   public pickPicForLib () {
     this.options.sourceType = this.camera.PictureSourceType.PHOTOLIBRARY;
     this.getPicture();

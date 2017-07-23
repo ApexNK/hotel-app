@@ -35,3 +35,5 @@ export const SYSTEM_INFORDETAIL = 'mem-messageRead';
 
 export const Coupon = 'coupons-0001';// 优惠券查询
 export const APPLY_FOR_REFUND = 'money-applyForRefund';// 优惠券查询
+
+export const UPDATE_HEAD_ICON = 'mem-headIcon';// 头像更新

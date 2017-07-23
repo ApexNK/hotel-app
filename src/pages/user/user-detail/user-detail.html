@@ -15,12 +15,12 @@
 
 <ion-content no-padding style="background:#fff">
   <ion-list style="padding: 25px 12px;">
-    <ion-item class="has-border-bottom" no-lines>
+    <ion-item class="has-border-bottom" no-lines >
       <ion-note>头像</ion-note>
-      <ion-avatar item-end>
-        <img [src]="photoUrl">
+      <ion-avatar item-end (tap)="updateHeadIcon()">
+        <img [src]="photoUrl | imgUrl">
       </ion-avatar>
-      <i class="icon-arrow-right iconfont" style="color: #aeacb4;" item-right></i>
+      <i class="icon-arrow-right iconfont" style="color: #aeacb4;" item-right (tap)="updateHeadIcon()"></i>
     </ion-item>
     <ion-item class="has-border-bottom"  no-lines>
       <ion-note>姓名</ion-note>
