@@ -21,6 +21,9 @@ import {DatePickerModule} from '../components/date-picker/date-picker.module';
 // localstorage
 import {LocalUserInfo} from '../LocalDatas/index';
 
+import { JPush } from 'ionic3-jpush';
+
+
 // provides
 import {LoginManagerProvider,
         UserManagerProvider,
@@ -129,7 +132,8 @@ export function providers() {
     Alipay,
     MapServer,
     CallNumber,
-    FileTransfer
+    FileTransfer,
+    JPush
   ];
 }
 

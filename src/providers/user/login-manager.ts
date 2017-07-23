@@ -3,6 +3,7 @@ import {Api} from '../api';
 import 'rxjs/add/operator/map';
 import {VALID_KEY, LOGIN_KEY} from '../API_MARCO';
 import {LocalUserInfo} from '../../LocalDatas/index';
+import { JPush } from 'ionic3-jpush';
 
 /*
  Generated class for the LoginManagerProvider provider.
@@ -17,7 +18,7 @@ export class LoginManagerProvider {
   private http: any;
   private localUserInfo: any;
 
-  constructor(private injector: Injector) {
+  constructor(private injector: Injector, public jPush: JPush) {
     this.http = this.injector.get(Api);
     this.localUserInfo = this.injector.get(LocalUserInfo);
     console.log('Hello LoginManagerProvider Provider');
@@ -47,6 +48,12 @@ export class LoginManagerProvider {
         this.localUserInfo.save(mobile);
         this.emitLogin(true);
         this.userDateEv.emit(mobile);
+        let alias = "wk" + mobile;
+        // window.alert(alias);
+        // 注册极光别名
+        this.jPush.setAlias(alias).then( res => {
+          console.info(res);
+        });
       }
     } catch (e) {
       console.log(e);

@@ -9,8 +9,8 @@ import {TabsPage as FirstRunPage } from '../pages/tabs/tabs';
 // import { LoginPage as FirstRunPage } from '../pages/user/login/login';
 
 import { Settings, Toast } from '../providers';
-
-
+import { JPush } from 'ionic3-jpush';
+import { LocalUserInfo } from '../LocalDatas/index';
 
 @Component({
   template: `<div>
@@ -23,23 +23,65 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
   constructor(private platform: Platform, settings: Settings, private config: Config, statusBar: StatusBar, splashScreen: SplashScreen,
-              private app: App, private keyboard: Keyboard,private toast:Toast, private events:Events) {
-
+              private app: App, private keyboard: Keyboard,private toast:Toast, private events:Events,public jPush: JPush,private localUser: LocalUserInfo) {
+    // this.localUser.save(15850591859);
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       setTimeout(() => {
         splashScreen.hide();
-      }, 300);
+      }, 400);
+
+      this.localUser.get().then( phone => {
+        if( phone && phone !== "") {
+          let alias = "wk" + phone;
+          // window.alert(alias);
+          console.info(alias);
+          this.jPush.setAlias(alias).then( res => {
+            console.info(res);
+          });
+        }
+      });
       this.registerBackButtonAction();//注册物理回退事件
+
+      // 极光推送
+      this.jPush.getRegistrationID().then(regid => {
+        console.log(regid);
+        // window.alert(JSON.stringify(regid));
+      });
+
+      this.jPush.openNotification().subscribe( res => {
+        console.log("openNotification");
+        console.log(JSON.stringify(res));
+        // window.alert(JSON.stringify(res));
+        this.goToSystemPage();
+      });
+      this.jPush.receiveNotification().subscribe( res => {
+        console.log("receiveNotification");
+        console.log(JSON.stringify(res));
+        // window.alert(JSON.stringify(res));
+        this.goToSystemPage();
+      });
+      this.jPush.receiveMessage().subscribe( res => {
+        console.log("receiveMessage");
+        console.log(JSON.stringify(res));
+        // window.alert(JSON.stringify(res));
+        this.goToSystemPage();
+      });
     });
 
   }
 
+  private goToSystemPage () {
+    const nav = this.app.getActiveNav();
+    // nav.parent.select(0);
+    console.info("to to system page");
+    nav.push("SystemInfoPage");
+  }
+
   private registerBackButtonAction() {
     this.platform.registerBackButtonAction(() => {
-      debugger;
       this.events.publish('goback');
       if (this.keyboard.isOpen()) {
         this.keyboard.close();

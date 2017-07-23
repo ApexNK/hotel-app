@@ -49,12 +49,19 @@
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.woke.app"
         },
+        "jpush-phonegap-plugin": {
+            "APP_KEY": "a8a59f58f0c328dd5df36627",
+            "PACKAGE_NAME": "com.woke.app"
+        },
         "mx.ferreyra.callnumber": {
             "PACKAGE_NAME": "com.woke.app"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-jcore": {
             "PACKAGE_NAME": "com.woke.app"
         }
     }
