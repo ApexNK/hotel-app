@@ -1,16 +1,17 @@
 import { Injectable, Injector } from '@angular/core';
 import { Http, RequestOptions, URLSearchParams } from '@angular/http';
 import {Toast} from '../providers/index';
-import {API as URL} from '../web.config';
+// import {API as URL} from '../web.config';
 import 'rxjs/add/operator/map';
 import {LocalUserInfo} from '../LocalDatas/index';
 import { ORDER_PAY, PERSON_INFO } from  "./API_MARCO"
+import config from "../config/config"
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */
 @Injectable()
 export class Api {
-  private readonly url: string = URL;
+  private readonly url: string = config.proUrl;
   private localUser: any;
   constructor(public http: Http,  private injector: Injector) {
     this.localUser = this.injector.get(LocalUserInfo);

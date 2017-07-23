@@ -2,7 +2,8 @@ import { Component,Inject } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, Events} from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { APPLY_AUDIT } from '../../../providers/API_MARCO';
-
+import { Toast } from '../../../providers';
+import config from '../../../config/config';
 
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 
@@ -37,10 +38,11 @@ export class IdentityAuditPage {
   public cardID:string = '';
   showFooter:boolean = true;
   private api:any;
-  private base64Data:any;
+  private readonly imgApi: string = config.imgAPI;
+  private cardIdURl: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, private  camera: Camera,
               public actionSheetCtrl: ActionSheetController,private events:Events,@Inject('ApiService') api,
-              private transfer: FileTransfer) {
+              private transfer: FileTransfer,private toast:Toast, ) {
     this.api = api;
   }
 
@@ -53,15 +55,20 @@ export class IdentityAuditPage {
 
   public submit () {
     //this.navCtrl.push('AuditStatePage');
+    if( this.cardIdURl === "" || this.cardID === "" || this.userName === "") {
+      this.toast.show("请完善信息");
+      return;
+    }
     let param = {
-      sctp:this.base64Data,
-      tjsfzh: this.cardID,
-      tjxm: this.userName
+      picPath:this.cardIdURl, // 图片路径
+      tjsfzh: this.cardID, // 身份证号码
+      tjxm: this.userName // 姓名
     };
     this.api.httpByUser(APPLY_AUDIT,param).then(res => {
       console.info(res);
-      this.navCtrl.pop();
+      this.toast.show(res.message);
       this.events.publish('updateUserCenter',true);
+      this.navCtrl.pop();
     }, err => {
       console.info(err);
     })
@@ -78,18 +85,11 @@ export class IdentityAuditPage {
   }
 
   private getPicture () {
-/*    this.camera.getPicture(this.options).then((imageData) => {
-      let base64Image = 'data:image/jpeg;base64,'+imageData;
-      this.base64Data = imageData;
-      this.imgUrl = base64Image;
-    }, (err) => {
-      console.info(err);
-    })*/
     this.camera.getPicture(this.options).then((imageUrl) => {
       this.imgUrl = imageUrl;
       alert(this.imgUrl);
+      console.info(this.imgUrl);
       this.getFileEntry(imageUrl);
-      //window.resolveLocalFileSystemURL
     }, (err) => {
       console.info(err);
     })
@@ -126,67 +126,38 @@ export class IdentityAuditPage {
 
   private getFileEntry(imgUrl) {
     var self = this;
-   // alert(window['resolveLocalFileSystemURL']);
     window['resolveLocalFileSystemURL'](imgUrl, function success(fileEntry) {
-
       // Do something with the FileEntry object, like write to it, upload it, etc.
       // writeFile(fileEntry, imgUri);
-      console.log("got file: " + fileEntry.fullPath);
-      console.log("got file toInternalURL: " + fileEntry.toInternalURL());
-      alert(fileEntry.fullPath);
-      alert(fileEntry.toURL());
-
       self.upload(fileEntry.toURL());
-      //alert(fileEntry.fullPath);
-      // displayFileData(fileEntry.nativeURL, "Native URL");
-
-    }, function () {
-      // If don't get the FileEntry (which may happen when testing
-      // on some emulators), copy to a new FileEntry.
-     // this.createNewFileEntry(imgUri);
     });
-  }
-
-  private createNewFileEntry(imgUri) {
-/*    window.resolveLocalFileSystemURL(cordova.file.cacheDirectory, function success(dirEntry) {
-
-      // JPEG file
-      dirEntry.getFile("tempFile.jpeg", { create: true, exclusive: false }, function (fileEntry) {
-
-        // Do something with it, like write to it, upload it, etc.
-        // writeFile(fileEntry, imgUri);
-        console.log("got file: " + fileEntry.fullPath);
-        // displayFileData(fileEntry.fullPath, "File copied to");
-
-      }, onErrorCreateFile);
-
-    }, onErrorResolveUrl);*/
   }
 
   private upload(fileURL) {
     const fileTransfer: FileTransferObject = this.transfer.create();
-    let params = {};
-    params['bussinessType'] = 'idAudit';
+    let self = this;
+    let params = {
+      bussinessType:'idAudit'
+    };
+
     let options: FileUploadOptions = {
       fileKey: 'file',
       fileName: fileURL.substr(fileURL.lastIndexOf('/') + 1),
       mimeType: 'image/jpeg',
       params: params
     };
-    alert("upload");
-
-      fileTransfer.upload(fileURL, encodeURI('http://121.196.194.174:8086/hostel-app-war/app/appUploadImg'), options)
-      .then((data) => {
-        console.info(data);
-        //alert(data);
-        alert("upload success"+JSON.stringify(data));
-        // success
-      }, (err) => {
-        // error
-        console.info(err);
-        alert("upload err"+JSON.stringify(err));
-       //alert(err);
-      })
+    fileTransfer.upload(fileURL, encodeURI(this.imgApi), options)
+    .then((res) => {
+      console.info("upload success"+JSON.stringify(res));
+      // alert("upload success"+JSON.stringify(res));
+      let result = JSON.parse(res.response);
+      self.cardIdURl = result.data;
+      // success
+    }, (err) => {
+      // error
+      console.info("upload err"+JSON.stringify(err));
+      alert("upload err"+JSON.stringify(err));
+    })
   }
 
 }
