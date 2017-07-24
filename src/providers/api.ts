@@ -4,7 +4,7 @@ import {Toast} from '../providers/index';
 // import {API as URL} from '../web.config';
 import 'rxjs/add/operator/map';
 import {LocalUserInfo} from '../LocalDatas/index';
-import { ORDER_PAY, PERSON_INFO, UPDATE_HEAD_ICON } from  "./API_MARCO"
+import { ORDER_PAY, PERSON_INFO, UPDATE_HEAD_ICON,QUERY_AUDIT } from  "./API_MARCO"
 import config from "../config/config"
 /**
  * Api is a generic REST Api handler. Set your API url first.
@@ -37,6 +37,8 @@ export class Api {
     console.info(mobile);
     if(api === UPDATE_HEAD_ICON){
       body['phoneNum'] = mobile;
+    }else if( api === QUERY_AUDIT){
+      body['phone'] = mobile;
     }
     body['sjhm'] = mobile;
     return this.httpPost(api,body,options);

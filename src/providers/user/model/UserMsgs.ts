@@ -3,4 +3,6 @@ export interface UserMsgs {
   yjye: number;
   yhqsl: number;
   sfshzt: string;
+  yhtx: string;
+  xm:string;
 }

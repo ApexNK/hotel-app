@@ -16,7 +16,13 @@ export class ImgUrlPipe implements PipeTransform {
    */
   transform(value: string, ...args) {
     if(!value || value === ''){
-      return './assets/img/default.png';
+      if(args[0] === 'head'){
+        return './assets/img/default_avatar.png';
+      }else if(args[0] === 'nodefault'){
+        return '';
+      }else{
+        return './assets/img/default.png';
+      }
     }
     if( value.indexOf("storage") > 0 || value.indexOf('assets') > 0){
       return value;

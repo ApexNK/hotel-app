@@ -2,10 +2,10 @@
   <div class="head-container">
     <img src="assets/img/user_center_bg.png" alt="" class="user_center_bg">
     <div class="head-pic-container">
-      <img [src]="photoUrl">
+      <img [src]="userMsg?.yhtx | imgUrl:'head'">
     </div>
     <div class="user-name" text-center>
-      吕阿三
+      {{userMsg?.xm}}
     </div>
   </div>
   <div class="user-content">
@@ -37,8 +37,8 @@
         </button>
         <button ion-item class="has-margin-bottom" (tap)="goAudit()">
           <i class="iconfont icon-audit" item-left></i>
-          身份审核
-          <span item-right class="reminder-info">{{userMsg?.sfshzt === '1' ? '已审核' : '未审核'}}</span>
+          身份审核<!--{{userMsg?.sfshzt === '1' ? '已审核' : '未审核'}}-->
+          <span item-right class="reminder-info">{{auditStatus[userMsg?.sfshzt]}}</span>
         </button>
         <button ion-item (tap)="contactServer()">
           <i class="iconfont icon-service" item-left></i>

@@ -1,7 +1,7 @@
 import { Component,Inject } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, Events} from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { APPLY_AUDIT } from '../../../providers/API_MARCO';
+import { APPLY_AUDIT,QUERY_AUDIT } from '../../../providers/API_MARCO';
 import { Toast } from '../../../providers';
 import config from '../../../config/config';
 
@@ -13,6 +13,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
+
 @IonicPage({
   segment:"identity-audit"
 })
@@ -33,17 +34,32 @@ export class IdentityAuditPage {
     targetWidth: 275,
     targetHeight:275
   };
-  public imgUrl:string = '';
+  public cardIDImg:string = '';
   public userName:string ='';
   public cardID:string = '';
   showFooter:boolean = true;
   private api:any;
   private readonly imgApi: string = config.imgAPI;
   private cardIdURl: string;
+  private currentAuditCode: string;
+  private code ={
+    unSubmit:"0",
+    aduiting:"1",
+    pass:"2",
+    failture:"3"
+  };
+  public allowSubmitted = true;
   constructor(public navCtrl: NavController, public navParams: NavParams, private  camera: Camera,
               public actionSheetCtrl: ActionSheetController,private events:Events,@Inject('ApiService') api,
               private transfer: FileTransfer,private toast:Toast) {
     this.api = api;
+    this.currentAuditCode = this.navParams.get('status');
+    if(this.currentAuditCode !== this.code.unSubmit){
+      this.getAuditInfo();
+    }
+    if(this.currentAuditCode === this.code.aduiting){
+      this.allowSubmitted = false;
+    }
   }
 
   ionViewDidLoad() {
@@ -65,6 +81,20 @@ export class IdentityAuditPage {
       tjxm: this.userName // 姓名
     };
     this.api.httpByUser(APPLY_AUDIT,param).then(res => {
+      if(res.code !== 0) {
+        this.toast.show(res.message);
+        return;
+      }
+      this.cardID = res.datas.idcard;
+      this.userName = res.datas.name;
+      this.cardIdURl = res.datas.picture;
+    }, err => {
+      console.info(err);
+    })
+  }
+
+  private getAuditInfo(){
+    this.api.httpByUser(QUERY_AUDIT,{}).then(res => {
       console.info(res);
       this.toast.show(res.message);
       this.events.publish('updateUserCenter',true);
@@ -87,9 +117,9 @@ export class IdentityAuditPage {
 
   private getPicture () {
     this.camera.getPicture(this.options).then((imageUrl) => {
-      this.imgUrl = imageUrl;
-      alert(this.imgUrl);
-      console.info(this.imgUrl);
+      this.cardIDImg = imageUrl;
+      alert(this.cardIDImg);
+      console.info(this.cardIDImg);
       this.getFileEntry(imageUrl);
     }, (err) => {
       console.info(err);
@@ -97,6 +127,9 @@ export class IdentityAuditPage {
   }
 
   public presentPicActionSheet() {
+    if(!this.allowSubmitted){
+      return;
+    }
     let actionSheet = this.actionSheetCtrl.create({
       cssClass: 'action-sheets-basic-page',
       buttons: [

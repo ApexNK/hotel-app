@@ -18,7 +18,12 @@ export class UserCenterPage {
   public userMsg: UserMsgs;
   private callNumber: string = '400-800-8888';
   public photoUrl: string;
-
+  public auditStatus = {
+    '0':"未提交审核 ",
+    '1':"正在审核 ",
+    '2':"审核通过",
+    '3':"审核未通过 "
+  };
   constructor(public navCtrl: NavController, private params: NavParams, private userManager: UserManagerProvider,
               private userInfo: LocalUserInfo, private plt: Platform, private events: Events, private confirmCtrl: ShowConfirmProvider,
               private caller: CallNumber,private loginManager: LoginManagerProvider,) {
@@ -48,7 +53,7 @@ export class UserCenterPage {
   }
 
   public goAudit() {
-    this.navCtrl.push('IdentityAuditPage');
+    this.navCtrl.push('IdentityAuditPage',{status:this.userMsg.sfshzt});
   }
 
   public goUserDetail() {
