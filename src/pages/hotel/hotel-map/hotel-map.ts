@@ -36,7 +36,7 @@ export class HotelMapPage {
 
   ionViewWillLeave() {
     console.log('ionViewWillLeave');
-    this.showHeader = false;
+    // this.showHeader = false;
   }
 
   ionViewDidLeave() {
@@ -73,6 +73,7 @@ export class HotelMapPage {
      });*/
     map.getCurrentCity();
     map.createMapByCity("北京");
+    map.addClickEvent(this.openItem.bind(this));
     hotelListInfo.forEach(hotelItem => {
       map.customMark(hotelItem.longitude, hotelItem.latitude, hotelItem.id.toString(), `¥${hotelItem.minPrice}起 | ${hotelItem.availableRooms}套`)
     });
@@ -94,6 +95,15 @@ export class HotelMapPage {
       // data can be a set of coordinates, or an error (if an error occurred).
       // data.coords.latitude
       // data.coords.longitude
+    });
+  }
+
+  openItem(id) {
+    let param = this.navParams.get('queryParam');
+    this.navCtrl.push("RoomListPage", {
+      flatId: id,
+      beginDate: param.beginDate,
+      endDate: param.endDate
     });
   }
 }

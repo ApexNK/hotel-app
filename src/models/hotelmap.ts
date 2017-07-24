@@ -68,7 +68,7 @@ export class HotelMap {
   container: string;
   map: any;
   //testVal: EventEmitter<any> = new EventEmitter();
-
+  private customMarkerCB:any;
   constructor(container: string) {
       this.container = container;
       this.map = null;
@@ -79,10 +79,15 @@ export class HotelMap {
     this.map.enableScrollWheelZoom();//启动滚轮放大缩小，默认禁用
     this.map.enableContinuousZoom();//连续缩放效果，默认禁用
     // this.map.disableDragging();
+    let self = this;
     this.map.addEventListener('touchstart',function(e){
       if(e.touches[0].target.innerHTML.indexOf('¥') > -1){
         let hotelId = e.touches[0].target.attributes[0].value;
         console.log(hotelId);
+        if(self.customMarkerCB){
+          self.customMarkerCB(hotelId);
+        }
+
         // this.testVal.emit(hotelId);
       }
     });
@@ -153,6 +158,10 @@ export class HotelMap {
     }
     //http://api.map.baidu.com/api?v=2.0&ak=I6qKjXgv6l10WynfjsMIqt3GqeZD7IOD&location=118.89201,32.130975&output=json&pois=1
 //http://api.map.baidu.com/geocoder/v2/?ak=I6qKjXgv6l10WynfjsMIqt3GqeZD7IOD&location=32.130975,118.89201&output=json&pois=1
+  }
+
+  addClickEvent(fn) { //添加自定义标记的点击事件
+    this.customMarkerCB = fn;
   }
 }
 

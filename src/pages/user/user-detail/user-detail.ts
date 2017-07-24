@@ -62,7 +62,9 @@ export class UserDetailPage {
 
   public updateHeadIcon (){
     console.info("update icon");
-    this.presentPicActionSheet();
+    // let img = "／normal//20170724225507579.png";
+    // this.updateIconToServer(img);
+     this.presentPicActionSheet();
   }
 
   private getPersonInfo () {
@@ -85,6 +87,7 @@ export class UserDetailPage {
     let param = {
       headIcon:imgUrl
     };
+    window.alert(JSON.stringify(param));
     this.api.httpByUser(UPDATE_HEAD_ICON,param).then( res => {
         this.toast.show(res.message);
     },err => {
