@@ -52,8 +52,12 @@ export class HotelMapPage {
     this.showMap();
   }
 
+
   async showMap() {
     let map = new HotelMap(this.mapElement.nativeElement);
+    // map.testVal.subscribe(data => {
+    //   console.log('---' + data);
+    // });
     let param = this.navParams.get('queryParam');
     param.queryString = this.queryStr;
     let hotelListInfo: MapQueryResult[] = await this.hotelSer.getMapHotelList(param);
@@ -69,8 +73,8 @@ export class HotelMapPage {
      });*/
     map.getCurrentCity();
     map.createMapByCity("北京");
-    hotelListInfo.forEach( hotelItem => {
-      map.customMark(hotelItem.longitude, hotelItem.latitude, `¥${hotelItem.minPrice}起 | ${hotelItem.availableRooms}套` )
+    hotelListInfo.forEach(hotelItem => {
+      map.customMark(hotelItem.longitude, hotelItem.latitude, hotelItem.id.toString(), `¥${hotelItem.minPrice}起 | ${hotelItem.availableRooms}套`)
     });
   }
 

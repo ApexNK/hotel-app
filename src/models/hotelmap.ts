@@ -3,6 +3,8 @@ declare var BMap;
 declare var BMap_Symbol_SHAPE_FORWARD_CLOSED_ARROW;
 declare var BMAP_STATUS_SUCCESS;
 
+import {EventEmitter} from '@angular/core';
+
 
 class CustomOverlay {
   point: typeof BMap.Point;
@@ -12,7 +14,7 @@ class CustomOverlay {
   arrow: any;
   __proto__: any;
 
-  constructor(point: typeof BMap.Point, content: string) {
+  constructor(point: typeof BMap.Point,id:string, content: string) {
     //super(point,content);
     this.point = point;
     this.content = content;
@@ -34,6 +36,7 @@ class CustomOverlay {
       let span = document.createElement("span");
       div.appendChild(span);
       span.appendChild(document.createTextNode(this.content));
+      span.setAttribute('Value',id);
 
       let arrow = this.arrow = document.createElement("div");
       arrow.style.background = "url(http://map.baidu.com/fwmap/upload/r/map/fwmap/static/house/images/label.png) no-repeat";
@@ -48,7 +51,6 @@ class CustomOverlay {
 
       // 将div添加到覆盖物容器中
       map.getPanes().labelPane.appendChild(div);
-
       return div;
     };
     this.__proto__.draw = () => {
@@ -60,10 +62,12 @@ class CustomOverlay {
 
 }
 
+
 export class HotelMap {
 
   container: string;
   map: any;
+  //testVal: EventEmitter<any> = new EventEmitter();
 
   constructor(container: string) {
       this.container = container;
@@ -74,6 +78,14 @@ export class HotelMap {
     this.map = this.map || new BMap.Map(this.container, { enableMapClick: true });
     this.map.enableScrollWheelZoom();//启动滚轮放大缩小，默认禁用
     this.map.enableContinuousZoom();//连续缩放效果，默认禁用
+    // this.map.disableDragging();
+    this.map.addEventListener('touchstart',function(e){
+      if(e.touches[0].target.innerHTML.indexOf('¥') > -1){
+        let hotelId = e.touches[0].target.attributes[0].value;
+        console.log(hotelId);
+        // this.testVal.emit(hotelId);
+      }
+    });
   }
 
   createMapByCity(city:string): void {
@@ -126,8 +138,8 @@ export class HotelMap {
    });
   }
 
-  customMark(longitude:number, latitude:number, content?:string):void {
-    let myCompOverlay = new CustomOverlay(new BMap.Point(longitude,latitude), content);
+  customMark(longitude:number, latitude:number,hotelId:string, content?:string):void {
+    let myCompOverlay = new CustomOverlay(new BMap.Point(longitude,latitude),hotelId, content);
     this.map.addOverlay(myCompOverlay);
   }
 
