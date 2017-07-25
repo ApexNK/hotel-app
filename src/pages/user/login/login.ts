@@ -4,6 +4,8 @@ import { NavController} from 'ionic-angular';
 import { User } from '../../../providers/user';
 import {LoginManagerProvider} from '../../../providers/index';
 import {LocalUserInfo} from '../../../LocalDatas/user-info';
+import { Toast } from "../../../providers";
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -22,23 +24,27 @@ export class LoginPage {
     private userInfo: LocalUserInfo,
     public navCtrl: NavController,
     public user: User,
-    private loginManager: LoginManagerProvider) {
-    this.getAccount();
+    private loginManager: LoginManagerProvider,
+     private toast:Toast) {
+    // this.getAccount();
   }
-  private async getAccount () {
+
+/*  private async getAccount () {
     const result = await this.userInfo.get();
     if (result) {
       this.account = result;
     }
-  }
+  }*/
   public async getValidCode () {
     if (!this.account.mobile) {
+      this.toast.show("手机号码不能为空");
       return;
     }
     try {
       await this.loginManager.getValiCode(this.account.mobile);
       this.decreaseLeftTime();
     }catch (e) {
+      this.toast.show(JSON.stringify(e));
       console.log(e);
     }
   }
@@ -48,6 +54,7 @@ export class LoginPage {
       if (this.leftTimes === 0) {
         this.leftTimes = 60;
         clearInterval(this.timer);
+        this.timer = null;
       }
     }, 1000);
   }

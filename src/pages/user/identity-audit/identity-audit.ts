@@ -81,13 +81,12 @@ export class IdentityAuditPage {
       tjxm: this.userName // 姓名
     };
     this.api.httpByUser(APPLY_AUDIT,param).then(res => {
-      if(res.code !== 0) {
-        this.toast.show(res.message);
+      this.toast.show(res.message);
+      if(res.code !== '0') {
         return;
       }
-      this.cardID = res.datas.idcard;
-      this.userName = res.datas.name;
-      this.cardIdURl = res.datas.picture;
+      this.events.publish('updateUserCenter',true);
+      this.navCtrl.pop();
     }, err => {
       console.info(err);
     })
@@ -96,9 +95,10 @@ export class IdentityAuditPage {
   private getAuditInfo(){
     this.api.httpByUser(QUERY_AUDIT,{}).then(res => {
       console.info(res);
-      this.toast.show(res.message);
-      this.events.publish('updateUserCenter',true);
-      this.navCtrl.pop();
+      this.cardID = res.datas.idcard;
+      this.userName = res.datas.name;
+      this.cardIDImg = res.datas.picture;// for show
+      this.cardIdURl = res.datas.picture;// for save in server
     }, err => {
       console.info(err);
     })

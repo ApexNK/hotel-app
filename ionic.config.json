@@ -1,5 +1,11 @@
 {
   "name": "room-booking",
   "app_id": "",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/hostel-app-war",
+      "proxyUrl": "http://121.196.194.174/hostel-app-war/app/serviceApi"
+    }
+  ]
 }
