@@ -171,7 +171,7 @@ export class IdentityAuditPage {
     const fileTransfer: FileTransferObject = this.transfer.create();
     let self = this;
     let params = {
-      bussinessType:'idAudit'
+      businessType:'idAudit'
     };
 
     let options: FileUploadOptions = {

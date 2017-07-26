@@ -156,7 +156,7 @@ export class UserDetailPage {
     const fileTransfer: FileTransferObject = this.transfer.create();
     let self = this;
     let params = {
-      bussinessType:'portrait'
+      businessType:'portrait'
     };
 
     let options: FileUploadOptions = {
