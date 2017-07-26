@@ -11,21 +11,21 @@
   <div class="banner" [style.background-image]="'url(./assets/img/timg.jpg)'">
     <img src="./assets/img/wave.png" class="wave">
   </div>
+  <div id="submitForm" #submitForm>
   <form (submit)="doLogin()" padding>
     <ion-list no-padding>
-
       <ion-item no-padding margin-bottom>
         <ion-label fixed><ion-icon name="person" color="primary"></ion-icon>&ensp;手机号</ion-label>
-        <ion-input type="text" [(ngModel)]="account.mobile" name="username" required></ion-input>
+        <ion-input type="number" [(ngModel)]="account.mobile" name="username" required></ion-input>
       </ion-item>
       <ion-item no-padding margin-bottom>
         <ion-label fixed><ion-icon name="key" color="primary"></ion-icon>&ensp;验证码</ion-label>
-        <ion-input type="number" required [(ngModel)]="validCode" name="validCode"></ion-input>
+        <ion-input type="number" required [(ngModel)]="validCode" name="validCode" (focus)="focusOnValidCode()"></ion-input>
         <button type="button" [disabled]="leftTimes !== 60" (tap)="getValidCode()" ion-button item-right outline round>发送验证码({{leftTimes}}s)</button>
       </ion-item>
 
       <button type="submit" ion-button color="primary" block style="margin-top: 40px; border-radius: 6px;">登录</button>
-
     </ion-list>
   </form>
+  </div>
 </ion-content>

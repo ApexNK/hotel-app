@@ -84,7 +84,7 @@ export class UserCenterPage {
     if (this.userMsg.yjye > 0) {
       this.navCtrl.push('ApplyRefundPage', {total: this.userMsg.yjye});
     } else {
-      this.navCtrl.push('RechargePage', {isRefund: true, refundValue:this.userMsg.yjye});
+      this.navCtrl.push('RechargePage', {isRefund: true, refundValue:199});
     }
 
   }

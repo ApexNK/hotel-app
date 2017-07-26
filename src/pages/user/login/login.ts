@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild, ElementRef } from '@angular/core';
 import { NavController} from 'ionic-angular';
 
 import { User } from '../../../providers/user';
@@ -14,6 +14,7 @@ export class LoginPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
+  @ViewChild('submitForm') btnElement: ElementRef;
   account: { mobile: string} = {
     mobile: ''
   };
@@ -73,5 +74,12 @@ export class LoginPage {
     //   });
     //   toast.present();
     // });
+  }
+
+  focusOnValidCode() {
+    let self = this;
+    setTimeout(function(){
+      self.btnElement.nativeElement.scrollIntoView(true);
+    },300)
   }
 }

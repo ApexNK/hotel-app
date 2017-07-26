@@ -62,9 +62,9 @@ export class UserDetailPage {
 
   public updateHeadIcon (){
     console.info("update icon");
-    // let img = "／normal//20170724225507579.png";
+    // let img = "/normal//20170724225507579.png";
     // this.updateIconToServer(img);
-     this.presentPicActionSheet();
+    this.presentPicActionSheet();
   }
 
   private getPersonInfo () {
