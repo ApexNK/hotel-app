@@ -87,7 +87,6 @@ export class UserDetailPage {
     let param = {
       headIcon:imgUrl
     };
-    window.alert(JSON.stringify(param));
     this.api.httpByUser(UPDATE_HEAD_ICON,param).then( res => {
         this.toast.show(res.message);
     },err => {
