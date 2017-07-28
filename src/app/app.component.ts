@@ -57,7 +57,7 @@ export class MyApp {
         // window.alert(JSON.stringify(res));
         this.goToSystemPage();
       });
-      this.jPush.receiveNotification().subscribe( res => {
+/*      this.jPush.receiveNotification().subscribe( res => {
         console.log("receiveNotification");
         console.log(JSON.stringify(res));
         // window.alert(JSON.stringify(res));
@@ -68,7 +68,7 @@ export class MyApp {
         console.log(JSON.stringify(res));
         // window.alert(JSON.stringify(res));
         this.goToSystemPage();
-      });
+      });*/
     });
 
   }
