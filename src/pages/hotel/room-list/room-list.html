@@ -19,10 +19,7 @@
       <span float-left>地址：{{hotelDetail?.gydz}}</span>
       <span float-right><ion-icon name="pin"></ion-icon> 1.4km</span>
     </p>
-
   </div>
-
-
 
   <ion-grid class="device-list" no-padding padding-left padding-right padding-bottom margin-bottom>
     <ion-row>
@@ -31,7 +28,7 @@
       </ion-col>
     </ion-row>
     <ion-row text-center padding-top>
-      <ion-col class="date-picker">
+      <ion-col class="date-picker" (tap)="openDate()">
         {{beginDate}}
 <!--        <ion-datetime
           [cancelText]="'取消'" [doneText]="'确定'"
@@ -44,7 +41,7 @@
         <br>
         <span>入住</span>
       </ion-col>
-      <ion-col  class="date-picker">
+      <ion-col  class="date-picker" (tap)="openDate()">
         {{endDate}}
 <!--        <ion-datetime
           [cancelText]="'取消'" [doneText]="'确定'"

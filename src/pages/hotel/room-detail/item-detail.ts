@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
-import {RoomDetail, HotelManager} from '../../../providers';
+import {RoomDetail, HotelManager,Toast } from '../../../providers';
 import {WkDate} from '../../../util';
 
 @IonicPage({
@@ -19,7 +19,7 @@ export class ItemDetailPage {
   private fjbh = '';
   public days:number = 1;
   public roomDetail: RoomDetail;
-  constructor(public navCtrl: NavController, navParams: NavParams, private hotelManager: HotelManager) {
+  constructor(public navCtrl: NavController, navParams: NavParams, private hotelManager: HotelManager,private toast: Toast) {
     this.beginDate = navParams.get('beginDate');
     this.endDate = navParams.get('endDate');
     this.roomId = navParams.get('roomId');
@@ -52,6 +52,11 @@ export class ItemDetailPage {
     // 传时间、天数、总价和订单编号给支付页面
 
   }
+
+  public openDate () {
+    this.toast.show("请在首页选择入住和离开时间");
+  }
+
   private async getRoomDetail () {
    try {
       this.roomDetail = await this.hotelManager.getRoomDetail(this.roomId);

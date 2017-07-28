@@ -16,7 +16,7 @@ import {CallNumber} from '@ionic-native/call-number';
 })
 export class UserCenterPage {
   public userMsg: UserMsgs;
-  private callNumber: string = '400-800-8888';
+  private callNumber: string = '400-8128-888';
   public photoUrl: string;
   public auditStatus = {
     '0':"未提交审核 ",
@@ -101,7 +101,7 @@ export class UserCenterPage {
   loginOut() {
     console.info(this.plt);
     let self = this;
-    this.confirmCtrl.show({message: "请问是否退出当前账号？", okText: "确定", cancelText: "取消"}).then(
+    this.confirmCtrl.show({message: "是否退出当前账号？", okText: "确定", cancelText: "取消"}).then(
       res => {
         if (res) {
           self.userInfo.remove().then(() => {

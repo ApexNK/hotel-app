@@ -10,7 +10,7 @@
 <ion-content style="bottom:3.2rem">
   <ion-slides pager class="item-profile">
 
-    <ion-slide style="background-color: green" *ngFor="let item of roomDetail?.fjtp">
+    <ion-slide *ngFor="let item of roomDetail?.fjtp">
       <div class="item-profile" text-center  [style.background-image]="'url(' + (item.imgPath | imgUrl) + ')'">
       </div>
     </ion-slide>
@@ -68,11 +68,11 @@
       </ion-col>
     </ion-row>
     <ion-row text-center padding-top>
-      <ion-col>
+      <ion-col (tap)="openDate()">
         {{beginDate}}
         <span class="subInfo">入住</span>
       </ion-col>
-      <ion-col>
+      <ion-col (tap)="openDate()">
         {{endDate}}
         <span class="subInfo">离开</span>
       </ion-col>

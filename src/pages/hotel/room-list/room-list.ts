@@ -1,6 +1,6 @@
 import {Component, ViewChild, ElementRef} from '@angular/core';
 import {NavController, NavParams, IonicPage, ActionSheetController, Platform} from 'ionic-angular';
-import {HotelDetail, HotelManager} from '../../../providers';
+import {HotelDetail, HotelManager,Toast } from '../../../providers';
 import {HotelMap} from "../../../models/hotelmap";
 declare const window: Window;
 
@@ -24,7 +24,7 @@ export class RoomListPage {
               private hotelManager: HotelManager,
               public platform: Platform,
               private actionSheetCtrl: ActionSheetController,
-              navParams: NavParams) {
+              private navParams: NavParams,private toast: Toast) {
     this.id = navParams.get('flatId');
     this.beginDate = navParams.get('beginDate');
     this.endDate = navParams.get('endDate');
@@ -88,6 +88,10 @@ export class RoomListPage {
       ]
     });
     actionSheet.present();
+  }
+
+  public openDate () {
+    this.toast.show("请在首页选择入住和离开时间");
   }
 
   private showMap(location: any) {
