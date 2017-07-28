@@ -10,15 +10,14 @@
 <ion-content style="background: #fff">
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
-      pullingIcon="arrow-dropdown"
-      pullingText="Pull to refresh"
       refreshingSpinner="circles"
       refreshingText="更新中...">
     </ion-refresher-content>
   </ion-refresher>
-  <ion-list [virtualScroll]="sysInfoList">
-
-    <ion-item *virtualItem="let item" (tap)="openSystemInfo(item)">
+  <ion-list>
+<!--    [virtualScroll]="sysInfoList"
+    *virtualItem="let item"-->
+    <ion-item (tap)="openSystemInfo(item)" *ngFor="let item of sysInfoList; let index = index">
       <ion-row>
         <ion-col col-2>
           <img src="./assets/img/notice_ico.png" style="max-height: 40px;">
