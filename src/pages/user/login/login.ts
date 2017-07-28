@@ -77,9 +77,9 @@ export class LoginPage {
   }
 
   focusOnValidCode() {
-    let self = this;
+/*    let self = this;
     setTimeout(function(){
       self.btnElement.nativeElement.scrollIntoView(true);
-    },300)
+    },300)*/
   }
 }
