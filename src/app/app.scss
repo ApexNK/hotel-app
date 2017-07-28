@@ -117,3 +117,30 @@
 .call-confirm .alert-message{
   font-size: 20px;
 }
+
+.popover-ios .popover-content{
+  width: 30% !important;
+  max-height: 220px;
+}
+
+.item-ios{
+  padding: 0 10px !important;
+}
+
+.item-block{
+  min-height: auto;
+}
+
+//select 样式隐藏勾
+
+.radio-ios .radio-checked .radio-inner {
+  display: none !important;
+}
+
+.item-radio.item-ios ion-label {
+  overflow: visible;
+}
+//城区下拉选择文本不修剪
+.item-radio.item-ios .input-wrapper {
+  overflow: visible;
+}
