@@ -101,16 +101,6 @@
             "ALI_PID": "2017071707787400"
         }
     },
-    "cordova-plugin-wechat": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-wechat"
-        },
-        "is_top_level": true,
-        "variables": {
-            "WECHATAPPID": "wxd91cddb380fc83f0"
-        }
-    },
     "mx.ferreyra.callnumber": {
         "source": {
             "type": "registry",
@@ -152,5 +142,15 @@
         },
         "is_top_level": false,
         "variables": {}
+    },
+    "cordova-plugin-wechat": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-wechat@1.4.0"
+        },
+        "is_top_level": true,
+        "variables": {
+            "WECHATAPPID": "wx282cca50e0a6956f"
+        }
     }
 }

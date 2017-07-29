@@ -83,7 +83,7 @@ export class SystemInfoPage {
       if(res.code === '0') {
         let alert = self.alertCtrl.create({
           title: '消息详情',
-          subTitle: res.message,
+          subTitle: item.title,
           buttons: ['确定']
         });
         alert.present();

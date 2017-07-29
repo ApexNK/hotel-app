@@ -42,10 +42,6 @@
             "ALI_PID": "2017071707787400",
             "PACKAGE_NAME": "com.woke.app"
         },
-        "cordova-plugin-wechat": {
-            "WECHATAPPID": "wxd91cddb380fc83f0",
-            "PACKAGE_NAME": "com.woke.app"
-        },
         "mx.ferreyra.callnumber": {
             "PACKAGE_NAME": "com.woke.app"
         },
@@ -57,6 +53,10 @@
         },
         "jpush-phonegap-plugin": {
             "APP_KEY": "a8a59f58f0c328dd5df36627",
+            "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-wechat": {
+            "WECHATAPPID": "wx282cca50e0a6956f",
             "PACKAGE_NAME": "com.woke.app"
         }
     },

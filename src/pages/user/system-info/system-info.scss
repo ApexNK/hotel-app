@@ -21,4 +21,10 @@ page-system-info {
   }
   .item-block,
   .content-ios {background: #fff !important;}
+
+  .line-limit-length {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
