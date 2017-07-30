@@ -2,6 +2,7 @@ import { Component, Inject} from '@angular/core';
 import { NavController, NavParams ,IonicPage, Events} from 'ionic-angular';
 import { RECHARGE} from '../../../providers/API_MARCO';
 import { Alipay } from '@ionic-native/alipay';
+import  {Toast } from "../../../providers";
 
 enum PAY_WAY {
   ZHI_FU_BAO = 1,
@@ -31,7 +32,8 @@ export class RechargePage {
   public api:any;
   public customValue:any;
   public isRefund = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private events:Events, @Inject('ApiService') api, private alipay: Alipay) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private events:Events, @Inject('ApiService') api,
+              private alipay: Alipay,private toast: Toast) {
     console.log('Hello RechargeComponent Component');
     this.api = api;
     this.payWay = this.navParams.get("payWay") || "aliPay";
@@ -66,7 +68,7 @@ export class RechargePage {
         if(param.zffs === PAY_WAY.ZHI_FU_BAO){
           this.requestForAliPay(data.orderInfo);
         }else{
-          this.requestForWechat();
+          this.requestForWechat(JSON.parse(data.orderInfo));
         }
       })
     } catch (err){
@@ -91,7 +93,7 @@ export class RechargePage {
     this.alipay.pay(data)
       .then(result => {
         console.log(result); // Success
-        window.alert(JSON.stringify(result));
+        // window.alert(JSON.stringify(result));
         self.navCtrl.push("PayResultPage",{status:'success',money:self.activeNum});
         //  go to  pay success page
 
@@ -99,25 +101,40 @@ export class RechargePage {
       .catch(error => {
         console.log(error); // Failed
         // go to pay failed page
-        window.alert(JSON.stringify(error));
+        // window.alert(JSON.stringify(error));
         self.navCtrl.push("PayResultPage",{status:'fail'});
       });
   }
-
-  private requestForWechat () {
+// data 包含appid,noncestr,package,partnerid,prepayid,sign,timestamp
+  // params: partnerid
+  private requestForWechat (data) {
+    console.info(data);
     let params = {
-      partnerid: '10000100', // merchant id
-      prepayid: 'wx201411101639507cbf6ffd8b0779950874', // prepay id
-      noncestr: '1add1a30ac87aa2db72f57a2375d8fec', // nonce
-      timestamp: '1439531364', // timestamp
-      sign: '0CB01533B8C1EF103065174F50BCA001', // signed string
+      partnerid: data.partnerid, // merchant id
+      prepayid: data.prepayid, // prepay id 'wx201411101639507cbf6ffd8b0779950874'
+      noncestr: data.noncestr, // nonce '1add1a30ac87aa2db72f57a2375d8fec'
+      timestamp: data.timestamp, // timestamp
+      sign: data.sign, // signed string
     };
-    console.info(Wechat);
+    // window.alert(JSON.stringify(params));
+    let self = this;
     Wechat.sendPaymentRequest(params, function () {
-     alert("Success");
+      // alert("Success");
+      self.navCtrl.push("PayResultPage",{status:'success',money:self.activeNum});
      }, function (reason) {
-     alert("Failed: " + reason);
+      // alert("Failed: " + JSON.stringify(reason));
+      self.toast.show(JSON.stringify(reason));
      });
   }
 
+  public wechatShare() {
+    Wechat.share({
+      text: "This is just a plain string",
+      scene: Wechat.Scene.TIMELINE   // share to Timeline
+    }, function () {
+      alert("Success");
+    }, function (reason) {
+      alert("Failed: " + reason);
+    });
+  }
 }
