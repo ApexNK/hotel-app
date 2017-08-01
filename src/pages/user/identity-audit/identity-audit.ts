@@ -89,6 +89,7 @@ export class IdentityAuditPage {
       this.navCtrl.pop();
     }, err => {
       console.info(err);
+      this.toast.show(JSON.stringify(err));
     })
   }
 
@@ -118,7 +119,7 @@ export class IdentityAuditPage {
   private getPicture () {
     this.camera.getPicture(this.options).then((imageUrl) => {
       this.cardIDImg = imageUrl;
-      alert(this.cardIDImg);
+      // alert(this.cardIDImg);
       console.info(this.cardIDImg);
       this.getFileEntry(imageUrl);
     }, (err) => {

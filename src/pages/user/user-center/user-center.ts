@@ -36,7 +36,10 @@ export class UserCenterPage {
     //this.navCtrl.parent.select(2);
     this.events.subscribe('updateUserCenter', () => {
       this.getUserMsg();
-    })
+    });
+    this.events.subscribe('updateUserIcon', (data) => {
+      this.userMsg['hytx'] = data.headIcon;
+    });
   }
 
 

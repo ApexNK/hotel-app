@@ -24,6 +24,7 @@ export class TabsPage {
   mineTitle = '我的';
   public isLoginPageShow = false;
   public userInfo:any;
+  private isFirstAccessUser = true;
   constructor(public navCtrl: NavController, private events:Events,private loginManager: LoginManagerProvider, private localUserInfo: LocalUserInfo) {
     // this.init();
     this.loginManager.subscribeLoginState(res => {
@@ -44,6 +45,15 @@ export class TabsPage {
 
   ionchange(event){
     console.info(event.index);
+    if(event.index === 3 ){
+      // change to user
+      if( this.isFirstAccessUser ){
+        this.isFirstAccessUser = false;
+      }else {
+        this.events.publish('updateUserCenter');
+      }
+
+    }
   }
 
 }

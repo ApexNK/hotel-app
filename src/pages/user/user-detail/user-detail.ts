@@ -1,5 +1,5 @@
 import { Component,Inject } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, Events } from 'ionic-angular';
 import { PERSON_INFO, UPDATE_HEAD_ICON } from '../../../providers/API_MARCO';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -41,7 +41,7 @@ export class UserDetailPage {
   private readonly imgApi: string = config.imgAPI;
   constructor(public navCtrl: NavController, public navParams: NavParams,private  camera: Camera,
               public actionSheetCtrl: ActionSheetController,@Inject('ApiService') api,
-              private transfer: FileTransfer,private toast:Toast) {
+              private transfer: FileTransfer,private toast:Toast, private events: Events) {
     this.api = api;
   }
 
@@ -62,7 +62,7 @@ export class UserDetailPage {
 
   public updateHeadIcon (){
     console.info("update icon");
-    // let img = "/normal//20170724225507579.png";
+    // let img = "/image/portrait//20170801160221708.jpg";//"portrait//20170801231118830.jpg";//
     // this.updateIconToServer(img);
     this.presentPicActionSheet();
   }
@@ -89,6 +89,7 @@ export class UserDetailPage {
     };
     this.api.httpByUser(UPDATE_HEAD_ICON,param).then( res => {
         this.toast.show(res.message);
+        this.events.publish('updateUserIcon',param);
     },err => {
       console.info(err);
     })
