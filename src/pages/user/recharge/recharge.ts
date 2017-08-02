@@ -61,7 +61,7 @@ export class RechargePage {
     try {
       this.api.httpByUser(RECHARGE,param).then( data => {
         console.info(data.orderInfo);
-        // window.alert(JSON.stringify(data.orderInfo));
+        //window.alert(JSON.stringify(data.orderInfo));
         if (!data.orderInfo){
             return;
         }
@@ -93,15 +93,23 @@ export class RechargePage {
     this.alipay.pay(data)
       .then(result => {
         console.log(result); // Success
-        // window.alert(JSON.stringify(result));
-        self.navCtrl.push("PayResultPage",{status:'success',money:self.activeNum});
+        // window.alert('success: ' + JSON.stringify(result));
+        if(result.resultStatus === '9000'){
+          self.navCtrl.push("PayResultPage",{status:'success',money:self.activeNum});
+        } else if(result.resultStatus === '4000'){
+          self.navCtrl.push("PayResultPage",{status:'fail'});
+        }
+        else{
+          self.toast.show(result.memo);
+        }
+
         //  go to  pay success page
 
       })
       .catch(error => {
         console.log(error); // Failed
         // go to pay failed page
-        // window.alert(JSON.stringify(error));
+        //window.alert('failed: ' + JSON.stringify(error));
         self.navCtrl.push("PayResultPage",{status:'fail'});
       });
   }
@@ -119,10 +127,10 @@ export class RechargePage {
     // window.alert(JSON.stringify(params));
     let self = this;
     Wechat.sendPaymentRequest(params, function () {
-      // alert("Success");
+      //alert("Success");
       self.navCtrl.push("PayResultPage",{status:'success',money:self.activeNum});
      }, function (reason) {
-      // alert("Failed: " + JSON.stringify(reason));
+      //alert("Failed: " + JSON.stringify(reason));
       self.toast.show(JSON.stringify(reason));
      });
   }

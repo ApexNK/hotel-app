@@ -31,29 +31,29 @@
     </ion-card>
     <div style="margin: 0px 12px;">
       <ion-list no-lines>
-        <button ion-item (click)="goUserDetail()">
+        <button ion-item (click)="goUserDetail()" type="button">
           <i class="iconfont icon-personal_information" item-left></i>
           个人信息
         </button>
-        <button ion-item class="has-margin-bottom" (tap)="goAudit()">
+        <button type="button" ion-item class="has-margin-bottom" (tap)="goAudit()" >
           <i class="iconfont icon-audit" item-left></i>
           身份审核<!--{{userMsg?.sfshzt === '1' ? '已审核' : '未审核'}}-->
           <span item-right class="reminder-info">{{auditStatus[userMsg?.sfshzt]}}</span>
         </button>
-        <button ion-item (tap)="contactServer()">
+        <button ion-item type="button" (tap)="contactServer()">
           <i class="iconfont icon-service" item-left></i>
           联系客服
         </button>
-        <button ion-item (tap)="goSystemInfo()">
+        <button ion-item  type="button" (tap)="goSystemInfo()">
           <i class="iconfont icon-system_message" item-left></i>
           系统消息
         </button>
-        <button ion-item class="has-margin-bottom" (tap)="aboutUs()">
+        <button ion-item type="button" class="has-margin-bottom" (tap)="aboutUs()">
           <i class="iconfont icon-about_us" item-left></i>
           关于我们
         </button>
       </ion-list>
-      <button ion-button full text-center class="log-out" (tap)="loginOut()">
+      <button type="button" ion-button full text-center class="log-out" (tap)="loginOut()">
         退出登录
       </button>
     </div>
