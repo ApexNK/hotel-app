@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import { NavController, NavParams, IonicPage,Events } from 'ionic-angular';
 import {RoomDetail, HotelManager,Toast } from '../../../providers';
 import {WkDate} from '../../../util';
+import { ORDER_STATE_ENUM } from '../../../providers/API_MARCO';
 
 @IonicPage({
   name: 'ItemDetailPage',
@@ -19,7 +20,7 @@ export class ItemDetailPage {
   private fjbh = '';
   public days:number = 1;
   public roomDetail: RoomDetail;
-  constructor(public navCtrl: NavController, navParams: NavParams, private hotelManager: HotelManager,private toast: Toast) {
+  constructor(public navCtrl: NavController, navParams: NavParams, private events:Events,private hotelManager: HotelManager,private toast: Toast) {
     this.beginDate = navParams.get('beginDate');
     this.endDate = navParams.get('endDate');
     this.roomId = navParams.get('roomId');
@@ -41,6 +42,7 @@ export class ItemDetailPage {
         }
       );
       const days = WkDate.getDays(new Date(this.endDate), new Date(this.beginDate));
+      this.events.publish('updateOrder',ORDER_STATE_ENUM.WAIT_PAY);
       this.navCtrl.push('OrderPayPage',{beginDate:this.beginDate,
         endDate:this.endDate,
         orderNo,

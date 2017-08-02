@@ -22,7 +22,7 @@ export class OrderListPage {
         if(tabName && tabName !== this.curTab){
           this.curTab = tabName;
         }else{
-          this.getOrder();
+          this.tabChange();
         }
       }).bind(this),1000);
 
