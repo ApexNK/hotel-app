@@ -49,6 +49,7 @@ export class IdentityAuditPage {
     failture:"3"
   };
   public allowSubmitted = true;
+  private fromOrder = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private  camera: Camera,
               public actionSheetCtrl: ActionSheetController,private events:Events,@Inject('ApiService') api,
               private transfer: FileTransfer,private toast:Toast) {
@@ -56,6 +57,8 @@ export class IdentityAuditPage {
     this.currentAuditCode = this.navParams.get('status');
     if(this.currentAuditCode !== this.code.unSubmit){
       this.getAuditInfo();
+    }else{
+      this.fromOrder = this.navParams.get('fromOrder');
     }
     if(this.currentAuditCode === this.code.aduiting){
       this.allowSubmitted = false;
@@ -85,8 +88,14 @@ export class IdentityAuditPage {
       if(res.code !== '0') {
         return;
       }
-      this.events.publish('updateUserCenter',true);
-      this.navCtrl.pop();
+      if(!this.fromOrder){
+        this.events.publish('updateUserCenter',true);
+        this.navCtrl.pop();
+      }else{
+        this.navCtrl.parent.select(3);
+        this.navCtrl.popToRoot();
+      }
+
     }, err => {
       console.info(err);
       this.toast.show(JSON.stringify(err));

@@ -58,15 +58,15 @@ export class OrderPayPage {
             this.goToOrderTabs(ORDER_STATE_ENUM.WAIT_USE);
           },2000);
 
-        }else if(res.code === '1'){
-          let alert = this.alertCtrl.create({
-            title: '支付失败',
-            subTitle: res.message,
-            buttons: ['确定']
-          });
-          alert.present();
-          return;
-        } else {
+        }else if(res.code === '3'){
+          this.confirmCtrl.show({message:"支付失败，请先进行身份审核",okText:"确定", cancelText:"取消"}).then(
+            result => {
+              if(result){
+                this.navCtrl.push('IdentityAuditPage',{status:"0",fromOrder:true});
+              }
+            }
+          );
+        }else if(res.code === '2'){
           this.confirmCtrl.show({message:"余额不足，不能满足付款",okText:"去充值", cancelText:"取消"}).then(
             result => {
               if(result){
@@ -76,6 +76,13 @@ export class OrderPayPage {
               }
             }
           );
+        }else {
+          let alert = this.alertCtrl.create({
+            title: '支付失败',
+            subTitle: res.message,
+            buttons: ['确定']
+          });
+          alert.present();
         }
       },
       err => {
