@@ -18,6 +18,7 @@ export {Api} from './api';
 export {MapServer} from  './mapServer'
 export { User } from './user';
 export { Settings } from './settings';
+export { UpdateVersionServer } from './updateVersionServer';
 export {
   LOGIN_KEY,
   VALID_KEY,

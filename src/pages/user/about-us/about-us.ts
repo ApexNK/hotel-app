@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AppVersion } from '@ionic-native/app-version';
-import { Toast,ShowConfirmProvider } from '../../../providers'
+import { Toast,UpdateVersionServer } from '../../../providers'
 /**
  * Generated class for the AboutUsPage page.
  *
@@ -16,11 +16,13 @@ import { Toast,ShowConfirmProvider } from '../../../providers'
 export class AboutUsPage {
   public currentVersion:string;
   public latestVersion:string = '';
-  constructor(public navCtrl: NavController, public navParams: NavParams, private appVersion: AppVersion, private toast: Toast) {
-    this.currentVersion = "1.0.0";
-    this.appVersion.getVersionNumber().then( name => {
-      alert('versionNumber:' + name);
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              private toast: Toast, private updateServer:UpdateVersionServer) {
+    this.updateServer.getCurrentVersionName().then( name => {
       this.currentVersion = name;
+    });
+    this.updateServer.getLatestVersionName().then( name => {
+      this.latestVersion = name;
     });
   }
 
@@ -33,6 +35,10 @@ export class AboutUsPage {
   }
 
   public updateVersion (){
-    this.toast.show("已是最新版本");
+    if(this.updateServer.latestVersionLargerThanNow(this.currentVersion,this.latestVersion)){
+      this.updateServer.checkVersion();
+    }else{
+      this.toast.show("已是最新版本");
+    }
   }
 }

@@ -8,7 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {TabsPage as FirstRunPage } from '../pages/tabs/tabs';
 // import { LoginPage as FirstRunPage } from '../pages/user/login/login';
 
-import { Settings, Toast } from '../providers';
+import { Settings, Toast, UpdateVersionServer } from '../providers';
 import { JPush } from 'ionic3-jpush';
 import { LocalUserInfo } from '../LocalDatas/index';
 
@@ -23,8 +23,8 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
   constructor(private platform: Platform, settings: Settings, private config: Config, statusBar: StatusBar, splashScreen: SplashScreen,
-              private app: App, private keyboard: Keyboard,private toast:Toast, private events:Events,public jPush: JPush,private localUser: LocalUserInfo) {
-    // this.localUser.save(15850591859);
+              private app: App, private keyboard: Keyboard,private toast:Toast, private events:Events,public jPush: JPush,
+              private localUser: LocalUserInfo, private updateServer: UpdateVersionServer) {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -69,6 +69,7 @@ export class MyApp {
         // window.alert(JSON.stringify(res));
         this.goToSystemPage();
       });*/
+      this.updateServer.checkVersion();
     });
 
   }

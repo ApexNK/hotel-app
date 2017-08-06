@@ -37,7 +37,8 @@ import {LoginManagerProvider,
         User,
         MapServer,
         Settings,
-        Api
+        Api,
+        UpdateVersionServer
       } from '../providers'
 
 import config from '../config/config';
@@ -135,7 +136,8 @@ export function providers() {
     CallNumber,
     FileTransfer,
     JPush,
-    AppVersion
+    AppVersion,
+    UpdateVersionServer
   ];
 }
 
