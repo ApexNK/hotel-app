@@ -47,7 +47,8 @@
         <button ion-item  type="button" (tap)="goSystemInfo()">
           <i class="iconfont icon-system_message" item-left></i>
           系统消息
-          <ion-badge item-end color="danger">{{userMsg?.notReadCount}}</ion-badge>
+          <ion-badge item-end color="danger">{{userMsg?.notReadCount > 99 ? "99+" : userMsg?.notReadCount}}
+          </ion-badge>
         </button>
         <button ion-item type="button" class="has-margin-bottom" (tap)="aboutUs()">
           <i class="iconfont icon-about_us" item-left></i>
