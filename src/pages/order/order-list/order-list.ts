@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Events } from 'ionic-angular';
-import {ORDER_STATE_ENUM, OrderManager, OrderItem} from '../../../providers';
+import {ORDER_STATE_ENUM, OrderManager, OrderItem, Toast} from '../../../providers';
 // import { ItemDetailPage } from '../hotel/room-detail/item-detail';
 import { ShowConfirmProvider } from '../../../providers/show-confirm/show-confirm';
 
@@ -15,7 +15,7 @@ export class OrderListPage {
   public curPage = 1;
   public notLoadOver = true;
   constructor(public navCtrl: NavController, private orderManager: OrderManager,
-              navParams: NavParams,private events:Events, private confirmCtrl: ShowConfirmProvider) {
+              navParams: NavParams,private events:Events, private confirmCtrl: ShowConfirmProvider,private toast:Toast) {
     events.subscribe('updateOrder',(tabName)=>{
       setTimeout( (function () {
         console.info("update order");
@@ -52,10 +52,14 @@ export class OrderListPage {
 
   public async applyCancelOrder (ddbh, index) {
     try {
-      await this.orderManager.cancelOrder(ddbh);
-      this.orderItems.splice(index,1);
+      let result = await this.orderManager.cancelOrder(ddbh);
+      this.toast.show(result.message);
+      if( result.code === '0'){
+        this.orderItems.splice(index,1);
+      }
     }catch (e) {
       console.error(e);
+      this.toast.show("出错了，请稍后再试");
     }
   }
   public leaveRoom (ddbh, index) {
@@ -70,10 +74,15 @@ export class OrderListPage {
   }
   private async applyToleave(ddbh, index) {
     try {
-      await this.orderManager.leaveRoom(ddbh);
-      this.orderItems.splice(index,1);
+      let result = await this.orderManager.leaveRoom(ddbh);
+      this.toast.show(result.message);
+      if( result.code === '0'){
+        this.orderItems.splice(index,1);
+      }
+
     }catch (e) {
       console.error(e);
+      this.toast.show("出错了，请稍后再试");
     }
   }
 
