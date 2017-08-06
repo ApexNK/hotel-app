@@ -25,6 +25,7 @@ export class TabsPage {
   public isLoginPageShow = false;
   public userInfo:any;
   private isFirstAccessUser = true;
+  private isFirstAccessKey = true;
   constructor(public navCtrl: NavController, private events:Events,private loginManager: LoginManagerProvider, private localUserInfo: LocalUserInfo) {
     // this.init();
     this.loginManager.subscribeLoginState(res => {
@@ -52,7 +53,12 @@ export class TabsPage {
       }else {
         this.events.publish('updateUserCenter');
       }
-
+    } else if( event.index === 2 ) {
+      if( this.isFirstAccessKey ){
+        this.isFirstAccessKey = false;
+      }else {
+        this.events.publish('updateKey');
+      }
     }
   }
 

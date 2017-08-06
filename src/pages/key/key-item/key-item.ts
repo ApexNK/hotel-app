@@ -2,7 +2,8 @@ import { Component, Inject} from '@angular/core';
 import { NavController, NavParams, Events } from 'ionic-angular';
 import { KeyInfo } from './key-item-models';
 import { KEY_LIST } from "../../../providers/API_MARCO"
-import {DomSanitizer} from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
+import { RoomCodePipe } from  '../../../pipes/room-code'
 
 // DIRECTION_NONE 0,DIRECTION_LEFT 2,DIRECTION_RIGHT 4,DIRECTION_UP 8,DIRECTION_DOWN 16,DIRECTION_HORIZONTAL 6,
 // DIRECTION_VERTICAL 2, DIRECTION_ALL 30
@@ -27,13 +28,16 @@ export class KeyItemComponent {
   public keyUrl:any;
   private curPage = 1;
   private pageSize = 50;
+  private roomCode:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private events:Events,
               private sanitizer: DomSanitizer, @Inject('ApiService') api) {
     this.api = api;
+    this.roomCode = new RoomCodePipe();
     //this.keyUrl = this.sanitizer.bypassSecurityTrustResourceUrl('http://cz.uclbrt.com/apiLogin/?data=a3e9unPs0QUWESYRqA7uMxvbXuD7SLghOoqC%2BiaBAvMJoubmslR%2B7%2Fjoe%2FKMItjJZGuNrbcs6R6yL9YQRPPFjIzzoHpYOC2UJlD1Wo2Th79i6RrqTepiEngQ6Yrbt4XNHiVKVH%2BYLKuYTt4M%2FfA1FP2kwh6ce50xDAlCgd51jZduvwRPi2QHbO5sknGHHHIUnhYtc3RG2L%2F13UQC0F%2FtBohVXDVFljmIiTELUV9GFUVeqHg1%2B1gntiC1v7eK9RBgGTiqDJRdGm9XrdbJ%2B%2BocA9sF%2FoyMm4bTEDRF8LsKrrHdTzQtXXceCgxjDK76hTPW3RA%2BOGuf0N7pUwEHEpi4hA%3D%3D');//http://url.cn/4BGx1ku
     events.subscribe('updateKey',()=>{
+      this.curPage = 1;
       this.getKeys();
-    })
+    });
   }
 
   ionViewDidLoad() {
@@ -67,8 +71,9 @@ export class KeyItemComponent {
       try{
         if(res.datas.length > 0){
           res.datas.forEach( info => {
+            let room = this.roomCode.transform(info.fjbh);
             let keyInfo: KeyInfo = {
-              roomName: info.gymc + ' ' + info.sslc+'楼'+info.fjbh+'室',
+              roomName: info.gymc + ' ' + info.sslc+'楼'+room+'室',
               address: info.gydz,
               checkInTime: info.rzkssj.split(' ')[0]+'-'+info.rzjssj.split(' ')[0],
               leaveTime: info.rzjssj,

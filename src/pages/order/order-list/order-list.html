@@ -43,7 +43,7 @@
             <img class="room-pic" [src]="order.gyslt | imgUrl" width="93" height="70">
           </ion-thumbnail>
           <div class="sub-title">
-            <h3 float-left>{{order.gymc}} {{order.sslc}}楼{{order.fjbh}}室</h3>
+            <h3 float-left>{{order.gymc}} {{order.sslc}}楼{{order.fjbh | roomCode}}室</h3>
             <h2 float-right >￥{{order.ddje}}</h2>
           </div>
           <div class="address"><i class="iconfont icon-location"></i> {{order.gydz}}</div>

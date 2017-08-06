@@ -70,7 +70,7 @@
     <ion-item *ngFor="let item of hotelDetail?.kyfj"
               no-padding detail-push class="item-ios"
               (click)="goRoomDetail(item.id, beginDate, endDate, item.fjbh)">
-      <h3 padding-left>{{item.sslc}}楼 {{item.fjbh}}室</h3>
+      <h3 padding-left>{{item.sslc}}楼 {{item.fjbh | roomCode}}室</h3>
       <span class="primary" item-right>￥<span class="price">{{item.fjjg}}</span></span>
     </ion-item>
     <ion-item *ngIf="hotelDetail?.kyfj.length === 0" text-center no-padding class="item-ios">
