@@ -5,4 +5,5 @@ export interface UserMsgs {
   sfshzt: string;
   hytx: string;
   xm:string;
+  notReadCount?:number;
 }

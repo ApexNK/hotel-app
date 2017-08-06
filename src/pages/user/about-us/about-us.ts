@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { AppVersion } from '@ionic-native/app-version';
+import { Toast,ShowConfirmProvider } from '../../../providers'
 /**
  * Generated class for the AboutUsPage page.
  *
@@ -13,12 +14,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'about-us.html',
 })
 export class AboutUsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public currentVersion:string;
+  public latestVersion:string = '';
+  constructor(public navCtrl: NavController, public navParams: NavParams, private appVersion: AppVersion, private toast: Toast) {
+    this.currentVersion = "1.0.0";
+    this.appVersion.getVersionNumber().then( name => {
+      alert('versionNumber:' + name);
+      this.currentVersion = name;
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AboutUsPage');
   }
 
+  public goWokePage (){
+    this.navCtrl.push("AboutWoKePage");
+  }
+
+  public updateVersion (){
+    this.toast.show("已是最新版本");
+  }
 }

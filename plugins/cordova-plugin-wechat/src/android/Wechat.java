@@ -532,7 +532,8 @@ public class Wechat extends CordovaPlugin {
 
     protected String getAppId() {
         if (this.appId == null) {
-            this.appId = preferences.getString(WXAPPID_PROPERTY_KEY, "");
+            this.appId = "wx282cca50e0a6956f";
+            // this.appId = preferences.getString(WXAPPID_PROPERTY_KEY, "");
         }
 
         return this.appId;
