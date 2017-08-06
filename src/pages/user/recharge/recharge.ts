@@ -50,7 +50,10 @@ export class RechargePage {
       zffs: PAY_WAY.ZHI_FU_BAO,
 
     };
-
+    if(parseInt(<any>this.activeNum) !== this.activeNum) {
+      this.toast.show("金额需要为整数，请重新输入");
+      return;
+    }
     if (this.payWay === 'wechat'){
       param.zffs = PAY_WAY.WEI_XIN;
     }

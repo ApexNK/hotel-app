@@ -58,6 +58,9 @@
         "cordova-plugin-wechat": {
             "WECHATAPPID": "wx282cca50e0a6956f",
             "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-app-version": {
+            "PACKAGE_NAME": "com.woke.app"
         }
     },
     "dependent_plugins": {

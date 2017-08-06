@@ -18,6 +18,7 @@ import {Geolocation} from '@ionic-native/geolocation';
 import { Alipay } from '@ionic-native/alipay';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import {DatePickerModule} from '../components/date-picker/date-picker.module';
+import { AppVersion } from '@ionic-native/app-version';
 // localstorage
 import {LocalUserInfo} from '../LocalDatas/index';
 
@@ -133,7 +134,8 @@ export function providers() {
     MapServer,
     CallNumber,
     FileTransfer,
-    JPush
+    JPush,
+    AppVersion
   ];
 }
 

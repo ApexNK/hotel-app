@@ -55,6 +55,9 @@
         },
         "mx.ferreyra.callnumber": {
             "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-app-version": {
+            "PACKAGE_NAME": "com.woke.app"
         }
     },
     "dependent_plugins": {

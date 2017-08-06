@@ -152,5 +152,13 @@
         "variables": {
             "WECHATAPPID": "wx282cca50e0a6956f"
         }
+    },
+    "cordova-plugin-app-version": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-app-version"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
