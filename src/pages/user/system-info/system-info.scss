@@ -27,4 +27,11 @@ page-system-info {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  .message-status {
+    display: inline-block;
+    background-color: #ff5731;
+    width: 10px;
+    border-radius: 10px;
+    height: 10px;
+  }
 }

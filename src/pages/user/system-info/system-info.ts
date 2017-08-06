@@ -82,11 +82,12 @@ export class SystemInfoPage {
     this.api.httpByUser(SYSTEM_INFORDETAIL,{messageId:item.id}).then( res => {
       if(res.code === '0') {
         let alert = self.alertCtrl.create({
-          title: '消息详情',
-          subTitle: item.title,
+          title: item.title,
+          subTitle: item.content,
           buttons: ['确定']
         });
         alert.present();
+        item.isRead = '2';//标记为已读
       }
     });
 
