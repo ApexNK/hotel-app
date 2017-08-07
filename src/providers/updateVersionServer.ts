@@ -20,7 +20,7 @@ export class UpdateVersionServer {
           return;
         }
         let param = {
-          title:"升级版本",
+          title:"版本升级",
           message: "最新版本"+self.latestVersion['name'],
           okText: "立即升级",
           cancelText: "暂不升级"
@@ -68,5 +68,12 @@ export class UpdateVersionServer {
     return Promise.resolve('1.0.1')
   }
 
+  private downloadApk() {
+    let apiUrl = "http://www.51hawk.com/fx/site/";
+    (<any>window).YbUpdate.start([{
+      downLoadUrl: apiUrl + "Home/AppDownload?appType=1",
+      installNow: true
+    }]);
+  }
 }
 
