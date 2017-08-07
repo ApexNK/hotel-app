@@ -61,6 +61,9 @@
         },
         "cordova-plugin-app-version": {
             "PACKAGE_NAME": "com.woke.app"
+        },
+        "cordova-plugin-ybupdate": {
+            "PACKAGE_NAME": "com.woke.app"
         }
     },
     "dependent_plugins": {

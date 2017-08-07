@@ -160,5 +160,13 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-ybupdate": {
+        "source": {
+            "type": "local",
+            "path": "../cordova-plugin-ybupdate"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

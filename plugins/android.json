@@ -15,6 +15,9 @@
             "ALI_PID": "2017071707787400",
             "PACKAGE_NAME": "com.woke.app"
         },
+        "cordova-plugin-app-version": {
+            "PACKAGE_NAME": "com.woke.app"
+        },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.woke.app"
         },
@@ -46,6 +49,9 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.woke.app"
         },
+        "cordova-plugin-ybupdate": {
+            "PACKAGE_NAME": "com.woke.app"
+        },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.woke.app"
         },
@@ -54,9 +60,6 @@
             "PACKAGE_NAME": "com.woke.app"
         },
         "mx.ferreyra.callnumber": {
-            "PACKAGE_NAME": "com.woke.app"
-        },
-        "cordova-plugin-app-version": {
             "PACKAGE_NAME": "com.woke.app"
         }
     },

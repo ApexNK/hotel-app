@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	id="cordova-plugin-ybupdate"
+	version="1.0.0">
+
+    <name>YbUpdate</name>
+	<description>Cordova plugin for update app.</description>
+
+    <js-module src="www/ybUpdate.js" name="YbUpdate">
+        <clobbers target="YbUpdate" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="YbUpdate">
+                <param name="android-package" value="com.youbang.plugins.YbUpdate"/>
+            </feature>
+        </config-file>
+		
+		<config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+		
+		<config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        </config-file>
+		
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <receiver android:name="com.youbang.plugins.YbUpdate$NotificationBroadcastReceiver">
+				<intent-filter>
+					<action android:name="Notification.Clicked" />
+				</intent-filter>
+			</receiver>
+        </config-file>
+
+        <source-file src="src/android/YbUpdate.java" target-dir="src/com/youbang/plugins"/>
+    </platform>
+
+
+</plugin>
