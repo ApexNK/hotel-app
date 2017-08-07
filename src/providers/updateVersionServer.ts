@@ -31,6 +31,7 @@ export class UpdateVersionServer {
             return;
           }
           alert("升级处理逻辑,正在开发中");
+          this.downloadApk();
         });
       }
     )
@@ -64,8 +65,8 @@ export class UpdateVersionServer {
     if(this.latestVersion && this.latestVersion['name']){
       return Promise.resolve(this.latestVersion['name']);
     }
-    this.latestVersion['name'] = '1.0.1';
-    return Promise.resolve('1.0.1')
+    this.latestVersion['name'] = '1.0.0';
+    return Promise.resolve('1.0.0')
   }
 
   private downloadApk() {
@@ -74,6 +75,7 @@ export class UpdateVersionServer {
       downLoadUrl: apiUrl + "Home/AppDownload?appType=1",
       installNow: true
     }]);
+
   }
 }
 

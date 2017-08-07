@@ -70,6 +70,7 @@ export class KeyItemComponent {
   private getKeys() {
     this.api.httpByUser(KEY_LIST,{curPage: this.curPage, pageSize: this.pageSize}).then( res => {
       try{
+        this.keyList = [];
         if(res.datas.length > 0){
           res.datas.forEach( info => {
             let room = this.roomCode.transform(info.fjbh);
