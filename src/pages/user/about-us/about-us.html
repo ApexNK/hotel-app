@@ -28,7 +28,7 @@
     </button>
     <button ion-item (click)="updateVersion()">
       版本更新
-      <span float-right style="color:#fd2f00">{{latestVersion}}</span>
+      <span float-right style="color:#fd2f00" *ngIf="hasNewVersion">{{latestVersion}}</span>
     </button>
   </ion-list>
 </ion-content>

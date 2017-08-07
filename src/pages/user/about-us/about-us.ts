@@ -16,26 +16,31 @@ import { Toast,UpdateVersionServer } from '../../../providers'
 export class AboutUsPage {
   public currentVersion:string;
   public latestVersion:string = '';
+  public hasNewVersion = false;
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private toast: Toast, private updateServer:UpdateVersionServer) {
-    this.updateServer.getCurrentVersionName().then( name => {
-      this.currentVersion = name;
-    });
-    this.updateServer.getLatestVersionName().then( name => {
-      this.latestVersion = name;
-    });
+    this.getVersionInfo();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AboutUsPage');
   }
 
+  private getVersionInfo() {
+    Promise.all([this.updateServer.getCurrentVersionName(),this.updateServer.getLatestVersionName()]).then(
+      versions => {
+        this.currentVersion = versions[0];
+        this.latestVersion = versions[1];
+        this.hasNewVersion = this.updateServer.latestVersionLargerThanNow(this.currentVersion,this.latestVersion);
+      }
+    )
+  }
   public goWokePage (){
     this.navCtrl.push("AboutWoKePage");
   }
 
   public updateVersion (){
-    if(this.updateServer.latestVersionLargerThanNow(this.currentVersion,this.latestVersion)){
+    if(this.hasNewVersion){
       this.updateServer.checkVersion();
     }else{
       this.toast.show("已是最新版本");
