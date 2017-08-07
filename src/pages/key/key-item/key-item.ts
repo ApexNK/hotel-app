@@ -36,6 +36,7 @@ export class KeyItemComponent {
     //this.keyUrl = this.sanitizer.bypassSecurityTrustResourceUrl('http://cz.uclbrt.com/apiLogin/?data=a3e9unPs0QUWESYRqA7uMxvbXuD7SLghOoqC%2BiaBAvMJoubmslR%2B7%2Fjoe%2FKMItjJZGuNrbcs6R6yL9YQRPPFjIzzoHpYOC2UJlD1Wo2Th79i6RrqTepiEngQ6Yrbt4XNHiVKVH%2BYLKuYTt4M%2FfA1FP2kwh6ce50xDAlCgd51jZduvwRPi2QHbO5sknGHHHIUnhYtc3RG2L%2F13UQC0F%2FtBohVXDVFljmIiTELUV9GFUVeqHg1%2B1gntiC1v7eK9RBgGTiqDJRdGm9XrdbJ%2B%2BocA9sF%2FoyMm4bTEDRF8LsKrrHdTzQtXXceCgxjDK76hTPW3RA%2BOGuf0N7pUwEHEpi4hA%3D%3D');//http://url.cn/4BGx1ku
     events.subscribe('updateKey',()=>{
       this.curPage = 1;
+      this.keyList = [];
       this.getKeys();
     });
   }
