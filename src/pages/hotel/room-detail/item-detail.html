@@ -38,13 +38,13 @@
       </ion-col>
     </ion-row>
     <ion-row text-center padding-top class="icon-box facilities-row">
-      <div class="facilities">离地铁近</div>
-      <div class="facilities">首次出租</div>
+      <div class="facilities" *ngFor="let feature of roomDetail?.featureList">{{feature}}</div>
+<!--      <div class="facilities">首次出租</div>
       <div class="facilities">新小区</div>
       <div class="facilities">免费维修</div>
       <div class="facilities">双周保洁</div>
       <div class="facilities">WiFi覆盖</div>
-      <div class="facilities">木棉4.0</div>
+      <div class="facilities">木棉4.0</div>-->
     </ion-row>
   </ion-grid>
 

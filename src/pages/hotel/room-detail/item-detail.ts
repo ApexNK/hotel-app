@@ -62,6 +62,9 @@ export class ItemDetailPage {
   private async getRoomDetail () {
    try {
       this.roomDetail = await this.hotelManager.getRoomDetail(this.roomId);
+      if( this.roomDetail.feature.length > 0){
+        this.roomDetail.featureList = this.roomDetail.feature.split(",");
+      }
     }catch (e) {
       console.error(e);
     }

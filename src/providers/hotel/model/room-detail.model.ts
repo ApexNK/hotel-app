@@ -7,4 +7,6 @@ export interface RoomDetail {
   fjdz: string;//房间地址
   fjtp: { imgName: string; imgPath: string;}[]//房间图片
   discounts: any;//折扣信息
+  feature?:string;//入住设施
+  featureList?:any;
 }
