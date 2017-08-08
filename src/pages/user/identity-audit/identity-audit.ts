@@ -60,7 +60,7 @@ export class IdentityAuditPage {
     }else{
       this.fromOrder = this.navParams.get('fromOrder');
     }
-    if(this.currentAuditCode === this.code.aduiting){
+    if(this.currentAuditCode === this.code.aduiting || this.currentAuditCode === this.code.pass){
       this.allowSubmitted = false;
     }
   }
@@ -200,7 +200,7 @@ export class IdentityAuditPage {
     }, (err) => {
       // error
       console.info("upload err"+JSON.stringify(err));
-      alert("upload err"+JSON.stringify(err));
+      self.toast.show(JSON.stringify(err));
     })
   }
 
