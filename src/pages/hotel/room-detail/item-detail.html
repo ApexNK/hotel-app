@@ -38,7 +38,7 @@
       </ion-col>
     </ion-row>
     <ion-row text-center padding-top class="icon-box facilities-row">
-      <div *ngIf="roomDetail?.featureList.length === 0">便利设施未设置</div>
+      <div *ngIf="!roomDetail?.featureList" class="facilities">暂无数据</div>
       <div class="facilities" *ngFor="let feature of roomDetail?.featureList">{{feature}}</div>
 <!--      <div class="facilities">首次出租</div>
       <div class="facilities">新小区</div>
