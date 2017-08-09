@@ -17,6 +17,7 @@ export const ORDER_CANCEL = 'orders-0004';//申请退订
 export const LEAVE_ROOM = 'orders-0005';//申请退房
 export const ORDER_DETAIL = 'orders-0006'; //订单详情
 export const ORDER_LIST = 'orders-0001'; //订单列表
+export const ORDER_CANCEL_UNPAY = 'orders-0008'; //订单取消
 export declare type OrderType = 1|2|3|4|5;
 export const ORDER_STATE_ENUM: {
   [key:string]: OrderType

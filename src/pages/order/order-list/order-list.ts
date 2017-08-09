@@ -45,7 +45,17 @@ export class OrderListPage {
     this.confirmCtrl.show({message:"请确认是否申请退订",okText:"确定", cancelText:"取消"}).then(
       result => {
         if(result){
-          this.applyCancelOrder(ddbh,index);
+          // this.applyCancelOrder(ddbh,index);
+          this.OperateOrder('cancelOrder',ddbh,index);
+        }
+      });
+  }
+
+  public cancelUnPayOrder(ddbh, index) {
+    this.confirmCtrl.show({message:"请确认是否取消该订单",okText:"确定", cancelText:"取消"}).then(
+      result => {
+        if(result){
+          this.OperateOrder('cancelUnpayOrder',ddbh,index);
         }
       });
   }
@@ -103,5 +113,18 @@ export class OrderListPage {
       this.notLoadOver = false;
     }
 
+  }
+
+  private async OperateOrder (action, ddbh,index) {
+    try {
+      let result = await this.orderManager[action](ddbh);
+      this.toast.show(result.message);
+      if( result.code === '0'){
+        this.orderItems.splice(index,1);
+      }
+    }catch (e) {
+      console.error(e);
+      this.toast.show("出错了，请稍后再试");
+    }
   }
 }

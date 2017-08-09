@@ -57,6 +57,7 @@
             实付款：¥{{order.sjje}}
           </div>
           <button *ngSwitchCase="ORDER_ENUM.WAIT_PAY" (tap)="goPay(order.ddbh, index)" padding-left  padding-right ion-button item-right round outline>支付</button>
+          <button *ngSwitchCase="ORDER_ENUM.WAIT_PAY" (tap)="cancelUnPayOrder(order.ddbh, index)" padding-left  padding-right ion-button item-right round outline>取消</button>
           <button *ngSwitchCase="ORDER_ENUM.WAIT_USE" (tap)="cancelOrder(order.ddbh, index)" padding-left  padding-right ion-button item-right round outline>申请退订</button>
           <button *ngSwitchCase="ORDER_ENUM.USING" (tap)="leaveRoom(order.ddbh, index)" padding-left  padding-right ion-button item-right round outline>退房</button>
           <div *ngSwitchCase="ORDER_ENUM.REVOKED" padding-left  padding-right item-right>

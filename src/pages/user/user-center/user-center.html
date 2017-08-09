@@ -46,7 +46,7 @@
         </button>
         <button ion-item  type="button" (tap)="goSystemInfo()">
           <i class="iconfont icon-system_message" item-left></i>
-          系统消息{{userMsg?.notReadCount}}
+          系统消息
           <ion-badge item-end color="danger" *ngIf="userMsg?.notReadCount > 0">{{userMsg?.notReadCount > 99 ? "99+" : userMsg?.notReadCount}}
           </ion-badge>
         </button>
