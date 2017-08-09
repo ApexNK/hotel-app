@@ -2,12 +2,15 @@
 import { Injectable } from '@angular/core';
 import { AppVersion } from '@ionic-native/app-version';
 import { ShowConfirmProvider } from './show-confirm/show-confirm';
+import config from "../config/config";
+import { VERSION_INFO } from "./API_MARCO";
+import { Api } from './api';
 
 @Injectable()
 export class UpdateVersionServer {
   private latestVersion = {};
   private currentVersion:string;
-  constructor(private appVersion:AppVersion, private confirmView:ShowConfirmProvider) {
+  constructor(private appVersion:AppVersion, private confirmView:ShowConfirmProvider, private  api: Api) {
   }
 
   public checkVersion(){
@@ -24,13 +27,11 @@ export class UpdateVersionServer {
           message: "最新版本"+self.latestVersion['name'],
           okText: "立即升级",
           cancelText: "暂不升级"
-        }
+        };
         self.confirmView.show(param).then( isOkay => {
           if(!isOkay){
-            // alert("不升级");
             return;
           }
-          alert("升级处理逻辑,正在开发中");
           this.downloadApk();
         });
       }
@@ -51,6 +52,7 @@ export class UpdateVersionServer {
   }
 
   public getCurrentVersionName() {
+    // this.currentVersion = "1.0.0";// for test
     if( this.currentVersion ){
       return Promise.resolve(this.currentVersion);
     }
@@ -65,16 +67,30 @@ export class UpdateVersionServer {
     if(this.latestVersion && this.latestVersion['name']){
       return Promise.resolve(this.latestVersion['name']);
     }
-    this.latestVersion['name'] = '1.0.0';
-    return Promise.resolve('1.0.0')
+    //this.latestVersion['name'] = '1.0.0';
+    //return Promise.resolve('1.0.0')
+    return this.api.httpPost(VERSION_INFO,{model:'mobile'}).then( result => {
+      if(result.code === '0'){
+        this.latestVersion['name'] = result.datas.version;
+        return this.latestVersion['name'];
+      }else{
+        return "1.0.0";
+      }
+    });
   }
 
   private downloadApk() {
-    let apiUrl = "http://www.51hawk.com/fx/site/";
+    // let downloadUrl = "http://www.51hawk.com/fx/site/Home/AppDownload?appType=1";
+    let downloadUrl = config.apkDownloadUrl;
+    alert(downloadUrl);
     (<any>window).YbUpdate.start([{
-      downLoadUrl: apiUrl + "Home/AppDownload?appType=1",
+      downLoadUrl: downloadUrl,
       installNow: true
-    }]);
+    }],function (success) {
+       // alert('success');
+    },function (err) {
+      // alert(JSON.stringify(err));
+    });
 
   }
 }
