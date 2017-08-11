@@ -74,6 +74,7 @@ order-list {
   }
   ion-item.item-footer{
     background: #fff !important;
+    padding-right: 5px !important;
   }
   .header-md::after {
     background-image: none;
@@ -88,5 +89,9 @@ order-list {
 
   .item-ios [item-left] {
     margin-right: 10px;
+  }
+  .item-ios .item-button {
+    margin: 8px 5px !important;
+    padding: 0 12px !important;
   }
 }
