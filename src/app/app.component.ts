@@ -101,7 +101,7 @@ export class MyApp {
 
       console.log(page);
 
-      //if (page instanceof IonTabsPage) {
+      //if (page instanceof TabsPage) {
        // this.app.goBack();
        // return;
      // }

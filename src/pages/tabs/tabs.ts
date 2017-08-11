@@ -26,10 +26,14 @@ export class TabsPage {
   public userInfo:any;
   private isFirstAccessUser = true;
   private isFirstAccessKey = true;
+  private currentTabIndex = 0;
   constructor(public navCtrl: NavController, private events:Events,private loginManager: LoginManagerProvider, private localUserInfo: LocalUserInfo) {
     // this.init();
     this.loginManager.subscribeLoginState(res => {
       this.isLoginPageShow = !res;
+      if(!this.isLoginPageShow){
+        this.upDateCurrentTab();
+      }
     });
     events.subscribe('goback',()=>{
       this.isLoginPageShow = false;
@@ -46,6 +50,7 @@ export class TabsPage {
 
   ionchange(event){
     console.info(event.index);
+    this.currentTabIndex = event.index;
     if(event.index === 3 ){
       // change to user
       if( this.isFirstAccessUser ){
@@ -60,6 +65,15 @@ export class TabsPage {
         this.events.publish('updateKey');
       }
     }
+  }
+
+  private upDateCurrentTab(){
+    let eventMap = ['','updateOrder','updateKey','updateUserCenter'];
+    if(this.currentTabIndex === 0){
+      return;
+    }
+    let eventName = eventMap[this.currentTabIndex];
+    this.events.publish(eventName);
   }
 
 }

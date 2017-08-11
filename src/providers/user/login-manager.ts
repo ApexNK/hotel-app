@@ -45,9 +45,9 @@ export class LoginManagerProvider {
         valiCode
       });
       if (result) {
-        this.localUserInfo.save(mobile);
-        this.emitLogin(true);
+        await this.localUserInfo.save(mobile);
         this.userDateEv.emit(mobile);
+        this.emitLogin(true);
         let alias = "wk" + mobile;
         // window.alert(alias);
         // 注册极光别名
