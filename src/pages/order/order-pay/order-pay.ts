@@ -28,11 +28,13 @@ export class OrderPayPage {
   public user = {name:'',phoneNumber:'',IDCard:''};
   public showSuccessPage = false;
   public amount: number;
+  public discount: number;
   public coupon = {
     id:"",
     moneyText:'',
     money:0
   };
+  private payment: number;
   constructor(public navCtrl: NavController, public navParams: NavParams,private events:Events, private alertCtrl: AlertController,
               private confirmCtrl: ShowConfirmProvider,@Inject('ApiService') api) {
     this.api = api;
@@ -108,7 +110,9 @@ export class OrderPayPage {
       this.endDate = datas.jssj;
       this.days =datas.jgsj;//WkDate.getDays(new Date(this.endDate), new Date(this.startDate));
       this.total = datas.ddje;
-      this.amount = this.total;
+      this.amount = datas.sjje; //成交实际金额
+      this.payment = datas.sjje;
+      this.discount = datas.zkje;
       this.user.name = datas.hyxm;
       this.user.phoneNumber = datas.hysjhm;
       this.user.IDCard = datas.hysfzh;
@@ -119,7 +123,7 @@ export class OrderPayPage {
     this.events.subscribe('updateCoupon',(newcoupon)=>{
       this.coupon.moneyText = '-¥' + newcoupon.money;
       this.coupon.id = newcoupon.id;
-      this.amount = this.total - newcoupon.money;
+      this.amount = this.payment - newcoupon.money;
       if(this.amount < 0){
         this.amount = 0;
       }

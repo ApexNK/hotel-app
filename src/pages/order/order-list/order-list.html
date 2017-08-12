@@ -44,14 +44,14 @@
           </ion-thumbnail>
           <div class="sub-title">
             <h3 float-left>{{order.gymc}} {{order.sslc}}楼{{order.fjbh | roomCode}}室</h3>
-            <h2 float-right >￥{{order.ddje}}</h2>
+            <h2 float-right >￥{{order.ddje}}<span *ngIf="order.zkje">-¥{{order.zkje}}</span></h2>
           </div>
           <div class="address"><i class="iconfont icon-location"></i> {{order.gydz}}</div>
           <div class="min-font"><i class="iconfont icon-time"></i> {{order.rzkssj}}~{{order.rzjssj}}</div>
         </ion-item>
         <ion-item class="item-footer">
           <div item-left>
-            优惠: <span class="danger">￥{{order.hdje}}</span>
+            优惠券: <span class="danger">￥{{order.hdje}}</span>
           </div>
           <div item-left text-center >
             实付款：¥{{order.sjje}}

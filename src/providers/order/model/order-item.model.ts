@@ -12,4 +12,5 @@ export interface OrderItem {
   sjje:number;//实付款
   yjzt: string;// 交易状态 1 待支付 2 交易成功 3交易失败
   gyslt:string;//公寓缩略图
+  zkje: number; //折扣金额
 }

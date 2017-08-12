@@ -40,6 +40,12 @@ export class UserCenterPage {
     this.events.subscribe('updateUserIcon', (data) => {
       this.userMsg['hytx'] = data.headIcon;
     });
+    this.events.subscribe('updateMsgNumber', (data) => {
+      this.userMsg['notReadCount'] += data;
+      if(this.userMsg['notReadCount'] < 0){
+        this.userMsg['notReadCount'] = 0;
+      }
+    });
   }
 
 

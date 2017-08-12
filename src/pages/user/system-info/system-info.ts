@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,Events } from 'ionic-angular';
 import { SYSTEM_INFORMATION,SYSTEM_INFORDETAIL } from '../../../providers/API_MARCO'
 
 /**
@@ -20,7 +20,8 @@ export class SystemInfoPage {
   public curListPage = 1;
   private pageSize = 10;
   private infiniteScroll = null;
-  constructor(public navCtrl: NavController, public navParams: NavParams,@Inject('ApiService') api,private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,@Inject('ApiService') api,
+              private alertCtrl: AlertController, private events: Events) {
     this.api = api;
   }
 
@@ -78,19 +79,27 @@ export class SystemInfoPage {
 
   public openSystemInfo(item){
     console.info(item);
-    var self= this;
+    let self= this;
+    if( item.isRead === '2'){//已读
+      this.showInfoDetail(item);
+      return;
+    }
     this.api.httpByUser(SYSTEM_INFORDETAIL,{messageId:item.id}).then( res => {
       if(res.code === '0') {
-        let alert = self.alertCtrl.create({
-          title: item.title,
-          subTitle: item.content,
-          buttons: ['确定']
-        });
-        alert.present();
+        self.showInfoDetail(item);
         item.isRead = '2';//标记为已读
+        self.events.publish('updateMsgNumber', -1);
       }
     });
+  }
 
+  private showInfoDetail(info){
+    let alert = this.alertCtrl.create({
+      title: info.title,
+      subTitle: info.content,
+      buttons: ['确定']
+    });
+    alert.present();
   }
 
   public doRefresh(refresher) {

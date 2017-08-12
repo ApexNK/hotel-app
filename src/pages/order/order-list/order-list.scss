@@ -50,7 +50,13 @@ order-list {
       overflow: hidden;
       color: #333;
       // margin-top: -20px;
-      h3 { width: 70%; overflow: hidden; text-overflow: ellipsis}
+      h3 { width: 65%; overflow: hidden; text-overflow: ellipsis}
+      h2 {
+        span{
+          color:#ff0000;
+          font-size: 1.0rem;
+        }
+      }
     }
     .item-block{
       min-height: inherit;

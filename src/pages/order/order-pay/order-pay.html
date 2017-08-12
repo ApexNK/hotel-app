@@ -63,9 +63,13 @@
         <span item-left class="sub-info">总价</span>
         <span>￥{{total}}</span>
       </ion-item>
+      <ion-item no-lines>
+        <span item-left class="sub-info">折扣</span>
+        <span class="text-ios-danger">-￥{{discount}}</span>
+      </ion-item>
       <ion-item no-lines (tap)="selectCoupon()">
         <span item-left class="sub-info">优惠券</span>
-        <span>{{coupon.moneyText || "未使用"}}</span>
+        <span [ngClass] = "{'text-ios-danger':coupon.moneyText,'unuse-coupon':!coupon.moneyText}">{{coupon.moneyText || "未使用"}}</span>
       </ion-item>
     </ion-list>
   </ion-grid>
