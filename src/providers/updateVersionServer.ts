@@ -82,7 +82,6 @@ export class UpdateVersionServer {
   private downloadApk() {
     // let downloadUrl = "http://www.51hawk.com/fx/site/Home/AppDownload?appType=1";
     let downloadUrl = config.apkDownloadUrl;
-    alert(downloadUrl);
     (<any>window).YbUpdate.start([{
       downLoadUrl: downloadUrl,
       installNow: true
