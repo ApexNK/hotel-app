@@ -195,7 +195,7 @@ export class IdentityAuditPage {
       console.info("upload success"+JSON.stringify(res));
       // alert("upload success"+JSON.stringify(res));
       let result = JSON.parse(res.response);
-      self.cardIdURl = result.data;
+      self.cardIdURl = result.data.imgPath;
       // success
     }, (err) => {
       // error

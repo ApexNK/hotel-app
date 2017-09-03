@@ -29,8 +29,8 @@ export class UserDetailPage {
     allowEdit: false,
     saveToPhotoAlbum: false,
     correctOrientation: true,
-    targetWidth: 48,
-    targetHeight:48
+    targetWidth: 96,
+    targetHeight: 96
   };
   private api:any;
   public photoUrl:string;
@@ -170,7 +170,7 @@ export class UserDetailPage {
         console.info("upload success"+JSON.stringify(res));
         // alert("upload success"+JSON.stringify(res));
         let result = JSON.parse(res.response);
-        self.updateIconToServer(result.data);
+        self.updateIconToServer(result.data.imgPath);
         // success
       }, (err) => {
         // error
