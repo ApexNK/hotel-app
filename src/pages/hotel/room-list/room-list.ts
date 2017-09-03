@@ -2,6 +2,7 @@ import {Component, ViewChild, ElementRef} from '@angular/core';
 import {NavController, NavParams, IonicPage, ActionSheetController, Platform} from 'ionic-angular';
 import {HotelDetail, HotelManager,Toast } from '../../../providers';
 import {HotelMap} from "../../../models/hotelmap";
+
 declare const window: Window;
 
 @IonicPage({
@@ -58,8 +59,15 @@ export class RoomListPage {
   }
 
   public openBaiDuMap() {
-    let baiduTarget = 'bdapp://map/geocoder?location=' + this.hotelDetail.latitude + ',' + this.hotelDetail.longitude + '&src=com.woke.app';
-    let gaoDeTarget = 'androidamap://navi?sourceApplication=com.woke.app&amp;lat='+this.hotelDetail.latitude+'&amp;lon='+this.hotelDetail.longitude+'&amp;dev=1&amp;style=2';
+    let appSrc = 'com.woke.app';
+    let baiduTarget = 'bdapp://map/geocoder?location=' + this.hotelDetail.latitude + ',' + this.hotelDetail.longitude + '&src=' + appSrc;
+    let gaoDeTarget = 'androidamap://navi?sourceApplication=' + appSrc + '&amp;lat='+this.hotelDetail.latitude+'&amp;lon='+this.hotelDetail.longitude+'&amp;dev=1&amp;style=2';
+    let iosBaiduMap = 'baidumap://map/geocoder?location=' + this.hotelDetail.latitude + ',' + this.hotelDetail.longitude + '&src=' + appSrc;;
+    let iosGaodeMap = 'iosamap://navi?sourceApplication=' + appSrc + '&amp;lat='+this.hotelDetail.latitude+'&amp;lon='+this.hotelDetail.longitude+'&amp;dev=1&amp;style=2';;
+    if(this.platform.is('ios')){
+      baiduTarget = iosBaiduMap;
+      gaoDeTarget = iosGaodeMap;
+    }
     let actionSheet = this.actionSheetCtrl.create({
       cssClass: 'action-sheets-basic-page',
       buttons: [
