@@ -24,7 +24,8 @@ export class ImgUrlPipe implements PipeTransform {
         return './assets/img/default.png';
       }
     }
-    if( value.indexOf("storage") > 0 || value.indexOf('assets') > 0){
+    //
+    if( value.indexOf("storage") > -1 || value.indexOf('assets') > -1 || value.indexOf('file') > -1){
       return value;
     }
     return config.imgServerUrl + value;

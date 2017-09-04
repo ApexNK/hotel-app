@@ -147,6 +147,7 @@ export class UserDetailPage {
 
   private getFileEntry(imgUrl) {
     var self = this;
+    console.info(imgUrl);
     window['resolveLocalFileSystemURL'](imgUrl, function success(fileEntry) {
       self.upload(fileEntry.toURL());
     });
