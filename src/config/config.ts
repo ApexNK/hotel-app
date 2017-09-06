@@ -11,6 +11,7 @@ const imgServerUrl: string = 'http://121.196.194.174/hostel-admin-war/admin/imag
 //const imgServerUrl: string = 'http://wkzj.tunnel.echomod.cn/hostel-admin-war/admin/image/view/'; // 读取图片路径
 const apkDownloadUrl: string = 'http://121.196.194.174/hostel-app-war/upgrade/stable'; // 包下载
 const imgAPI = 'http://121.196.194.174/hostel-app-war/app/appUploadImg';
+// const imgAPI = 'http://wkzj.tunnel.echomod.cn/hostel-app-war/app/appUploadImg';
 
 export default {
   isDev: isDev,
