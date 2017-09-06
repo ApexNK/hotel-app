@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { Api } from './api';
 
@@ -8,7 +8,7 @@ export class MapServer {
   private currentLocation = {};
   private currentCity = {};
 
-  constructor(private api: Api) {
+  constructor(private api: Api, private geolocation: Geolocation) {
   }
 
   //入参long为经度 lati为纬度
@@ -49,37 +49,23 @@ export class MapServer {
       return Promise.resolve(this.currentLocation);
     }
     let self = this;
+
     return new Promise( function(reslove, reject){
       try {
-        if (baidu_location) {
-          baidu_location.getCurrentPosition(function (result) {
-            console.log(JSON.stringify(result, null, 4));
-            console.info(result);
-            let long = result.lontitude;
-            let lati = result.latitude;
-            console.info('long:' + long);
-            self.currentLocation = {lati,long};
-            //alert(JSON.stringify(self.currentLocation));
-            reslove(self.currentLocation)
-
-          }, function (error) {
-          });
-        }
+        self.geolocation.getCurrentPosition().then((resp) => {
+          // resp.coords.latitude
+          // resp.coords.longitude
+          if(!!resp){
+            //alert(' geolocation latitude' + resp.coords.latitude);
+            //alert(' geolocation longitude' + resp.coords.longitude);
+            reslove({lati:resp.coords.latitude,long:resp.coords.longitude});
+          }
+        }).catch((error) => {
+          alert('Error getting location'+ error);
+          reslove({lati:39.915098,long:116.40398});
+        });
       }catch (err) {
-        reslove({lati:39915098,long:116.40398});
-/*        setTimeout( function () {
-          let geolocation = new BMap.Geolocation();
-          geolocation.getCurrentPosition((position)=>{
-            //0代表调用成功，具体状态可见百度地图api
-            if(geolocation.getStatus() == BMAP_STATUS_SUCCESS){
-              self.currentLocation = {lati:position.latitude,long:position.longitude};
-              reslove(self.currentLocation);
-            }else {
-              console.log(position);
-            }
-          });
-        },1000);*/
-
+        reslove({lati:39.915098,long:116.40398});
       };
     });
   }

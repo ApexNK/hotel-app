@@ -70,6 +70,7 @@ page-list-master {
   }
   .search-icon {
     transform: translateY(1px);
+    margin-left: 5px;
   }
   .data-picker-box {
     box-sizing: border-box;
@@ -109,7 +110,7 @@ page-list-master {
     }
   }
   .segment-bar {
-    height: 35px;
+    /*height: 35px;*/
     background: #f8f9fa;
     border-top: solid .55px #e1e1e1;
     border-bottom: solid .55px #e1e1e1;
@@ -158,7 +159,7 @@ page-list-master {
   }
 
   .item-ios.item-block {
-    border-bottom: 0.55px solid #c8c7cc;
+    /*border-bottom: 0.55px solid #c8c7cc;*/
   }
 
   .item-ios.item-block .item-inner {

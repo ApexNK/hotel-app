@@ -1,18 +1,18 @@
 <ion-header *ngIf="showHeader">
-  <ion-grid no-padding>
+  <ion-grid>
 
     <ion-row align-items-center no-padding>
-      <ion-col col-auto (click)="cityChoose()">
+      <ion-col col-auto (click)="cityChoose()" no-padding>
         &ensp;&ensp;{{currentCity.name}}<ion-icon name="md-arrow-dropdown" ></ion-icon>&ensp;
       </ion-col>
-      <ion-col padding-left padding-right>
-        <form novalidate class="search-form">
-          <ion-icon name="search" margin-left class="search-icon"></ion-icon>
+      <ion-col padding-left>
+        <form novalidate class="search-form" no-padding>
+          <ion-icon name="search" class="search-icon"></ion-icon>
           <input [(ngModel)]="queryKeyWord" [ngModelOptions]="{standalone: true}" type="text" class="search-input"
                  placeholder="输入房间,位置,价格">
         </form>
       </ion-col>
-      <ion-col col-auto>
+      <ion-col col-auto no-padding>
         <button ion-button clear (click)="openMap()">
           <span class="iconfont icon-map" style="font-size: 24px;"></span>
         </button>
@@ -60,7 +60,7 @@
     </ion-row>
   </ion-grid>
 
-  <ion-grid class="segment-bar">
+  <ion-grid class="segment-bar" no-padding>
     <ion-row>
       <ion-col text-center align-self-center ion-button color="dark" clear>
         <ion-item class="item-ion">
